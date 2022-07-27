@@ -1,6 +1,6 @@
 ### Config
-Launcher: [Rofi Launcher](https://github.com/adi1090x/rofi)
-Dmenu: [Rofi (Dracula)](https://github.com/Murzchnvok/rofi-collection)
+- Launcher: [Rofi Launcher](https://github.com/adi1090x/rofi)
+- Dmenu: [Rofi (Dracula)](https://github.com/Murzchnvok/rofi-collection)
 
 ### Fonts
 - [Noto Sans Medium Nerd Font](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Noto/Sans/complete/Noto%20Sans%20Medium%20Nerd%20Font%20Complete.ttf)
