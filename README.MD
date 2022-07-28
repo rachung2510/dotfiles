@@ -1,7 +1,7 @@
 ### Config
 - Launcher: [Rofi Launcher (Colorful)](https://github.com/adi1090x/rofi)
 - Dmenu: [Rofi (Dracula)](https://github.com/Murzchnvok/rofi-collection)
-- Bar: [Polybar (Colorblocks)] (https://github.com/adi1090x/polybar-themes)
+- Bar: [Polybar (Colorblocks)](https://github.com/adi1090x/polybar-themes)
 
 ### Fonts
 - [Noto Sans Medium Nerd Font](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Noto/Sans/complete/Noto%20Sans%20Medium%20Nerd%20Font%20Complete.ttf)
