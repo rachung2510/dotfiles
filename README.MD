@@ -23,7 +23,7 @@ meson ..
 ```
 
 ### Themes
-Icon theme: [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) (Violet)
+Icon theme: [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) (Magenta)
 ```
 sudo add-apt-repository ppa:papirus/papirus
 sudo apt-get update
