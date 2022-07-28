@@ -8,9 +8,16 @@
 
 ### Dependencies
 ```
-sudo apt install build-essentials git vim python3 python3-pip gdebi
 sudo apt install lxappearance brightnessctl playerctl pavucontrol
 sudo apt install rofi polybar
+```
+- i3
+```
+sudo apt install meson libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev libtool automake libxcb-xrm-dev libxcb-shape0-dev -y
+git clone https://www.github.com/Airblader/i3 i3-gaps
+cd i3-gaps
+mkdir -p build && cd build
+meson ..
 ```
 
 ### Themes
