@@ -8,7 +8,9 @@
 
 ### Dependencies
 ```
+sudo apt install build-essentials git vim python3 python3-pip
 sudo apt install lxappearance brightnessctl playerctl pavucontrol
+sudo apt install polybar
 ```
 
 ### Themes
