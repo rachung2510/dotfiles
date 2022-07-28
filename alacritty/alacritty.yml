@@ -183,7 +183,7 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
 
-# Colors (VSCodeLight)
+# Colors (Tomorrow+AyuLight)
 colors:
  # Default Colors
  primary:
@@ -193,151 +193,26 @@ colors:
  cursor:
    text:   '#ab47bc'
    cursor: '#ab47bc'
- # Search
- search:
-   matches:
-     foreground: '#f9f9f9'
-     background: '#ab47bc'
-   focused_match:
-     foreground: '#f9f9f9'
-     background: '#ab47bc'
- # Selection
- selection:
-   text:       '#f9f9f9'
-   background: '#ab47bc'
- # Footer
- footer_bar:
-   background: '#ab47bc'
-   foreground: '#1d1f21'
  # Normal colors
  normal:
-   black:   '0x020202'
-   red:     '0xcd3232'
-   green:   '0x00bc00'
-   yellow:  '0xa5a900'
-   blue:    '0x0752a8'
-   magenta: '0xbc05bc'
-   cyan:    '0x0598bc'
-   white:   '0x343434'
+   black:   '#243342'
+   red:     '#c54133'
+   green:   '#27ae60'
+   yellow:  '#edb20a'
+   blue:    '#2479d0'
+   magenta: '#7d3ea0'
+   cyan:    '#1d8579'
+   white:   '#c9cccd'
  # Bright colors
  bright:
-   black:   '0x5e5e5e'
-   red:     '0xcd3333'
-   green:   '0x1bce1a'
-   yellow:  '0xadbb5b'
-   blue:    '0x0752a8'
-   magenta: '0xc451ce'
-   cyan:    '0x52a8c7'
-   white:   '0xa6a3a6'
-
-
-## Colors (GoogleLight)
-#colors:
-#  # Default Colors
-#  primary:
-#    background: '0xf4f4f4'
-#    foreground: '0x424242'
-#  # Normal colors
-#  normal:
-#    black:   '0x202124'
-#    red:     '0xea4335'
-#    green:   '0x34a853'
-#    yellow:  '0xfbbc04'
-#    blue:    '0x4285f4'
-#    magenta: '0xa142f4'
-#    cyan:    '0x24c1e0'
-#    white:   '0xe8eaed'
-#  # Bright colors
-#  bright:
-#    black:   '0x5f6368'
-#    red:     '0xea4335'
-#    green:   '0x34a853'
-#    yellow:  '0xfbbc05'
-#    blue:    '0x4285f4'
-#    magenta: '0xa142f4'
-#    cyan:    '0x24c1e0'
-#    white:   '0xffffff'
-
-## Colors (NordLight)
-#colors:
-#  # Default Colors
-#  primary:
-#    background: '0xebeaf2'
-#    foreground: '0x424242'
-#  # Normal colors
-#  normal:
-#    black:   '0x003b4e'
-#    red:     '0xe64569'
-#    green:   '0x069f5f'
-#    yellow:  '0xdab752'
-#    blue:    '0x439ecf'
-#    magenta: '0x439ecf'
-#    cyan:    '0x00b1be'
-#    white:   '0xb3b3b3'
-#  # Bright colors
-#  bright:
-#    black:   '0x3e89a1'
-#    red:     '0xe4859a'
-#    green:   '0xa2cca1'
-#    yellow:  '0xe1e387'
-#    blue:    '0x6fbbe2'
-#    magenta: '0xe586e7'
-#    cyan:    '0x96dcda'
-#    white:   '0xdedede'
-
-## Colors (Github)
-#colors:
-#  # Default Colors
-#  primary:
-#    background: '0xf4f4f4'
-#    foreground: '0x424242'
-#  # Normal colors
-#  normal:
-#    black:   '0x3e3e3e'
-#    red:     '0x970b16'
-#    green:   '0x07962a'
-#    yellow:  '0xf8eec7'
-#    blue:    '0x003e8a'
-#    magenta: '0xe94691'
-#    cyan:    '0x89d1ec'
-#    white:   '0xffffff'
-#  # Bright colors
-#  bright:
-#    black:   '0x666666'
-#    red:     '0xde0000'
-#    green:   '0x87d5a2'
-#    yellow:  '0xf1d007'
-#    blue:    '0x2e6cba'
-#    magenta: '0xffa29f'
-#    cyan:    '0x1cfafe'
-#    white:   '0xffffff'
-
-## Colors (Pencil Light)
-#colors:
-#  # Default Colors
-#  primary:
-#    background: '0xf1f1f1'
-#    foreground: '0x424242'
-#  # Normal colors
-#  normal:
-#    black:   '0x212121'
-#    red:     '0xc30771'
-#    green:   '0x10a778'
-#    yellow:  '0xa89c14'
-#    blue:    '0x008ec4'
-#    magenta: '0x523c79'
-#    cyan:    '0x20a5ba'
-#    white:   '0xe0e0e0'
-#  # Bright colors
-#  bright:
-#    black:   '0x212121'
-#    red:     '0xfb007a'
-#    green:   '0x5fd7af'
-#    yellow:  '0xf3e430'
-#    blue:    '0x20bbfc'
-#    magenta: '0x6855de'
-#    cyan:    '0x4fb8cc'
-#    white:   '0xf1f1f1'
+   black:   '#34495e'
+   red:     '#e74c3c'
+   green:   '#2ecc71'
+   yellow:  '#f1c40f'
+   blue:    '#3498db'
+   magenta: '#9b59b6'
+   cyan:    '#2aa198'
+   white:   '#ecf0f1'
 
 # Colors (Tomorrow Night)
 #colors:
@@ -389,22 +264,22 @@ colors:
     #  background: '#000000'
 
   # Keyboard hints
-  #hints:
+ hints:
     # First character in the hint label
     #
     # Allowed values are CellForeground/CellBackground, which reference the
     # affected cell, or hexadecimal colors like #ff00ff.
-    #start:
-    #  foreground: '#1d1f21'
-    #  background: '#e9ff5e'
+   start:
+     foreground: '#1d1f21'
+     background: '#e9ff5e'
 
     # All characters after the first one in the hint label
     #
     # Allowed values are CellForeground/CellBackground, which reference the
     # affected cell, or hexadecimal colors like #ff00ff.
-    #end:
-    #  foreground: '#e9ff5e'
-    #  background: '#1d1f21'
+   end:
+     foreground: '#e9ff5e'
+     background: '#1d1f21'
 
   # Line indicator
   #
