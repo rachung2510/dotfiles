@@ -56,10 +56,11 @@ bindsym F10 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $re
 bindsym F9 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec brightnessctl set +5% # increase screen brightness
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%- # decrease screen brightness
-bindsym F3 exec brightnessctl set 5%- # increase screen brightness
-bindsym F4 exec brightnessctl set +5% # decrease screen brightness
+set $bright-step 3
+bindsym XF86MonBrightnessUp exec brightnessctl set +$bright-step% # increase screen brightness
+bindsym XF86MonBrightnessDown exec brightnessctl set $bright-step%- # decrease screen brightness
+bindsym F3 exec brightnessctl set $bright-step%- # increase screen brightness
+bindsym F4 exec brightnessctl set +$bright-step% # decrease screen brightness
 
 # Media player controls
 bindsym F7 exec playerctl play-pause
