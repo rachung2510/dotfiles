@@ -2,7 +2,7 @@
 
 player_status=$(playerctl status 2> /dev/null)
 
-if [[ $player_status = "Stopped" ]]; then
+if [[ $player_status = "Stopped" ]] || [[ $player_status = "" ]]; then
 	echo ""
 	exit 0
 fi
