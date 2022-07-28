@@ -5,11 +5,12 @@
 ### Fonts
 - [Noto Sans Medium Nerd Font](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Noto/Sans/complete/Noto%20Sans%20Medium%20Nerd%20Font%20Complete.ttf)
 - [MesloLGM Regular Nerd Font](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Meslo/M/Regular/complete/Meslo%20LG%20M%20Regular%20Nerd%20Font%20Complete.ttf)
+- [FiraCode Medium Nerd Font](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Medium/complete/Fira%20Code%20Medium%20Nerd%20Font%20Complete.ttf)
 
 ### Dependencies
 ```
-sudo apt install lxappearance brightnessctl playerctl pavucontrol
-sudo apt install rofi polybar
+sudo apt install lxappearance brightnessctl playerctl pavucontrol feh
+sudo apt install rofi polybar i3
 ```
 - i3
 ```
