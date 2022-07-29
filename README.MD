@@ -1,5 +1,5 @@
 ### Config
-- WM: i3-gaps
+- WM: [i3-gaps](https://www.github.com/Airblader/i3)
 ```
 sudo apt install meson libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev libtool automake libxcb-xrm-dev libxcb-shape0-dev -y
 sudo apt install asciidoc
