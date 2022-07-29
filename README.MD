@@ -26,6 +26,7 @@ logout
 sudo apt install lxappearance brightnessctl playerctl pavucontrol feh
 sudo apt install rofi polybar i3 compton
 sudo usermod -aG video ${USER} # run brightnessctl without sudo
+sudo apt install acpi # for polybar battery click action
 ```
 
 

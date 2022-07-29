@@ -4,6 +4,7 @@ sudo apt update && sudo apt upgrade
 sudo apt install build-essential git gdebi vim python3 python3-pip
 sudo apt install openjdk-18-jdk -y
 sudo apt install autokey
+sudo apt install blueman # bluetooth manager
 ```
 
 ### Apps
