@@ -1,7 +1,20 @@
 ### Config
-- Launcher: [Rofi Launcher (Colorful)](https://github.com/adi1090x/rofi)
-- Dmenu: [Rofi (Dracula)](https://github.com/Murzchnvok/rofi-collection)
-- Bar: [Polybar (Colorblocks)](https://github.com/adi1090x/polybar-themes)
+- WM: [i3-gaps](https://www.github.com/Airblader/i3)
+```
+sudo apt install meson libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev libtool automake libxcb-xrm-dev libxcb-shape0-dev -y
+sudo apt install asciidoc
+git clone https://www.github.com/Airblader/i3 i3-gaps
+cd i3-gaps
+mkdir build && cd build
+meson -Ddocs=true -Dmans=true ..
+meson compile -C .
+sudo meson install -C .
+logout
+```
+- Launcher: [Rofi Launcher](https://github.com/adi1090x/rofi) (Colorful)
+- Dmenu: [Rofi](https://github.com/Murzchnvok/rofi-collection) (Dracula)
+- Compositor: Compton
+- Bar: [Polybar](https://github.com/adi1090x/polybar-themes) (Colorblocks)
 
 ### Fonts
 - [Noto Sans Medium Nerd Font](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Noto/Sans/complete/Noto%20Sans%20Medium%20Nerd%20Font%20Complete.ttf)
@@ -14,18 +27,7 @@ sudo apt install lxappearance brightnessctl playerctl pavucontrol feh
 sudo apt install rofi polybar i3 compton
 sudo usermod -aG video ${USER} # run brightnessctl without sudo
 ```
-- i3
-```
-sudo apt install meson libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev libtool automake libxcb-xrm-dev libxcb-shape0-dev -y
-sudo apt install asciidoc
-git clone https://www.github.com/Airblader/i3 i3-gaps
-cd i3-gaps
-mkdir build && cd build
-meson -Ddocs=true -Dmans=true ..
-meson compile -C .
-sudo meson install -C .
-logout
-```
+
 
 ### Themes
 Icon theme: [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) (Magenta)
