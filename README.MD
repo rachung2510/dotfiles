@@ -1,6 +1,7 @@
 ### Config
 - Launcher: [Rofi Launcher (Colorful)](https://github.com/adi1090x/rofi)
 - Dmenu: [Rofi (Dracula)](https://github.com/Murzchnvok/rofi-collection)
+- Compositor: Compton
 - Bar: [Polybar (Colorblocks)](https://github.com/adi1090x/polybar-themes)
 
 ### Fonts
