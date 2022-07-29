@@ -36,3 +36,9 @@ curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo 
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 sudo apt-get update && sudo apt-get install spotify-client
 ```
+- Pulse Secure\
+[Ubuntu zip](https://nusit.nus.edu.sg/wp-content/uploads/2022/03/pulsesecure_9.1.R14_amd64-Ubuntu-Debian.deb_.zip)
+```
+cd /opt/pulsesecure/bin
+sudo ./setup_cef.sh install
+```
