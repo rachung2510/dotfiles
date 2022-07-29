@@ -22,8 +22,10 @@ set $mod Mod4
 font pango: FiraCode Nerd Font 11
 
 # start applications
-exec xinput set-prop 13 347 1
-exec xinput set-prop 13 324 1
+#exec xinput set-prop 13 347 1
+exec xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Tapping Enabled" 1
+exec xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Natural Scrolling Enabled" 1
+#exec xinput set-prop 13 324 1
 exec_always compton -f --config ~/.config/compton/compton.conf
 exec --no-startup-id feh --bg-scale ~/Pictures/sailor-city.jpg
 exec --no-startup-id thunderbird
