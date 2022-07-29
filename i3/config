@@ -141,8 +141,8 @@ bindsym $mod+space focus mode_toggle
 #bindsym $mod+d focus child
 
 # window colors
-set $bg-color			#e7d0f0
-#set $bg-color			#ebd3ef
+#set $bg-color			#e7d0f0
+set $bg-color			#ce93d8
 set $inactive-bg-color	#f2f2f2
 set $text-color			#3d3d3d
 set $inactive-text-color#908c97
@@ -153,7 +153,7 @@ set $light-grey			#f9f9f9
 
 # window colors
 #						border				background	   		text					indicator
-client.focused			$bg-color			$bg-color			$text-color				$indicator-color
+client.focused			$bg-color			$bg-color		$text-color				$indicator-color
 client.unfocused		$inactive-bg-color	$inactive-bg-color	$inactive-text-color	$indicator-color
 client.focused_inactive	$inactive-bg-color	$inactive-bg-color	$inactive-text-color	$indicator-color
 client.urgent			$urgent-bg-color	$urgent-bg-color	$text-color				$indicator-color
@@ -265,7 +265,8 @@ for_window [class="Org.gnome.Nautilus"] floating enable
 bindsym $mod+c exec google-chrome
 
 # gaps
-for_window [class=".*"] border pixel 0
+#for_window [class=".*"] border pixel 0
+for_window [class="^.*"] border pixel 3
 gaps inner 7
 gaps outer 0
 smart_gaps on
