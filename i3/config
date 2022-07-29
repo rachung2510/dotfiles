@@ -22,10 +22,8 @@ set $mod Mod4
 font pango: FiraCode Nerd Font 11
 
 # start applications
-#exec xinput set-prop 13 347 1
 exec xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Tapping Enabled" 1
 exec xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Natural Scrolling Enabled" 1
-#exec xinput set-prop 13 324 1
 exec_always compton -f --config ~/.config/compton/compton.conf
 exec --no-startup-id feh --bg-scale ~/Pictures/sailor-city.jpg
 exec --no-startup-id thunderbird
@@ -135,10 +133,10 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-#bindsym $mod+a focus parent
+bindsym $mod+p focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+o focus child
 
 # window colors
 #set $bg-color			#e7d0f0
@@ -147,7 +145,7 @@ set $inactive-bg-color	#f2f2f2
 set $text-color			#3d3d3d
 set $inactive-text-color#908c97
 set $urgent-bg-color	#eb4d4b
-set $indicator-color	#0000ff
+set $indicator-color	#ce93d8
 set $selected-color		#ab47bc
 set $light-grey			#f9f9f9
 
@@ -254,6 +252,7 @@ for_window [class="Spotify"] move to workspace $ws10
 assign [instance="minecraft-launcher"] $ws9
 assign [class="Minecraft*"] $ws9
 assign [class="Google-chrome"] $ws1
+assign [class="Microsoft-edge"] $ws1
 assign [class="Steam"] $ws9
 assign [class="Stardew Valley"] $ws9
 assign [class="TelegramDesktop"] $ws8
@@ -262,7 +261,8 @@ assign [class="Thunderbird"] $ws8
 # custom keybinds
 bindsym $mod+e exec xdg-open .
 for_window [class="Org.gnome.Nautilus"] floating enable
-bindsym $mod+c exec google-chrome
+for_window [class="floatingControl"] floating enable
+bindsym $mod+c exec microsoft-edge
 
 # gaps
 #for_window [class=".*"] border pixel 0

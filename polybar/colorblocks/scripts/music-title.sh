@@ -6,24 +6,35 @@ if [[ $player_status = "Stopped" ]] || [[ $player_status = "" ]]; then
 	exit 0
 fi
 
-command="playerctl -p playerctld "
-title="$($command metadata title)"
-trackid="$($command metadata 'mpris:trackid')"
-artist="$($command metadata artist)"
+playerctld daemon 2> /dev/null
+player="$(playerctl metadata --format '{{playerName}}')"
+cmd="playerctl "
+title="$($cmd metadata title)"
+trackid="$($cmd metadata 'mpris:trackid')"
+artist="$($cmd metadata artist)"
 
-if [[ $trackid == *"/com/spotify"* ]]; then
+if [[ $player == "spotify" ]]; then
+	icon=""
 	if [[ $artist = "" ]]; then
-		display=" %{T3}${title}%{T-} "
+		metadata="${title}"
 	else
-		display=" %{T3}${artist} - ${title}%{T-} "
+		metadata="${artist} - ${title}"
 	fi
-elif [[ $trackid == *"/org/chromium"* ]] && [[ $title == *"YouTube" ]]; then
-	display=" %{T3}${title% -*}%{T-} "
-elif [[ $trackid == *"/org/chromium"* ]]; then
-	display=" %{T3}${title% -*}%{T-} "
 else
-	display=" %{T3}${title% -*}%{T-} "
+	metadata="${title% -*}"
 fi
+
+if [[ $player == "chromium" ]] && [[ $title == *"YouTube" ]]; then
+	icon=""
+elif [[ $player == "chromium" ]]; then
+	icon=""
+elif [[ $player == "edge" ]]; then
+	icon=""
+elif [[ $player == "firefox" ]]; then
+	icon=""
+fi
+
+display="${icon} %{T3}${metadata}%{T-} "
 
 # Foreground color formatting tags are optional
 if [[ $player_status = "Playing" ]]; then
