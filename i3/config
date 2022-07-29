@@ -203,6 +203,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
+set $resize-step-small 5
+set $resize-step 10
 mode "resize" {
 	# These bindings trigger as soon as you enter the resize mode
 
@@ -210,16 +212,16 @@ mode "resize" {
 	# Pressing right will grow the window’s width.
 	# Pressing up will shrink the window’s height.
 	# Pressing down will grow the window’s height.
-	bindsym j resize shrink width 10 px or 10 ppt
-	bindsym k resize grow height 10 px or 10 ppt
-	bindsym l resize shrink height 10 px or 10 ppt
-	bindsym semicolon resize grow width 10 px or 10 ppt
+	bindsym j resize shrink width $resize-step-small px or $resize-step-small ppt
+	bindsym l resize grow height $resize-step-small px or $resize-step-small ppt
+	bindsym k resize shrink height $resize-step-small px or $resize-step-small ppt
+	bindsym semicolon resize grow width $resize-step-small px or $resize-step-small ppt
 
 	# same bindings, but for the arrow keys
-	bindsym Left resize shrink width 10 px or 10 ppt
-	bindsym Down resize grow height 10 px or 10 ppt
-	bindsym Up resize shrink height 10 px or 10 ppt
-	bindsym Right resize grow width 10 px or 10 ppt
+	bindsym Left resize shrink width $resize-step px or $resize-step ppt
+	bindsym Up resize grow height $resize-step px or $resize-step ppt
+	bindsym Down resize shrink height $resize-step px or $resize-step ppt
+	bindsym Right resize grow width $resize-step px or $resize-step ppt
 
 	# back to normal: Enter or Escape or $mod+r
 	bindsym Return mode "default"
