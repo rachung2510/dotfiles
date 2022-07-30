@@ -17,6 +17,16 @@ lock=" Lock"
 suspend=" Sleep"
 logout=" Logout"
 
+# i3lock vars
+bg=00000080
+shade4=8e24aa
+shade8=ce93d8
+urgent=eb4d4b
+verext=6c5ce7
+fg=f9f9f9
+alpha=ffffff00
+font="Iosevka Nerd Font"
+
 # Confirmation
 confirm_exit() {
 	rofi -dmenu\
@@ -58,7 +68,12 @@ case $chosen in
         ;;
     $lock)
 		if [[ -f /usr/bin/i3lock ]]; then
-			i3lock
+			i3lock -c $bg -k --radius=100 --ring-width=20 --ring-color=$shade8 --ringwrong-color=$urgent --keyhl-color=$shade4 --separator-color=$alpha \
+--time-color=$fg --date-color=$fg --verif-color=$fg --wrong-color=$fg \
+--ringver-color=$verext --insidever-color=$bg \
+--line-color=$alpha \
+--time-font=$font --date-font=$font --verif-size=24 \
+--layout-font=$font --verif-font=$font --wrong-font=$font
 		elif [[ -f /usr/bin/betterlockscreen ]]; then
 			betterlockscreen -l
 		fi
