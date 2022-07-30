@@ -22,7 +22,8 @@ bg=00000080
 shade4=8e24aa
 shade8=ce93d8
 urgent=eb4d4b
-verext=6c5ce7
+ver=4834d4
+ver_ring=6c5ce7
 fg=f9f9f9
 alpha=ffffff00
 font="Iosevka Nerd Font"
@@ -70,7 +71,7 @@ case $chosen in
 		if [[ -f /usr/bin/i3lock ]]; then
 			i3lock -c $bg -k --radius=100 --ring-width=20 --ring-color=$shade8 --ringwrong-color=$urgent --keyhl-color=$shade4 --separator-color=$alpha \
 --time-color=$fg --date-color=$fg --verif-color=$fg --wrong-color=$fg \
---ringver-color=$verext --insidever-color=$bg \
+--ringver-color=$ver_ring --insidever-color=$ver \
 --line-color=$alpha \
 --time-font=$font --date-font=$font --verif-size=24 \
 --layout-font=$font --verif-font=$font --wrong-font=$font
