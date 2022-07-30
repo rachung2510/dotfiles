@@ -23,6 +23,14 @@ cd i3lock-color
 - Dmenu: [Rofi](https://github.com/Murzchnvok/rofi-collection) (Dracula)
 - Compositor: Picom
 - Bar: [Polybar](https://github.com/adi1090x/polybar-themes) (Colorblocks)
+- Notifications: Dunst
+```
+sudo apt install libxinerama-dev libxrandr-dev libxss-dev libnotify-dev libgdk-pixbuf2.0-dev
+git clone https://github.com/dunst-project/dunst.git
+cd dunst
+make WAYLAND=0
+sudo make install WAYLAND=0
+```
 
 ### Fonts
 - [Noto Sans Medium Nerd Font](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Noto/Sans/complete/Noto%20Sans%20Medium%20Nerd%20Font%20Complete.ttf)
