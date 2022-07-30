@@ -23,7 +23,7 @@ cd i3lock-color
 - Dmenu: [Rofi](https://github.com/Murzchnvok/rofi-collection) (Dracula)
 - Compositor: Picom
 - Bar: [Polybar](https://github.com/adi1090x/polybar-themes) (Colorblocks)
-- Notifications: Dunst
+- Notifications: [Dunst](https://github.com/dunst-project/dunst)
 ```
 sudo apt install libxinerama-dev libxrandr-dev libxss-dev libnotify-dev libgdk-pixbuf2.0-dev
 git clone https://github.com/dunst-project/dunst.git
