@@ -35,10 +35,11 @@ elif [[ $player == "firefox" ]]; then
 fi
 
 display="${icon} %{T3}${metadata}%{T-} "
+display_mod="${icon} %{T3}${metadata} "
 
 # Foreground color formatting tags are optional
 if [[ $player_status = "Playing" ]]; then
-	echo "$display" | awk '{if (length($display) > 50) {print substr($display, 0, 51)"...   "} else print $display}'
+	echo "$display" | awk '{if (length($display) > 50) {print substr($display_mod, 0, 51)"...%{T-}"} else print $display}'
 elif [[ $player_status = "Paused" ]]; then
-	echo "%{F#999}`echo $display | awk '{if (length($display) > 50) {print substr($display, 0, 51)"...   "} else print $display}'`%{F-}"
+	echo "%{F#999}`echo "$display" | awk '{if (length($display) > 50) {print substr($display_mod, 0, 51)"...%{T-}"} else print $display}'`%{F-}"
 fi
