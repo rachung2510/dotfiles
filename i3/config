@@ -24,7 +24,8 @@ font pango: FiraCode Nerd Font 11
 # start applications
 exec xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Tapping Enabled" 1
 exec xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Natural Scrolling Enabled" 1
-exec_always compton -f --config ~/.config/compton/compton.conf
+#exec_always compton -f --config ~/.config/compton/compton.conf
+exec_always picom -f
 exec --no-startup-id feh --bg-scale ~/Pictures/sailor-city.jpg
 exec --no-startup-id thunderbird
 exec_always --no-startup-id ~/.config/polybar/launch.sh --colorblocks
