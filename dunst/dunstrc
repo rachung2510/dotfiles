@@ -151,21 +151,24 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-#    background = "#080808"
-    background = "#ce93d880"
-    foreground = "#8e24aa"
+    background = "#ab47bc99"
+    foreground = "#ffffff"
+#    background = "#ce93d880"
+#    foreground = "#8e24aa"
     timeout = 20
     # Icon for notifications with low urgency, uncomment to enable
-    default_icon = ~/.config/dunst/img/noti-purple.png
+    default_icon = ~/.config/dunst/img/noti.png
 
 [urgency_normal]
-    background = "#ce93d880"
-    foreground = "#8e24aa"
+    background = "#ab47bc99"
+    foreground = "#ffffff"
+#    background = "#ce93d880"
+#    foreground = "#8e24aa"
 #    background = "#00000080"
 #    foreground = "#f9f9f9"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
-    default_icon = ~/.config/dunst/img/noti-purple.png
+    default_icon = ~/.config/dunst/img/noti.png
 
 [urgency_critical]
     background = "#eb4d4bcc"
@@ -188,10 +191,10 @@
     appname=Spotify
     timeout = 20
     background = "#21c55cb2"
-    foreground = "#141c21"
+#    foreground = "#141c21"
 	frame_color = "#1a9947"
 #    background = "#244524"
-#    foreground = "#ffffff"
+    foreground = "#ffffff"
     format = "<b>%s</b>\n%b"
 [Discord]
     appname=discord
@@ -200,10 +203,6 @@
 [Firefox]
     appname=Firefox
     set_stack_tag = "volume"
-[Battery]
-	appname=notify-send
-	summary="Battery is fully charged"
-	timeout=20
 [Screenshot]
 	appname=maim
 	summary = "Snip saved to clipboard"
