@@ -24,11 +24,12 @@ font pango: FiraCode Nerd Font 11
 # start applications
 exec xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Tapping Enabled" 1
 exec xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Natural Scrolling Enabled" 1
-#exec_always compton -f --config ~/.config/compton/compton.conf
 exec_always picom -f
 exec --no-startup-id feh --bg-scale ~/Pictures/sailor-city.jpg
 exec --no-startup-id thunderbird
-exec_always --no-startup-id ~/.config/polybar/launch.sh --colorblocks
+#exec_always --no-startup-id ~/.config/polybar/launch.sh --colorblocks
+exec --no-startup-id ~/.config/i3/battery-warning.sh
+exec --no-startup-id dunst
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -140,8 +141,9 @@ bindsym $mod+p focus parent
 bindsym $mod+o focus child
 
 # window colors
-#set $bg-color			#e7d0f0
-set $bg-color			#ce93d8
+set $alpha				#ffffff00
+set $bg-color			#e7d0f0
+set $shade8				#ce93d8
 set $inactive-bg-color	#f2f2f2
 set $text-color			#3d3d3d
 set $inactive-text-color#908c97
@@ -149,10 +151,11 @@ set $urgent-bg-color	#eb4d4b
 set $indicator-color	#ce93d8
 set $selected-color		#ab47bc
 set $light-grey			#f9f9f9
+set $shade4				#8e24aa
 
 # window colors
 #						border				background	   		text					indicator
-client.focused			$bg-color			$bg-color		$text-color				$indicator-color
+client.focused			$shade8				$shade8				$text-color				$indicator-color
 client.unfocused		$inactive-bg-color	$inactive-bg-color	$inactive-text-color	$indicator-color
 client.focused_inactive	$inactive-bg-color	$inactive-bg-color	$inactive-text-color	$indicator-color
 client.urgent			$urgent-bg-color	$urgent-bg-color	$text-color				$indicator-color
@@ -199,7 +202,8 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec ~/.config/polybar/colorblocks/scripts/powermenu.sh
 
 # resize window (you can also use the mouse for that)
 set $resize-step-small 5
@@ -232,21 +236,30 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-#bar {
-#	status_command i3status
-#	colors {
-#		background $bg-color
-#	    separator #757575
-#		#                  border  				background        	text
-#		focused_workspace  $selected-color		$selected-color		$light-grey
-#		inactive_workspace $bg-color			$bg-color			$text-color
-#		urgent_workspace   $urgent-bg-color		$urgent-bg-color	$light-grey
-#	}	
-#}
+set $bg-color-alpha		#e7d0f0cc
+set $white-alpha		#ffffffb2
+bar {
+	i3bar_command i3bar --transparency
+	status_command i3status
+	height 40
+	font pango:FiraCode Nerd Font 11
+	workspace_min_width 64
+	tray_output none
+	colors {
+		statusline $shade4
+		background $bg-color-alpha
+	    separator $shade8
+		#                  border  				background        	text
+		focused_workspace  $shade8				$shade8				#141c21
+		inactive_workspace $white-alpha			$white-alpha		$shade4
+		urgent_workspace   $urgent-bg-color		$urgent-bg-color	$light-grey
+	}	
+}
 
 # configurations
 workspace_auto_back_and_forth no
 hide_edge_borders both
+#border_radius 3
 
 # open apps in workspaces
 for_window [class="Spotify"] move to workspace $ws10
@@ -264,8 +277,10 @@ bindsym $mod+e exec xdg-open .
 for_window [class="Org.gnome.Nautilus"] floating enable
 for_window [class="floatingControl"] floating enable
 bindsym $mod+c exec microsoft-edge
+bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/screenshot.sh
+bindsym XF86PowerOff exec ~/.config/polybar/colorblocks/scripts/powermenu.sh
 
-# gaps
+# gaps & radius
 #for_window [class=".*"] border pixel 0
 for_window [class="^.*"] border pixel 3
 gaps inner 7
