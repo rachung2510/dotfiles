@@ -1,7 +1,7 @@
 [global]
     monitor = 1
     follow = none
-    width = 300
+    width = 360
     height = 270
 #    geometry = "300x100-9+55"
     #origin = top-left
@@ -200,7 +200,10 @@
 [Firefox]
     appname=Firefox
     set_stack_tag = "volume"
-
+[Battery]
+	appname=notify-send
+	summary="Battery is fully charged"
+	timeout=20
 [Screenshot]
 	appname=maim
 	summary = "Snip saved to clipboard"
