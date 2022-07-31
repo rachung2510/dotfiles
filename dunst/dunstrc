@@ -190,10 +190,10 @@
 [Spotify]
     appname=Spotify
     timeout = 20
-    background = "#21c55cb2"
+#    background = "#21c55cb2"
 #    foreground = "#141c21"
 	frame_color = "#1a9947"
-#    background = "#244524"
+    background = "#1daf52bf"
     foreground = "#ffffff"
     format = "<b>%s</b>\n%b"
 [Discord]
