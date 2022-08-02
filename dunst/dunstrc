@@ -2,7 +2,7 @@
     monitor = 1
     follow = none
     width = 360
-    height = 270
+    height = 360
 #    geometry = "300x100-9+55"
     #origin = top-left
     offset = 20x20
@@ -87,7 +87,7 @@
     hide_duplicate_count = false
 
     # Display indicators for URLs (U) and actions (A).
-    show_indicators = yes
+    show_indicators = no
 
     ### Icons ###
 
@@ -137,6 +137,8 @@
     mouse_left_click = close_current
     mouse_middle_click = do_action, close_current
     mouse_right_click = close_all
+
+	enable_posix_regex = true
 
 #[shortcuts]
     # close notification
@@ -188,7 +190,7 @@
     summary = "error"
     timeout = 5
 [Spotify]
-    appname=Spotify
+    appname=spotify
     timeout = 20
 #    background = "#21c55cb2"
 #    foreground = "#141c21"
@@ -208,3 +210,12 @@
 	summary = "Snip saved to clipboard"
 	icon_position = top
 	max_icon_size = 240
+[Whatsapp]
+	body = "web.whatsapp.com*"
+	format = ""
+	script = ~/.config/dunst/scripts/whatsapp.sh
+[Whatsapp Modified]
+	summary = "Whatsapp Web"
+	background = "#49eb66d9"
+	foreground = "#4d4d4d"
+
