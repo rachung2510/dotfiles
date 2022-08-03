@@ -1,18 +1,3 @@
-$t1: rgba(#242424, .0); //transparrnet
-
-$c0: #080808; //background
-$c1: #101010; //lighter background
-$c2: #323232; //lighest background
-
-$c3: #777777; //#FF968A; //salmon
-$c4: #ffffff; //#8A96FF; //blue
-$c5: #ffffff; //#9AFF96; //green
-$c6: #ffffff; //#FD99DC; //pink
-
-$c7: #ffffff; //#ffffff; //white
-$c8: #ffffff; //#0157A3; // LIGHT blue
-$c9: #ffffff; //#4457A3; // green
-
 $side-bg: #e8e9ec;
 $side-bg: rgba(232,233,236,1);
 $bg: #e7d0f0;
@@ -137,14 +122,17 @@ $alpha: rgba(#ffffff,0);
 	margin: .3rem .8rem;
 	padding: 1rem 1rem;
 	font-size: 1.5em;
-	color: $c4;
+	color: $fg;
     transition: 0.4s;
 }
-button.selected { 
+.sys button.selected { 
 	background-color: $shade6; 
 	border-radius: 100px;
 }
-.sys button:hover { background-color: $shade4; }
+.sys button:hover { 
+	background-color: $shade4; 
+	color: $fg;
+}
 button.selected:hover { background-color: $shade4; }
 .disabled button { color: $grey; }
 
