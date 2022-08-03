@@ -198,7 +198,7 @@
 	frame_color = "#1a9947"
     background = "#1daf52bf"
     foreground = "#ffffff"
-    format = "<b>%s</b>\n%b"
+    format = "<b> %s</b>\n%b"
 [Discord]
     appname=discord
     timeout= 10
@@ -218,5 +218,6 @@
 [Whatsapp Modified]
 	summary = "Whatsapp Web"
 	background = "#49eb66d9"
+#	foreground = "#ffffff"
 	foreground = "#4d4d4d"
 
