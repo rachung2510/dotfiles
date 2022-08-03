@@ -16,7 +16,13 @@ fi
 
 loc="$(eww get weather-loc)"
 cm1=$(curl wttr.in/$loc?format=%t-%c-%C)
-IFS="-" read -r temp icon cond <<< "$cm1"
+IFS="-" read -r temp icon cond <<< "$cm1" 2> /dev/null
+
+if [[ $icon = "" ]]; then
+	icon=""
+	temp=""
+	cond="Weather data not available"
+fi
 
 if [[ $1 = "icon" ]]; then
     echo $icon
