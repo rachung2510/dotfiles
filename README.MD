@@ -52,10 +52,11 @@ sudo mv eww /usr/local/bin/
 ### Dependencies
 ```
 sudo apt install lxappearance brightnessctl playerctl pavucontrol feh
-sudo apt install rofi polybar i3 picom
+sudo apt install rofi i3 picom # polybar
 sudo usermod -aG video ${USER} # run brightnessctl without sudo
 sudo apt install acpi # for polybar battery click action
 sudo apt install maim xclip # for screenshot
+sudo apt cava # music visualizer
 ```
 
 ### Themes
