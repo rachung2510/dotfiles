@@ -31,6 +31,15 @@ cd dunst
 make WAYLAND=0
 sudo make install WAYLAND=0
 ```
+- Widgets: Eww [Github](https://github.com/elkowar/eww), [Docs](https://elkowar.github.io/eww/)
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source ~/.cargo/env
+sudo apt-get install libgtk-3-dev
+git clone https://github.com/elkowar/eww
+cd eww
+cargo build --release
+```
 
 ### Fonts
 - [Noto Sans Medium Nerd Font](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Noto/Sans/complete/Noto%20Sans%20Medium%20Nerd%20Font%20Complete.ttf)

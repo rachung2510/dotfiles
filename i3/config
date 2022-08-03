@@ -17,19 +17,19 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+#font pango:DejaVu Sans Mono 11
 #font pango: NotoSansDisplay Nerd Font 12
-font pango: FiraCode Nerd Font 11
+font pango: MesloLGM Nerd Font 11
 
 # start applications
 exec xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Tapping Enabled" 1
 exec xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Natural Scrolling Enabled" 1
 exec_always picom -f
-exec --no-startup-id feh --bg-scale ~/Pictures/sailor-city.jpg
-exec --no-startup-id thunderbird
+exec --no-startup-id feh --bg-scale ~/.config/i3/wallpapers/sailor-city.jpg
+exec --no-startup-id i3-msg 'workspace $ws1';
+#exec --no-startup-id thunderbird
 #exec_always --no-startup-id ~/.config/polybar/launch.sh --colorblocks
-exec --no-startup-id ~/.config/i3/battery-warning.sh
-exec --no-startup-id dunst
+exec --no-startup-id ~/.config/i3/scripts/battery.sh
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -169,21 +169,21 @@ set $ws4 "4: "
 set $ws5 "5: "
 set $ws6 "6: "
 set $ws7 "7: "
-set $ws8 "8: "
+set $ws8 "8: "
 set $ws9 "9: "
 set $ws10 "10: "
 
 # switch to workspace
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
+bindsym $mod+1 exec eww close-all && pkill cava; workspace number $ws1
+bindsym $mod+2 exec eww close-all && pkill cava; workspace number $ws2
+bindsym $mod+3 exec eww close-all && pkill cava; workspace number $ws3
+bindsym $mod+4 exec eww close-all && pkill cava; workspace number $ws4
+bindsym $mod+5 exec eww close-all && pkill cava; workspace number $ws5
+bindsym $mod+6 exec eww close-all && pkill cava; workspace number $ws6
+bindsym $mod+7 exec eww close-all && pkill cava; workspace number $ws7
+bindsym $mod+8 exec eww close-all && pkill cava; workspace number $ws8
+bindsym $mod+9 exec eww close-all && pkill cava; workspace number $ws9
+bindsym $mod+0 exec eww close-all && pkill cava; workspace number $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -198,7 +198,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+c reload; exec pkill cava && eww kill && eww daemon
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -242,7 +242,7 @@ bar {
 	i3bar_command i3bar --transparency
 	status_command i3status
 	height 40
-	font pango:FiraCode Nerd Font 11
+	font pango:MesloLGM Nerd Font 11
 	workspace_min_width 64
 	tray_output none
 	colors {
@@ -259,10 +259,12 @@ bar {
 # configurations
 workspace_auto_back_and_forth no
 hide_edge_borders both
-#border_radius 3
+for_window [window_role="dc1"] floating enable, move position -2px 20ppt, move up 3px, resize set width 454 px height 204 px
+no_focus [window_role="dc1"]
 
 # open apps in workspaces
 for_window [class="Spotify"] move to workspace $ws10
+for_window [title="WhatsApp - Profile 1"] move to workspace $ws8
 assign [instance="minecraft-launcher"] $ws9
 assign [class="Minecraft*"] $ws9
 assign [class="Google-chrome"] $ws1
@@ -277,13 +279,14 @@ bindsym $mod+e exec xdg-open .
 for_window [class="Org.gnome.Nautilus"] floating enable
 for_window [class="floatingControl"] floating enable
 bindsym $mod+c exec microsoft-edge
-bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/screenshot.sh
+bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/scripts/screenshot.sh
 bindsym XF86PowerOff exec ~/.config/polybar/colorblocks/scripts/powermenu.sh
+bindsym $mod+m exec ~/.config/i3/scripts/eww.sh sidebar
 
 # gaps & radius
-#for_window [class=".*"] border pixel 0
 for_window [class="^.*"] border pixel 3
 gaps inner 7
 gaps outer 0
 smart_gaps on
 smart_gaps inverse_outer
+for_window [window_role="dc1"] border pixel 0

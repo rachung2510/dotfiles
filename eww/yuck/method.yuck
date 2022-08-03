@@ -1,0 +1,40 @@
+;; METHOD.YUCK
+;; this is for methods
+
+(defwidget slider [value icon tooltip action-click action-slide disabled]
+	(box :class "${disabled == "true" ? "disabled" : ""}"  :space-evenly "false" :orientation "h" :vexpand "true" :valign "center"
+		(box :width "30"
+			(button :class "btn-settings ${action-click == "" ? "no-hover" : ""}" :onclick {action-click} {icon}))
+		(scale :value {value}
+			:min 0
+            :max 101
+            :orientation "h"
+            :tooltip {tooltip}
+            :active "${action-slide != "" ? "true" : "false"}"
+            :onchange {action-slide}
+			:width "200")
+))
+
+(defwidget radialmeter [value text class labelclass tooltip]
+    (circular-progress
+        :value {value}
+        :class "radial ${class}"
+        :thickness 5
+        :tooltip {value}
+		:start-at 50
+		:clockwise true
+		(box :class "radial-label ${labelclass}" :orientation "v" :space-evenly "false"
+	        (label :text {text} :limit-width 5 :wrap false)
+			(label :class "small-text" :text {tooltip})
+)))
+
+(defvar wifi-literal	  "(button :class wifi-bool 	 :onclick {action} {icon})")
+(defvar bluetooth-literal "(button :class bluetooth-bool :onclick {action} {icon})")
+(defvar notif-literal	  "(button :class notif-bool 	 :onclick {action} {icon})")
+(defvar btn-literal 	  "(button :tooltip {tooltip} 	 :onclick {action} {icon})")
+(defwidget quickbutton [icon action tooltip type]
+	(box :class "sys" :space-evenly "false" :orientation "v"
+	(literal :content "${type == "wifi" ? wifi-literal : 
+		(type == "bluetooth" ? bluetooth-literal :
+		(type == "notif" ? notif-literal : btn-literal))}")
+))

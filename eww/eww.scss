@@ -1,0 +1,150 @@
+$t1: rgba(#242424, .0); //transparrnet
+
+$c0: #080808; //background
+$c1: #101010; //lighter background
+$c2: #323232; //lighest background
+
+$c3: #777777; //#FF968A; //salmon
+$c4: #ffffff; //#8A96FF; //blue
+$c5: #ffffff; //#9AFF96; //green
+$c6: #ffffff; //#FD99DC; //pink
+
+$c7: #ffffff; //#ffffff; //white
+$c8: #ffffff; //#0157A3; // LIGHT blue
+$c9: #ffffff; //#4457A3; // green
+
+$side-bg: #e8e9ec;
+$side-bg: rgba(232,233,236,1);
+$bg: #e7d0f0;
+$fg: #ffffff;
+$grey: #999999;
+$shade4: #8e24aa;
+$shade6: #ab47bc;
+$shade7: #ba68c8;
+$shade8: #ce93d8;
+$alpha: rgba(#ffffff,0);
+
+* {
+  all: unset;
+  font-family: MesloLGM Nerd Font;
+}
+
+.bold { font-weight: bold; }
+.red { background-color: rgba(255,0,0,1); }
+.green { background-color: rgba(0,255,0,1); }
+.blue { background-color: rgba(0,0,255,1); }
+
+// ----- SIDE PANNEL -----
+
+.sidepannel {
+  background-color: $alpha;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  border-radius: 0 8px 8px 0;
+  margin: .3rem .3rem .3rem  0;
+}
+.sidepannel button:hover { 
+	color: $shade8; 
+	transition: 0.2s;
+}
+
+.container {
+	background-color: $side-bg;
+	padding: 0 0 0.7rem 0.7rem;
+	border-radius: 0 0 8px 0;
+}
+.container.time {
+	padding: 0 0 1.1rem 0.7rem;	
+	border-radius: 0 8px 0 0;
+}
+
+.roundpannel {
+  background-color: $bg;
+  border-radius: 8px;
+  padding: .7rem .7rem .7rem .7rem;
+  margin: .7rem .7rem 0 0;
+  color: $shade4;
+  transition: 0.6s;
+}
+.roundpannel.time { background-color: $bg; }
+.roundpannel.player { margin: 0rem .7rem 0 0; }
+.roundpannel.settings { padding: .7rem }
+.roundpannel.weather { padding: 1.1rem; }
+
+.label-time {
+  color: $shade7;
+  font-family: Iosevka Nerd Font;
+  font-size: 4.5em;
+}
+.label-date {
+  font-size: 1.3em;
+  color: $shade7;
+}
+
+.cava { background-color: rgba(0,255,0,0); }
+
+.labels {
+  font-size: 1.8em;
+  padding: 5px 0 0 7px;
+  color: $shade4;
+}
+.label-title { font-size: 1.3em; }
+.label-artist { color: $shade7; }
+.btn-play { font-size: 1.8em; }
+.player.disabled { color: $grey; }
+
+.settings scale trough {
+	background-color: $shade8;
+	margin: 0 1.1rem 0 .7rem;
+	min-height: 12px;
+	border-radius: 10px;
+}
+.settings scale trough highlight { 
+	background-color: $shade4; 
+	border-radius: 50px;
+}
+.disabled scale trough { background-color: #bbbbbb; }
+.disabled scale trough highlight { background-color: $grey; }
+.btn-settings { 
+	font-size: 1.4rem;
+	margin-left: .5rem;
+}
+.settings button.no-hover:hover { color: $shade4; }
+
+.weatherpannel {
+	font-size: 3.2rem;
+	margin-bottom: -1.5rem;
+}
+
+.label-weather {
+	color: $shade7;
+	font-family: Iosevka Nerd Font;
+	font-size: 1.8rem;
+}
+
+.radial {
+	color: $shade4;
+	background-color: $shade8;
+}
+.radial-label {
+	font-size: 1rem;
+	margin: 2.4rem;
+}
+
+.sys { background-color: $alpha; }
+.sys button {
+	background-color: $shade8;
+	border-radius: 100px;
+	margin: .3rem .8rem;
+	padding: 1rem 1rem;
+	font-size: 1.5em;
+	color: $c4;
+    transition: 0.4s;
+}
+button.selected { 
+	background-color: $shade6; 
+	border-radius: 100px;
+}
+.sys button:hover { background-color: $shade4; }
+button.selected:hover { background-color: $shade4; }
+.disabled button { color: $grey; }
+

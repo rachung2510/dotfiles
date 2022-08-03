@@ -22,7 +22,7 @@ do
 	#		minutes=$(echo "$duration" | grep -oP '(?<=:).*(?=:)')
 			notify-send -u critical -i "~/.config/dunst/img/battery-critical.png" "Your battery is running low" "${duration} remaining"
 			NOTIFY_BOOL=1
-		elif [[ $POWER -gt $LOW_THRESH ]]
+		elif [[ $POWER -gt $LOW_THRESH ]]; then
 			NOTIFY_BOOL=0
 		fi
 	fi

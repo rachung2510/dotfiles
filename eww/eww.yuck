@@ -1,0 +1,31 @@
+(defpoll time :interval "30s" "date '+\%H:%M'")
+(defpoll date :interval "12h" "date '+%a, %d %b %y'")
+
+(deflisten title   :interval "2h" "playerctl -p playerctld -F metadata title || true")
+(deflisten artist  :interval "2h" "playerctl -p playerctld -F metadata artist || true")
+(defpoll play-icon :interval "5s" "bash scripts/player.sh icon")
+
+(defpoll volume-val	:interval "1s"  "bash scripts/getval.sh vol")
+(defpoll light-val	:interval "1s"  "bash scripts/getval.sh light")
+(defpoll batt-val	:interval "5m"  "bash scripts/getval.sh batt")
+(defpoll vol-icon	:interval "1s"  "bash scripts/geticon.sh vol")
+(defpoll light-icon	:interval "1s"  "bash scripts/geticon.sh light")
+(defpoll batt-icon	:interval "5m" "bash scripts/geticon.sh batt")
+(defpoll mute-bool	:interval "1s"  "bash scripts/getbool.sh mute")
+
+(defpoll weather-loc  :interval "24h" "bash scripts/weather.sh location")
+(defpoll weather-icon :interval "2h"  "bash scripts/weather.sh icon")
+(defpoll weather-temp :interval "2h"  "bash scripts/weather.sh temp")
+(defpoll weather-cond :interval "2h"  "bash scripts/weather.sh cond")
+
+(defpoll cpu-val :interval "3s" "bash scripts/getval.sh cpu")
+(defpoll ram-val :interval "3s" "bash scripts/getval.sh ram")
+(defpoll hdd-val :interval "3s" "bash scripts/getval.sh hdd")
+
+(defpoll wifi-bool 		:interval "2h" "bash scripts/getbool.sh wifi")
+(defpoll bluetooth-bool :interval "2h" "bash scripts/getbool.sh bluetooth")
+(defpoll notif-bool 	:interval "2h" "bash scripts/getbool.sh notif")
+
+
+(include "./yuck/method.yuck")
+(include "./yuck/sidebar.yuck")
