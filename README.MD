@@ -22,7 +22,7 @@ cd i3lock-color
 - Launcher: [Rofi Launcher](https://github.com/adi1090x/rofi) (Colorful)
 - Dmenu: [Rofi](https://github.com/Murzchnvok/rofi-collection) (Dracula)
 - Compositor: Picom
-- Bar: [Polybar](https://github.com/adi1090x/polybar-themes) (Colorblocks)
+- ~~Bar: [Polybar](https://github.com/adi1090x/polybar-themes) (Colorblocks)~~
 - Notifications: [Dunst](https://github.com/dunst-project/dunst)
 ```
 sudo apt install libxinerama-dev libxrandr-dev libxss-dev libnotify-dev libgdk-pixbuf2.0-dev
@@ -30,6 +30,17 @@ git clone https://github.com/dunst-project/dunst.git
 cd dunst
 make WAYLAND=0
 sudo make install WAYLAND=0
+```
+- Widgets: Eww ([Github](https://github.com/elkowar/eww), [Docs](https://elkowar.github.io/eww/widgets.html))
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+sudo apt install libgtk-3-dev
+git clone https://github.com/elkowar/eww
+cd eww
+cargo build --release
+cd target/release
+chmod +x ./eww
+sudo mv eww /usr/local/bin/
 ```
 
 ### Fonts
