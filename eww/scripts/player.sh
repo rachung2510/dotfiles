@@ -1,8 +1,8 @@
 #!/bin/bash
 
 STATUS="$(playerctl -p playerctld status)";
-play=""
-pause=""
+play=""
+pause=""
 
 if [[ $1 = "icon" ]]; then
 	if [[ $STATUS = "Playing" ]]; then

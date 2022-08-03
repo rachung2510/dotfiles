@@ -1,5 +1,4 @@
 $side-bg: #e8e9ec;
-$side-bg: rgba(232,233,236,1);
 $bg: #e7d0f0;
 $fg: #ffffff;
 $grey: #999999;
@@ -10,22 +9,15 @@ $shade8: #ce93d8;
 $alpha: rgba(#ffffff,0);
 
 * {
-  all: unset;
-  font-family: MesloLGM Nerd Font;
+	all: unset;
+	font-family: MesloLGM Nerd Font;
 }
-
-.bold { font-weight: bold; }
-.red { background-color: rgba(255,0,0,1); }
-.green { background-color: rgba(0,255,0,1); }
-.blue { background-color: rgba(0,0,255,1); }
 
 // ----- SIDE PANNEL -----
 
 .sidepannel {
-  background-color: $alpha;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  border-radius: 0 8px 8px 0;
-  margin: .3rem .3rem .3rem  0;
+	background-color: $alpha;
+	// box-shadow: rgba(60, 64, 67, 0.4) 0px 1px 2px 0px, rgba(60, 64, 67, 0.2) 0px 2px 6px 2px;
 }
 .sidepannel button:hover { 
 	color: $shade8; 
@@ -34,7 +26,7 @@ $alpha: rgba(#ffffff,0);
 
 .container {
 	background-color: $side-bg;
-	padding: 0 0 0.7rem 0.7rem;
+	padding: 0 0 .7rem .7rem;
 	border-radius: 0 0 8px 0;
 }
 .container.time {
@@ -43,38 +35,37 @@ $alpha: rgba(#ffffff,0);
 }
 
 .roundpannel {
-  background-color: $bg;
-  border-radius: 8px;
-  padding: .7rem .7rem .7rem .7rem;
-  margin: .7rem .7rem 0 0;
-  color: $shade4;
-  transition: 0.6s;
+	background-color: $bg;
+	border-radius: 8px;
+	padding: 0 .7rem;
+	margin: .7rem .7rem 0 0;
+	color: $shade4;
+	transition: 0.6s;
 }
-.roundpannel.time { background-color: $bg; }
-.roundpannel.player { margin: 0rem .7rem 0 0; }
+.roundpannel.player { margin: .4rem .7rem 0 0; }
 .roundpannel.settings { padding: .7rem }
-.roundpannel.weather { padding: 1.1rem; }
+.roundpannel.weather { padding: 1.2rem 1.2rem 1.1rem 1.2rem; }
 
 .label-time {
-  color: $shade7;
-  font-family: Iosevka Nerd Font;
-  font-size: 4.5em;
+	color: $shade7;
+	font-family: Iosevka Nerd Font;
+	font-size: 4.5em;
 }
 .label-date {
-  font-size: 1.3em;
-  color: $shade7;
+	font-size: 1.3em;
+	color: $shade7;
 }
 
 .cava { background-color: rgba(0,255,0,0); }
 
 .labels {
-  font-size: 1.8em;
-  padding: 5px 0 0 7px;
-  color: $shade4;
+	font-size: 1.8em;
+	margin-bottom: -.7rem;
+	color: $shade4;
 }
 .label-title { font-size: 1.3em; }
 .label-artist { color: $shade7; }
-.btn-play { font-size: 1.8em; }
+.btn-play { font-size: 1.8em; font-family: MesloLGM Nerd Font; }
 .player.disabled { color: $grey; }
 
 .settings scale trough {
@@ -95,11 +86,7 @@ $alpha: rgba(#ffffff,0);
 }
 .settings button.no-hover:hover { color: $shade4; }
 
-.weatherpannel {
-	font-size: 3.2rem;
-	margin-bottom: -1.5rem;
-}
-
+.weatherpannel { font-size: 3.2rem; }
 .label-weather {
 	color: $shade7;
 	font-family: Iosevka Nerd Font;
@@ -123,7 +110,7 @@ $alpha: rgba(#ffffff,0);
 	padding: 1rem 1rem;
 	font-size: 1.5em;
 	color: $fg;
-    transition: 0.4s;
+	transition: 0.4s;
 }
 .sys button.selected { 
 	background-color: $shade6; 
@@ -135,4 +122,9 @@ $alpha: rgba(#ffffff,0);
 }
 button.selected:hover { background-color: $shade4; }
 .disabled button { color: $grey; }
+
+.bold { font-weight: bold; }
+.red { background-color: rgba(255,0,0,1); }
+.green { background-color: rgba(0,255,0,1); }
+.blue { background-color: rgba(0,0,255,1); }
 

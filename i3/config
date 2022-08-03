@@ -132,7 +132,7 @@ bindsym $mod+q layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+#bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+p focus parent
@@ -163,7 +163,7 @@ client.urgent			$urgent-bg-color	$urgent-bg-color	$text-color				$indicator-colo
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1: "
-set $ws2 "2: "
+set $ws2 "2: "
 set $ws3 "3: "
 set $ws4 "4: "
 set $ws5 "5: "
@@ -203,7 +203,8 @@ bindsym $mod+Shift+c reload; exec pkill cava && eww kill && eww daemon
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Shift+e exec ~/.config/polybar/colorblocks/scripts/powermenu.sh
+#bindsym $mod+Shift+e exec ~/.config/polybar/colorblocks/scripts/powermenu.sh
+bindsym $mod+Shift+e exec --no-startup-id ~/.config/rofi/bin/powermenu
 
 # resize window (you can also use the mouse for that)
 set $resize-step-small 5
@@ -240,7 +241,7 @@ set $bg-color-alpha		#e7d0f0cc
 set $white-alpha		#ffffffb2
 bar {
 	i3bar_command i3bar --transparency
-	status_command i3status
+	status_command ~/.config/i3/scripts/i3script.sh
 	height 40
 	font pango:MesloLGM Nerd Font 11
 	workspace_min_width 64
@@ -259,8 +260,11 @@ bar {
 # configurations
 workspace_auto_back_and_forth no
 hide_edge_borders both
+for_window [class="Org.gnome.Nautilus"] floating enable
+for_window [class="floatingControl"] floating enable
 for_window [window_role="dc1"] floating enable, move position -2px 20ppt, move up 3px, resize set width 454 px height 204 px
 no_focus [window_role="dc1"]
+for_window [class="Gnome-calculator"] floating enable
 
 # open apps in workspaces
 for_window [class="Spotify"] move to workspace $ws10
@@ -276,17 +280,18 @@ assign [class="Thunderbird"] $ws8
 
 # custom keybinds
 bindsym $mod+e exec xdg-open .
-for_window [class="Org.gnome.Nautilus"] floating enable
-for_window [class="floatingControl"] floating enable
 bindsym $mod+c exec microsoft-edge
 bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/scripts/screenshot.sh
 bindsym XF86PowerOff exec ~/.config/polybar/colorblocks/scripts/powermenu.sh
 bindsym $mod+m exec ~/.config/i3/scripts/eww.sh sidebar
+#bindsym $mod+space exec "setxkbmap -option 'grp:alt_shift_toggle'"
+#exec_always setxkbmap -layout us,cn
+#exec_always setxkbmap -option 'grp:ctrl_alt_toggle'
 
 # gaps & radius
 for_window [class="^.*"] border pixel 3
+for_window [window_role="dc1"] border pixel 0
 gaps inner 7
 gaps outer 0
 smart_gaps on
 smart_gaps inverse_outer
-for_window [window_role="dc1"] border pixel 0

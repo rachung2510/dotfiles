@@ -20,7 +20,9 @@
 
 (defpoll cpu-val :interval "3s" "bash scripts/getval.sh cpu")
 (defpoll ram-val :interval "3s" "bash scripts/getval.sh ram")
-(defpoll hdd-val :interval "3s" "bash scripts/getval.sh hdd")
+(defpoll hdd-val :interval "5m" "bash scripts/getval.sh hdd")
+(defpoll hdd-used :interval "5m" "bash scripts/getval.sh hdd used")
+(defpoll hdd-avail :interval "5m" "bash scripts/getval.sh hdd avail")
 
 (defpoll wifi-bool 		:interval "2h" "bash scripts/getbool.sh wifi")
 (defpoll bluetooth-bool :interval "2h" "bash scripts/getbool.sh bluetooth")

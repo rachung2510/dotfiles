@@ -15,17 +15,17 @@
 			:width "200")
 ))
 
-(defwidget radialmeter [value text class labelclass tooltip]
-    (circular-progress
-        :value {value}
-        :class "radial ${class}"
+(defwidget radialmeter [value text tooltip]
+    (circular-progress 
+		:value {value}
+        :class "radial"
         :thickness 5
-        :tooltip {value}
+        :tooltip {tooltip}
 		:start-at 50
 		:clockwise true
-		(box :class "radial-label ${labelclass}" :orientation "v" :space-evenly "false"
+		(box :class "radial-label" :orientation "v" :space-evenly "false"
 	        (label :text {text} :limit-width 5 :wrap false)
-			(label :class "small-text" :text {tooltip})
+			(label :class "small-text" :text "${value}%")
 )))
 
 (defvar wifi-literal	  "(button :class wifi-bool 	 :onclick {action} {icon})")
