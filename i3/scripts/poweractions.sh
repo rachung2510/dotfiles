@@ -15,7 +15,7 @@ pw="root"
 disable_bluetooth(){
 	# bluetooth.service must be disabled (sudo systemctl disable bluetooth)
 	echo $pw | sudo -S service bluetooth stop
-	eww update bluetooth_bool=$(bash scripts/getbool.sh bluetooth) &&
+	eww update bluetooth-bool="" &&
 	eww update bluetooth-literal="$(eww get bluetooth-literal)"
 }
 
@@ -30,10 +30,10 @@ if [[ $1 = "lock" ]]; then
 		--layout-font=$font --verif-font=$font --wrong-font=$font
 
 elif [[ $1 = "sleep" ]]; then
-	pkill cava && eww close-all
+#	pkill cava & eww close-all
 	amixer set Master mute
-	disable_bluetooth &&
-	./poweractions.sh "lock"
+	disable_bluetooth
+	~/.config/i3/scripts/poweractions.sh "lock" &&
 	systemctl suspend
 
 elif [[ $1 = "exit" ]]; then
