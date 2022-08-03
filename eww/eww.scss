@@ -86,7 +86,10 @@ $alpha: rgba(#ffffff,0);
 }
 .settings button.no-hover:hover { color: $shade4; }
 
-.weatherpannel { font-size: 3.2rem; }
+.weatherpannel { 
+	font-size: 3.2rem; 
+	margin-top: -1rem; 
+}
 .label-weather {
 	color: $shade7;
 	font-family: Iosevka Nerd Font;

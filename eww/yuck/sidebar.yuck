@@ -64,7 +64,7 @@
 (defwidget weather []
 	(box :class "roundpannel weather" :space-evenly "true" :orientation "h" :width "180" :height settings-height
 	(box :space-evenly "false" :orientation "v"
-		(box :space-evenly "false" :orientation "v" 
+		(box :space-evenly "false" :orientation "v"
 			(label :text weather-loc  :valign "start" :halign "start" :class "bold")
 			(label :text weather-cond :valign "start" :halign "start" :xalign "0" :wrap "true" :limit-width "20")
 			(label :class "label-weather" :text weather-temp :valign "start" :halign "start"))
