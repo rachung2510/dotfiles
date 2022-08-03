@@ -190,8 +190,9 @@
     summary = "error"
     timeout = 5
 [Spotify]
-    appname=spotify
+    appname=Spotify
     timeout = 20
+	script = ~/.config/dunst/scripts/getinfo.sh
 #    background = "#21c55cb2"
 #    foreground = "#141c21"
 	frame_color = "#1a9947"
