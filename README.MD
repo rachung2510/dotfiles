@@ -22,7 +22,7 @@ cd i3lock-color
 - Launcher: [Rofi Launcher](https://github.com/adi1090x/rofi) (Colorful)
 - Dmenu: [Rofi](https://github.com/Murzchnvok/rofi-collection) (Dracula)
 - Compositor: Picom
-- Bar: [Polybar](https://github.com/adi1090x/polybar-themes) (Colorblocks)
+- ~~Bar: [Polybar](https://github.com/adi1090x/polybar-themes) (Colorblocks)~~
 - Notifications: [Dunst](https://github.com/dunst-project/dunst)
 ```
 sudo apt install libxinerama-dev libxrandr-dev libxss-dev libnotify-dev libgdk-pixbuf2.0-dev
@@ -31,14 +31,18 @@ cd dunst
 make WAYLAND=0
 sudo make install WAYLAND=0
 ```
-- Widgets: Eww [Github](https://github.com/elkowar/eww), [Docs](https://elkowar.github.io/eww/)
+- Widgets: [Eww](https://github.com/elkowar/eww) ([Documentation](https://elkowar.github.io/eww/widgets.html))\
+Reference: [Gwydo](https://github.com/Gwyd0/Linuxsetup)
 ```
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source ~/.cargo/env
-sudo apt-get install libgtk-3-dev
+sudo apt install libgtk-3-dev
 git clone https://github.com/elkowar/eww
 cd eww
 cargo build --release
+cd target/release
+chmod +x ./eww
+sudo mv eww /usr/local/bin/
 ```
 
 ### Fonts
@@ -49,10 +53,11 @@ cargo build --release
 ### Dependencies
 ```
 sudo apt install lxappearance brightnessctl playerctl pavucontrol feh
-sudo apt install rofi polybar i3 picom
+sudo apt install rofi i3 picom # polybar
 sudo usermod -aG video ${USER} # run brightnessctl without sudo
 sudo apt install acpi # for polybar battery click action
 sudo apt install maim xclip # for screenshot
+sudo apt cava # music visualizer
 ```
 
 ### Themes
