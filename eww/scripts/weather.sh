@@ -14,7 +14,7 @@ if [[ $1 = "location" ]]; then
 	exit 0
 fi
 
-$loc = "$(eww get weather-loc)"
+loc="$(eww get weather-loc)"
 cm1=$(curl wttr.in/$loc?format=%t-%c-%C)
 IFS="-" read -r temp icon cond <<< "$cm1"
 
