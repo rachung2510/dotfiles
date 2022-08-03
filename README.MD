@@ -31,7 +31,7 @@ cd dunst
 make WAYLAND=0
 sudo make install WAYLAND=0
 ```
-- Widgets: [Eww](https://github.com/elkowar/eww) ([Documentation](https://elkowar.github.io/eww/widgets.html))
+- Widgets: [Eww](https://github.com/elkowar/eww) ([Documentation](https://elkowar.github.io/eww/widgets.html))\
 Reference: [Gwydo](https://github.com/Gwyd0/Linuxsetup)
 ```
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
