@@ -23,10 +23,9 @@ SELECT="#101010ff"
 
 # light
 ALPHA="#00000000"
-BG="#f1e4f6f2"
+BG="#f1e4f6e5"
 #BG="#e7d0f0d9"
 FG="#000000ff"
-#SELECT="#f5ecf9ff"
 SELECT="#f7f7f8ff"
 
 # accent colors
