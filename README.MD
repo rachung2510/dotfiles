@@ -53,27 +53,27 @@ sudo mv eww /usr/local/bin/
 ### Dependencies
 ```
 sudo apt install lxappearance brightnessctl playerctl pavucontrol feh
-sudo apt install rofi i3 picom # polybar
+sudo apt install rofi i3 picom
 sudo usermod -aG video ${USER} # run brightnessctl without sudo
-sudo apt install acpi # for polybar battery click action
+sudo apt install acpi # for battery info
 sudo apt install maim xclip # for screenshot
 sudo apt cava # music visualizer
 ```
 
 ### Themes
-Icon theme: [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) (Magenta)
+- Icon theme: [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) (Magenta)
 ```
 sudo add-apt-repository ppa:papirus/papirus
 sudo apt-get update
 sudo apt-get install papirus-icon-theme
 ```
 
-GTK theme: [Orchis](https://github.com/vinceliuice/Orchis-theme)
+- GTK theme: [Orchis](https://github.com/vinceliuice/Orchis-theme)
 ```
 ./install.sh -t purple -c light
 ```
 
-Spotify theme: [Spicetify](https://spicetify.app/docs/getting-started) (Sleek - Elementary)
+- Spotify theme: [Spicetify](https://spicetify.app/docs/getting-started) (Sleek - Elementary)
 ```
 curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.sh | sh
 # on a new shell
