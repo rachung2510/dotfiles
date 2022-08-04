@@ -157,7 +157,7 @@
     foreground = "#ffffff"
 #    background = "#ce93d880"
 #    foreground = "#8e24aa"
-    timeout = 20
+    timeout = 2
     # Icon for notifications with low urgency, uncomment to enable
     default_icon = ~/.config/dunst/img/noti.png
 
@@ -192,7 +192,7 @@
 [Spotify]
     appname=Spotify
     timeout = 20
-	script = ~/.config/dunst/scripts/getinfo.sh
+#	script = ~/.config/dunst/scripts/getinfo.sh
 #    background = "#21c55cb2"
 #    foreground = "#141c21"
 	frame_color = "#1a9947"
