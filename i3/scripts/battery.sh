@@ -4,6 +4,12 @@ LOW_THRESH=15
 HIGH_THRESH=95
 NOTIFY_BOOL=0
 
+pid=$(pgrep battery.sh)
+if [[ $(echo "$pid" | awk -F '[ ]' '{print (NF?NF-1:0)}') != "0" ]]; then
+	echo "$pid"
+	exit 0
+fi
+
 while :
 do
 	STATUS=$(cat /sys/class/power_supply/BAT1/status)

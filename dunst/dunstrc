@@ -1,7 +1,7 @@
 [global]
     monitor = 1
     follow = none
-    width = 360
+    width = (270,360)
     height = 360
 #    geometry = "300x100-9+55"
     #origin = top-left
@@ -22,7 +22,7 @@
 
     # Set the progress bar height. This includes the frame, so make sure
     # it's at least twice as big as the frame width.
-    progress_bar_height = 5
+    progress_bar_height = 8
 	highlight = "#8e24aa"
 
     # Set the frame width of the progress bar
@@ -32,7 +32,7 @@
     progress_bar_min_width = 1
 
     # Set the maximum width for the progress bar
-    progress_bar_max_width = 300
+    progress_bar_max_width = 200
     indicate_hidden = yes
 
     transparency = 0
@@ -87,7 +87,7 @@
     hide_duplicate_count = false
 
     # Display indicators for URLs (U) and actions (A).
-    show_indicators = no
+    show_indicators = yes
 
     ### Icons ###
 
@@ -136,7 +136,7 @@
 
     mouse_left_click = close_current
     mouse_middle_click = do_action, close_current
-    mouse_right_click = close_all
+    mouse_right_click = do_action
 
 	enable_posix_regex = true
 
@@ -218,6 +218,9 @@
 [Whatsapp Modified]
 	summary = "Whatsapp Web"
 	background = "#49eb66d9"
-#	foreground = "#ffffff"
 	foreground = "#4d4d4d"
-
+#	foreground = "#ffffff"
+[Volume]
+	summary = "Speakers muted"
+	highlight = "#666666"
+	background = "#808080b2"
