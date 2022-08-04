@@ -73,13 +73,14 @@ GTK theme: [Orchis](https://github.com/vinceliuice/Orchis-theme)
 ./install.sh -t purple -c light
 ```
 
-Spotify theme: Spicetify
+Spotify theme: [Spicetify](https://spicetify.app/docs/getting-started) (Sleek - Elementary)
 ```
 curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.sh | sh
 # on a new shell
 sudo chmod a+wr /usr/share/spotify
 sudo chmod a+wr /usr/share/spotify/Apps -R
 curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.sh | sh
+spicetify # generate config file
 spicetify backup apply enable-devtools
 ```
 
