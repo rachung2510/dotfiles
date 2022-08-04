@@ -3,7 +3,6 @@
     follow = none
     width = (270,360)
     height = 360
-#    geometry = "300x100-9+55"
     #origin = top-left
     offset = 20x20
 
@@ -23,7 +22,8 @@
     # Set the progress bar height. This includes the frame, so make sure
     # it's at least twice as big as the frame width.
     progress_bar_height = 8
-	highlight = "#8e24aa"
+#	highlight = "#8e24aa"
+	highlight = "#ddb4e4"
 
     # Set the frame width of the progress bar
     progress_bar_frame_width = 0
@@ -140,10 +140,7 @@
 
 	enable_posix_regex = true
 
-#[shortcuts]
-    # close notification
     close = ctrl+space
-    # close all notifications
     close_all = ctrl+shift+space
 
 [experimental]
@@ -151,25 +148,15 @@
 
 
 [urgency_low]
-    # IMPORTANT: colors have to be defined in quotation marks.
-    # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#ab47bc99"
+    background = "#ab47bcb2"
     foreground = "#ffffff"
-#    background = "#ce93d880"
-#    foreground = "#8e24aa"
     timeout = 2
-    # Icon for notifications with low urgency, uncomment to enable
     default_icon = ~/.config/dunst/img/noti.png
 
 [urgency_normal]
     background = "#ab47bc99"
     foreground = "#ffffff"
-#    background = "#ce93d880"
-#    foreground = "#8e24aa"
-#    background = "#00000080"
-#    foreground = "#f9f9f9"
-    timeout = 10
-    # Icon for notifications with normal urgency, uncomment to enable
+    timeout = 5
     default_icon = ~/.config/dunst/img/noti.png
 
 [urgency_critical]
@@ -178,34 +165,16 @@
     timeout = 0
     frame_color = "#c0392b"
     default_icon = ~/.config/dunst/img/critical.png
-    # Icon for notifications with critical urgency, uncomment to enable
 
-[Sound]
-    summary = "Speakers"
-    timeout = 5
-[Mic]
-    summary = "Mic"
-    timeout = 5
 [Error]
     summary = "error"
-    timeout = 5
+	urgency = "critical"
 [Spotify]
     appname=Spotify
-    timeout = 20
-#	script = ~/.config/dunst/scripts/getinfo.sh
-#    background = "#21c55cb2"
-#    foreground = "#141c21"
 	frame_color = "#1a9947"
     background = "#1daf52bf"
     foreground = "#ffffff"
     format = "<b> %s</b>\n%b"
-[Discord]
-    appname=discord
-    timeout= 10
-    background = "#242444"
-[Firefox]
-    appname=Firefox
-    set_stack_tag = "volume"
 [Screenshot]
 	appname=maim
 	summary = "Snip saved to clipboard"
@@ -219,8 +188,7 @@
 	summary = "Whatsapp Web"
 	background = "#49eb66d9"
 	foreground = "#4d4d4d"
-#	foreground = "#ffffff"
-[Volume]
+[Volume Mute]
 	summary = "Speakers muted"
-	highlight = "#666666"
-	background = "#808080b2"
+	highlight = "#cccccc"
+	background = "#8c8c8cb2"
