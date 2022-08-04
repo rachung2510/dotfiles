@@ -19,7 +19,7 @@ git clone https://github.com/Raymo111/i3lock-color.git
 cd i3lock-color
 ./install-i3lock-color.sh
 ```
-- Launcher: [Rofi Launcher](https://github.com/adi1090x/rofi) (Colorful)
+- Launcher, powermenu: [Rofi Launcher](https://github.com/adi1090x/rofi) (Colorful)
 - Dmenu: [Rofi](https://github.com/Murzchnvok/rofi-collection) (Dracula)
 - Compositor: Picom
 - ~~Bar: [Polybar](https://github.com/adi1090x/polybar-themes) (Colorblocks)~~
@@ -71,6 +71,16 @@ sudo apt-get install papirus-icon-theme
 GTK theme: [Orchis](https://github.com/vinceliuice/Orchis-theme)
 ```
 ./install.sh -t purple -c light
+```
+
+Spotify theme: Spicetify
+```
+curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.sh | sh
+# on a new shell
+sudo chmod a+wr /usr/share/spotify
+sudo chmod a+wr /usr/share/spotify/Apps -R
+curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.sh | sh
+spicetify backup apply enable-devtools
 ```
 
 
