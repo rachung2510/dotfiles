@@ -211,6 +211,7 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+#bindsym Escape exec pkill cava && eww close-all
 
 # window colors
 set $alpha				#ffffff00
@@ -279,6 +280,12 @@ bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/scripts/screenshot.sh
 bindsym XF86PowerOff exec --no-startup-id ~/.config/rofi/bin/powermenu
 bindsym $mod+m exec --no-startup-id ~/.config/i3/scripts/eww.sh sidebar
 bindsym Mod1+Tab exec --no-startup-id ~/.config/rofi/bin/launcher_misc
+
+#mode "eww" {
+#	bindsym Return mode "default"; exec pkill cava && eww close-all
+#	bindsym Escape mode "default"; exec pkill cava && eww close-all
+#	bindsym $mod+m mode "default"; exec pkill cava && eww close-all
+#}
 
 # gaps & radius
 for_window [class="^.*"] border pixel 3
