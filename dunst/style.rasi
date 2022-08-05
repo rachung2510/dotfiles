@@ -1,0 +1,72 @@
+/*
+ *
+ * Author  : Aditya Shakya
+ * Mail    : adi1090x@gmail.com
+ * Github  : @adi1090x
+ * Twitter : @adi1090x
+ *
+ */
+
+configuration {
+    font: 							"Fira Sans 13";
+	fixed-num-lines:				false;
+    show-icons: 					false;
+    sidebar-mode: 					false;
+    scroll-method: 					1;
+    click-to-exit: 					true;
+	disable-history:				true;
+}
+
+* {
+	al:      #00000000;
+	bg:      #e8e9ecFF;
+	se:      #E3E3E3FF;
+	fg:      #141c21CC;
+	ac:      #ba68c8FF;
+    background-color:             	@bg;
+}
+
+window {
+    border: 						0px;
+    border-color: 					@ac;
+    border-radius: 					20px;
+    padding: 						20;
+    width: 							30%;
+}
+
+prompt {
+	enabled:						false;
+}
+inputbar {
+	enabled:						false;
+}
+
+listview {
+    lines:							3;
+    columns:						1;
+    fixed-height: 					0;
+    border: 						0px;
+    border-color: 					@ac;
+    spacing: 						0;
+    scrollbar: 						false;
+	padding:						0;
+}
+
+element-text, element-icon {
+    background-color: #00000000;
+    text-color:       inherit;
+}
+
+element {
+    border: 						0px;
+    border-radius: 					100%;
+    padding: 						10px 20px;
+}
+element normal {
+    background-color: 				@bg;
+    text-color:       				@fg;
+}
+element selected {
+    background-color: 				@ac;
+    text-color:       				@bg;
+}

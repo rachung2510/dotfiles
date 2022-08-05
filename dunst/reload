@@ -5,5 +5,6 @@ sleep 0.1
 #notify-send -u critical "Test message" "Critical test 1"
 #notify-send -u normal "Test message" "Normal test 2"
 notify-send -u normal "Chat" "<a href='https://web.whatsapp.com/'>web.whatsapp.com</a>\n\nBob: content"
+notify-send -u normal " Song name" "Artist - Album"
 #notify-send -u low "Test message" "Low test 3"
 #notify-send -h int:value:42 "Working ..."

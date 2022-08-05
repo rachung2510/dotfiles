@@ -114,7 +114,8 @@
     ### Misc/Advanced ###
 
     # dmenu path.
-    dmenu = /usr/bin/rofi -p dunst:
+#	dmenu = /usr/bin/dmenu -p dunst:
+    dmenu = /usr/bin/rofi -dmenu -theme ~/.config/dunst/style.rasi
 
     # Browser for opening urls in context menu.
     browser = /usr/bin/microsoft-edge
@@ -133,14 +134,15 @@
     ### Legacy
     force_xinerama = false
 
-    mouse_left_click = close_current
+    mouse_left_click = do_action, close_current
     mouse_middle_click = do_action, close_current
-    mouse_right_click = do_action
+    mouse_right_click = do_action, close_all
 
 	enable_posix_regex = true
 
     close = ctrl+space
     close_all = ctrl+shift+space
+	context = ctrl+shift+period
 
 [experimental]
     per_monitor_dpi = false
@@ -157,6 +159,7 @@
     foreground = "#ffffff"
     timeout = 5
     default_icon = ~/.config/dunst/img/noti.png
+#	script = ~/.config/dunst/scripts/getinfo.sh
 
 [urgency_critical]
     background = "#eb4d4bcc"
