@@ -191,7 +191,6 @@ colors:
    foreground: '0x424242'
  # Cursor
  cursor:
-   text:   '#ab47bc'
    cursor: '#ab47bc'
  # Normal colors
  normal:

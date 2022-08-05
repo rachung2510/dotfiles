@@ -10,7 +10,7 @@
 configuration {
 	font: "MesloLGM Nerd Font Medium 13";
 
-	drun { display-name: ""; }
+	drun { display-name: ""; }
 	run { display-name: ""; }
 	window { display-name: ""; }
 

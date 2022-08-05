@@ -8,10 +8,10 @@
  */
 
 configuration {
-	font:							"NotaSans Nerd Font 12";
+	font:							"Fira Sans 12";
     show-icons:                     true;
 	icon-theme: 					"Papirus";
-    display-drun: 					"";
+    display-drun: 					"";
     drun-display-format:            "{name}";
     disable-history:                false;
 	sidebar-mode: 					false;

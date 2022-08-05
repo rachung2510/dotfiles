@@ -85,7 +85,7 @@ bindsym Mod1+F4 kill
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+d exec --no-startup-id rofi -show run -theme ~/.config/rofi-collection/dracula/dracula.rasi
+bindsym $mod+d exec --no-startup-id "rofi -show run -modi run,drun,window -theme ~/.config/rofi-collection/dracula/dracula.rasi"
 bindsym $mod+slash exec --no-startup-id ~/.config/rofi/bin/launcher_colorful
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -142,26 +142,6 @@ bindsym $mod+p focus parent
 
 # focus the child container
 bindsym $mod+o focus child
-
-# window colors
-set $alpha				#ffffff00
-set $bg-color			#e7d0f0
-set $shade8				#ce93d8
-set $inactive-bg-color	#f2f2f2
-set $text-color			#3d3d3d
-set $inactive-text-color#908c97
-set $urgent-bg-color	#eb4d4b
-set $indicator-color	#ce93d8
-set $selected-color		#ab47bc
-set $light-grey			#f9f9f9
-set $shade4				#8e24aa
-
-# window colors
-#						border				background	   		text					indicator
-client.focused			$shade8				$shade8				$text-color				$indicator-color
-client.unfocused		$inactive-bg-color	$inactive-bg-color	$inactive-text-color	$indicator-color
-client.focused_inactive	$inactive-bg-color	$inactive-bg-color	$inactive-text-color	$indicator-color
-client.urgent			$urgent-bg-color	$urgent-bg-color	$text-color				$indicator-color
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -232,10 +212,27 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# window colors
+set $alpha				#ffffff00
+set $bar-bg				#e7d0f0cc
+set $white-alpha		#ffffffb2
+set $dark-grey			#141c21
+set $light-grey			#f9f9f9
+set $inactive-bg		#f2f2f2
+set $inactive-text		#908c97
+set $urgent				#eb4d4b
+set $shade4				#8e24aa
+set $shade8				#ce93d8
+
+# window colors
+#						border			background	   	text			indicator
+client.focused			$shade8			$shade8			$dark-grey		$shade8
+client.unfocused		$inactive-bg	$inactive-bg	$inactive-text	$alpha
+client.focused_inactive	$inactive-bg	$inactive-bg	$inactive-text	$alpha
+client.urgent			$urgent			$urgent			$dark-grey		$urgent
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-set $bg-color-alpha		#e7d0f0cc
-set $white-alpha		#ffffffb2
 bar {
 	i3bar_command i3bar --transparency
 	status_command i3status
@@ -244,16 +241,16 @@ bar {
 	workspace_min_width 64
 	colors {
 		statusline $shade4
-		background $bg-color-alpha
+		background $bar-bg
 	    separator $shade8
-		#                  border  				background        	text
-		focused_workspace  $shade8				$shade8				#141c21
-		inactive_workspace $white-alpha			$white-alpha		$shade4
-		urgent_workspace   $urgent-bg-color		$urgent-bg-color	$light-grey
+		#                  border  		background      text
+		focused_workspace  $shade8		$shade8			$dark-grey
+		inactive_workspace $white-alpha	$white-alpha	$shade4
+		urgent_workspace   $urgent		$urgent			$light-grey
 	}	
 }
 
-# configurations
+# custom configurations
 workspace_auto_back_and_forth no
 hide_edge_borders both
 for_window [class="Org.gnome.Nautilus"] floating enable
@@ -262,7 +259,7 @@ for_window [window_role="dc1"] floating enable, move position -2px 20ppt, move u
 no_focus [window_role="dc1"]
 for_window [class="Gnome-calculator"] floating enable
 
-# open apps in workspaces
+# custom workspace allocation
 for_window [class="Spotify"] move to workspace $ws10
 for_window [title="WhatsApp -"] move to workspace $ws8
 for_window [class="zoom"] move to workspace $ws8
@@ -281,11 +278,13 @@ bindsym $mod+c exec --no-startup-id microsoft-edge
 bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/scripts/screenshot.sh
 bindsym XF86PowerOff exec --no-startup-id ~/.config/rofi/bin/powermenu
 bindsym $mod+m exec --no-startup-id ~/.config/i3/scripts/eww.sh sidebar
+bindsym Mod1+Tab exec --no-startup-id ~/.config/rofi/bin/launcher_misc
 
 # gaps & radius
 for_window [class="^.*"] border pixel 3
 for_window [window_role="dc1"] border pixel 0
 gaps inner 7
+gaps top 9
 gaps outer 0
-smart_gaps on
-smart_gaps inverse_outer
+#smart_gaps on
+#smart_gaps inverse_outer

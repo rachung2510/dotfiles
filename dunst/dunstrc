@@ -22,7 +22,6 @@
     # Set the progress bar height. This includes the frame, so make sure
     # it's at least twice as big as the frame width.
     progress_bar_height = 8
-#	highlight = "#8e24aa"
 	highlight = "#ddb4e4"
 
     # Set the frame width of the progress bar
@@ -148,7 +147,7 @@
 
 
 [urgency_low]
-    background = "#ab47bcb2"
+    background = "#ab47bc99"
     foreground = "#ffffff"
     timeout = 2
     default_icon = ~/.config/dunst/img/noti.png
@@ -162,8 +161,8 @@
 [urgency_critical]
     background = "#eb4d4bcc"
     foreground = "#ffffff"
-    timeout = 0
     frame_color = "#c0392b"
+    timeout = 0
     default_icon = ~/.config/dunst/img/critical.png
 
 [Error]

@@ -16,17 +16,16 @@ theme="style_6"
 dir="$HOME/.config/rofi/launchers/colorful"
 
 # dark
-ALPHA="#00000000"
-BG="#000000ff"
-FG="#ffffffff"
-SELECT="#101010ff"
+#ALPHA="#00000000"
+#BG="#000000ff"
+#FG="#ffffffff"
+#SELECT="#101010ff"
 
 # light
-ALPHA="#00000000"
+ALPHA="#ffffff00"
 BG="#f1e4f6e5"
-#BG="#e7d0f0d9"
-FG="#000000ff"
-SELECT="#f7f7f8ff"
+FG="#141c21"
+SELECT="#f7f7f8"
 
 # accent colors
 COLORS=('#EC7875' '#61C766' '#FDD835' '#42A5F5' '#BA68C8' '#4DD0E1' '#00B19F' \

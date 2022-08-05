@@ -1,4 +1,4 @@
-$side-bg: #e8e9ec;
+$window-bg: #e8e9ec;
 $bg: #e7d0f0;
 $fg: #ffffff;
 $grey: #999999;
@@ -25,7 +25,7 @@ $alpha: rgba(#ffffff,0);
 }
 
 .container {
-	background-color: $side-bg;
+	background-color: $window-bg;
 	padding: 0 0 .7rem .7rem;
 	// border-radius: 0 0 8px 0;
 }
