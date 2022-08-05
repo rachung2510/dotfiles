@@ -19,7 +19,7 @@ git clone https://github.com/Raymo111/i3lock-color.git
 cd i3lock-color
 ./install-i3lock-color.sh
 ```
-- Launcher, powermenu: [Rofi Launcher](https://github.com/adi1090x/rofi) (Colorful)
+- Launcher, Powermenu: [Rofi](https://github.com/adi1090x/rofi) (Launcher - Colorful, Powermenu - Column_circle)
 - Dmenu: [Rofi](https://github.com/Murzchnvok/rofi-collection) (Dracula)
 - Compositor: Picom
 - ~~Bar: [Polybar](https://github.com/adi1090x/polybar-themes) (Colorblocks)~~
