@@ -1,5 +1,5 @@
 (defpoll time :interval "30s" "date '+\%H:%M'")
-(defpoll date :interval "12h" "date '+%a, %d %b %y'")
+(defpoll date :interval "12h" "date '+%a, %d %b %Y'")
 
 (deflisten title   :interval "2h" "playerctl -p playerctld -F metadata title || true")
 (deflisten artist  :interval "2h" "playerctl -p playerctld -F metadata artist || true")
