@@ -34,7 +34,8 @@
 	(slider
 		:value volume-val
 		:icon vol-icon
-		:tooltip 'Volume: \${volume-val}%'
+		:tooltip 'Volume: \${volume-val}%
+\${vol-tooltip}'
 		:action-click 'amixer -D pulse set Master 1+ toggle &&
 			eww update vol-icon=$(bash scripts/geticon.sh vol) &&
 			eww update mute-bool=$(bash scripts/getbool.sh mute) &&
@@ -55,7 +56,8 @@
 		(slider
 			:value batt-val
 			:icon batt-icon
-			:tooltip "Battery: ${batt-val}%"
+			:tooltip "Battery: ${batt-val}%
+${batt-tooltip}"
 			:action-click ""
 			:action-slide ""
 			:disabled "false")

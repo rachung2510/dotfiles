@@ -28,7 +28,7 @@
 			(label :class "small-text" :text "${value}%")
 )))
 
-(defvar wifi-literal	  "(button :class wifi-bool 	 :onclick {action} {icon})")
+(defvar wifi-literal	  "(button :class wifi-bool 	 :onclick {action} :tooltip '\${wifi-tooltip}' {icon})")
 (defvar bluetooth-literal "(button :class bluetooth-bool :onclick {action} {icon})")
 (defvar notif-literal	  "(button :class notif-bool 	 :onclick {action} {icon})")
 (defvar btn-literal 	  "(button :tooltip {tooltip} 	 :onclick {action} {icon})")

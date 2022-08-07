@@ -17,6 +17,7 @@ if [[ $1 = "wifi" ]]; then
 		nmcli radio wifi on
 	fi
 	eww_update wifi
+	eww update wifi-tooltip=$(bash scripts/tooltip.sh wifi)
 
 elif [[ $1 = "bluetooth" ]]; then
 	cmd="service bluetooth status | grep 'Active:' | grep -oP '(?<=Active: ).*'"
