@@ -25,7 +25,7 @@ elif [[ $1 = "notif" ]]; then
 	fi
 
 elif [[ $1 = "mute" ]]; then
-	mute=$(amixer -D pulse sget Master | grep 'off')
-	if [[ $mute != "" ]]; then echo "disabled";
+	mute=$(pactl get-sink-mute @DEFAULT_SINK@)
+	if [[ $mute = "Mute: yes" ]]; then echo "disabled";
 	else echo ""; fi
 fi

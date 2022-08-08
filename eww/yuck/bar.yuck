@@ -1,0 +1,75 @@
+(defvar bar-width "40")
+(defwidget workspaces []
+	(box :orientation "h" :space-evenly "false"
+		(literal :content workspace)
+))
+
+(defwidget volume []
+	(eventbox :onhover "eww update vol-tooltip=\"$(bash scripts/tooltip.sh vol)\""
+	(button :tooltip "Volume: ${volume-val}%${vol-tooltip}"
+			:onclick "~/.config/i3/scripts/fnactions.sh mute"
+			vol-icon)))
+(defwidget wifi []
+	(eventbox :onhover "eww update wifi-tooltip=\"$(bash scripts/tooltip.sh wifi)\""
+	(button :tooltip {wifi-tooltip} wifi-icon)))
+(defwidget batt []
+	(box :orientation "v" :space-evenly "false"
+		(button	:class "batt-icon"
+				:tooltip "${batt-tooltip}"
+				batt-icon)
+		(label :class "batt-label" :text "${batt-val}%")
+))
+
+(defwidget control []
+	(box :orientation "v" 
+		 :space-evenly "false"
+		 :class "bar-widget control"
+		 :width bar-width
+		 :spacing "8"
+(volume)
+(wifi)
+(batt)))
+
+(defwidget time-bar []
+	(box :orientation "v" 
+		 :class "time-v" 
+		 :valign "end"
+		 :spacing "0"
+	(label :text hour)
+	(label :text min :class "time-min")
+))
+
+(defwidget top []
+	(box :orientation "v" 
+		 :space-evenly "false" 
+		 :vexpand "true"
+		 :valign "center"
+(workspaces)))
+(defwidget end []
+	(box :orientation "v" 
+		 :space-evenly "false" 
+		 :vexpand "false"
+		 :valign "end" 
+		 :spacing 5
+(control)
+(time-bar)))
+
+(defwidget bar []
+	(box :class "taskbar" 
+		 :orientation "v" 
+		 :space-evenly "true"
+	(overlay
+(top)
+(end)
+)))
+
+(defwindow bar
+	:windowtype "dock"
+	:geometry (geometry :x "0" 
+						:y "0" 
+						:height "100%" 
+						:width "0")
+	:monitor 0
+	:stacking "bg"
+	:wm-ignore "true"
+(bar))

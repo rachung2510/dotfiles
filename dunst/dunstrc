@@ -4,7 +4,7 @@
     width = (270,360)
     height = 360
     origin = bottom-right
-    offset = 20x60
+    offset = 20x20
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0

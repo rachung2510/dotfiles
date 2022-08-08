@@ -1,7 +1,8 @@
 #!/bin/bash
 
 if [[ $1 = "vol" ]]; then
-	echo "$(amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%')"
+	echo "$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '(?<=/  ).*?(?=%)' | head -n 1)"
+#	echo "$(amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%')"
 	exit 0
 elif [[ $1 = "light" ]]; then
 	echo "100*$(brightnessctl g)/$(brightnessctl m)" | bc

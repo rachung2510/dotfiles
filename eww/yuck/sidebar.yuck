@@ -34,12 +34,8 @@
 	(slider
 		:value volume-val
 		:icon vol-icon
-		:tooltip 'Volume: \${volume-val}%
-\${vol-tooltip}'
-		:action-click 'amixer -D pulse set Master 1+ toggle &&
-			eww update vol-icon=$(bash scripts/geticon.sh vol) &&
-			eww update mute-bool=$(bash scripts/getbool.sh mute) &&
-			eww update vol-literal=$(eww get vol-literal)'
+		:tooltip 'Volume: \${volume-val}%\${vol-tooltip}'
+		:action-click '~/.config/i3/scripts/fnactions.sh mute'
 		:action-slide 'amixer -D pulse sset Master {}%'
 		:modi mute-bool)
 ")
@@ -99,7 +95,6 @@ ${batt-tooltip}"
 		(quickbutton :icon "ﮖ"  :tooltip "" :action "bash scripts/quickbutton.sh notif" 	:type "notif")
 		(quickbutton :icon ""  :tooltip "Lock"  :action "bash scripts/quickbutton.sh lock"  :type "")
 		(quickbutton :icon ""  :tooltip "Sleep" :action "bash scripts/quickbutton.sh sleep" :type "")
-		;; (quickbutton :icon "" :tooltip "Logout" :action "bash scripts/quickbutton.sh logout" :type "")
 )))
 
 (defwidget pannel []
@@ -109,8 +104,6 @@ ${batt-tooltip}"
 		 (box :class "cava" :height cava-height)
 		 (box :class "container" :orientation "v" :space-evenly "false"
 			(player)
-			 ;; (box :orientation "h" :space-evenly "true"
-			 	;; (player))
 			 (box :orientation "h" :space-evenly "false"
 				 (settings)
 				 (weather))
@@ -120,14 +113,12 @@ ${batt-tooltip}"
 				 (ram)
 				 (hdd)))
 			 (quickbuttons))
-			 ;; (box :orientation "h" :space-evenly "true"
-				 ;; (quickbuttons)))
 ))
 
 (defwindow sidebar
 	:monitor 0
 	:windowtype "toolbar"
-	:geometry (geometry :x "0%"
+	:geometry (geometry :x "0"
 						:y "8%"
 						:width "450px"
 						:height "0%")

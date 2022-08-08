@@ -21,17 +21,18 @@ if [[ $1 = "wifi" ]]; then
 
 elif [[ $1 = "bluetooth" ]]; then
 	cmd="service bluetooth status | grep 'Active:' | grep -oP '(?<=Active: ).*'"
-	if [[ "$(eww get bluetooth-bool)" != "" ]]; then
+	status=$(eww get bluetooth-bool)
+	if [[ "$status" != "" ]]; then
 		# bluetooth.service must be disabled (sudo systemctl disable bluetooth)
 		echo $pw | sudo -S service bluetooth stop
 		notify_bluetooth off
 	else
 		echo $pw | sudo -S service bluetooth start
 		notify_bluetooth on
-		~/.config/i3/scripts/bluetooth.sh
 	fi
 	eww_update bluetooth
 	sleep 3 && eww update vol-tooltip=$(bash scripts/tooltip.sh vol)
+	if [[ "$status" != "" ]]; then sleep 5 && ~/.config/i3/scripts/bluetooth.sh; fi
 
 elif [[ $1 = "notif" ]]; then
 	if [[ "$(eww get notif-bool)" != "" ]]; then
@@ -48,4 +49,5 @@ elif [[ $1 = "sleep" ]]; then
 	~/.config/i3/scripts/poweractions.sh "sleep"
 elif [[ $1 = "logout" ]]; then
 	~/.config/i3/scripts/poweractions.sh "exit"
+
 fi

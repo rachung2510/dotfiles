@@ -5,6 +5,7 @@
 	(box :class {modi}  :space-evenly "false" :orientation "h" :vexpand "true" :valign "center"
 		(box :width "30"
 			(button :class "btn-settings ${action-click == "" ? "no-hover" : ""}" :onclick {action-click} {icon}))
+		(eventbox :onhover "eww update vol-tooltip=\"$(bash scripts/tooltip.sh vol)\""
 		(scale :value {value}
 			:min 0
             :max 101
@@ -13,7 +14,7 @@
             :active "${action-slide != "" ? "true" : "false"}"
             :onchange {action-slide}
 			:width "200")
-))
+)))
 
 (defwidget radialmeter [value text tooltip]
     (circular-progress 
@@ -28,7 +29,10 @@
 			(label :class "small-text" :text "${value}%")
 )))
 
-(defvar wifi-literal	  "(button :class wifi-bool 	 :onclick {action} :tooltip '\${wifi-tooltip}' {icon})")
+(defvar wifi-literal "
+	(eventbox :onhover 'eww update wifi-tooltip=\"$(bash scripts/tooltip.sh wifi)\"'
+	(button :class wifi-bool 	 :onclick {action} :tooltip '\${wifi-tooltip}' {icon})
+)")
 (defvar bluetooth-literal "(button :class bluetooth-bool :onclick {action} {icon})")
 (defvar notif-literal	  "(button :class notif-bool 	 :onclick {action} {icon})")
 (defvar btn-literal 	  "(button :tooltip {tooltip} 	 :onclick {action} {icon})")
@@ -38,3 +42,10 @@
 		(type == "bluetooth" ? bluetooth-literal :
 		(type == "notif" ? notif-literal : btn-literal))}")
 ))
+
+(defwidget ws [num name modi]
+    (eventbox :onclick "i3-msg workspace '${num} ${name}'"
+    (box :class "ws ${modi}" :orientation "v" :space-evenly "false" :spacing "4" :halign "center"
+        (label :class "ws-label" :text "${num}")
+        (label :text {name})
+)))
