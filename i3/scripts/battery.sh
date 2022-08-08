@@ -2,7 +2,6 @@
 
 LOW_THRESH=15
 HIGH_THRESH=95
-NOTIFY_BOOL=0
 
 pid=$(pgrep battery.sh)
 if [[ $(echo "$pid" | awk -F '[ ]' '{print (NF?NF-1:0)}') != "0" ]]; then
@@ -16,20 +15,13 @@ do
 	POWER=$(acpi -b | grep "Battery 0" | grep -o '[0-9]\+%' | tr -d '%')
 
 	if [[ $STATUS = "Charging" ]]; then
-		if [[ $POWER -ge $HIGH_THRESH ]] && [[ $NOTIFY_BOOL = 0 ]]; then
-			notify-send -u low -i "~/.config/dunst/img/battery-full.png" "Battery is fully charged" "Please disconnect your charger"
-			NOTIFY_BOOL=1
-		elif [[ $POWER -lt $HIGH_THRESH ]]; then
-			NOTIFY_BOOL=0
+		if [[ $POWER -ge $HIGH_THRESH ]]; then
+			dunstify -u low -i "~/.config/dunst/img/battery-full.png" -h "string:x-dunst-stack-tag:batt-full" "Battery is fully charged" "Please disconnect your charger"
 		fi
 	else
-		if [[ $POWER -le $LOW_THRESH ]] && [[ $NOTIFY_BOOL = 0 ]]; then
+		if [[ $POWER -le $LOW_THRESH ]]; then
 			duration=$(acpi -b | grep -oP '(?<=%, ).*(?= remaining)')
-	#		minutes=$(echo "$duration" | grep -oP '(?<=:).*(?=:)')
-			notify-send -u critical -i "~/.config/dunst/img/battery-critical.png" "Your battery is running low" "${duration} remaining"
-			NOTIFY_BOOL=1
-		elif [[ $POWER -gt $LOW_THRESH ]]; then
-			NOTIFY_BOOL=0
+			dunstify -u critical -i "~/.config/dunst/img/battery-critical.png" -h "string:x-dunst-stack-tag:batt-crit" "Your battery is running low" "${duration} remaining"
 		fi
 	fi
 sleep 60
