@@ -24,12 +24,14 @@ font pango: MesloLGM Nerd Font 11
 # start applications
 exec --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Tapping Enabled" 1
 exec --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Natural Scrolling Enabled" 1
-exec_always --no-startup-id picom -f
+exec_always --no-startup-id picom -f &
 exec --no-startup-id feh --bg-scale ~/.config/i3/wallpapers/sailor-city.jpg
 exec --no-startup-id i3-msg 'workspace $ws1';
 exec --no-startup-id ~/.config/i3/scripts/battery.sh &
 exec --no-startup-id ibus-daemon && ibus restart &
-exec --no-startup-id eww daemon
+exec --no-startup-id eww daemon &
+#exec --no-startup-id ~/.config/i3/scripts/bluetooth.sh
+#exec --no-startup-id dunst &
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -86,6 +88,7 @@ bindsym Mod1+F4 kill
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id dmenu_run
 bindsym $mod+d exec --no-startup-id "rofi -show run -modi run,drun,window -theme ~/.config/rofi-collection/dracula/dracula.rasi"
+#bindsym $mod+d exec --no-startup-id rofi -show run -modi run -theme ~/.config/rofi-collection/dracula/dracula.rasi -run-shell-command '{terminal} -e bash -c "{cmd}; exec bash"'
 bindsym $mod+slash exec --no-startup-id ~/.config/rofi/bin/launcher_colorful
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -279,7 +282,8 @@ bindsym $mod+c exec --no-startup-id microsoft-edge
 bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/scripts/screenshot.sh
 bindsym XF86PowerOff exec --no-startup-id ~/.config/rofi/bin/powermenu
 bindsym $mod+m exec --no-startup-id ~/.config/i3/scripts/eww.sh sidebar
-bindsym Mod1+Tab exec --no-startup-id ~/.config/rofi/bin/launcher_misc
+bindsym Mod1+Tab workspace next
+bindsym Mod1+Shift+Tab workspace prev
 
 #mode "eww" {
 #	bindsym Return mode "default"; exec pkill cava && eww close-all
