@@ -9,7 +9,7 @@ $shade7: #ba68c8;
 $shade8: #ce93d8;
 $urgent: #eb4d4b; 
 $alpha: rgba(#ffffff,0);
-$white-alpha: rgba(#ffffff,.4);
+$white-alpha: rgba(#ffffff,.6);
 
 * {
 	all: unset;
@@ -130,7 +130,9 @@ $white-alpha: rgba(#ffffff,.4);
 button.selected:hover { background-color: $shade4; }
 .disabled button { color: $grey; }
 
+
 // ----- TASKBAR -----
+
 .taskbar{
   background-color: $bar-bg;
   padding: 0rem;
@@ -163,6 +165,13 @@ button.selected:hover { background-color: $shade4; }
 	background-color: $shade7;
 	color: $fg;
 }
+.ws-mode {
+	font-size: 1rem;
+	background: $urgent;
+	color: $fg;
+	margin-top: 1em;
+	padding: .4rem 0;
+}
 
 // Control Panel
 .control {
@@ -179,7 +188,8 @@ button.selected:hover { background-color: $shade4; }
 .time-v {
   font-family: Iosevka Nerd Font;
   font-weight: bold;
-  margin: .3rem 0;
+  padding: .8rem  0 .2rem 0;
+  margin-bottom: .5rem;
   color: $shade7;
 }
 .time-min { margin-top: -.8rem; }

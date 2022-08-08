@@ -7,25 +7,25 @@
 (deflisten artist  :interval "2h" "playerctl -p playerctld -F metadata artist || true")
 (defpoll play-icon :interval "5s" "bash scripts/player.sh icon")
 
-(defpoll volume-val	:interval "1s"  "bash scripts/getval.sh vol")
-(defpoll light-val	:interval "1s"  "bash scripts/getval.sh light")
+(defpoll volume-val	:interval "5s"  "bash scripts/getval.sh vol")
+(defpoll light-val	:interval "5s"  "bash scripts/getval.sh light")
 (defpoll batt-val	:interval "2m"  "bash scripts/getval.sh batt")
 (defpoll vol-icon	:interval "2h"  "bash scripts/geticon.sh vol")
-(defpoll light-icon	:interval "1s"  "bash scripts/geticon.sh light")
-(defpoll batt-icon	:interval "1s"	"bash scripts/geticon.sh batt")
+(defpoll light-icon	:interval "5s"  "bash scripts/geticon.sh light")
+(defpoll batt-icon	:interval "5s"	"bash scripts/geticon.sh batt")
 (defpoll mute-bool	:interval "2h"  "bash scripts/getbool.sh mute")
 
-(defpoll vol-tooltip	:interval "2h"	"bash scripts/tooltip.sh vol")
-(defpoll batt-tooltip	:interval "3s"	"bash scripts/tooltip.sh batt")
-(defpoll wifi-tooltip	:interval "2h"	"bash scripts/tooltip.sh wifi")
+(defpoll vol-tooltip	:interval "5s"	"bash scripts/tooltip.sh vol")
+(defpoll batt-tooltip	:interval "5s"	"bash scripts/tooltip.sh batt")
+(defpoll wifi-tooltip	:interval "5s"	"bash scripts/tooltip.sh wifi")
 
 (defpoll weather-loc  :interval "24h" "bash scripts/weather.sh location")
 (defpoll weather-icon :interval "2h"  "bash scripts/weather.sh icon")
 (defpoll weather-temp :interval "2h"  "bash scripts/weather.sh temp")
 (defpoll weather-cond :interval "2h"  "bash scripts/weather.sh cond")
 
-(defpoll cpu-val :interval "3s" "bash scripts/getval.sh cpu")
-(defpoll ram-val :interval "3s" "bash scripts/getval.sh ram")
+(defpoll cpu-val :interval "5s" "bash scripts/getval.sh cpu")
+(defpoll ram-val :interval "5s" "bash scripts/getval.sh ram")
 (defpoll hdd-val :interval "5m" "bash scripts/getval.sh hdd")
 (defpoll hdd-used :interval "5m" "bash scripts/getval.sh hdd used")
 (defpoll hdd-avail :interval "5m" "bash scripts/getval.sh hdd avail")
@@ -36,7 +36,7 @@
 (defpoll notif-bool 	:interval "2h" "bash scripts/getbool.sh notif")
 
 (deflisten workspace "bash scripts/workspace.sh")
-
+(deflisten ws-mode "bash scripts/wsmode.sh")
 (include "./yuck/method.yuck")
 (include "./yuck/sidebar.yuck")
 (include "./yuck/bar.yuck")

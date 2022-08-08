@@ -1,5 +1,7 @@
 ;; SIDEBAR
 
+(defvar top-height "0")
+(defvar end-height "0")
 (defvar time-height "140")
 (defvar cava-height "160")
 (defvar player-height "140")
@@ -8,7 +10,7 @@
 (defvar sys-height "100")
 
 (defwidget time []
-	(box :class "roundpannel time" :height time-height
+	(box :class "roundpannel time" :height time-height :valign "end"
 	(box :orientation "v" :space-evenly "false" :vexpand "true" :valign "center"
 		(label :text time :class "label-time")
 		(label :text date :class "label-date")
@@ -99,7 +101,8 @@ ${batt-tooltip}"
 
 (defwidget pannel []
 	 (box :class "sidepannel" :orientation "v" :space-evenly "false"
-		 (box :class "container time" :orientation "h" :space-evenly "true"
+	 	 (box :class "container" :height top-height)
+		 (box :class "container time" :orientation "v" :space-evenly "false"
 			 (time))
 		 (box :class "cava" :height cava-height)
 		 (box :class "container" :orientation "v" :space-evenly "false"
@@ -113,6 +116,7 @@ ${batt-tooltip}"
 				 (ram)
 				 (hdd)))
 			 (quickbuttons))
+	 	 (box :class "container" :height end-height)
 ))
 
 (defwindow sidebar
@@ -121,7 +125,7 @@ ${batt-tooltip}"
 	:geometry (geometry :x "0"
 						:y "8%"
 						:width "450px"
-						:height "0%")
+						:height "0")
 	:wm-ignore true
 	:stacking "fg"
 	(pannel))

@@ -24,6 +24,6 @@ run() {
 
 
 run
-i3-msg -t subscribe -m '[ "workspace" ]' | while read -r _; do
+i3-msg -t subscribe -m '[ "workspace" ]' | while read _; do
 	run
 done

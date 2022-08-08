@@ -1,7 +1,8 @@
 (defvar bar-width "40")
 (defwidget workspaces []
-	(box :orientation "h" :space-evenly "false"
+	(box :orientation "v" :space-evenly "false"
 		(literal :content workspace)
+		(label :class "${(ws-mode == "") ? "" : "ws-mode"}" :text ws-mode)
 ))
 
 (defwidget volume []
