@@ -27,7 +27,7 @@ window {
 //    border-color:                  	#cccccc4d;
     height:                         100%;
     width:                          12.25%;
-    location:                       east;
+    location:                       west;
     x-offset:                       0;
     y-offset:                       0;
 }
