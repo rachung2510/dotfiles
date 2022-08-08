@@ -35,7 +35,7 @@
 (defpoll bluetooth-bool :interval "2h" "bash scripts/getbool.sh bluetooth")
 (defpoll notif-bool 	:interval "2h" "bash scripts/getbool.sh notif")
 
-(deflisten workspace "bash scripts/workspace")
+(deflisten workspace "bash scripts/workspace.sh")
 
 (include "./yuck/method.yuck")
 (include "./yuck/sidebar.yuck")
