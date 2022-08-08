@@ -7,15 +7,15 @@
 
 (defpoll volume-val	:interval "1s"  "bash scripts/getval.sh vol")
 (defpoll light-val	:interval "1s"  "bash scripts/getval.sh light")
-(defpoll batt-val	:interval "5m"  "bash scripts/getval.sh batt")
+(defpoll batt-val	:interval "2m"  "bash scripts/getval.sh batt")
 (defpoll vol-icon	:interval "1s"  "bash scripts/geticon.sh vol")
 (defpoll light-icon	:interval "1s"  "bash scripts/geticon.sh light")
-(defpoll batt-icon	:interval "5m"	"bash scripts/geticon.sh batt")
+(defpoll batt-icon	:interval "2m"	"bash scripts/geticon.sh batt")
 (defpoll mute-bool	:interval "1s"  "bash scripts/getbool.sh mute")
 
 (defpoll vol-tooltip	:interval "3s"	"bash scripts/tooltip.sh vol")
-(defpoll batt-tooltip	:interval "5m"	"bash scripts/tooltip.sh batt")
-(defpoll wifi-tooltip	:interval "5m"	"bash scripts/tooltip.sh wifi")
+(defpoll batt-tooltip	:interval "2m"	"bash scripts/tooltip.sh batt")
+(defpoll wifi-tooltip	:interval "2m"	"bash scripts/tooltip.sh wifi")
 
 (defpoll weather-loc  :interval "24h" "bash scripts/weather.sh location")
 (defpoll weather-icon :interval "2h"  "bash scripts/weather.sh icon")

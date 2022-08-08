@@ -28,8 +28,10 @@ elif [[ $1 = "bluetooth" ]]; then
 	else
 		echo $pw | sudo -S service bluetooth start
 		notify_bluetooth on
+		~/.config/i3/scripts/bluetooth.sh
 	fi
 	eww_update bluetooth
+	sleep 3 && eww update vol-tooltip=$(bash scripts/tooltip.sh vol)
 
 elif [[ $1 = "notif" ]]; then
 	if [[ "$(eww get notif-bool)" != "" ]]; then

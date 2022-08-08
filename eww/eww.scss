@@ -6,6 +6,7 @@ $shade4: #8e24aa;
 $shade6: #ab47bc;
 $shade7: #ba68c8;
 $shade8: #ce93d8;
+$urgent: #eb4d4b; 
 $alpha: rgba(#ffffff,0);
 
 * {
@@ -85,6 +86,10 @@ $alpha: rgba(#ffffff,0);
 	margin-left: .5rem;
 }
 .settings button.no-hover:hover { color: $shade4; }
+.settings > .critical button { color: $urgent; }
+.settings > .critical button:hover { color: $urgent; }
+.settings > .critical scale trough { background-color: #e7adac; }
+.settings > .critical scale trough highlight { background-color: $urgent; }
 
 .weatherpannel { 
 	font-size: 3.2rem; 

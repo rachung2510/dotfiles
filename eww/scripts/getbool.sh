@@ -26,6 +26,6 @@ elif [[ $1 = "notif" ]]; then
 
 elif [[ $1 = "mute" ]]; then
 	mute=$(amixer -D pulse sget Master | grep 'off')
-	if [[ $mute != "" ]]; then echo "true";
-	else echo "false"; fi
+	if [[ $mute != "" ]]; then echo "disabled";
+	else echo ""; fi
 fi

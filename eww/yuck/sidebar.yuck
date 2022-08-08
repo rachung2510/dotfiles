@@ -41,7 +41,7 @@
 			eww update mute-bool=$(bash scripts/getbool.sh mute) &&
 			eww update vol-literal=$(eww get vol-literal)'
 		:action-slide 'amixer -D pulse sset Master {}%'
-		:disabled mute-bool)
+		:modi mute-bool)
 ")
 (defwidget settings []
 	(box :class "settings roundpannel" :space-evenly "true" :orientation "v" :height settings-height
@@ -52,7 +52,7 @@
 			:tooltip "Brightness: ${light-val}%"
 			:action-click "brightnessctl s 0"
 			:action-slide ""
-			:disabled "false")
+			:modi "")
 		(slider
 			:value batt-val
 			:icon batt-icon
@@ -60,7 +60,7 @@
 ${batt-tooltip}"
 			:action-click ""
 			:action-slide ""
-			:disabled "false")
+			:modi "${(batt-val <= 15) ? "critical" : ""}")
 ))
 
 (defwidget weather []

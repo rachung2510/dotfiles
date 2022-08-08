@@ -1,8 +1,8 @@
 ;; METHOD.YUCK
 ;; this is for methods
 
-(defwidget slider [value icon tooltip action-click action-slide disabled]
-	(box :class "${disabled == "true" ? "disabled" : ""}"  :space-evenly "false" :orientation "h" :vexpand "true" :valign "center"
+(defwidget slider [value icon tooltip action-click action-slide modi]
+	(box :class {modi}  :space-evenly "false" :orientation "h" :vexpand "true" :valign "center"
 		(box :width "30"
 			(button :class "btn-settings ${action-click == "" ? "no-hover" : ""}" :onclick {action-click} {icon}))
 		(scale :value {value}
