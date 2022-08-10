@@ -1,12 +1,10 @@
 #!/bin/bash
 DUNST="~/.config/dunst"
-id1="72"
-id2="73"
+TAG="fn"
 
-ARG=$1
 # $1=icon, $2=value, $3=summary
 alert() {
-	dunstify -u "low" -i "$DUNST/img/$1.png" -h int:value:$2 -h string:x-dunst-stack-tag:$ARG "Current $3: $2%"
+	dunstify -u "low" -i "$DUNST/img/$1.png" -h int:value:$2 -h string:x-dunst-stack-tag:$TAG "Current $3: $2%"
 }
 
 if [[ $1 = "vol" ]]; then
@@ -22,9 +20,9 @@ elif [[ $1 = "mute" ]]; then
 	if [[ $2 != "notify" ]]; then exit 0; fi
 	val=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '(?<=/  ).*?(?=%)' | head -n 1)
 	if [[ $(pactl get-sink-mute @DEFAULT_SINK@) = "Mute: yes" ]]; then
-		dunstify -u "low" -i "$DUNST/img/volume-mute.png" -h int:value:$val -h string:x-dunst-stack-tag:$ARG "Speakers muted"
+		dunstify -u "low" -i "$DUNST/img/volume-mute.png" -h int:value:$val -h string:x-dunst-stack-tag:$TAG "Speakers muted"
 	else
-		dunstify -u "low" -i "$DUNST/img/volume-up.png" -h int:value:$val -h string:x-dunst-stack-tag:$ARG "Speakers unmuted"
+		dunstify -u "low" -i "$DUNST/img/volume-up.png" -h int:value:$val -h string:x-dunst-stack-tag:$TAG "Speakers unmuted"
 	fi
 
 elif [[ $1 = "light" ]]; then
