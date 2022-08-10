@@ -1,0 +1,47 @@
+@import "colors.rasi"
+
+window {
+    transparency:                   "real";
+    background-color:               @window-bg;
+    text-color:                     @pfg;
+	width:							28.5%;
+	height:							0%;
+	y-offset:						5%;
+}
+mainbox {
+    background-color:               @alpha;
+    children:                       [ listview ];
+    padding:                        3.2% 2%;
+}
+
+listview {
+    background-color:               @alpha;
+    margin:                         0% 0% 0% 0%;
+    spacing:                        3%;
+    cycle:                          true;
+    dynamic:                        true;
+    layout:                         horizontal;
+}
+element {
+    background-color:               @elem-disabled;
+    text-color:                     @pfg-disabled;
+    orientation:                    horizontal;
+    border-radius:                  100%;
+	border-color:					@pbd;
+}
+element-text {
+    background-color:				inherit;
+    text-color:						inherit;
+	font:							"feather 40";
+    expand:                         true;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    margin:                         6.8% 4%;
+}
+element selected {
+    background-color:               @pse;
+    text-color:                     @pfg-se;
+    border:							0% 0.2% 0% 0%;
+    border-radius:                  100%;
+    border-color:					@bd;
+}

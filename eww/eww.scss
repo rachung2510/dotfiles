@@ -1,15 +1,4 @@
-$window-bg: #e8e9ec;
-$bar-bg: rgba(#e7d0f0,.8);
-$bg: #e7d0f0;
-$fg: #ffffff;
-$grey: #999999;
-$shade4: #8e24aa;
-$shade6: #ab47bc;
-$shade7: #ba68c8;
-$shade8: #ce93d8;
-$urgent: #eb4d4b; 
-$alpha: rgba(#ffffff,0);
-$white-alpha: rgba(#ffffff,.6);
+@import "light.scss";
 
 * {
 	all: unset;
@@ -138,12 +127,12 @@ button.selected:hover { background-color: $shade4; }
   padding: 0rem;
   font-family: "MesloLGM Nerd Font";
   font-size: 1.3em;
-  color: $shade6;
+  color: $bar-text;
 }
-.taskbar button:hover { color: $shade4; }
+.taskbar button:hover { color: $bar-hover; }
 
 .bar-widget {
-	background: $white-alpha;
+	background: $bar-widget-bg;
 	margin: 0 5px;
 	border-radius: 50px;
 }
@@ -174,10 +163,7 @@ button.selected:hover { background-color: $shade4; }
 }
 
 // Control Panel
-.control {
-	background-color: $white-alpha;
-	padding: .5rem 0;
-}
+.control { padding: .5rem 0; }
 .batt-icon { font-size: 1.2em; }
 .batt-label { 
 	font-size: .9rem;
@@ -190,7 +176,6 @@ button.selected:hover { background-color: $shade4; }
   font-weight: bold;
   padding: .8rem  0 .2rem 0;
   margin-bottom: .5rem;
-  color: $shade7;
 }
 .time-min { margin-top: -.8rem; }
 

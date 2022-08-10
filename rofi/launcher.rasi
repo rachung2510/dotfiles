@@ -1,12 +1,3 @@
-/*
- *
- * Author  : Aditya Shakya
- * Mail    : adi1090x@gmail.com
- * Github  : @adi1090x
- * Twitter : @adi1090x
- *
- */
-
 configuration {
 	font:							"Fira Sans 12";
     show-icons:                     true;
@@ -21,10 +12,10 @@ configuration {
 
 window {
     transparency:                   "real";
-    background-color:               @bg;
-    text-color:                     @fg;
+    background-color:               @lbg;
+    text-color:                     @lfg;
 	border:							0px;
-	border-color:					@ac;
+	border-color:					@lac;
     border-radius:                  0px;
 	width:							100%;
 	height:							100%;
@@ -33,15 +24,15 @@ window {
 prompt {
     enabled: 						true;
 	padding: 						0.30% 1% 0% -0.5%;
-	background-color: 				@al;
+	background-color: 				@alpha;
 	text-color: 					#f9f9f9;
 	font:							"NotaSans Nerd Font 12";
 }
 
 entry {
-    background-color:               @al;
+    background-color:               @alpha;
     text-color:                     #f9f9f9;
-    placeholder-color:              @bg;
+    placeholder-color:              @lbg;
     expand:                         true;
     horizontal-align:               0;
     placeholder:                    "Search";
@@ -51,18 +42,18 @@ entry {
 
 inputbar {
 	children: 						[ prompt, entry ];
-    background-color:               @ac;
-    text-color:                     @bg;
+    background-color:               @lac;
+    text-color:                     @lbg;
     expand:                         false;
 	border:							0% 0% 0% 0%;
     border-radius:                  100%;
-	border-color:					@ac;
+	border-color:					@lac;
     margin:                         0% 54.5% 0% 0%;
     padding:                        1.5%;
 }
 
 listview {
-    background-color:               @al;
+    background-color:               @alpha;
     padding:                        0px;
     columns:                        10;
     spacing:                        0%;
@@ -72,18 +63,18 @@ listview {
 }
 
 mainbox {
-    background-color:               @al;
+    background-color:               @alpha;
 	border:							0% 0% 0% 0%;
     border-radius:                  0% 0% 0% 0%;
-	border-color:					@ac;
+	border-color:					@lac;
     children:                       [ inputbar, listview ];
     spacing:                       	2.5%;
     padding:                        20% 5% 20% 5%;
 }
 
 element {
-    background-color:               @al;
-    text-color:                     @fg;
+    background-color:               @alpha;
+    text-color:                     @lfg;
     orientation:                    vertical;
     border-radius:                  0%;
     padding:                        4% 0% 4% 0%;
@@ -99,7 +90,7 @@ element-icon {
 }
 
 element-text {
-    background-color: 				@al;
+    background-color: 				@alpha;
     text-color:       				inherit;
     expand:                         true;
     horizontal-align:               0.5;
@@ -108,9 +99,9 @@ element-text {
 }
 
 element selected {
-    background-color:               @se;
-    text-color:                     @fg;
+    background-color:               @lse;
+    text-color:                     @lfg;
 	border:							0% 0% 0.5% 0%;
     border-radius:                  25px;
-    border-color:                  	@ac;
+    border-color:                  	@lac;
 }

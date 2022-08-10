@@ -1,0 +1,84 @@
+/*
+ *
+ * Author  : Aditya Shakya
+ * Mail    : adi1090x@gmail.com
+ * Github  : @adi1090x
+ * Twitter : @adi1090x
+ *
+ */
+
+configuration {
+	font:							"MesloLGM Nerd Font 14";
+    show-icons:                     false;
+	icon-theme:						"Papirus";
+    drun-display-format:            "{name}";
+    disable-history:                false;
+	sidebar-mode:					false;
+}
+
+@import "colors.rasi"
+
+window {
+    transparency:                   "real";
+    background-color:               @window-bg;
+    text-color:                     @pfg;
+    height:                         100%;
+    width:                          12.25%;
+    location:                       west;
+}
+mainbox {
+    background-color:               inherit;
+    children:                       [ inputbar, listview ];
+    spacing:                        3%;
+    padding:                        4% 2% 0% 2%;
+}
+
+inputbar {
+	children:						[ textbox ];
+    background-color:               @pac;
+    text-color:                     @pfg-in;
+    expand:                         false;
+    border:							0%;
+    border-radius:                  100%;
+    margin:                         0%;
+    padding:                        0.5%;
+    position:                       center;
+}
+textbox {
+	expand:							false;
+	str:							"System";
+	background-color:				inherit;
+	text-color:						inherit;
+    padding:                        1% 1% 1% 2%;
+}
+
+listview {
+    background-color:               @alpha;
+    margin:                         0%;
+    spacing:                        3%;
+    cycle:                          true;
+    dynamic:                        true;
+    layout:                         vertical;
+}
+element {
+    background-color:               @elem;
+    text-color:                     @pfg;
+    orientation:                    vertical;
+    border-radius:                  100%;
+}
+element-text {
+    background-color:				inherit;
+    text-color:						inherit;
+	font:							"feather 32";
+    expand:                         true;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    margin:                         5% 0%;
+}
+element selected {
+    background-color:               @pse;
+    text-color:                     @pfg-se;
+    border:							0.2%;
+    border-radius:                  100%;
+    border-color:					@pbd;
+}

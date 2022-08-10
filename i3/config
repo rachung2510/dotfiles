@@ -13,19 +13,13 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-#font pango:monospace 8
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 11
-#font pango: NotoSansDisplay Nerd Font 12
 font pango: MesloLGM Nerd Font 11
 
 # start applications
 exec --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Tapping Enabled" 1
 exec --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Natural Scrolling Enabled" 1
 exec_always --no-startup-id picom -f &
-exec --no-startup-id feh --bg-scale ~/.config/i3/wallpapers/sailor-city.jpg
+exec --no-startup-id feh --bg-scale ~/.config/i3/wallpapers/light-wallpaper.jpg
 exec --no-startup-id i3-msg 'workspace $ws1';
 exec --no-startup-id ~/.config/i3/scripts/battery.sh &
 exec --no-startup-id ibus-daemon && ibus restart &
@@ -84,14 +78,9 @@ bindsym Mod1+F4 kill
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+d exec --no-startup-id "rofi -show run -modi run,drun,window -theme ~/.config/rofi-collection/dracula/dracula.rasi"
+bindsym $mod+d exec --no-startup-id "rofi -show run -modi run,drun,window -theme ~/.config/rofi/dracula-$(~/.config/i3/scripts/theme.sh -p).rasi"
 #bindsym $mod+d exec --no-startup-id rofi -show run -modi run -theme ~/.config/rofi-collection/dracula/dracula.rasi -run-shell-command '{terminal} -e bash -c "{cmd}; exec bash"'
 bindsym $mod+slash exec --no-startup-id ~/.config/rofi/bin/launcher_colorful
-# A more modern dmenu replacement is rofi:
-# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
-# There also is i3-dmenu-desktop which only displays applications shipping a
-# .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+j focus left
@@ -183,7 +172,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r restart; exec --no-startup-id eww reload
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec --no-startup-id ~/.config/rofi/bin/powermenu
 
@@ -216,8 +205,12 @@ set $bar-bg				#e7d0f0cc
 set $white-alpha		#ffffffb2
 set $dark-grey			#141c21
 set $light-grey			#f9f9f9
-set $inactive-bg		#f2f2f2
-set $inactive-text		#908c97
+# inactive-bg-light		#f2f2f2
+# inactive-text-light	#908c97
+# inactive-bg-dark		#2a2a2a
+# inactive-text-dark	#b4b4b4
+set $inactive-bg		#2a2a2a
+set $inactive-text		#b4b4b4
 set $urgent				#eb4d4b
 set $shade4				#8e24aa
 set $shade8				#ce93d8
@@ -254,8 +247,8 @@ workspace_auto_back_and_forth no
 hide_edge_borders both
 for_window [class="Org.gnome.Nautilus"] floating enable
 for_window [class="floatingControl"] floating enable
-for_window [window_role="dc1"] floating enable, move position -2px 20ppt, move up 3px, resize set width 454 px height 204 px
-no_focus [window_role="dc1"]
+for_window [window_role="cava"] floating enable, move position -2px 20ppt, move up 3px, resize set width 454 px height 204 px
+no_focus [window_role="cava"]
 for_window [class="Gnome-calculator"] floating enable
 
 # custom workspace allocation
@@ -279,10 +272,11 @@ bindsym XF86PowerOff exec --no-startup-id ~/.config/rofi/bin/powermenu
 bindsym $mod+m exec --no-startup-id ~/.config/i3/scripts/eww.sh sidebar
 bindsym Mod1+Tab workspace next
 bindsym Mod1+Shift+Tab workspace prev
+bindsym $mod+Tab exec ~/.config/i3/scripts/theme.sh
 
 # gaps & radius
 for_window [class="^.*"] border pixel 3
-for_window [window_role="dc1"] border pixel 0
+for_window [window_role="cava"] border pixel 0
 gaps inner 7
 gaps top 9
 gaps outer 0

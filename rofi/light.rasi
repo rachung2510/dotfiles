@@ -1,0 +1,31 @@
+@import "global.rasi"
+* {
+	window-bg:		#e8e9ec;
+	popup-bg:		#ab47bc99;
+	popup-bd:		@shade4;
+
+	// Powermenu
+	elem:			@light-purple;
+	pac:			@shade4;
+	pse:			@shade7;
+	pfg:			@shade4;
+	pfg-se:			@fg;
+	pfg-in:			@fg;
+	pbd:			@shade4;
+	// Theme
+	elem-disabled:	#999;
+	pfg-disabled:	@fg;
+
+	// Dmenu
+	dbg:			#ebd8f3cc;
+	dac:			@shade6;
+	dac-al:			#ab47bc73;
+	dfg:			#f9f9f9;
+	dfga:			#333;
+
+	// Launcher
+	lbg:			#f1e4f6e5;
+	lse:			#f9f9f9;
+	lfg:			#141c21;
+	lac:			#ab47bc;
+}

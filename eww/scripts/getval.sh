@@ -15,7 +15,10 @@ fi
 if [[ $1 = "cpu" ]]; then
 	val=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}')
 elif [[ $1 = "ram" ]]; then
-	val=$(free | grep Mem | awk '{print $3/$2 * 100.0}')
+	val=$(echo "scale=2; $(free -m |grep Mem | awk '{print $3}')/1000" | bc)
+	echo $val
+	exit 0
+#	val=$(free | grep Mem | awk '{print $3/$2 * 100.0}')
 elif [[ $1 = "hdd" ]]; then
 	val=$(df / | awk 'END{ print $(NF-1) }')
 	if [[ $2 = "used" ]]; then

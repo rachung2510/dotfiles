@@ -1,0 +1,21 @@
+@import "global.scss";
+
+// Sidebar
+$window-bg: #333;
+$bg: $dark-purple;
+$text: #e5e5e5;
+$text-time: $text;
+$text-label: $shade8;
+$trough: $shade5;
+$trough-hl: $shade8;
+$btn-select: $shade7;
+$btn-hover: $shade4;
+$trough-disabled: #666;
+$trough-hl-disabled: $grey;
+$trough-urgent: #993733;
+
+// Taskbar
+$bar-bg: rgba(#653f74,.4);
+$bar-widget-bg: rgba(#333,.6);
+$bar-text: $shade8;
+$bar-hover: $shade6;

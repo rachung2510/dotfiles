@@ -77,16 +77,19 @@ ${batt-tooltip}"
 	(radialmeter	
 		:value "${ram-val}"
 		:text " RAM"
+		:label "${ram-val}G"
 		:tooltip ""))
 (defwidget cpu []
 	(radialmeter	
 		:value "${cpu-val}"
 		:text " CPU"
+		:label "${cpu-val}%"
 		:tooltip ""))
 (defwidget hdd []
 	(radialmeter	
 		:value	"${hdd-val}"
 		:text " HDD"
+		:label "${hdd-val}%"
 		:tooltip "${hdd-used}M used, ${hdd-avail}M available"))
 
 (defwidget quickbuttons []
@@ -101,7 +104,7 @@ ${batt-tooltip}"
 
 (defwidget pannel []
 	 (box :class "sidepannel" :orientation "v" :space-evenly "false"
-	 	 (box :class "container" :height top-height)
+	 	 ;; (box :class "container" :height top-height)
 		 (box :class "container time" :orientation "v" :space-evenly "false"
 			 (time))
 		 (box :class "cava" :height cava-height)
@@ -116,7 +119,7 @@ ${batt-tooltip}"
 				 (ram)
 				 (hdd)))
 			 (quickbuttons))
-	 	 (box :class "container" :height end-height)
+	 	 ;; (box :class "container" :height end-height)
 ))
 
 (defwindow sidebar

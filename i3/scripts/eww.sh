@@ -10,14 +10,20 @@ RETURN=36
 if [[ "$(eww ping)" = "" ]]; then
 	eww daemon
 fi
-
-if [[ $open_windows = *"$1"* ]]; then
-	eww close $1
-	[ $1 = "sidebar" ] && pkill cava && eww open bar
+close() {
+	eww close sidebar && pkill cava
+	eww open bar
 	killall eww.sh
+}
+
+if [[ $1 != "" ]] && [[ $open_windows = *"$1"* ]]; then
+	[ $1 = "bar" ] && eww close bar
+	[ $1 = "sidebar" ] && close
+
 elif [[ $1 = "sidebar" ]]; then
 	eww close bar
-	gnome-terminal --hide-menubar --window-with-profile=dc1 --role=dc1 -- cava -p ~/.config/cava/config &
+	theme=$(~/.config/i3/scripts/theme.sh -p)
+	gnome-terminal --hide-menubar --window-with-profile=cava-$theme --role=cava -- cava -p ~/.config/cava/config &
 	sleep 0.15 && eww open sidebar
 	xinput test-xi2 --root 3 | grep -A2 --line-buffered RawKeyRelease | while read -r line; do
 	    if [[ $line == *"detail"* ]]; then
@@ -29,9 +35,10 @@ elif [[ $1 = "sidebar" ]]; then
 			fi
 		fi
 	done
+
 elif [[ $1 = "bar" ]]; then
 	eww open bar
 
 else
-	killall eww.sh
+	close
 fi

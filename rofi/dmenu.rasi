@@ -1,12 +1,3 @@
-/*
- * ROFI color theme
- *
- * Based on Something Found in the Internet
- *
- * User: Contributors
- * Copyright: *!
- */
-
 configuration {
 	font: "MesloLGM Nerd Font Medium 13";
 
@@ -21,27 +12,13 @@ configuration {
 	disable-history: true;
 }
 
+@import "colors.rasi"
+
 * {
 	border: 0;
 	margin: 0;
 	padding: 0;
 	spacing: 0;
-
-	shade4: #ab47bcff;
-	shade4-alpha: #ab47bc73;
-	shade7: #ba68c8;
-	shade7-alpha: #ba68c873;
-	alpha: #00ff0000;
-	bg-dark: #333333cc;
-	bg-light: #ebd8f3cc;
-	text-light: #f9f9f9;
-	text-dark: #333333;
-
-	bg: @bg-light;
-	accent: @shade4;
-	accent-alpha: @shade4-alpha;
-	fg: @text-light;
-	fga: @text-dark;
 }
 
 window { 
@@ -55,28 +32,28 @@ mainbox {
 
 inputbar {
 	children: [prompt, entry];
-	background-color: @accent-alpha;
-	text-color: @fg;
-}
-entry {
-	background-color: inherit;
-	text-color: inherit;
-	padding: 12px 3px;
+	background-color: @dac-al;
+	text-color: @dfg;
 }
 prompt {
 	background-color: inherit;
 	text-color: inherit;
 	padding: 12px;
 }
+entry {
+	background-color: inherit;
+	text-color: inherit;
+	padding: 12px 3px;
+}
 
 listview {
 	lines: 8;
-	background-color: @bg;
+	background-color: @dbg;
 }
 element {
 	children: [element-icon, element-text];
 	background-color: @alpha;
-	text-color: @fga;
+	text-color: @dfga;
 }
 element-icon { 
 	padding: 10px 10px;
@@ -87,4 +64,4 @@ element-text {
 	background-color: inherit;
 	text-color: inherit;
 }
-element-text selected { text-color: @accent; }
+element-text selected { text-color: @dac; }
