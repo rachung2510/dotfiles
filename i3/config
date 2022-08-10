@@ -18,9 +18,9 @@ font pango: MesloLGM Nerd Font 11
 # start applications
 exec --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Tapping Enabled" 1
 exec --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Natural Scrolling Enabled" 1
-exec_always --no-startup-id picom -f &
-exec --no-startup-id feh --bg-scale ~/.config/i3/wallpapers/light-wallpaper.jpg
-exec --no-startup-id i3-msg 'workspace $ws1';
+exec_always --no-startup-id picom --experimental-backends -f &
+exec --no-startup-id feh --bg-scale ~/.config/i3/wallpapers/$(~/.config/i3/scripts/theme.sh -p)-wallpaper.jpg
+exec --no-startup-id i3-msg 'workspace $ws1'
 exec --no-startup-id ~/.config/i3/scripts/battery.sh &
 exec --no-startup-id ibus-daemon && ibus restart &
 exec --no-startup-id eww daemon && eww open bar
@@ -78,9 +78,9 @@ bindsym Mod1+F4 kill
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+d exec --no-startup-id "rofi -show run -modi run,drun,window -theme ~/.config/rofi/dracula-$(~/.config/i3/scripts/theme.sh -p).rasi"
+bindsym $mod+d exec --no-startup-id "rofi -show run -modi run,drun,window -theme ~/.config/rofi/dmenu.rasi"
 #bindsym $mod+d exec --no-startup-id rofi -show run -modi run -theme ~/.config/rofi-collection/dracula/dracula.rasi -run-shell-command '{terminal} -e bash -c "{cmd}; exec bash"'
-bindsym $mod+slash exec --no-startup-id ~/.config/rofi/bin/launcher_colorful
+bindsym $mod+slash exec --no-startup-id "rofi -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launcher.rasi"
 
 # change focus
 bindsym $mod+j focus left
@@ -146,16 +146,16 @@ set $ws9 "9 "
 set $ws10 "10 "
 
 # switch to workspace
-bindsym $mod+1 exec --no-startup-id eww close sidebar && pkill cava; workspace number $ws1
-bindsym $mod+2 exec --no-startup-id eww close sidebar && pkill cava; workspace number $ws2
-bindsym $mod+3 exec --no-startup-id eww close sidebar && pkill cava; workspace number $ws3
-bindsym $mod+4 exec --no-startup-id eww close sidebar && pkill cava; workspace number $ws4
-bindsym $mod+5 exec --no-startup-id eww close sidebar && pkill cava; workspace number $ws5
-bindsym $mod+6 exec --no-startup-id eww close sidebar && pkill cava; workspace number $ws6
-bindsym $mod+7 exec --no-startup-id eww close sidebar && pkill cava; workspace number $ws7
-bindsym $mod+8 exec --no-startup-id eww close sidebar && pkill cava; workspace number $ws8
-bindsym $mod+9 exec --no-startup-id eww close sidebar && pkill cava; workspace number $ws9
-bindsym $mod+0 exec --no-startup-id eww close sidebar && pkill cava; workspace number $ws10
+bindsym $mod+1 exec --no-startup-id ~/.config/i3/scripts/eww.sh; workspace number $ws1
+bindsym $mod+2 exec --no-startup-id ~/.config/i3/scripts/eww.sh; workspace number $ws2
+bindsym $mod+3 exec --no-startup-id ~/.config/i3/scripts/eww.sh; workspace number $ws3
+bindsym $mod+4 exec --no-startup-id ~/.config/i3/scripts/eww.sh; workspace number $ws4
+bindsym $mod+5 exec --no-startup-id ~/.config/i3/scripts/eww.sh; workspace number $ws5
+bindsym $mod+6 exec --no-startup-id ~/.config/i3/scripts/eww.sh; workspace number $ws6
+bindsym $mod+7 exec --no-startup-id ~/.config/i3/scripts/eww.sh; workspace number $ws7
+bindsym $mod+8 exec --no-startup-id ~/.config/i3/scripts/eww.sh; workspace number $ws8
+bindsym $mod+9 exec --no-startup-id ~/.config/i3/scripts/eww.sh; workspace number $ws9
+bindsym $mod+0 exec --no-startup-id ~/.config/i3/scripts/eww.sh; workspace number $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -174,7 +174,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart; exec --no-startup-id eww reload
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec --no-startup-id ~/.config/rofi/bin/powermenu
+bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu.sh
 
 # resize window (you can also use the mouse for that)
 set $resize-step-small 5
@@ -209,8 +209,8 @@ set $light-grey			#f9f9f9
 # inactive-text-light	#908c97
 # inactive-bg-dark		#2a2a2a
 # inactive-text-dark	#b4b4b4
-set $inactive-bg		#2a2a2a
-set $inactive-text		#b4b4b4
+set $inactive-bg		#f2f2f2
+set $inactive-text		#908c97
 set $urgent				#eb4d4b
 set $shade4				#8e24aa
 set $shade8				#ce93d8
