@@ -20,7 +20,7 @@ cd i3lock-color
 ./install-i3lock-color.sh
 ```
 - Launcher, Powermenu: [Rofi](https://github.com/adi1090x/rofi)
-- Dmenu: [Rofi](https://github.com/Murzchnvok/rofi-collection) (Dracula)
+- Dmenu: [Rofi](https://github.com/Murzchnvok/rofi-collection)
 - Compositor: Picom
 - Notifications: [Dunst](https://github.com/dunst-project/dunst)
 ```
