@@ -70,6 +70,7 @@ sudo apt-get install papirus-icon-theme
 - GTK theme: [Orchis](https://github.com/vinceliuice/Orchis-theme)
 ```
 ./install.sh -t purple -c light
+./install.sh -t purple -c dark
 ```
 
 - Spotify theme: [Spicetify](https://spicetify.app/docs/getting-started) (Sleek - Elementary)
