@@ -134,9 +134,9 @@
     ### Legacy
     force_xinerama = false
 
-    mouse_left_click = context, close_current
-    mouse_middle_click = context, close_current
-    mouse_right_click = context, close_all
+    mouse_left_click = context
+    mouse_middle_click = context
+    mouse_right_click = context
 
 	enable_posix_regex = true
 
@@ -194,3 +194,8 @@
 	summary = "Speakers muted"
 	highlight = "#cccccc"
 	background = "#8c8c8cb2"
+[Telegram]
+	appname = "Telegram Desktop"
+	background = "#0399e2bf"
+	frame_color = "#242daa"
+	timeout = 20
