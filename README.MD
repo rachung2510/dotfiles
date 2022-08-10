@@ -19,10 +19,9 @@ git clone https://github.com/Raymo111/i3lock-color.git
 cd i3lock-color
 ./install-i3lock-color.sh
 ```
-- Launcher, Powermenu: [Rofi](https://github.com/adi1090x/rofi) (Launcher - Colorful, Powermenu - Column_circle)
+- Launcher, Powermenu: [Rofi](https://github.com/adi1090x/rofi)
 - Dmenu: [Rofi](https://github.com/Murzchnvok/rofi-collection) (Dracula)
 - Compositor: Picom
-- ~~Bar: [Polybar](https://github.com/adi1090x/polybar-themes) (Colorblocks)~~
 - Notifications: [Dunst](https://github.com/dunst-project/dunst)
 ```
 sudo apt install libxinerama-dev libxrandr-dev libxss-dev libnotify-dev libgdk-pixbuf2.0-dev
