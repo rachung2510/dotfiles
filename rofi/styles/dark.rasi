@@ -1,7 +1,7 @@
 @import "global.rasi"
 * {
 	window-bg:		#333;
-	popup-bg:		#ab47bc99;
+	popup-bg:		#ba68c899;
 	popup-bd:		@shade4;
 
 	// Powermenu
