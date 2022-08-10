@@ -20,14 +20,15 @@ disable_bluetooth(){
 }
 
 if [[ $1 = "lock" ]]; then
-	pkill cava && eww close-all
+	pkill cava && eww close sidebar
 	playerctl -p playerctld pause
-	i3lock -c $bg -k --date-str="%a, %d %b %Y" --radius=100 --ring-width=20 \
+	i3lock -c $bg -k --date-str="%a, %d %b %Y" --radius=140 --ring-width=20 \
 		--ring-color=$shade8 --ringwrong-color=$urgent --keyhl-color=$shade4 --separator-color=$alpha \
 		--time-color=$fg --date-color=$fg --verif-color=$fg --wrong-color=$fg \
+		--wrong-text="incorrect" \
 		--ringver-color=$ver_ring --insidever-color=$ver \
 		--line-color=$alpha \
-		--time-font=$font --date-font=$font --verif-size=24 \
+		--time-font=$font --date-font=$font --time-size=45 --date-size=20 --verif-size=30 \
 		--layout-font=$font --verif-font=$font --wrong-font=$font
 
 elif [[ $1 = "sleep" ]]; then
