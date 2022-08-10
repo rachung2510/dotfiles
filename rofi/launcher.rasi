@@ -8,7 +8,7 @@ configuration {
 	sidebar-mode: 					false;
 }
 
-@import "colors.rasi"
+@import "styles/colors.rasi"
 
 window {
     transparency:                   "real";

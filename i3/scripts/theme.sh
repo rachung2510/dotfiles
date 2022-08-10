@@ -5,7 +5,7 @@ GTK2CONF="$HOME/.gtkrc-2.0"
 EWWCONF="$HOME/.config/eww/eww.scss"
 ALACONF="$HOME/.config/alacritty/alacritty.yml"
 I3CONF="$HOME/.config/i3/config"
-ROFICONF="$HOME/.config/rofi/colors.rasi"
+ROFICONF="$HOME/.config/rofi/styles/colors.rasi"
 
 line=$(grep "gtk-theme-name" $GTK3CONF)
 uu="${line##*-}"
@@ -29,10 +29,10 @@ case $chosen in
 esac
 
 feh --bg-scale ~/.config/i3/wallpapers/$ll-wallpaper.jpg
-sed -i -e "s/@import .*/@import \"$ll.scss\";/g" $EWWCONF
+sed -i -e "s:@import .*:@import \"styles/$ll.scss\";:g" $EWWCONF
 sed -i -e "s/gtk-theme-name=.*/gtk-theme-name=Orchis-Purple-$uu/g" $GTK2CONF
 sed -i -e "s/gtk-theme-name=.*/gtk-theme-name=Orchis-Purple-$uu/g" $GTK3CONF
-sed -i -e "s@config/alacritty/.*@config/alacritty/$ll.yml@g" $ALACONF
+sed -i -e "s:config/alacritty/.*:config/alacritty/$ll.yml:g" $ALACONF
 
 sed -i -e "s/@import .*/@import \"$ll\"/g" $ROFICONF
 

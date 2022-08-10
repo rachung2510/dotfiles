@@ -12,7 +12,7 @@ configuration {
 	disable-history: true;
 }
 
-@import "colors.rasi"
+@import "styles/colors.rasi"
 
 * {
 	border: 0;
