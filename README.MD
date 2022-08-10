@@ -11,18 +11,17 @@ meson compile -C .
 sudo meson install -C .
 logout
 ```
+i3lock-color
 ```
-# i3lock-color
 # sudo apt install i3lock
 sudo apt install autoconf gcc make pkg-config libpam0g-dev libcairo2-dev libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev
 git clone https://github.com/Raymo111/i3lock-color.git
 cd i3lock-color
 ./install-i3lock-color.sh
 ```
-- Launcher, Powermenu: [Rofi](https://github.com/adi1090x/rofi) (Launcher - Colorful, Powermenu - Column_circle)
-- Dmenu: [Rofi](https://github.com/Murzchnvok/rofi-collection) (Dracula)
+- Launcher, Powermenu: [Rofi](https://github.com/adi1090x/rofi)
+- Dmenu: [Rofi](https://github.com/Murzchnvok/rofi-collection)
 - Compositor: Picom
-- ~~Bar: [Polybar](https://github.com/adi1090x/polybar-themes) (Colorblocks)~~
 - Notifications: [Dunst](https://github.com/dunst-project/dunst)
 ```
 sudo apt install libxinerama-dev libxrandr-dev libxss-dev libnotify-dev libgdk-pixbuf2.0-dev
@@ -71,6 +70,7 @@ sudo apt-get install papirus-icon-theme
 - GTK theme: [Orchis](https://github.com/vinceliuice/Orchis-theme)
 ```
 ./install.sh -t purple -c light
+./install.sh -t purple -c dark
 ```
 
 - Spotify theme: [Spicetify](https://spicetify.app/docs/getting-started) (Sleek - Elementary)
