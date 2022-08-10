@@ -1,14 +1,13 @@
 configuration {
 	font: "MesloLGM Nerd Font Medium 13";
-
 	drun { display-name: ""; }
 	run { display-name: ""; }
 	window { display-name: ""; }
-
-	timeout {
-		delay: 10;
-		action: "kb-cancel";
-	}
+	matching: "regex";
+	// timeout {
+	// 	delay: 10;
+	// 	action: "kb-cancel";
+	// }
 	disable-history: true;
 }
 
@@ -47,7 +46,7 @@ entry {
 }
 
 listview {
-	lines: 8;
+	lines: 10;
 	background-color: @dbg;
 }
 element {
