@@ -5,7 +5,6 @@ HIGH_THRESH=95
 
 pid=$(pgrep battery.sh)
 if [[ $(echo "$pid" | awk -F '[ ]' '{print (NF?NF-1:0)}') != "0" ]]; then
-	echo "$pid"
 	exit 0
 fi
 
@@ -21,7 +20,7 @@ do
 	else
 		if [[ $POWER -le $LOW_THRESH ]]; then
 			duration=$(acpi -b | grep -oP '(?<=%, ).*(?= remaining)')
-			dunstify -u critical -i "~/.config/dunst/img/battery-critical.png" -h "string:x-dunst-stack-tag:batt-crit" "Your battery is running low" "${duration} remaining"
+			dunstify -u critical -i "~/.config/dunst/img/battery-critical.png" -h "string:x-dunst-stack-tag:batt-crit" "Your battery is running low" "${duration%:*} remaining"
 		fi
 	fi
 sleep 60
