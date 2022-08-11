@@ -7,15 +7,7 @@ font:
     family: MesloLGM Nerd Font
 
 import:
- - ~/.config/alacritty/light.yml
-
-# hints:
-#   start:
-#     foreground: '#1d1f21'
-#     background: '#e9ff5e'
-#   end:
-#     foreground: '#e9ff5e'
-#     background: '#1d1f21'
+ - ~/.config/alacritty/dark.yml
 
 cursor:
   style:
