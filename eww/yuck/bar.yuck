@@ -5,6 +5,10 @@
 		(label :class "${(ws-mode == "") ? "" : "ws-mode"}" :text ws-mode)
 ))
 
+(defwidget lang[]
+	(label :class "lang" :text lang-val)
+)
+
 (defwidget volume []
 	(eventbox :onhover "eww update vol-tooltip=\"$(bash scripts/tooltip.sh vol)\""
 	(button :tooltip "Volume: ${volume-val}%${vol-tooltip}"
@@ -20,7 +24,6 @@
 				batt-icon)
 		(label :class "batt-label" :text "${batt-val}%")
 ))
-
 (defwidget control []
 	(box :orientation "v" 
 		 :space-evenly "false"
@@ -52,6 +55,7 @@
 		 :vexpand "false"
 		 :valign "end" 
 		 :spacing 5
+(lang)
 (control)
 (time-bar)))
 

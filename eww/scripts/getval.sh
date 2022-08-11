@@ -1,8 +1,7 @@
 #!/bin/bash
 
 if [[ $1 = "vol" ]]; then
-	echo "$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '(?<=/  ).*?(?=%)' | head -n 1)"
-#	echo "$(amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%')"
+	echo "$(amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%')"
 	exit 0
 elif [[ $1 = "light" ]]; then
 	echo "100*$(brightnessctl g)/$(brightnessctl m)" | bc
@@ -10,6 +9,12 @@ elif [[ $1 = "light" ]]; then
 elif [[ $1 = "batt" ]]; then
 	echo "$(acpi -b)" | grep -oP '(?<=, ).*(?=%,)'
 	exit 0
+elif [[ $1 = "lang" ]]; then
+	case  "$(ibus engine)" in
+		"xkb:us::eng") echo "EN";;
+		"libpinyin") echo "拼";;
+		"anthy") echo "ち" ;;
+	esac
 fi
 
 if [[ $1 = "cpu" ]]; then

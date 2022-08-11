@@ -37,6 +37,8 @@
 
 (deflisten workspace "bash scripts/workspace.sh")
 (deflisten ws-mode "bash scripts/wsmode.sh")
+(defpoll lang-val :interval "1s" "bash scripts/getval.sh lang")
+
 (include "./yuck/method.yuck")
 (include "./yuck/sidebar.yuck")
 (include "./yuck/bar.yuck")
