@@ -32,7 +32,6 @@ if [[ $1 = "lock" ]]; then
 		--layout-font=$font --verif-font=$font --wrong-font=$font
 
 elif [[ $1 = "sleep" ]]; then
-#	pkill cava & eww close-all
 	amixer set Master mute
 	disable_bluetooth
 	~/.config/i3/scripts/poweractions.sh "lock" &&

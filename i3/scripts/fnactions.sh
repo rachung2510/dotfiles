@@ -8,8 +8,8 @@ alert() {
 }
 
 if [[ $1 = "vol" ]]; then
-	val=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '(?<=/  ).*?(?=%)' | head -n 1)
-	eww update volume-val="$(bash ~/.config/eww/scripts/getval.sh vol)"
+	val="$(bash ~/.config/eww/scripts/getval.sh vol)"
+	eww update volume-val=$val
 	alert "volume-$2" $val "volume"
 
 elif [[ $1 = "mute" ]]; then
@@ -18,7 +18,7 @@ elif [[ $1 = "mute" ]]; then
     eww update mute-bool=$(bash ~/.config/eww/scripts/getbool.sh mute) &&
     eww update vol-literal="$(eww get vol-literal)"
 	if [[ $2 != "notify" ]]; then exit 0; fi
-	val=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '(?<=/  ).*?(?=%)' | head -n 1)
+	val="$(bash ~/.config/eww/scripts/getval.sh vol)"
 	if [[ $(pactl get-sink-mute @DEFAULT_SINK@) = "Mute: yes" ]]; then
 		dunstify -u "low" -i "$DUNST/img/volume-mute.png" -h int:value:$val -h string:x-dunst-stack-tag:$TAG "Speakers muted"
 	else
@@ -26,8 +26,8 @@ elif [[ $1 = "mute" ]]; then
 	fi
 
 elif [[ $1 = "light" ]]; then
-	val=$(echo "100*$(brightnessctl g)/$(brightnessctl m)" | bc)
-	eww update light-val="$(bash ~/.config/eww/scripts/getval.sh light)"
+	val="$(bash ~/.config/eww/scripts/getval.sh light)"
+	eww update light-val=$val
 	eww update light-icon="$(bash ~/.config/eww/scripts/geticon.sh light)"
 	alert "brightness-$2" $val "brightness"
 fi
