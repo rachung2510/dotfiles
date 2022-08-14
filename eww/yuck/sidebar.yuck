@@ -76,7 +76,7 @@ ${batt-tooltip}"
 (defwidget ram []
 	(radialmeter	
 		:value "${ram-val}"
-		:text " RAM"
+		:text " RAM"
 		:label "${ram-val}G"
 		:tooltip ""))
 (defwidget cpu []
