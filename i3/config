@@ -79,7 +79,6 @@ bindsym Mod1+F4 kill
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id dmenu_run
 bindsym $mod+d exec --no-startup-id "rofi -show run -modi run,drun,window -theme ~/.config/rofi/dmenu.rasi"
-#bindsym $mod+d exec --no-startup-id rofi -show run -modi run -theme ~/.config/rofi-collection/dracula/dracula.rasi -run-shell-command '{terminal} -e bash -c "{cmd}; exec bash"'
 bindsym $mod+slash exec --no-startup-id "rofi -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launcher.rasi"
 
 # change focus
@@ -140,7 +139,7 @@ set $ws3 "3 "
 set $ws4 "4 "
 set $ws5 "5 "
 set $ws6 "6 "
-set $ws7 "7 "
+set $ws7 "7 "
 set $ws8 "8 "
 set $ws9 "9 "
 set $ws10 "10 "
@@ -179,17 +178,18 @@ bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu.sh
 # resize window (you can also use the mouse for that)
 set $resize-step-small 5
 set $resize-step 10
+set $resize-step-large 20
 mode "resize" {
-	bindsym j resize shrink width $resize-step-small px or $resize-step-small ppt
-	bindsym k resize grow height $resize-step-small px or $resize-step-small ppt
-	bindsym l resize shrink height $resize-step-small px or $resize-step-small ppt
-	bindsym semicolon resize grow width $resize-step-small px or $resize-step-small ppt
+	bindsym j resize shrink width $resize-step px or $resize-step-small ppt
+	bindsym k resize grow height $resize-step px or $resize-step-small ppt
+	bindsym l resize shrink height $resize-step px or $resize-step-small ppt
+	bindsym semicolon resize grow width $resize-step px or $resize-step-small ppt
 
 	# same bindings, but for the arrow keys
-	bindsym Left resize shrink width $resize-step px or $resize-step ppt
-	bindsym Down resize grow height $resize-step px or $resize-step ppt
-	bindsym Up resize shrink height $resize-step px or $resize-step ppt
-	bindsym Right resize grow width $resize-step px or $resize-step ppt
+	bindsym Left resize shrink width $resize-step-large px or $resize-step ppt
+	bindsym Down resize grow height $resize-step-large px or $resize-step ppt
+	bindsym Up resize shrink height $resize-step-large px or $resize-step ppt
+	bindsym Right resize grow width $resize-step-large px or $resize-step ppt
 
 	# back to normal: Enter or Escape or $mod+r
 	bindsym Return mode "default"
@@ -209,8 +209,8 @@ set $light-grey			#f9f9f9
 # inactive-text-light	#908c97
 # inactive-bg-dark		#2a2a2a
 # inactive-text-dark	#b4b4b4
-set $inactive-bg		#2a2a2a
-set $inactive-text		#b4b4b4
+set $inactive-bg		#f2f2f2
+set $inactive-text		#908c97
 set $urgent				#eb4d4b
 set $shade4				#8e24aa
 set $shade8				#ce93d8
@@ -256,14 +256,15 @@ for_window [class="Gnome-calculator"] floating enable
 for_window [class="Spotify"] move to workspace $ws10
 for_window [title="WhatsApp -"] move to workspace $ws8
 for_window [class="zoom"] move to workspace $ws8
-assign [instance="minecraft-launcher"] $ws9
-assign [class="Minecraft*"] $ws9
 assign [class="Google-chrome"] $ws1
 assign [class="Microsoft-edge"] $ws1
-assign [class="Steam"] $ws9
-assign [class="Stardew Valley"] $ws9
+assign [class="obsidian"] $ws7
 assign [class="TelegramDesktop"] $ws8
 assign [class="Thunderbird"] $ws8
+assign [instance="minecraft-launcher"] $ws9
+assign [class="Minecraft*"] $ws9
+assign [class="Steam"] $ws9
+assign [class="Stardew Valley"] $ws9
 
 # custom keybinds
 bindsym $mod+e exec --no-startup-id xdg-open .
@@ -274,6 +275,7 @@ bindsym $mod+m exec --no-startup-id ~/.config/i3/scripts/eww.sh sidebar
 bindsym Mod1+Tab workspace next
 bindsym Mod1+Shift+Tab workspace prev
 bindsym $mod+Tab exec ~/.config/i3/scripts/theme.sh
+bindsym $mod+b	exec ~/.config/i3/scripts/eww.sh bar
 
 # gaps & radius
 for_window [class="^.*"] border pixel 3
