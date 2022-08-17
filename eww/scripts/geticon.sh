@@ -4,15 +4,15 @@ batt_icons=("" "" "" "" "" "")
 light_icons=("" "" "")
 
 if [[ $1 = "vol" ]]; then
-	mute=$(amixer -D pulse sget Master | grep 'off')
-	if [[ $mute != "" ]]; then
+	mute=$(eww get mute-bool)
+	if [[ $mute = "disabled" ]]; then
 		echo ""
 	else
 		echo ""
 	fi
 
 elif [[ $1 = "light" ]]; then
-	level=$(echo 100*$(brightnessctl g)/$(brightnessctl m) | bc)
+	level=$(eww get light-val)
 	if [[ level -le 30 ]]; then ramp=0;
 	elif [[ level -le 60 ]]; then ramp=1;
 	else ramp=2; fi
@@ -24,7 +24,7 @@ elif [[ $1 = "batt" ]]; then
 		echo ""
 		exit 0
 	fi
-	level=$(acpi -b | grep -oP '(?<=, ).*(?=%,)')
+	level=$(eww get batt-val)
 	if [[ level -ge 99 ]]; then
 		echo ""
 		exit 0

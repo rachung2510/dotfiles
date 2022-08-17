@@ -7,7 +7,7 @@ elif [[ $1 = "light" ]]; then
 	echo "100*$(brightnessctl g)/$(brightnessctl m)" | bc
 	exit 0
 elif [[ $1 = "batt" ]]; then
-	echo "$(acpi -b)" | grep -oP '(?<=, ).*(?=%,)'
+	echo "$(acpi -b | grep "Battery 0" | grep -o '[0-9]\+%' | tr -d '%')"
 	exit 0
 elif [[ $1 = "lang" ]]; then
 	case  "$(ibus engine)" in

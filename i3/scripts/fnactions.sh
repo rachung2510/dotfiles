@@ -10,12 +10,14 @@ alert() {
 if [[ $1 = "vol" ]]; then
 	val="$(bash ~/.config/eww/scripts/getval.sh vol)"
 	eww update volume-val=$val
+    eww update mute-bool=$(bash ~/.config/eww/scripts/getbool.sh mute) &&
+    eww update vol-icon=$(bash ~/.config/eww/scripts/geticon.sh vol) &&
 	alert "volume-$2" $val "volume"
 
 elif [[ $1 = "mute" ]]; then
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
-    eww update vol-icon=$(bash ~/.config/eww/scripts/geticon.sh vol) &&
     eww update mute-bool=$(bash ~/.config/eww/scripts/getbool.sh mute) &&
+    eww update vol-icon=$(bash ~/.config/eww/scripts/geticon.sh vol) &&
     eww update vol-literal="$(eww get vol-literal)"
 	if [[ $2 != "notify" ]]; then exit 0; fi
 	val="$(bash ~/.config/eww/scripts/getval.sh vol)"
