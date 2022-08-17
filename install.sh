@@ -63,10 +63,10 @@ cd Orchis-theme
 # fonts
 mkdir ~/.fonts
 cd ~/.fonts
-wget https://github.com/adi1090x/rofi/blob/master/fonts/Icomoon-Feather.ttf -O Icomoon-Feather.ttf
-wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Meslo/M/Regular/complete/Meslo%20LG%20M%20Regular%20Nerd%20Font%20Complete.ttf -O MesloLGM-Regular-Nerd-Font.ttf
-wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Medium/complete/Fira%20Code%20Medium%20Nerd%20Font%20Complete.ttf -O FiraCode-Medium-Nerd-Font.ttf
-wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Iosevka/Medium/complete/Iosevka%20Medium%20Nerd%20Font%20Complete.ttf -O Iosevka-Medium-Nerd-Font.ttf
+wget https://github.com/adi1090x/rofi/blob/master/fonts/Icomoon-Feather.ttf
+wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Meslo/M/Regular/complete/Meslo%20LG%20M%20Regular%20Nerd%20Font%20Complete.ttf
+wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Medium/complete/Fira%20Code%20Medium%20Nerd%20Font%20Complete.ttf
+wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Iosevka/Medium/complete/Iosevka%20Medium%20Nerd%20Font%20Complete.ttf
 wget https://github.com/rachung2510/dotfiles/raw/master/FiraSans-Regular.ttf
 fc-cache -fv ~/.fonts
 
