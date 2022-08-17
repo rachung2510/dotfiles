@@ -46,6 +46,7 @@ sudo mv eww /usr/local/bin/
 - Terminal: Alacritty
 ```
 sudo add-apt-repository ppa:aslatter/ppa
+sudo apt update
 sudo apt install alacritty
 ```
 
