@@ -1,4 +1,4 @@
-@import "light.scss";
+@import "styles/light.scss";
 
 * {
 	all: unset;
@@ -31,7 +31,7 @@
 	color: $shade4;
 	transition: 0.6s;
 }
-.roundpannel.player { margin: .4rem .7rem 0 0; }
+.roundpannel.player { margin: .7rem .7rem 0 0; }
 .roundpannel.settings { padding: .7rem }
 .roundpannel.weather { padding: 1.2rem 1.2rem 1.1rem 1.2rem; }
 
@@ -103,7 +103,7 @@
 	background-color: $shade8;
 	border-radius: 100px;
 	margin: .3rem .8rem;
-	padding: 1rem 1rem;
+	padding: 1.3rem .5rem;
 	font-size: 1.5em;
 	color: $fg;
 	transition: 0.4s;
