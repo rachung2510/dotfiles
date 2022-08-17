@@ -9,7 +9,6 @@ mkdir build && cd build
 meson -Ddocs=true -Dmans=true ..
 meson compile -C .
 sudo meson install -C .
-logout
 ```
 i3lock-color
 ```
