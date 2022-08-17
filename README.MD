@@ -71,6 +71,8 @@ sudo apt install cava # music visualizer
 sudo add-apt-repository ppa:papirus/papirus
 sudo apt-get update
 sudo apt-get install papirus-icon-theme
+cd ~/dotfiles
+./papirus-folder-color.sh magenta
 ```
 
 - GTK theme: [Orchis](https://github.com/vinceliuice/Orchis-theme)
