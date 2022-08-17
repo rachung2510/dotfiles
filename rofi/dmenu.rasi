@@ -5,8 +5,8 @@ configuration {
 	window { display-name: ""; }
 	matching: "regex";
 	// timeout {
-	// 	delay: 10;
-	// 	action: "kb-cancel";
+	//	delay: 10;
+	//	action: "kb-cancel";
 	// }
 	disable-history: true;
 }
