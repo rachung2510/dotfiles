@@ -64,6 +64,7 @@ sudo usermod -aG video ${USER} # run brightnessctl without sudo
 sudo apt install acpi # for battery info
 sudo apt install maim xclip # for screenshot
 sudo apt install cava # music visualizer
+sudo apt install jq # jquery i3-msg workspaces for eww widgets
 ```
 
 ### Themes
