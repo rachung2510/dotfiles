@@ -10,7 +10,8 @@ status() {
 }
 
 metadata() {
-	player="$(playerctl metadata --format '{{playerName}}')"
+	player="$(playerctl metadata --format '{{playerName}}' 2>/dev/null)"
+	[[ $player = "" ]] && echo "" && return 0
 	title="$(playerctl metadata title)"
 	artist="$(playerctl metadata artist)"
 	if [[ $player = "spotify" ]]; then icon=""
@@ -29,9 +30,9 @@ if [[ $1 = "icon" ]]; then
 elif [[ $1 ==  "title" ]] || [[ $1 = "artist" ]]; then
 	playerctld daemon 2>/dev/null
 	metadata $1
-	playerctl -F metadata title | while read _; do
-    	metadata $1
-	done
+#	playerctl -F metadata title | while read _; do
+#    	metadata $1
+#	done
 
 elif [[ $1 == "action" ]]; then
 	if [[ "$(status -p)" = "Playing" ]]; then

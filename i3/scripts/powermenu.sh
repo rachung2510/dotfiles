@@ -2,11 +2,11 @@
 ROFIDIR="$HOME/.config/rofi"
 
 # Options
-shutdown=""
-reboot=""
-lock=""
-suspend=""
-logout=""
+shutdown=''
+reboot=''
+lock=''
+suspend=''
+logout=''
 
 # Confirmation
 confirm_exit() {

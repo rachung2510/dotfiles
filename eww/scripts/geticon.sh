@@ -38,7 +38,7 @@ elif [[ $1 = "batt" ]]; then
 	echo "${batt_icons[$ramp]}"
 
 elif [[ $1 = "wifi" ]]; then
-	if [[ "$(iwgetid -r)" = "" ]]; then echo ""
-	else echo ""; fi
+	if [[ "$(iwgetid -r)" = "" ]]; then echo "睊"
+	else echo "直"; fi
 
 fi

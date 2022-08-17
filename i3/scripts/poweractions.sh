@@ -22,7 +22,7 @@ disable_bluetooth(){
 if [[ $1 = "lock" ]]; then
 	pkill cava && eww close sidebar
 	playerctl -p playerctld pause
-	i3lock -c $bg -k --date-str="%a, %d %b %Y" --radius=140 --ring-width=20 \
+	i3lock -c $bg -k --date-str="%a, %d %b %Y" --radius=140 --ring-width=10 \
 		--ring-color=$shade8 --ringwrong-color=$urgent --keyhl-color=$shade4 --separator-color=$alpha \
 		--time-color=$fg --date-color=$fg --verif-color=$fg --wrong-color=$fg \
 		--wrong-text="incorrect" \
