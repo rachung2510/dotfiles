@@ -25,7 +25,7 @@ exec --no-startup-id ~/.config/i3/scripts/battery.sh &
 exec --no-startup-id ~/.config/i3/scripts/onedrive.sh &
 exec --no-startup-id ibus-daemon -x -d
 exec --no-startup-id eww daemon && eww open bar
-#exec --no-startup-id mount /mnt/Nextcloud
+exec --no-startup-id mount /mnt/Nextcloud
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -46,7 +46,7 @@ exec --no-startup-id nm-applet &
 #set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && ~/.config/i3/scripts/fnactions.sh vol up
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && ~/.config/i3/scripts/fnactions.sh vol down
-bindsym Xf86AudioMute exec --no-startup-id ~/.config/i3/scripts/fnactions.sh mute notify
+bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/scripts/fnactions.sh mute notify
 
 bindsym F11 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +5% && ~/.config/i3/scripts/fnactions.sh vol up
 bindsym F10 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ -5% && ~/.config/i3/scripts/fnactions.sh vol down
@@ -54,8 +54,8 @@ bindsym F9 exec --no-startup-id ~/.config/i3/scripts/fnactions.sh mute notify
 
 # Screen brightness controls
 set $bright-step 3
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +$bright-step% # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set $bright-step%- # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +$bright-step% && ~/.config/i3/scripts/fnactions.sh light up
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set $bright-step%- && ~/.config/i3/scripts/fnactions.sh light down
 bindsym F4 exec --no-startup-id brightnessctl set +$bright-step% && ~/.config/i3/scripts/fnactions.sh light up
 bindsym F3 exec --no-startup-id brightnessctl set $bright-step%- && ~/.config/i3/scripts/fnactions.sh light down
 
@@ -211,8 +211,8 @@ set $light-grey			#f9f9f9
 # inactive-text-light	#908c97
 # inactive-bg-dark		#2a2a2a
 # inactive-text-dark	#b4b4b4
-set $inactive-bg		#f2f2f2
-set $inactive-text		#908c97
+set $inactive-bg		#2a2a2a
+set $inactive-text		#b4b4b4
 set $urgent				#eb4d4b
 set $shade4				#8e24aa
 set $shade8				#ce93d8
@@ -258,6 +258,7 @@ for_window [class="Gnome-calculator"] floating enable
 for_window [class="Spotify"] move to workspace $ws10
 for_window [title="WhatsApp -"] move to workspace $ws8
 for_window [class="zoom"] move to workspace $ws8
+for_window [class="Minecraft*"] move to workspace $ws9
 assign [class="Google-chrome"] $ws1
 assign [class="Microsoft-edge"] $ws1
 assign [class="obsidian"] $ws7
@@ -265,6 +266,7 @@ assign [class="TelegramDesktop"] $ws8
 assign [class="Thunderbird"] $ws8
 assign [instance="minecraft-launcher"] $ws9
 assign [class="Minecraft*"] $ws9
+assign [title="Steam"] $ws9
 assign [class="Steam"] $ws9
 assign [class="Stardew Valley"] $ws9
 
