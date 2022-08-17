@@ -43,6 +43,11 @@ cd target/release
 chmod +x ./eww
 sudo mv eww /usr/local/bin/
 ```
+- Terminal: Alacritty
+```
+sudo add-apt-repository ppa:aslatter/ppa
+sudo apt install alacritty
+```
 
 ### Fonts
 - [Noto Sans Medium Nerd Font](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Noto/Sans/complete/Noto%20Sans%20Medium%20Nerd%20Font%20Complete.ttf)
