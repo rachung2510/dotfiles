@@ -9,11 +9,10 @@ mkdir build && cd build
 meson -Ddocs=true -Dmans=true ..
 meson compile -C .
 sudo meson install -C .
-logout
 ```
 i3lock-color
 ```
-# sudo apt install i3lock
+sudo apt install i3lock
 sudo apt install autoconf gcc make pkg-config libpam0g-dev libcairo2-dev libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev
 git clone https://github.com/Raymo111/i3lock-color.git
 cd i3lock-color
@@ -54,6 +53,8 @@ sudo apt install alacritty
 - [Noto Sans Medium Nerd Font](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Noto/Sans/complete/Noto%20Sans%20Medium%20Nerd%20Font%20Complete.ttf)
 - [MesloLGM Regular Nerd Font](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Meslo/M/Regular/complete/Meslo%20LG%20M%20Regular%20Nerd%20Font%20Complete.ttf)
 - [FiraCode Medium Nerd Font](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Medium/complete/Fira%20Code%20Medium%20Nerd%20Font%20Complete.ttf)
+- [Iosevka Medium Nerd Font](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Iosevka/Medium/complete/Iosevka%20Medium%20Nerd%20Font%20Complete.ttf)
+- [Icomoon Feather](https://github.com/adi1090x/rofi/blob/master/fonts/Icomoon-Feather.ttf)
 
 ### Dependencies
 ```
@@ -63,6 +64,7 @@ sudo usermod -aG video ${USER} # run brightnessctl without sudo
 sudo apt install acpi # for battery info
 sudo apt install maim xclip # for screenshot
 sudo apt install cava # music visualizer
+sudo apt install jq # jquery i3-msg workspaces for eww widgets
 ```
 
 ### Themes
