@@ -52,11 +52,11 @@ sudo mv eww /usr/local/bin/
 ### Dependencies
 ```
 sudo apt install lxappearance brightnessctl playerctl pavucontrol feh
-sudo apt install rofi i3 picom
+sudo apt install rofi picom
 sudo usermod -aG video ${USER} # run brightnessctl without sudo
 sudo apt install acpi # for battery info
 sudo apt install maim xclip # for screenshot
-sudo apt cava # music visualizer
+sudo apt install cava # music visualizer
 ```
 
 ### Themes
@@ -69,6 +69,8 @@ sudo apt-get install papirus-icon-theme
 
 - GTK theme: [Orchis](https://github.com/vinceliuice/Orchis-theme)
 ```
+git clone https://github.com/vinceliuice/Orchis-theme.git
+cd Orchis-theme
 ./install.sh -t purple -c light
 ./install.sh -t purple -c dark
 ```
