@@ -77,6 +77,13 @@ git clone https://github.com/vinceliuice/Orchis-theme.git
 cd Orchis-theme
 ./install.sh -t purple -c light
 ./install.sh -t purple -c dark
+curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.sh | sh
+exec bash
+sudo chmod a+wr /usr/share/spotify
+sudo chmod a+wr /usr/share/spotify/Apps -R
+curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.sh | sh
+spicetify
+spicetify backup apply enable-devtools
 
 # fonts
 echo -e "\n[INFO] Installing fonts..."
@@ -91,3 +98,5 @@ cp ~/dotfiles/FiraSans-Regular.ttf ./
 fc-cache -fv ~/.fonts
 
 cd ~/dotfiles
+
+echo "[INFO] Open lxappearance to set the theme, then restart i3 and logout."
