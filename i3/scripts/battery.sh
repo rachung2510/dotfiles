@@ -9,11 +9,11 @@ high() {
 
 low() {
 	duration=$(acpi -b | grep -oP '(?<=%, ).*(?= remaining)')
-	notify-send -u critical -i ~/.config/dunst/img/battery-critical.png -h "string:x-dunst-stack-tag:batt-crit" "Your battery is running low" "${duration%:*} remaining"
+	notify-send -u critical -i ~/.config/dunst/img/battery-critical.png -h "string:x-dunst-stack-tag:batt-crit" "Your battery is running low" "${duration%:*} ($1%) remaining"
 }
 
 [[ $1 = "--high" ]] && high && exit 0
-[[ $1 = "--low" ]] && low && exit 0
+[[ $1 = "--low" ]] && low $LOW_THRESH && exit 0
 
 pid=$(pgrep battery.sh)
 if [[ $(echo "$pid" | awk -F '[ ]' '{print (NF?NF-1:0)}') != "0" ]]; then
@@ -28,7 +28,7 @@ do
 	if [[ $STATUS = "Charging" ]]; then
 		if [[ $POWER -ge $HIGH_THRESH ]]; then high; fi
 	else
-		if [[ $POWER -le $LOW_THRESH ]]; then low; fi
+		if [[ $POWER -le $LOW_THRESH ]]; then low $POWER; fi
 	fi
 sleep 60
 #echo "run"
