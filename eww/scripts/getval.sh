@@ -15,6 +15,7 @@ elif [[ $1 = "lang" ]]; then
 		"libpinyin") echo "拼";;
 		"anthy") echo "ち" ;;
 	esac
+	exit 0
 fi
 
 if [[ $1 = "cpu" ]]; then
