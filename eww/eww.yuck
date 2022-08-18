@@ -15,7 +15,7 @@
 (defpoll batt-icon	:interval "5s"	"bash scripts/geticon.sh batt")
 (defpoll mute-bool	:interval "5h"  "bash scripts/getbool.sh mute")
 
-(defpoll vol-tooltip	:interval "5h"	"bash scripts/tooltip.sh vol")
+(defpoll vol-tooltip	:interval "5s"	"bash scripts/tooltip.sh vol")
 (defpoll batt-tooltip	:interval "5s"	"bash scripts/tooltip.sh batt")
 (defpoll wifi-tooltip	:interval "5s"	"bash scripts/tooltip.sh wifi")
 

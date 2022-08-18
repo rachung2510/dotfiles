@@ -253,6 +253,7 @@ for_window [window_role="cava"] floating enable, move position -2px 215px, resiz
 no_focus [window_role="cava"]
 no_focus [class="stalonetray"]
 for_window [class="Gnome-calculator"] floating enable
+for_window [title="nmtui"] floating enable
 
 # custom workspace allocation
 for_window [class="Spotify"] move to workspace $ws10

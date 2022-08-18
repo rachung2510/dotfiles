@@ -97,7 +97,7 @@ ${batt-tooltip}"
 	(box :orientation "h" :space-evenly "true" :vexpand "true" :valign "center"
 		(quickbutton :icon "直" :tooltip "" :action "bash scripts/quickbutton.sh wifi" 		:type "wifi")
 		(quickbutton :icon ""  :tooltip "" :action "bash scripts/quickbutton.sh bluetooth" :type "bluetooth")
-		(quickbutton :icon "ﮖ"  :tooltip "" :action "bash scripts/quickbutton.sh notif" 	:type "notif")
+		(quickbutton :icon "ﮖ"  :tooltip "Do Not Disturb" :action "bash scripts/quickbutton.sh notif" 	:type "notif")
 		(quickbutton :icon ""  :tooltip "Lock"  :action "bash scripts/quickbutton.sh lock"  :type "")
 		(quickbutton :icon ""  :tooltip "Sleep" :action "bash scripts/quickbutton.sh sleep" :type "")
 )))

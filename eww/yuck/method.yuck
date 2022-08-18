@@ -30,12 +30,12 @@
 )))
 
 (defvar wifi-literal "
-	(eventbox :onhover 'eww update wifi-tooltip=\"$(bash scripts/tooltip.sh wifi)\"'
-	(button :class wifi-bool 	 :onclick {action} :tooltip '\${wifi-tooltip}' {icon})
-)")
+	;; (eventbox :onhover 'eww update wifi-tooltip=\"$(bash scripts/tooltip.sh wifi)\"'
+	(button :class wifi-bool :onclick {action} :tooltip '\${wifi-tooltip}' {icon})
+")
 (defvar bluetooth-literal "(button :class bluetooth-bool :onclick {action} {icon})")
-(defvar notif-literal	  "(button :class notif-bool 	 :onclick {action} {icon})")
-(defvar btn-literal 	  "(button :tooltip {tooltip} 	 :onclick {action} {icon})")
+(defvar notif-literal	  "(button :tooltip {tooltip} :class notif-bool 	 :onclick {action} {icon})")
+(defvar btn-literal 	  "(button :tooltip {tooltip} :onclick {action} {icon})")
 (defwidget quickbutton [icon action tooltip type]
 	(box :class "sys" :space-evenly "false" :orientation "v"
 	(literal :content "${type == "wifi" ? wifi-literal : 
