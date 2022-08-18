@@ -262,6 +262,7 @@ for_window [class="Minecraft*"] move to workspace $ws9
 assign [class="Google-chrome"] $ws1
 assign [class="Microsoft-edge"] $ws1
 assign [class="obsidian"] $ws7
+assign [class="whatsapp-desktop"] $ws8
 assign [class="TelegramDesktop"] $ws8
 assign [class="Thunderbird"] $ws8
 assign [instance="minecraft-launcher"] $ws9
