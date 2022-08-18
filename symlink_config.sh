@@ -20,8 +20,21 @@ create_symlink() {
 		echo "> $cmd1"
 		eval $cmd1
 	fi
+	[[ -f $link ]] && echo "> Link already exists. rm $link" && rm $link
 	echo "> $cmd2"
 	eval $cmd2
+}
+
+parse_dir() {
+	if [[ -d $1 ]]; then
+		echo -e "\nDIR=$1"
+		for FILE in $1/*; do parse_dir $FILE; done
+	elif [[ -f $1 ]]; then
+		echo FILE=$1;
+		create_symlink $1;
+	else
+		echo "File does not exist."
+	fi
 }
 
 if [[ ${1:0:1} = "/" ]] || [[ ${1:0:2} = "~/" ]]; then
@@ -30,14 +43,6 @@ else
 	arg="$(pwd)/$1"
 fi
 
-if [[ -d $arg ]]; then
-	for FILE in $arg/*; do
-		echo FILE=$FILE;
-		create_symlink $FILE;
-		echo "";
-	done
-elif [[ -f $arg ]]; then
-	create_symlink $arg
-else
-	echo "File does not exist."
-fi
+arg=$(echo $arg | sed "s:/$::")
+parse_dir $arg
+echo ""
