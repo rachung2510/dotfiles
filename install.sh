@@ -1,7 +1,8 @@
 # dependencies
 echo "[INFO] Installing dependencies..."
-sudo add-apt-repository ppa:aslatter/ppa
-sudo add-apt-repository ppa:papirus/papirus
+echo "root" | sudo apt update
+echo -e "\n" | sudo add-apt-repository ppa:aslatter/ppa
+echo -e "\n" | sudo add-apt-repository ppa:papirus/papirus
 sudo apt update
 sudo apt install alacritty -y
 sudo apt install papirus-icon-theme -y
@@ -57,7 +58,7 @@ sudo make install WAYLAND=0
 # eww
 echo -e "\n[INFO] Installing eww..."
 cd ~
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+echo 1 | curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source ~/.cargo/env
 sudo apt install libgtk-3-dev -y
 git clone https://github.com/elkowar/eww
