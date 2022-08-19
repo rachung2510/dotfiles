@@ -25,7 +25,8 @@ exec --no-startup-id ~/.config/i3/scripts/battery.sh &
 exec --no-startup-id ~/.config/i3/scripts/onedrive.sh &
 exec --no-startup-id ibus-daemon -x -d
 exec --no-startup-id eww daemon && eww open bar
-exec --no-startup-id /usr/bin/lxqt-policykit-agent
+# exec --no-startup-id /usr/bin/lxqt-policykit-agent
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -211,8 +212,8 @@ set $light-grey			#f9f9f9
 # inactive-text-light	#908c97
 # inactive-bg-dark		#2a2a2a
 # inactive-text-dark	#b4b4b4
-set $inactive-bg		#f2f2f2
-set $inactive-text		#908c97
+set $inactive-bg		#2a2a2a
+set $inactive-text		#b4b4b4
 set $urgent				#eb4d4b
 set $shade4				#8e24aa
 set $shade8				#ce93d8
