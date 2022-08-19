@@ -7,8 +7,12 @@ ALACONF="$HOME/.config/alacritty/alacritty.yml"
 I3CONF="$HOME/.config/i3/config"
 ROFICONF="$HOME/.config/rofi/styles/colors.rasi"
 
-line=$(grep "gtk-theme-name" $GTK3CONF)
-uu="${line##*-}"
+if [[ -f $GTK3CONF ]]; then
+	theme=$(grep "gtk-theme-name" $GTK3CONF | cut -d "=" -f2)
+	[[ "${theme,,}" = *"dark"* ]] && uu="Dark" || uu="Light"
+else
+	uu="Light"
+fi
 ll="$(echo $uu | tr '[:upper:]' '[:lower:]')"
 [[ $1 = "-p" ]] && echo "$ll" && exit 0
 
