@@ -1,4 +1,4 @@
-@import "styles/light.scss";
+@import "styles/dark.scss";
 
 * {
 	all: unset;
@@ -28,7 +28,7 @@
 	border-radius: 8px;
 	padding: 0 .7rem;
 	margin: .7rem .7rem 0 0;
-	color: $shade4;
+	color: $text;
 	transition: 0.6s;
 }
 .roundpannel.player { margin: .5rem .7rem 0 0; }
@@ -36,13 +36,13 @@
 .roundpannel.weather { padding: 1.2rem 1.2rem 1.1rem 1.2rem; }
 
 .label-time {
-	color: $shade7;
+	color: $text-time;
 	font-family: Iosevka Nerd Font;
 	font-size: 4.5em;
 }
 .label-date {
 	font-size: 1.3em;
-	color: $shade7;
+	color: $text-label;
 }
 
 .cava { background-color: rgba(0,255,0,0); }
@@ -50,33 +50,33 @@
 .labels {
 	font-size: 1.8em;
 	margin-bottom: -.7rem;
-	color: $shade4;
+	color: $text;
 }
 .label-title { font-size: 1.3em; }
-.label-artist { color: $shade7; }
+.label-artist { color: $text-label; }
 .btn-play { font-size: 1.8em; font-family: MesloLGM Nerd Font; }
 .player.disabled { color: $grey; }
 
 .settings scale trough {
-	background-color: $shade8;
+	background-color: $trough;
 	margin: 0 1.1rem 0 .7rem;
 	min-height: 12px;
 	border-radius: 10px;
 }
 .settings scale trough highlight { 
-	background-color: $shade4; 
+	background-color: $trough-hl; 
 	border-radius: 50px;
 }
-.disabled scale trough { background-color: #bbbbbb; }
-.disabled scale trough highlight { background-color: $grey; }
+.disabled scale trough { background-color: $trough-disabled; }
+.disabled scale trough highlight { background-color: $trough-hl-disabled; }
 .btn-settings { 
 	font-size: 1.4rem;
 	margin-left: .5rem;
 }
-.settings button.no-hover:hover { color: $shade4; }
+.settings button.no-hover:hover { color: $text; }
 .settings > .critical button { color: $urgent; }
 .settings > .critical button:hover { color: $urgent; }
-.settings > .critical scale trough { background-color: #e7adac; }
+.settings > .critical scale trough { background-color: $trough-urgent; }
 .settings > .critical scale trough highlight { background-color: $urgent; }
 
 .weatherpannel { 
@@ -84,23 +84,24 @@
 	margin-top: -1rem; 
 }
 .label-weather {
-	color: $shade7;
+	color: $text-label;
 	font-family: Iosevka Nerd Font;
 	font-size: 1.8rem;
 }
 
 .radial {
-	color: $shade4;
-	background-color: $shade8;
+	color: $trough-hl;
+	background-color: $trough;
 }
 .radial-label {
+	color: $text;
 	font-size: 1rem;
 	margin: 2.4rem;
 }
 
 .sys { background-color: $alpha; }
 .sys button {
-	background-color: $shade8;
+	background-color: $trough;
 	border-radius: 100px;
 	margin: .3rem .8rem;
 	padding: 1rem .5rem;
@@ -109,14 +110,14 @@
 	transition: 0.4s;
 }
 .sys button.selected { 
-	background-color: $shade6; 
+	background-color: $btn-select; 
 	border-radius: 100px;
 }
 .sys button:hover { 
-	background-color: $shade4; 
+	background-color: $btn-hover;
 	color: $fg;
 }
-button.selected:hover { background-color: $shade4; }
+button.selected:hover { background-color: $btn-hover; }
 .disabled button { color: $grey; }
 
 
