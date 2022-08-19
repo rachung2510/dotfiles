@@ -64,7 +64,7 @@ element-text {
     expand:                         true;
     horizontal-align:               0.5;
     vertical-align:                 0.5;
-    margin:                         5% 0%;
+    margin:                         4.6% 0%;
 }
 element selected {
     background-color:               @pse;
