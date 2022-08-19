@@ -2,12 +2,12 @@ window:
   title: Alacritty
 
 font:
-  size: 8.0
+  size: 12.0
   normal:
     family: MesloLGM Nerd Font
 
 import:
- - ~/.config/alacritty/light.yml
+ - ~/.config/alacritty/dark.yml
 
 cursor:
   style:
