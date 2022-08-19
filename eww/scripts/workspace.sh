@@ -10,7 +10,7 @@ run() {
 	len=$(echo $NUMS | wc -w)
 	for i in $(seq 1 $len); do
 		NUM=$(echo $NUMS | awk '{print $'$i'}')
-		NAME=$(echo $ws_info | grep -oP '"name":"[0-9]\s*\K[^,]*(?=",)' | awk 'FNR == '$i)
+		NAME=$(echo $ws_info | grep -oP '"name":"[0-9]*\s*\K[^,]*(?=",)' | awk 'FNR == '$i)
 		URGENT=$(echo $URGENTS | awk '{print $'$i'}')
 		FOCUSED=$(echo $FOCUSES | awk '{print $'$i'}')
 		[[ $URGENT = true ]] && MODI="urgent" || MODI=""
