@@ -24,10 +24,10 @@ elif [[ $1 = "bluetooth" ]]; then
 	status=$(eww get bluetooth-bool)
 	if [[ "$status" != "" ]]; then
 		# bluetooth.service must be disabled (sudo systemctl disable bluetooth)
-		echo $pw | sudo -S service bluetooth stop
+		echo $pw | sudo -S systemctl stop bluetooth
 		notify_bluetooth off
 	else
-		echo $pw | sudo -S service bluetooth start
+		echo $pw | sudo -S systemctl start bluetooth
 		notify_bluetooth on
 	fi
 	eww_update bluetooth
