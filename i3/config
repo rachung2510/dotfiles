@@ -282,6 +282,7 @@ bindsym Mod1+Tab workspace next
 bindsym Mod1+Shift+Tab workspace prev
 bindsym $mod+Tab exec ~/.config/i3/scripts/theme.sh
 bindsym $mod+b	exec ~/.config/i3/scripts/eww.sh bar
+bindsym Print exec ~/.config/i3/scripts/screenshot.sh desktop
 
 # gaps & radius
 for_window [class=".*"] border pixel 3
