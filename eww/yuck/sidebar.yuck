@@ -3,7 +3,7 @@
 (defvar top-height "0")
 (defvar end-height "0")
 (defvar time-height "140")
-(defvar cava-height "154")
+(defvar cava-height "142")
 (defvar player-height "140")
 (defvar settings-height "200")
 (defvar stats-height "150")
@@ -69,7 +69,7 @@ ${batt-tooltip}"
 			(label :text weather-cond :valign "start" :halign "start" :xalign "0" :wrap "true" :limit-width "20")
 			(label :class "label-weather" :text weather-temp :valign "start" :halign "start"))
 		(box :class "weatherpannel" :space-evenly "false" :orientation "h" :halign "end" :valign "end" :vexpand "true"
-			(button :tooltip "Current Weather: ${weather-cond}, ${weather-temp}" :onclick "" weather-icon)
+			(button :tooltip "Current Weather: ${weather-cond}, ${weather-temp}" :onclick "" weather-icon) 
 		))
 ))
 
