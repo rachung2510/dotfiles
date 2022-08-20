@@ -56,10 +56,10 @@ listview {
     padding:                        0px;
     columns:                        10;
     spacing:                        0%;
-    cycle:                          false;
+    cycle:                          true;
     dynamic:                        true;
     layout:                         vertical;
-	fixed-columns:					false;
+    fixed-columns:		    false;
 }
 
 mainbox {
@@ -69,7 +69,7 @@ mainbox {
 	border-color:					@lac;
     children:                       [ inputbar, listview ];
     spacing:                       	2.5%;
-    padding:                        20% 5% 20% 5%;
+    padding:                        20% 5% 10% 5%;
 }
 
 element {

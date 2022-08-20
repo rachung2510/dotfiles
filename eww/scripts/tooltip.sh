@@ -22,7 +22,7 @@ elif [[ $1 = "batt" ]]; then
 elif [[ $1 = "wifi" ]]; then
 	name=$(iwgetid -r)
 	if [[ $name != "" ]]; then
-		ip=$(ifconfig wlp3s0 |  grep "inet " | awk '{print $2}')
+		ip=$(ip addr show dev wlp3s0 | grep "inet " | awk '{print $2}')
 		echo -e "Network: $name\nIP: $ip"
 	fi
 fi

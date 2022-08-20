@@ -1,6 +1,7 @@
 #!/bin/bash
 
 if [[ $1 = "vol" ]]; then
+	# echo $(pactl get-sink-volume @DEFAULT_SINK@) | grep -oP '(?<=\/)(?:\s*)\K.*?(?=%){1}' | head -n 1
 	echo "$(amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%')"
 	exit 0
 elif [[ $1 = "light" ]]; then

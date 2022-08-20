@@ -26,7 +26,10 @@ if [[ $icon = "" ]] || [[ $icon =~ [0-9] ]] ; then
 fi
 
 if [[ $1 = "icon" ]]; then
-    echo $icon
+	case $icon in
+		⛅️*) echo "" ;;
+		*) echo $icon ;;
+	esac
 elif [[ $1 = "temp" ]]; then
     echo $temp
 elif [[ $1 = "cond" ]]; then
