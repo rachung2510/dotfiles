@@ -20,7 +20,7 @@ exec --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput 
 exec --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Natural Scrolling Enabled" 1
 exec_always --no-startup-id picom --experimental-backends -f &
 exec --no-startup-id feh --bg-scale ~/.config/i3/wallpapers/$(~/.config/i3/scripts/theme.sh -p)-wallpaper.jpg
-exec --no-startup-id autokey-run
+exec --no-startup-id autokey-gtk
 exec --no-startup-id i3-msg 'workspace $ws1'
 exec --no-startup-id ~/.config/i3/scripts/battery.sh &
 # exec --no-startup-id ~/.config/i3/scripts/onedrive.sh &
