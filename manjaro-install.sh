@@ -41,8 +41,7 @@ sudo mv eww /usr/local/bin/
 # themes
 echo -e "\n[INFO] Installing themes..."
 wget -qO- https://git.io/papirus-folders-install | env PREFIX=$HOME/.local sh
-cd ~/dotfiles
-./papirus-folder-color.sh magenta
+papirus-folders -C magenta
 cd ~
 git clone https://github.com/vinceliuice/Orchis-theme.git
 cd Orchis-theme
