@@ -44,4 +44,7 @@ inactive_bg=$(grep "inactive-bg-$ll" $I3CONF | awk '{print $3}')
 inactive_text=$(grep "inactive-text-$ll" $I3CONF | awk '{print $3}')
 sed -i -e "s/set \$inactive-bg.*/set \$inactive-bg\t\t$inactive_bg/g" $I3CONF
 sed -i -e "s/set \$inactive-text.*/set \$inactive-text\t\t$inactive_text/g" $I3CONF
+
+pkill polkit-gnome-au
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 i3-msg reload
