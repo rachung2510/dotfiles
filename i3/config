@@ -241,11 +241,11 @@ set $shade4				#8e24aa
 set $shade8				#ce93d8
 
 # window colors
-#						border		background	   	text			indicator
-client.focused			$alpha		$shade8			$dark-grey		$alpha
-client.unfocused		$alpha		$inactive-bg	$inactive-text	$alpha
-client.focused_inactive	$alpha		$inactive-bg	$inactive-text	$alpha
-client.urgent			$alpha		$urgent			$dark-grey		$urgent
+#						border		background	   	text			indicator	child_border
+client.focused			$alpha		$shade8			$dark-grey		$alpha		$shade8
+client.unfocused		$alpha		$inactive-bg	$inactive-text	$alpha		$alpha
+client.focused_inactive	$alpha		$inactive-bg	$inactive-text	$alpha		$alpha
+client.urgent			$alpha		$urgent			$dark-grey		$urgent		$alpha
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -313,7 +313,7 @@ bindsym $mod+Tab exec ~/.config/i3/scripts/theme.sh
 bindsym $mod+b	exec ~/.config/i3/scripts/eww.sh bar
 bindsym Print exec ~/.config/i3/scripts/screenshot.sh desktop
 
-# gaps & radius
+# gaps & borders
 default_border pixel 3
 default_floating_border normal
 for_window [window_role="cava"] border pixel 0
