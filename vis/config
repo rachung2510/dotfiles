@@ -39,11 +39,11 @@ audio.stereo.enabled=false
 # visualizer.spectrum.character=#
 
 ##Spectrum bar width. Defaults to 2.
-#visualizer.spectrum.bar.width=2
+visualizer.spectrum.bar.width=1
 
 ##The amount of space between each bar in the spectrum visualizer. Defaults to 1. It's possible to set this to
 ##zero to have no space between bars
-#visualizer.spectrum.bar.spacing=1
+visualizer.spectrum.bar.spacing=1
 
 ##Available smoothing options are monstercat, sgs, none.
 visualizer.spectrum.smoothing.mode=sgs
@@ -54,7 +54,7 @@ visualizer.spectrum.smoothing.mode=sgs
 
 ##Configures how fast the falloff character falls. This is an exponential falloff so values usually look
 ##best 0.9+ and small changes in this value can have a large effect. Defaults to 0.95
-visualizer.spectrum.falloff.weight=0.95
+# visualizer.spectrum.falloff.weight=0.95
 
 ##Margins in percent of total screen for spectrum visualizer. All margins default to 0
 #visualizer.spectrum.top.margin=0.30
