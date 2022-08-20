@@ -272,7 +272,7 @@ client.urgent			$alpha		$urgent			$dark-grey		$urgent		$alpha
 # custom configurations
 workspace_auto_back_and_forth no
 hide_edge_borders both
-for_window [window_role="cava"] floating enable, move position -2px 215px, resize set width 454 px height 180 px
+for_window [window_role="cava"] floating enable, move position -3px 236px, resize set width 460 px height 160 px
 no_focus [window_role="cava"]
 no_focus [class="stalonetray"]
 
