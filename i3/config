@@ -194,27 +194,29 @@ bindsym $mod+Ctrl+8 move container to workspace $ws8; workspace $ws8
 # switch to workspace with urgent window automatically
 # for_window [urgent=latest] focus
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+c reload; exec "notify-send 'i3wm reloaded'"
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart && eww reload
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu.sh
 
 # resize window (you can also use the mouse for that)
-set $resize-step-small 5
-set $resize-step 10
-set $resize-step-large 20
+# px=floating, pt=normal
+set $resize-pt-small 1
+set $resize-pt 5
+set $resize-px-small 20
+set $resize-px 40
 mode "resize" {
-	bindsym j resize shrink width $resize-step px or $resize-step-small ppt
-	bindsym k resize grow height $resize-step px or $resize-step-small ppt
-	bindsym l resize shrink height $resize-step px or $resize-step-small ppt
-	bindsym semicolon resize grow width $resize-step px or $resize-step-small ppt
+	bindsym j resize shrink width 		$resize-px-small px or $resize-pt-small ppt
+	bindsym k resize grow height		$resize-px-small px or $resize-pt-small ppt
+	bindsym l resize shrink height		$resize-px-small px or $resize-pt-small ppt
+	bindsym semicolon resize grow width	$resize-px-small px or $resize-pt-small ppt
 
 	# same bindings, but for the arrow keys
-	bindsym Left resize shrink width $resize-step-large px or $resize-step ppt
-	bindsym Down resize grow height $resize-step-large px or $resize-step ppt
-	bindsym Up resize shrink height $resize-step-large px or $resize-step ppt
-	bindsym Right resize grow width $resize-step-large px or $resize-step ppt
+	bindsym Left resize shrink width $resize-px px or $resize-pt ppt
+	bindsym Down resize grow height  $resize-px px or $resize-pt ppt
+	bindsym Up resize shrink height  $resize-px px or $resize-pt ppt
+	bindsym Right resize grow width  $resize-px px or $resize-pt ppt
 
 	# back to normal: Enter or Escape or $mod+r
 	bindsym Return mode "default"
