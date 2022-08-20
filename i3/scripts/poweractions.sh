@@ -1,6 +1,5 @@
 #!/bin/bash
 
-bg=00000080
 shade4=8e24aa
 shade8=ce93d8
 urgent=eb4d4b
@@ -22,6 +21,7 @@ disable_bluetooth(){
 if [[ $1 = "lock" ]]; then
 	pkill cava && eww close sidebar
 	playerctl -p playerctld pause
+	[[ $(~/.config/i3/scripts/theme.sh -p) = "dark" ]] && bg=0000004d || bg=00000080
 	i3lock -c $bg -k --date-str="%a, %d %b %Y" --radius=140 --ring-width=10 \
 		--ring-color=$shade8 --ringwrong-color=$urgent --keyhl-color=$shade4 --separator-color=$alpha \
 		--time-color=$fg --date-color=$fg --verif-color=$fg --wrong-color=$fg \
