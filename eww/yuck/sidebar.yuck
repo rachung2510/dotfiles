@@ -3,7 +3,7 @@
 (defvar top-height "0")
 (defvar end-height "0")
 (defvar time-height "140")
-(defvar cava-height "142")
+(defvar cava-height "136")
 (defvar player-height "140")
 (defvar settings-height "200")
 (defvar stats-height "150")

@@ -1,13 +1,14 @@
 ### Config
 - WM: [i3-gaps](https://www.github.com/Airblader/i3)
 - Lock screen: i3lock-color
-- Launcher, Powermenu: [Rofi](https://github.com/adi1090x/rofi)
-- Dmenu: [Rofi](https://github.com/Murzchnvok/rofi-collection)
-- Compositor: Picom
-- Notifications: [Dunst](https://github.com/dunst-project/dunst)
-- Widgets: [Eww](https://github.com/elkowar/eww) ([Documentation](https://elkowar.github.io/eww/widgets.html))\
+- Launcher, Powermenu: [rofi](https://github.com/adi1090x/rofi)
+- Dmenu: [rofi](https://github.com/Murzchnvok/rofi-collection)
+- Compositor: picom
+- Notifications: [dunst](https://github.com/dunst-project/dunst)
+- Widgets: [eww](https://github.com/elkowar/eww) ([Documentation](https://elkowar.github.io/eww/widgets.html))\
 Reference: [Gwydo](https://github.com/Gwyd0/Linuxsetup)
 - Terminal: Alacritty
+- Visualizer: [cli-visualizer](https://github.com/dpayne/cli-visualizer#arch-linux)
 
 ### Fonts
 - [Noto Sans Medium Nerd Font](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Noto/Sans/complete/Noto%20Sans%20Medium%20Nerd%20Font%20Complete.ttf)

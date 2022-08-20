@@ -5,13 +5,14 @@ yay -S papirus-icon-theme --noconfirm
 yay -S lxappearance brightnessctl playerctl pavucontrol feh --noconfirm
 yay -S rofi --noconfirm
 sudo usermod -aG video ${USER} # run brightnessctl without sudo
-yay -S acpi maim xclip gnome-terminal cava jq --noconfirm
+sudo pacman -S ncurses fftw cmake --noconfirm # dependencies for vis
+yay -S acpi maim xclip gnome-terminal cli-visualizer jq --noconfirm
 
 # configs
 echo -e "\n[INFO] Copying config files..."
 cd ~/dotfiles
 cp -r alacritty ~/.config/
-cp -r cava ~/.config/
+cp -r vis ~/.config/
 cp -r dunst ~/.config/
 cp -r eww ~/.config/
 cp -r i3 ~/.config/
