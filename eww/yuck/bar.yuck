@@ -17,7 +17,7 @@ ${vol-tooltip}"
 			vol-icon))
 (defwidget wifi []
 	;; (eventbox :onhover "eww update wifi-tooltip=\"$(bash scripts/tooltip.sh wifi)\""
-	(button :onclick "alacritty -t nmtui -e nmtui-connect" :tooltip {wifi-tooltip} wifi-icon))
+	(button :onclick "alacritty -t nmtui -e nmtui-connect &" :tooltip {wifi-tooltip} wifi-icon))
 (defwidget batt []
 	(box :orientation "v" :space-evenly "false"
 		(button	:class "batt-icon"
