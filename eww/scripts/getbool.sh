@@ -9,7 +9,7 @@ if [[ $1 = "wifi" ]]; then
 	fi
 
 elif [[ $1 = "bluetooth" ]]; then
-	status=$(service bluetooth status | grep "Status:")
+	status=$(systemctl status bluetooth | grep "Status:")
 	if [[ $status = *"Running"* ]]; then
 		echo "selected"
 	else

@@ -20,7 +20,7 @@ if [[ $1 = "wifi" ]]; then
 	eww update wifi-tooltip=$(bash scripts/tooltip.sh wifi)
 
 elif [[ $1 = "bluetooth" ]]; then
-	cmd="service bluetooth status | grep 'Active:' | grep -oP '(?<=Active: ).*'"
+	cmd="systemctl status bluetooth | grep 'Active:' | grep -oP '(?<=Active: ).*'"
 	status=$(eww get bluetooth-bool)
 	if [[ "$status" != "" ]]; then
 		# bluetooth.service must be disabled (sudo systemctl disable bluetooth)
