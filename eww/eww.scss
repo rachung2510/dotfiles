@@ -1,4 +1,4 @@
-@import "styles/dark.scss";
+@import "styles/light.scss";
 
 * {
 	all: unset;
@@ -81,6 +81,7 @@
 
 .weatherpannel { 
 	font-size: 3.2rem; 
+	color: $text-label;
 }
 .label-weather {
 	color: $text-label;
