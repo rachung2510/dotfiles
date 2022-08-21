@@ -20,9 +20,15 @@ elif [[ $1 = "batt" ]]; then
 	echo -e "\nTime: ${duration%:*}\nRate: $watt W"
 
 elif [[ $1 = "wifi" ]]; then
-	name=$(iwgetid -r)
+	dev="enp4s0f3u2"
+	if [[ $(nmcli | grep $dev) != "" ]]; then
+		name=$(nmcli | grep $dev | head -n 1 | grep -oP '(?<=connected to).*')
+	else
+		name=$(iwgetid -r)
+		dev="wlp3s0"
+	fi
 	if [[ $name != "" ]]; then
-		ip=$(ip addr show dev wlp3s0 | grep "inet " | awk '{print $2}')
+		ip=$(ip addr show dev $dev | grep "inet " | awk '{print $2}')
 		echo -e "Network: $name\nIP: $ip"
 	fi
 fi
