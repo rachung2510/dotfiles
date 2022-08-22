@@ -177,7 +177,7 @@
 	frame_color = "#1a9947"
     background = "#1daf52bf"
     foreground = "#ffffff"
-    format = "<b> %s</b>\n%b"
+    # format = "<b> %s</b>\n%b"
 [Screenshot]
 	appname=maim
 	summary = "Snip saved to clipboard"
@@ -200,3 +200,5 @@
 	background = "#0399e2bf"
 	frame_color = "#242daa"
 	timeout = 20
+
+# vim: set ft=text :
