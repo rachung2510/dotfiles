@@ -9,7 +9,7 @@
 
 (defpoll volume-val	:interval "5h"  "bash scripts/getval.sh vol")
 (defpoll light-val	:interval "5h"  "bash scripts/getval.sh light")
-(defpoll batt-val	:interval "2m"  "bash scripts/getval.sh batt")
+(defpoll batt-val	:interval "120s"  "bash scripts/getval.sh batt")
 (defpoll vol-icon	:interval "5h"  "bash scripts/geticon.sh vol")
 (defpoll light-icon	:interval "5h"  "bash scripts/geticon.sh light")
 (defpoll batt-icon	:interval "5s"	"bash scripts/geticon.sh batt")
@@ -26,9 +26,9 @@
 
 (defpoll cpu-val :interval "5s" "bash scripts/getval.sh cpu")
 (defpoll ram-val :interval "5s" "bash scripts/getval.sh ram")
-(defpoll hdd-val :interval "5m" "bash scripts/getval.sh hdd")
-(defpoll hdd-used :interval "5m" "bash scripts/getval.sh hdd used")
-(defpoll hdd-avail :interval "5m" "bash scripts/getval.sh hdd avail")
+(defpoll hdd-val :interval "300s" "bash scripts/getval.sh hdd")
+(defpoll hdd-used :interval "300s" "bash scripts/getval.sh hdd used")
+(defpoll hdd-avail :interval "300s" "bash scripts/getval.sh hdd avail")
 
 (defpoll wifi-icon		:interval "5s" "bash scripts/geticon.sh wifi")
 (defpoll wifi-bool		:interval "5h" "bash scripts/getbool.sh wifi")
