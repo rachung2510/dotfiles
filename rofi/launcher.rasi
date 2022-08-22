@@ -5,7 +5,7 @@ configuration {
     display-drun:					"";
     drun-display-format:            "{name}";
 	drun-match-fields:				"name";
-    disable-history:                false;
+    disable-history:                true;
 	sidebar-mode:					false;
 }
 
@@ -55,11 +55,12 @@ listview {
     background-color:               @alpha;
     padding:                        0px;
     columns:                        10;
+	lines:							3;
     spacing:                        0%;
     cycle:                          true;
     dynamic:                        true;
     layout:                         vertical;
-    fixed-columns:		    false;
+    fixed-columns:		    		false;
 }
 
 mainbox {
