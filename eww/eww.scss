@@ -83,6 +83,7 @@
 	font-size: 3.2rem; 
 	color: $text-label;
 }
+.weatherpannel button:hover { color: $weather-icon-hover; }
 .label-weather {
 	color: $text-label;
 	font-family: Iosevka Nerd Font;
