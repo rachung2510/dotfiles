@@ -38,7 +38,7 @@ elif [[ $1 = "batt" ]]; then
 	echo "${batt_icons[$ramp]}"
 
 elif [[ $1 = "wifi" ]]; then
-	[[ $(nmcli | grep "enp4s0f3u2") != "" ]] && echo "" && exit 0
+	[[ $(nmcli | grep "enp4s0f3u2") != "" ]] && echo "" && exit 0
 	[[ "$(iwgetid -r)" = "" ]] && echo "睊" && exit 0
 	echo "直"
 

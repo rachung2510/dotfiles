@@ -27,7 +27,7 @@ fi
 
 if [[ $1 = "icon" ]]; then
 	case $icon in
-		⛅️*) echo "" ;;
+		⛅️*) echo "" ;;
 		*) echo $icon ;;
 	esac
 elif [[ $1 = "temp" ]]; then
