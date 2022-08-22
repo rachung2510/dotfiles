@@ -7,9 +7,12 @@ rofi_cmd="rofi -theme ~/.config/rofi/setwsname.rasi"
 reload_cmd="python -c 'import sys; sys.path.append(\""$DIR"\"); import i3_workspace_names_daemon as daemon; daemon.run(\""$CONF"\")'"
 
 # 1st dialog: choose workspace
-NAMES=$(echo $(i3-msg -t get_workspaces) | grep -oP '"name":"\s*\K[^,]*(?=",)')
+ws_info=$(i3-msg -t get_workspaces)
+NAMES=$(echo $ws_info | grep -oP '"name":"\s*\K[^,]*(?=",)')
 NAMES="$NAMES\nunset all"
-choice1=$(echo -e "$NAMES" | $rofi_cmd -dmenu -auto-select -p "ws:")
+FOCUSES=($(echo $ws_info | grep -oP '"focused":\s*\K[^\s,]*(?=\s*,)'))
+sel=$(echo ${FOCUSES[@]/true//} | cut -d/ -f1 | wc -w)
+choice1=$(echo -e "$NAMES" | $rofi_cmd -dmenu -auto-select -p "ws:" -selected-row $sel)
 [[ $choice1 = "" ]] && exit 0
 if [[ $choice1 = "unset all" ]]; then
 	for i in $(seq 1 10); do sed -i $(($i+1))'s/.*/'$i' = auto/' $CONF; done
