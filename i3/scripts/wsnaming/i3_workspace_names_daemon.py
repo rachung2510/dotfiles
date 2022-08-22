@@ -9,16 +9,17 @@ import i3ipc
 import configparser
 
 DEFAULT_APP_ICON_CONFIG = {
-	"alacritty": "",
-	"inkscape": "",
-	"microsoft-edge": "",
-	"obsidian": "", 
-	"org.gnome.nautilus": "",
-	"telegram": "",
-	"thunderbird": "",
-	"Whatsapp -*": "",
-	"virtualBox manager": "",
-	"zoom": ""
+	"window_title=.*WhatsApp -.*": "",
+	"window_title=.*YouTube.*": "",
+	"window_class=Alacritty": "",
+	"window_class=Inkscape": "",
+	"window_class=Microsoft-edge": "",
+	"window_class=obsidian": "", 
+	"window_class=Org.gnome.Nautilus": "",
+	"window_class=TelegramDesktop": "",
+	"window_class=Thunderbird": "",
+	"window_class=VirtualBox Manager": "",
+	"window_class=zoom": ""
 }
 
 def build_rename(i3, app_icons, args=None):
@@ -36,13 +37,12 @@ def build_rename(i3, app_icons, args=None):
 		The rename callback.
 	"""
 	def get_icon_or_name(leaf):
-		for identifier in ('name', 'window_title', 'window_instance', 'window_class'):
+		for key in app_icons.keys():
+			identifier = key.split('=')[0]
+			name_re = key.split('=')[1]
 			name = getattr(leaf, identifier, None)
-			if name is None:
-				continue
-			for name_re in app_icons.keys():
-				if re.match(name_re, name, re.IGNORECASE):
-					return app_icons[name_re]
+			if re.match(name_re, name):
+				return app_icons[key]
 		return None
 
 	def rename(i3, e, confpath=""):
