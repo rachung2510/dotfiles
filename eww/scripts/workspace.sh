@@ -3,21 +3,23 @@
 run() {
 	ws_info=$(i3-msg -t get_workspaces)
 	LITERAL="(box :class 'bar-widget workspaces' :orientation 'v' :space-evenly 'false' :spacing '3' :width bar-width"
-	NUMS=$(echo $ws_info | grep -oP '"num":\s*\K[^\s,]*(?=\s*,)')
-	# NAMES=$(echo $ws_info | grep -oP '"name":"*\K[^,]*(?=",)')
-	URGENTS=$(echo $ws_info | grep -oP '"urgent":\s*\K[^\s,]*(?=\s*})')
-	FOCUSES=$(echo $ws_info | grep -oP '"focused":\s*\K[^\s,]*(?=\s*,)')
-	len=$(echo $NUMS | wc -w)
-	for i in $(seq 1 $len); do
-		NUM=$(echo $NUMS | awk '{print $'$i'}')
-		NAME=$(echo $ws_info | grep -oP '"name":"[0-9]*\s*\K[^,]*(?=",)' | awk 'FNR == '$i)
-		URGENT=$(echo $URGENTS | awk '{print $'$i'}')
-		FOCUSED=$(echo $FOCUSES | awk '{print $'$i'}')
+	NUMS=($(echo $ws_info | grep -oP '"num":\s*\K[^\s,]*(?=\s*,)'))
+	NAMES=($(echo $ws_info | grep -oP '"name":"[0-9]*\s*\K[^,]*(?=",)'))
+	URGENTS=($(echo $ws_info | grep -oP '"urgent":\s*\K[^\s,]*(?=\s*})'))
+	FOCUSES=($(echo $ws_info | grep -oP '"focused":\s*\K[^\s,]*(?=\s*,)'))
+	len=${#NUMS[@]}
+	for i in $(seq 0 $((len-1))); do
+		# t1=$(date +%s%3N)
+		NUM=${NUMS[$i]}
+		# t2=$(date +%s%3N)
+		NAME=${NAMES[$i]}
+		# t3=$(date +%s%3N)
+		URGENT=${URGENTS[$i]}
+		# t4=$(date +%s%3N)
+		FOCUSED=${FOCUSES[$i]}
+		# t5=$(date +%s%3N)
 		[[ $URGENT = true ]] && MODI="urgent" || MODI=""
 		[[ $FOCUSED = true ]] && MODI="focused"
-		# MODI=""
-		# if [[ $URGENT = true ]]; then MODI="urgent"; fi
-		# if [[ $FOCUSED = true ]]; then MODI="focused"; fi
 		LITERAL="$LITERAL (ws :num $NUM :name '$NAME' :modi '$MODI')"
 	done
 
