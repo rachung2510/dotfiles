@@ -327,10 +327,10 @@ default_border pixel 3
 default_floating_border normal
 for_window [window_role="cava"] border pixel 0
 for_window [class="stalonetray"] border pixel 0
-gaps inner 5
+gaps inner 3
 # gaps top 9
-gaps outer 1
-gaps left 48
+gaps outer 2
+gaps left 50
 smart_borders on
 
 # vim: set ft=i3config :
