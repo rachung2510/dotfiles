@@ -10,10 +10,15 @@ import configparser
 
 DEFAULT_APP_ICON_CONFIG = {
 	"alacritty": "",
+	"inkscape": "",
 	"microsoft-edge": "",
+	"obsidian": "", 
+	"org.gnome.nautilus": "",
 	"telegram": "",
+	"thunderbird": "",
 	"Whatsapp -*": "",
-	"VirtualBox Manager" : ""
+	"virtualBox manager": "",
+	"zoom": ""
 }
 
 def build_rename(i3, app_icons, args=None):
