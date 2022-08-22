@@ -23,7 +23,7 @@ exec --no-startup-id feh --bg-scale ~/.config/i3/wallpapers/$(~/.config/i3/scrip
 exec --no-startup-id autokey-gtk
 exec --no-startup-id i3-msg 'workspace $ws1'
 exec --no-startup-id ~/.config/i3/scripts/battery.sh &
-# exec --no-startup-id ~/.config/i3/scripts/onedrive.sh &
+exec --no-startup-id sleep 10 && ~/.config/i3/scripts/onedrive.sh &
 exec --no-startup-id ibus-daemon -x -d
 exec --no-startup-id eww daemon && eww open bar
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
