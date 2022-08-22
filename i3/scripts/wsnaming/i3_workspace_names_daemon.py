@@ -38,6 +38,7 @@ def build_rename(i3, app_icons, args=None):
 			for name_re in app_icons.keys():
 				if re.match(name_re, name, re.IGNORECASE):
 					return app_icons[name_re]
+		return None
 
 	def rename(i3, e, confpath=""):
 		workspaces = i3.get_tree().workspaces()
@@ -56,7 +57,8 @@ def build_rename(i3, app_icons, args=None):
 			if config['ICON'][str(workspace.num)] != 'auto':
 				continue
 			names = [get_icon_or_name(leaf) for leaf in workspace.leaves()]
-			names = names[0] if len(names) else config['DEFAULT']['ws%d'%workspace.num]
+			names = [names[0]] if len(names) else [None]
+			names = names[0] if names[0] else config['DEFAULT']['ws%d'%workspace.num]
 			if int(workspace.num) >= 0:
 				newname = u"{} {}".format(workspace.num, names)
 			else:
