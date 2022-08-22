@@ -3,6 +3,9 @@
 	(box :orientation "v" :space-evenly "false"
 		(literal :content workspace)
 		(label :class "${(ws-mode == "") ? "" : "ws-mode"}" :text ws-mode)
+		(box :class "${(ws-scratch > 0) ? "" : "hidden"}" :orientation "v" :space-evenly "false"
+			(label :text "")
+			(label :class "batt-label" :text ws-scratch))
 ))
 
 (defwidget lang[]

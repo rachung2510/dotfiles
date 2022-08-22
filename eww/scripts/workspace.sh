@@ -26,8 +26,18 @@ run() {
 	echo "$LITERAL)"
 }
 
+get_scratch() {
+	echo "$(i3-msg -t get_tree | grep -oP '"scratchpad_state":"(?!none).*?"' | wc -l)"
+}
 
-run
-i3-msg -t subscribe -m '[ "workspace" ]' | while read _; do
+if [[ $1 = "" ]]; then
 	run
-done
+	i3-msg -t subscribe -m '[ "workspace" ]' | while read _; do
+		run
+	done
+elif [[ $1 = "scratch" ]]; then
+	get_scratch
+	i3-msg -t subscribe -m '[ "window" ]' | while read _; do
+		get_scratch
+	done
+fi
