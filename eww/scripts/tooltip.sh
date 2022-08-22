@@ -10,7 +10,7 @@ if [[ $1 = "vol" ]]; then
 	elif [[ $sink = "alsa_output"* ]]; then
 		name="Speakers"
 	fi
-	echo -e "\nSpeaker: $name"
+	echo -e "Speaker: $name"
 
 elif [[ $1 = "batt" ]]; then
 	duration=$(acpi -b | awk -F '[,]' '{print $3}' | awk -F ' ' '{print $1}')

@@ -36,7 +36,8 @@
 	(slider
 		:value volume-val
 		:icon vol-icon
-		:tooltip 'Volume: \${volume-val}%\${vol-tooltip}'
+		:tooltip 'Volume: \${volume-val}%
+\${vol-tooltip}'
 		:action-click '~/.config/i3/scripts/fnactions.sh mute'
 		:action-slide 'amixer -D pulse sset Master {}%'
 		:modi mute-bool)
