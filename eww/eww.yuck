@@ -1,44 +1,66 @@
+;; Time
 (defpoll time :interval "30s" "date '+\%H:%M'")
 (defpoll date :interval "12h" "date '+%a, %d %b %Y'")
 (defpoll hour :interval "30s" "date '+%H'")
 (defpoll min  :interval "30s" "date '+%M'")
 
-(deflisten title   :interval "5h" "bash scripts/player.sh title")
-(deflisten artist  :interval "5h" "bash scripts/player.sh artist")
-(deflisten play-icon :interval "5h" "bash scripts/player.sh icon")
+;; Player
+(deflisten title   :interval "5h" "scripts/player title")
+(deflisten artist  :interval "5h" "scripts/player artist")
+(deflisten play-icon :interval "5h" "scripts/player icon")
 
-(defpoll volume-val	:interval "5h"  "bash scripts/getval.sh vol")
-(defpoll light-val	:interval "5h"  "bash scripts/getval.sh light")
-(defpoll batt-val	:interval "120s"  "bash scripts/getval.sh batt")
-(defpoll vol-icon	:interval "5h"  "bash scripts/geticon.sh vol")
-(defpoll light-icon	:interval "5h"  "bash scripts/geticon.sh light")
-(defpoll batt-icon	:interval "5s"	"bash scripts/geticon.sh batt")
-(defpoll mute-bool	:interval "5h"  "bash scripts/getbool.sh mute")
+;; Cava
+(deflisten l1  "scripts/cava/getlevel 0" )
+(deflisten l2  "scripts/cava/getlevel 1")
+(deflisten l3  "scripts/cava/getlevel 2")
+(deflisten l4  "scripts/cava/getlevel 3")
+(deflisten l5  "scripts/cava/getlevel 4")
+(deflisten l6  "scripts/cava/getlevel 5")
+(deflisten l7  "scripts/cava/getlevel 6")
+(deflisten l8  "scripts/cava/getlevel 7")
+(deflisten l9  "scripts/cava/getlevel 8")
+(deflisten l10 "scripts/cava/getlevel 9")
+(deflisten l11 "scripts/cava/getlevel 10")
+(deflisten l12 "scripts/cava/getlevel 11")
 
-(defpoll vol-tooltip	:interval "5s"	"bash scripts/tooltip.sh vol")
-(defpoll batt-tooltip	:interval "5s"	"bash scripts/tooltip.sh batt")
-(defpoll wifi-tooltip	:interval "5s"	"bash scripts/tooltip.sh wifi")
+;; Sidebar scales
+(defpoll volume-val	:interval "5h"  "scripts/getval vol")
+(defpoll light-val	:interval "5h"  "scripts/getval light")
+(defpoll batt-val	:interval "120s"  "scripts/getval batt")
+(defpoll vol-icon	:interval "5h"  "scripts/geticon vol")
+(defpoll light-icon	:interval "5h"  "scripts/geticon light")
+(defpoll batt-icon	:interval "5s"	"scripts/geticon batt")
+(defpoll mute-bool	:interval "5h"  "scripts/getbool mute")
 
-(defpoll weather-loc  :interval "24h" "bash scripts/weather.sh location")
-(defpoll weather-icon :interval "1h"  "bash scripts/weather.sh icon")
-(defpoll weather-temp :interval "1h"  "bash scripts/weather.sh temp")
-(defpoll weather-cond :interval "1h"  "bash scripts/weather.sh cond")
+;; Tooltips
+(defpoll vol-tooltip	:interval "5s"	"scripts/tooltip vol")
+(defpoll batt-tooltip	:interval "5s"	"scripts/tooltip batt")
+(defpoll wifi-tooltip	:interval "5s"	"scripts/tooltip wifi")
 
-(defpoll cpu-val :interval "5s" "bash scripts/getval.sh cpu")
-(defpoll ram-val :interval "5s" "bash scripts/getval.sh ram")
-(defpoll hdd-val :interval "300s" "bash scripts/getval.sh hdd")
-(defpoll hdd-used :interval "300s" "bash scripts/getval.sh hdd used")
-(defpoll hdd-avail :interval "300s" "bash scripts/getval.sh hdd avail")
+;; Weather
+(defpoll weather-loc  :interval "24h" "scripts/weather location")
+(defpoll weather-icon :interval "1h"  "scripts/weather icon")
+(defpoll weather-temp :interval "1h"  "scripts/weather temp")
+(defpoll weather-cond :interval "1h"  "scripts/weather cond")
 
-(defpoll wifi-icon		:interval "5s" "bash scripts/geticon.sh wifi")
-(defpoll wifi-bool		:interval "5h" "bash scripts/getbool.sh wifi")
-(defpoll bluetooth-bool :interval "5h" "bash scripts/getbool.sh bluetooth")
-(defpoll notif-bool		:interval "5h" "bash scripts/getbool.sh notif")
+;; Stats
+(defpoll cpu-val :interval "2s" "scripts/getval cpu")
+(defpoll ram-val :interval "2s" "scripts/getval ram")
+(defpoll hdd-val :interval "300s" "scripts/getval hdd")
+(defpoll hdd-used :interval "300s" "scripts/getval hdd used")
+(defpoll hdd-avail :interval "300s" "scripts/getval hdd avail")
 
-(deflisten workspace "bash scripts/workspace.sh")
-(deflisten ws-mode "bash scripts/wsmode.sh")
-(deflisten ws-scratch "bash scripts/workspace.sh scratch")
-(defpoll lang-val :interval "5s" "bash scripts/getval.sh lang")
+;; Quickbuttons
+(defpoll wifi-icon		:interval "5s" "scripts/geticon wifi")
+(defpoll wifi-bool		:interval "5h" "scripts/getbool wifi")
+(defpoll bluetooth-bool :interval "5h" "scripts/getbool bluetooth")
+(defpoll notif-bool		:interval "5h" "scripts/getbool notif")
+
+;; Workspace
+(deflisten workspace "scripts/workspace")
+(deflisten ws-mode "scripts/wsmode")
+(deflisten ws-scratch "scripts/workspace scratch")
+(defpoll lang-val :interval "2s" "scripts/getval lang")
 
 (include "./yuck/method.yuck")
 (include "./yuck/sidebar.yuck")

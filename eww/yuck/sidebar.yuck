@@ -16,6 +16,26 @@
 		(label :text date :class "label-date")
 )))
 
+(defwidget cava []
+	(box :height cava-height :orientation "v" :space-evenly "false"
+		(box :height cava-height :orientation 'h' :halign 'center'
+		(box :class 'vis' :orientation 'h' :space-evenly 'true' :width '320' :vexpand 'true'
+			(scale :orientation 'v' :value l1 :flipped 'true')
+			(scale :orientation 'v' :value l2 :flipped 'true')
+			(scale :orientation 'v' :value l3 :flipped 'true')
+			(scale :orientation 'v' :value l4 :flipped 'true')
+			(scale :orientation 'v' :value l5 :flipped 'true')
+			(scale :orientation 'v' :value l6 :flipped 'true')
+			(scale :orientation 'v' :value l7 :flipped 'true')
+			(scale :orientation 'v' :value l8 :flipped 'true')
+			(scale :orientation 'v' :value l9 :flipped 'true')
+			(scale :orientation 'v' :value l10 :flipped 'true')
+			(scale :orientation 'v' :value l11 :flipped 'true')
+			(scale :orientation 'v' :value l12 :flipped 'true')
+		))
+		;; (literal :content vis)
+))
+
 (defwidget player []
 	(box :class "roundpannel player ${title == "" ? "disabled" : ""}" :height player-height
 	(box :orientation "v" :space-evenly "false" :vexpand "true" :valign "center"
@@ -28,7 +48,7 @@
 				(button '怜'))" :
 			"(box :class 'labels' :orientation 'h' :spacing 20 :halign 'center' :space-evenly 'true'
 				(button :onclick 'playerctl -p playerctld previous' '玲')
-				(button :class 'btn-play' :onclick 'bash scripts/player.sh action' play-icon)
+				(button :class 'btn-play' :onclick 'scripts/player action' play-icon)
 				(button :onclick 'playerctl -p playerctld next' '怜'))"}")
 )))
 
@@ -38,7 +58,7 @@
 		:icon vol-icon
 		:tooltip 'Volume: \${volume-val}%
 \${vol-tooltip}'
-		:action-click '~/.config/i3/scripts/fnactions.sh mute'
+		:action-click '~/.config/i3/scripts/fnactions mute'
 		:action-slide 'amixer -D pulse sset Master {}%'
 		:modi mute-bool)
 ")
@@ -96,19 +116,20 @@ ${batt-tooltip}"
 (defwidget quickbuttons []
 	(box :class "roundpannel" :height sys-height
 	(box :orientation "h" :space-evenly "true" :vexpand "true" :valign "center"
-		(quickbutton :icon "直" :tooltip "" :action "bash scripts/quickbutton.sh wifi" 		:type "wifi")
-		(quickbutton :icon ""  :tooltip "" :action "bash scripts/quickbutton.sh bluetooth" :type "bluetooth")
-		(quickbutton :icon "ﮖ"  :tooltip "Do Not Disturb" :action "bash scripts/quickbutton.sh notif" 	:type "notif")
-		(quickbutton :icon ""  :tooltip "Lock"  :action "bash scripts/quickbutton.sh lock"  :type "")
-		(quickbutton :icon ""  :tooltip "Sleep" :action "bash scripts/quickbutton.sh sleep" :type "")
+		(quickbutton :icon "直" :tooltip "" :action "scripts/quickbutton wifi" 		:type "wifi")
+		(quickbutton :icon ""  :tooltip "" :action "scripts/quickbutton bluetooth" :type "bluetooth")
+		(quickbutton :icon "ﮖ"  :tooltip "Do Not Disturb" :action "scripts/quickbutton notif" 	:type "notif")
+		(quickbutton :icon ""  :tooltip "Lock"  :action "scripts/quickbutton lock"  :type "")
+		(quickbutton :icon ""  :tooltip "Sleep" :action "scripts/quickbutton sleep" :type "")
 )))
 
 (defwidget pannel []
 	 (box :class "sidepannel" :orientation "v" :space-evenly "false"
 	 	 ;; (box :class "container" :height top-height)
 		 (box :class "container time" :orientation "v" :space-evenly "false"
-			 (time))
-		 (box :class "cava" :height cava-height)
+			(time))
+		 (box :class "container cava" :orientation "v" :space-evenly "false"
+		 	(cava))
 		 (box :class "container" :orientation "v" :space-evenly "false"
 			(player)
 			 (box :orientation "h" :space-evenly "false"

@@ -5,7 +5,7 @@
 	(box :class {modi}  :space-evenly "false" :orientation "h" :vexpand "true" :valign "center"
 		(box :width "30"
 			(button :class "btn-settings ${action-click == "" ? "no-hover" : ""}" :onclick {action-click} {icon}))
-		(eventbox :onhover "eww update vol-tooltip=\"$(bash scripts/tooltip.sh vol)\""
+		(eventbox :onhover "eww update vol-tooltip=\"$(scripts/tooltip vol)\""
 		(scale :value {value}
 			:min 0
             :max 101
@@ -30,7 +30,7 @@
 )))
 
 (defvar wifi-literal "
-	;; (eventbox :onhover 'eww update wifi-tooltip=\"$(bash scripts/tooltip.sh wifi)\"'
+	;; (eventbox :onhover 'eww update wifi-tooltip=\"$(scripts/tooltip wifi)\"'
 	(button :class wifi-bool :onclick {action} :tooltip '\${wifi-tooltip}' {icon})
 ")
 (defvar bluetooth-literal "(button :class bluetooth-bool :onclick {action} {icon})")

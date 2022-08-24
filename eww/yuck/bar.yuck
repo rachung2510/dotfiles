@@ -13,13 +13,11 @@
 )
 
 (defwidget volume []
-	;; (eventbox :onhover "eww update vol-tooltip=\"$(bash scripts/tooltip.sh vol)\""
 	(button :tooltip "Volume: ${volume-val}%
 ${vol-tooltip}"
-			:onclick "~/.config/i3/scripts/fnactions.sh mute"
+			:onclick "~/.config/i3/scripts/fnactions mute"
 			vol-icon))
 (defwidget wifi []
-	;; (eventbox :onhover "eww update wifi-tooltip=\"$(bash scripts/tooltip.sh wifi)\""
 	(button :onclick "alacritty -t nmtui -e nmtui-connect &" :tooltip {wifi-tooltip} wifi-icon))
 (defwidget batt []
 	(box :orientation "v" :space-evenly "false"
