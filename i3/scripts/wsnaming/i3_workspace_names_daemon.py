@@ -8,6 +8,7 @@ import re
 import i3ipc
 import configparser
 
+DIR = "/home/user/.config/i3/scripts/wsnaming"
 DEFAULT_APP_ICON_CONFIG = {
 	"window_title=.*WhatsApp -.*": "",
 	"window_title=.*YouTube.*": "",
@@ -46,46 +47,52 @@ def build_rename(i3, app_icons, args=None):
 		return None
 
 	def rename(i3, e, confpath=""):
-		workspaces = i3.get_tree().workspaces()
-		# need to use get_workspaces since the i3 con object doesn't have the visible property for some reason
-		workdicts = i3.get_workspaces()
-		visible = [workdict.name for workdict in workdicts if workdict.visible]
-		visworkspaces = []
-		focus = ([workdict.name for workdict in workdicts if workdict.focused] or [None])[0]
-		focusname = None
+		try:
+			workspaces = i3.get_tree().workspaces()
+			# need to use get_workspaces since the i3 con object doesn't have the visible property for some reason
+			workdicts = i3.get_workspaces()
+			visible = [workdict.name for workdict in workdicts if workdict.visible]
+			visworkspaces = []
+			focus = ([workdict.name for workdict in workdicts if workdict.focused] or [None])[0]
+			focusname = None
 
-		commands = []
-		config = configparser.ConfigParser()
-		config.read(confpath if confpath else args.config)
-		for workspace in workspaces:
-			# print(workspace.name)
-			if config['ICON'][str(workspace.num)] != 'auto':
-				continue
-			names = [get_icon_or_name(leaf) for leaf in workspace.leaves()]
-			names = [names[0]] if len(names) else [None]
-			names = names[0] if names[0] else config['DEFAULT']['ws%d'%workspace.num]
-			if int(workspace.num) >= 0:
-				newname = u"{} {}".format(workspace.num, names)
-			else:
-				newname = names
+			commands = []
+			config = configparser.ConfigParser()
+			config.read(confpath if confpath else args.config)
+			for workspace in workspaces:
+				# print(workspace.name)
+				if config['ICON'][str(workspace.num)] != 'auto':
+					continue
+				names = [get_icon_or_name(leaf) for leaf in workspace.leaves()]
+				names = [names[0]] if len(names) else [None]
+				names = names[0] if names[0] else config['DEFAULT']['ws%d'%workspace.num]
+				if int(workspace.num) >= 0:
+					newname = u"{} {}".format(workspace.num, names)
+				else:
+					newname = names
 
-			if workspace.name in visible:
-				visworkspaces.append(newname)
-			if workspace.name == focus:
-				focusname = newname
+				if workspace.name in visible:
+					visworkspaces.append(newname)
+				if workspace.name == focus:
+					focusname = newname
 
-			if workspace.name != newname:
-				commands.append('rename workspace "{}" to "{}"'.format(
-					# escape any double quotes in old or new name.
-					workspace.name.replace('"', '\\"'), newname.replace('"', '\\"')))
+				if workspace.name != newname:
+					commands.append('rename workspace "{}" to "{}"'.format(
+						# escape any double quotes in old or new name.
+						workspace.name.replace('"', '\\"'), newname.replace('"', '\\"')))
 
-		if args and args.verbose:
-			print(commands)
+			if args and args.verbose:
+				print(commands)
 
-		# we have to join all the activate workspaces commands into one or the order
-		# might get scrambled by multiple i3-msg instances running asyncronously
-		# causing the wrong workspace to be activated last, which changes the focus.
-		i3.command(u';'.join(commands))
+			# we have to join all the activate workspaces commands into one or the order
+			# might get scrambled by multiple i3-msg instances running asyncronously
+			# causing the wrong workspace to be activated last, which changes the focus.
+			i3.command(u';'.join(commands))
+
+		except Exception as e:
+			f = open('%s/log' % DIR,'w')
+			f.write(str(e))
+			f.close()
 
 	return rename
 
@@ -102,7 +109,7 @@ def _verbose_startup(i3):
 
 def main():
 	parser = argparse.ArgumentParser(__doc__)
-	parser.add_argument("-c", "--config")
+	parser.add_argument("-c", "--config", default="%s/wsconfig.ini" % DIR)
 	parser.add_argument("-v", "--verbose", help="verbose startup that will help you to find the right name of the window",
 						action="store_true",
 						required=False,

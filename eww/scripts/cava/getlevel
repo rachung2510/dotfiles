@@ -1,0 +1,12 @@
+#!/bin/bash
+
+in="scripts/cava/fifo"
+while true; do
+	if [[ -f $in ]]; then
+		arr=($(tail -n 1 $in))
+		echo ${arr[$1]}
+	else
+		echo 3
+	fi
+	sleep .05
+done
