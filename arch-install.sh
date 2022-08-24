@@ -1,18 +1,13 @@
 # dependencies
 echo "[INFO] Installing dependencies..."
-yay -S alacritty --noconfirm
-yay -S papirus-icon-theme --noconfirm
-yay -S lxappearance brightnessctl playerctl pavucontrol feh --noconfirm
-yay -S rofi --noconfirm
+yay -S alacritty rofi --noconfirm
+yay -S lxappearance-gtk3 brightnessctl playerctl pavucontrol feh acpi maim xclip --noconfirm
 sudo usermod -aG video ${USER} # run brightnessctl without sudo
-sudo pacman -S ncurses fftw cmake --noconfirm # dependencies for vis
-yay -S acpi maim xclip gnome-terminal cli-visualizer jq --noconfirm
 
 # configs
 echo -e "\n[INFO] Copying config files..."
 cd ~/dotfiles
 cp -r alacritty ~/.config/
-cp -r vis ~/.config/
 cp -r dunst ~/.config/
 cp -r eww ~/.config/
 cp -r i3 ~/.config/
@@ -21,7 +16,7 @@ cp -r rofi ~/.config/
 
 # i3lock-color
 echo -e "\n[INFO] Installing i3lock-color..."
-yay -S autoconf cairo fontconfig gcc libev libjpeg-turbo libxinerama libxkbcommon-x11 libxrandr pam pkgconf xcb-util-image xcb-util-xrmi --noconfirm
+yay -S autoconf cairo fontconfig gcc libev libjpeg-turbo libxinerama libxkbcommon-x11 libxrandr pam pkgconf xcb-util-image --noconfirm
 git clone https://github.com/Raymo111/i3lock-color.git
 cd i3lock-color
 ./install-i3lock-color.sh
@@ -41,7 +36,8 @@ sudo mv eww /usr/local/bin/
 
 # themes
 echo -e "\n[INFO] Installing themes..."
-wget -qO- https://git.io/papirus-folders-install | env PREFIX=$HOME/.local sh
+yay -S papirus-icon-theme --noconfirm
+wget -qO- https://git.io/papirus-folders-install | sh
 papirus-folders -C magenta
 cd ~
 git clone https://github.com/vinceliuice/Orchis-theme.git
@@ -49,9 +45,9 @@ cd Orchis-theme
 ./install.sh -t purple -c light
 ./install.sh -t purple -c dark
 curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.sh | sh
-curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.sh | sh
 sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
+# curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.sh | sh
 # spicetify backup apply enable-devtools
 
 # fonts
