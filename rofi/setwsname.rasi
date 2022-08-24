@@ -16,10 +16,8 @@ window {
 	transparency: "real";
 	background-color: @window-bg;
 	width: 20%;
-	y-offset: -180px;
 	border: 0px;
 	border-radius: 20px;
-	border-color: @bg;
 	padding: 14 20 20 20;
 }
 mainbox {
