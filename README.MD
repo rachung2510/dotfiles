@@ -8,7 +8,6 @@
 - Widgets: [eww](https://github.com/elkowar/eww) ([Documentation](https://elkowar.github.io/eww/widgets.html))\
 Reference: [Gwydo](https://github.com/Gwyd0/Linuxsetup)
 - Terminal: Alacritty
-- Visualizer: [cli-visualizer](https://github.com/dpayne/cli-visualizer#arch-linux)
 
 ### Fonts
 - [Noto Sans Medium Nerd Font](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Noto/Sans/complete/Noto%20Sans%20Medium%20Nerd%20Font%20Complete.ttf)
