@@ -20,7 +20,7 @@ while true; do
 	fi
 
 	echo "pass"
-	onedrive --synchronize
-	onedrive --synchronize --confdir=~/.config/onedriveimperial
+	[[ -d ~/OneDrive ]] && onedrive --synchronize
+	[[ -d ~/Imperial ]] && onedrive --synchronize --confdir=~/.config/onedriveimperial
 	sleep 300
 done
