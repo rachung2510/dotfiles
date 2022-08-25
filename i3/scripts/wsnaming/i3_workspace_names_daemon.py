@@ -10,16 +10,18 @@ import configparser
 
 DIR = "/home/user/.config/i3/scripts/wsnaming"
 DEFAULT_APP_ICON_CONFIG = {
-	"window_title=.*WhatsApp -.*": "",
+	"window_title=.*WhatsApp - Personal.*": "",
 	"window_title=.*YouTube.*": "",
 	"window_class=Alacritty": "",
 	"window_class=Inkscape": "",
 	"window_class=Microsoft-edge": "",
 	"window_class=obsidian": "", 
 	"window_class=Org.gnome.Nautilus": "",
+	"window_class=Thunar": "",
 	"window_class=TelegramDesktop": "",
 	"window_class=Thunderbird": "",
 	"window_class=VirtualBox Manager": "",
+	"window_class=whatsapp-nativefier-d40211": "",
 	"window_class=zoom": ""
 }
 
