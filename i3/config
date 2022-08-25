@@ -362,13 +362,14 @@ set $ws10 "10 "
 
 # bind program to workspace and focus to them on startup:
 for_window [class="Spotify"] move to workspace number 10
-for_window [title="WhatsApp -"] move to workspace number 8
+# for_window [title="WhatsApp - Personal"] move to workspace number 8
 for_window [class="zoom"] move to workspace number 8
 for_window [class="Minecraft.*"] move to workspace number 9
 assign [class="Google-chrome"] number 1
 assign [class="Microsoft-edge"] number 1
 assign [class="obsidian"] number 7
-assign [class="whatsapp-desktop"] number 8
+# assign [class="whatsapp-desktop"] number 8
+assign [class="whatsapp-nativefier-d40211"] number 8
 assign [class="TelegramDesktop"] number 8
 assign [class="Thunderbird"] number 8
 assign [instance="minecraft-launcher"] number 9
@@ -514,13 +515,15 @@ for_window [class="Org.gnome.Nautilus"] floating enable
 for_window [class="Thunar"] floating enable
 for_window [class="org.gnome.clocks"] floating enable
 for_window [class="gnome-calculator"] floating enable
-for_window [title="nmtui"] floating enable
+for_window [title="nmtui"] floating enable sticky enable
 for_window [class="GParted"] floating enable
 for_window [class="Lightdm-settings"] floating enable
-for_window [class="Lxappearance"] floating enable sticky enable border normal
-for_window [class="eos-quickstart"] floating enable sticky enable border normal
+for_window [class="Lxappearance"] floating enable
+for_window [class="eos-quickstart"] floating enable
+for_window [class="Nm-connection-editor"] floating enable
+for_window [class="Gthumb"] floating enable
+for_window [class="System-config-printer.py"] floating enable
 for_window [class="Yad" instance="yad"] floating enable
-for_window [class="Galculator" instance="galculator"] floating enable
 for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
 
 # set floating (nontiling) for special apps
@@ -556,8 +559,8 @@ set $light-grey         #f9f9f9
 # inactive-text-light   #908c97
 # inactive-bg-dark      #2a2a2a
 # inactive-text-dark    #b4b4b4
-set $inactive-bg		#f2f2f2
-set $inactive-text		#908c97
+set $inactive-bg		#2a2a2a
+set $inactive-text		#b4b4b4
 set $urgent             #eb4d4b
 set $shade4             #8e24aa
 set $shade8             #ce93d8
@@ -679,3 +682,5 @@ bindsym $mod+slash exec --no-startup-id "rofi -no-lazy-grab -show drun -modi dru
 #exec --no-startup-id greenclip daemon>/dev/null
 # bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard \
 #		-config ~/.config/rofi/rofidmenu.rasi
+
+# vim: set ft=i3config :
