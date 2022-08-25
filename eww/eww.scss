@@ -1,4 +1,4 @@
-@import "styles/dark.scss";
+@import "styles/light.scss";
 
 * {
 	all: unset;
@@ -40,7 +40,10 @@
 
 .vis { margin-left: -10px; }
 .vis scale trough { min-width: 20px; }
-.vis scale trough highlight { background: linear-gradient($vis-light, $vis-dark); }
+.vis scale trough highlight { 
+	// background-color: $shade4;
+	background: linear-gradient($vis-light, $vis-dark);
+}
 
 .label-time {
 	color: $text-time;
@@ -145,6 +148,7 @@ button.selected:hover { background-color: $btn-hover; }
 }
 
 // Workspaces
+.workspace { margin-bottom: -50px; }
 .ws-label { 
 	font-size: .8rem;
 	margin-bottom: -8px;

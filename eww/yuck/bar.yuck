@@ -48,8 +48,7 @@ ${vol-tooltip}"
 ))
 
 (defwidget top []
-	(box
-		:orientation "v" 
+	(box :orientation "v" 
 		:space-evenly "false"
 		:vexpand "true"
 		:valign "center"
@@ -67,11 +66,11 @@ ${vol-tooltip}"
 (defwidget bar []
 	(box :class "taskbar" 
 		 :orientation "v" 
-		 :space-evenly "true"
-	(overlay
+		 :space-evenly "false"
+	;; (overlay
 (top)
 (end)
-)))
+))
 
 (defwindow bar
 	:windowtype "dock"
