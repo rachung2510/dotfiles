@@ -7,25 +7,29 @@ import argparse
 import re
 import i3ipc
 import configparser
+import traceback
 
-DIR = "/home/user/.config/i3/scripts/wsnaming"
-DEFAULT_APP_ICON_CONFIG = {
-	"window_title=.*WhatsApp - Personal.*": "",
-	"window_title=.*YouTube.*": "",
-	"window_class=Alacritty": "",
-	"window_class=Inkscape": "",
-	"window_class=Microsoft-edge": "",
-	"window_class=obsidian": "", 
-	"window_class=Org.gnome.Nautilus": "",
-	"window_class=Thunar": "",
-	"window_class=TelegramDesktop": "",
-	"window_class=Thunderbird": "",
-	"window_class=VirtualBox Manager": "",
-	"window_class=whatsapp-nativefier-d40211": "",
-	"window_class=zoom": ""
+DIR = "/home/user/.config/i3/scripts/wsnaming/"
+CONF = DIR + "wsconfig.ini"
+WSICONMAP = {
+	"window_title=.*WhatsApp - Personal.*": "whatsapp",
+	"window_title=.*YouTube.*": "youtube",
+	"window_class=Alacritty": "terminal",
+	"window_class=[fF]ont-": "fonts",
+	"window_class=Inkscape": "draw",
+	"window_class=Microsoft-edge": "browser",
+	"window_class=[mM]inecraft.*": "minecraft",
+	"window_class=obsidian": "draw", 
+	"window_class=Org.gnome.Nautilus": "files",
+	"window_class=Thunar": "files",
+	"window_class=TelegramDesktop": "telegram",
+	"window_class=Thunderbird": "email",
+	"window_class=VirtualBox Manager": "virtualbox",
+	"window_class=whatsapp-nativefier-d40211": "whatsapp",
+	"window_class=zoom": "video"
 }
 
-def build_rename(i3, app_icons, args=None):
+def build_rename(i3, args=None):
 	"""Build rename callback function to pass to i3ipc.
 
 	Parameters
@@ -39,16 +43,26 @@ def build_rename(i3, app_icons, args=None):
 	func
 		The rename callback.
 	"""
+
+	config = configparser.ConfigParser()
+	config.read(CONF)
+	app_icons = config['ICONS']
+	ws_icons = config['WSICONS']
+	default_icons = config['DEFAULTS']
+
 	def get_icon_or_name(leaf):
-		for key in app_icons.keys():
+		for key in WSICONMAP.keys():
 			identifier = key.split('=')[0]
 			name_re = key.split('=')[1]
 			name = getattr(leaf, identifier, None)
-			if re.match(name_re, name):
-				return app_icons[key]
+			if name and re.match(name_re, name):
+				try:
+					return app_icons[WSICONMAP[key]]
+				except:
+					return app_icons['window']
 		return None
 
-	def rename(i3, e, confpath=""):
+	def rename(i3, e):
 		try:
 			workspaces = i3.get_tree().workspaces()
 			# need to use get_workspaces since the i3 con object doesn't have the visible property for some reason
@@ -59,19 +73,16 @@ def build_rename(i3, app_icons, args=None):
 			focusname = None
 
 			commands = []
-			config = configparser.ConfigParser()
-			config.read(confpath if confpath else args.config)
 			for workspace in workspaces:
-				# print(workspace.name)
-				if config['ICON'][str(workspace.num)] != 'auto':
+				if ws_icons[str(workspace.num)] != 'auto':
 					continue
 				names = [get_icon_or_name(leaf) for leaf in workspace.leaves()]
 				names = [names[0]] if len(names) else [None]
-				names = names[0] if names[0] else config['DEFAULT']['ws%d'%workspace.num]
-				if int(workspace.num) >= 0:
-					newname = u"{} {}".format(workspace.num, names)
-				else:
-					newname = names
+				names = names[0] if names[0] else default_icons['ws%d'%workspace.num]
+				# if int(workspace.num) >= 0:
+				newname = u"{} {}".format(workspace.num, names)
+				# else:
+					# newname = names
 
 				if workspace.name in visible:
 					visworkspaces.append(newname)
@@ -92,8 +103,9 @@ def build_rename(i3, app_icons, args=None):
 			i3.command(u';'.join(commands))
 
 		except Exception as e:
-			f = open('%s/log' % DIR,'w')
+			f = open(DIR + "log", 'w')
 			f.write(str(e))
+			f.write(traceback.format_exc())
 			f.close()
 
 	return rename
@@ -111,31 +123,26 @@ def _verbose_startup(i3):
 
 def main():
 	parser = argparse.ArgumentParser(__doc__)
-	parser.add_argument("-c", "--config", default="%s/wsconfig.ini" % DIR)
 	parser.add_argument("-v", "--verbose", help="verbose startup that will help you to find the right name of the window",
 						action="store_true",
 						required=False,
 						default=False)
 	args = parser.parse_args()
 
-	# print('Using default app-icon config', DEFAULT_APP_ICON_CONFIG)
-	app_icons = dict(DEFAULT_APP_ICON_CONFIG)
-
 	# build i3-connection
 	i3 = i3ipc.Connection()
 	if args.verbose:
 		_verbose_startup(i3)
 
-	rename = build_rename(i3, app_icons, args)
+	rename = build_rename(i3, args)
 	for case in ['window::move', 'window::new', 'window::title', 'window::close', 'window::focus']:
 		i3.on(case, rename)
 	i3.main()
 
-def run(config):
+def run():
 	i3 = i3ipc.Connection()
-	app_icons = dict(DEFAULT_APP_ICON_CONFIG)
-	rename = build_rename(i3, app_icons)
-	rename(i3,None,config)
+	rename = build_rename(i3)
+	rename(i3, None)
 
 if __name__ == '__main__':
 	main()
