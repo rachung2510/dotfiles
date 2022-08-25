@@ -176,6 +176,8 @@ button.selected:hover { background-color: $btn-hover; }
 	font-size: .9rem;
 	margin-top: -5px;
 }
+.control button.no-hover:hover { color: $bar-text; }
+.control .crit { color: $urgent; }
 
 // Clock
 .time-v {

@@ -28,4 +28,5 @@ elif [[ $1 = "mute" ]]; then
 	mute=$(pactl get-sink-mute @DEFAULT_SINK@)
 	if [[ $mute = "Mute: yes" ]]; then echo "disabled";
 	else echo ""; fi
+
 fi

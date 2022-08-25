@@ -49,3 +49,10 @@
         (label :class "ws-label" :text "${num}")
         (label :text {name})
 )))
+
+(defwidget barbtn [icon action tooltip label font low-crit high-crit]
+	(box :orientation "v" :space-evenly "false" :class "${(label > high-crit) || (label < low-crit) ? 'crit' : ''}" 
+		(button :class "${font} ${(tooltip == "") ? "no-hover" : ""}"  :onclick {action} :tooltip {tooltip} {icon})
+		(literal :content "${(label != "" ) ?
+		"(label :class 'batt-label' :text '${label}%')" : ""}")
+))
