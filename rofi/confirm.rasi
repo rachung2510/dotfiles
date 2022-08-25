@@ -14,7 +14,7 @@ window {
     border-radius:          10px;
     border-color:           @popup-bd;
     location:               center;
-    y-offset:               -2em;
+    // y-offset:               -2em;
 }
 
 entry {
