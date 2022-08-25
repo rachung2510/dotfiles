@@ -152,13 +152,13 @@
 [urgency_low]
     background = "#ab47bc99"
     foreground = "#ffffff"
-    timeout = 2
+    timeout = 5
     default_icon = ~/.config/dunst/img/noti.png
 
 [urgency_normal]
     background = "#ab47bc99"
     foreground = "#ffffff"
-    timeout = 5
+    timeout = 10
     default_icon = ~/.config/dunst/img/noti.png
 #	script = ~/.config/dunst/scripts/getinfo.sh
 
@@ -201,4 +201,4 @@
 	frame_color = "#242daa"
 	timeout = 20
 
-# vim: set ft=text :
+# vim: set ft=dosini :
