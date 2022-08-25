@@ -5,9 +5,9 @@
 (defvar time-height "140")
 (defvar cava-height "136")
 (defvar player-height "140")
-(defvar settings-height "200")
+(defvar settings-height "220")
 (defvar stats-height "150")
-(defvar sys-height "100")
+(defvar sys-height "120")
 
 (defwidget time []
 	(box :class "roundpannel time" :height time-height :valign "end"
@@ -83,11 +83,11 @@ ${batt-tooltip}"
 ))
 
 (defwidget weather []
-	(box :class "roundpannel weather" :space-evenly "true" :orientation "h" :width "180" :height settings-height
+	(box :class "roundpannel weather" :space-evenly "true" :orientation "h" :width "190" :height settings-height
 	(box :space-evenly "false" :orientation "v"
 		(box :space-evenly "false" :orientation "v"
 			(label :text weather-loc  :valign "start" :halign "start" :class "bold")
-			(label :text weather-cond :valign "start" :halign "start" :xalign "0" :wrap "true" :limit-width "20")
+			(label :text weather-cond :valign "start" :halign "start" :xalign "0" :wrap "true" :limit-width "26")
 			(label :class "label-weather" :text weather-temp :valign "start" :halign "start"))
 		(box :class "weatherpannel" :space-evenly "false" :orientation "h" :halign "end" :valign "end" :vexpand "true"
 			(button :tooltip "Current Weather: ${weather-cond}, ${weather-temp}" :onclick "" weather-icon) 
@@ -148,7 +148,7 @@ ${batt-tooltip}"
 	:monitor 0
 	:windowtype "toolbar"
 	:geometry (geometry :x "0"
-						:y "8%"
+						:y "6%"
 						:width "450px"
 						:height "0")
 	:wm-ignore true
