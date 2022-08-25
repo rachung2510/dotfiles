@@ -1,4 +1,4 @@
-@import "styles/light.scss";
+@import "styles/dark.scss";
 
 * {
 	all: unset;
@@ -40,7 +40,7 @@
 
 .vis { margin-left: -10px; }
 .vis scale trough { min-width: 20px; }
-.vis scale trough highlight { background: linear-gradient($shade7, $shade1); }
+.vis scale trough highlight { background: linear-gradient($vis-light, $vis-dark); }
 
 .label-time {
 	color: $text-time;
