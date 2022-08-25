@@ -2,34 +2,36 @@
 
 LOW_THRESH=15
 HIGH_THRESH=95
+IMGDIR="$HOME/.config/dunst/img"
 
 high() {
-	notify-send -u low -i ~/.config/dunst/img/battery-full.png -h "string:x-dunst-stack-tag:batt-full" "Battery is fully charged" "Please disconnect your charger"
+	notify-send -u low -i $IMGDIR/battery-full.png -h "string:x-dunst-stack-tag:batt-full" "Battery is fully charged" "Please disconnect your charger"
 }
 
 low() {
 	duration=$(acpi -b | grep -oP '(?<=%, ).*(?= remaining)')
-	notify-send -u critical -i ~/.config/dunst/img/battery-critical.png -h "string:x-dunst-stack-tag:batt-crit" "Your battery is running low" "${duration%:*} ($1%) remaining"
+	notify-send -u critical -i $IMGDIR/battery-critical.png -h "string:x-dunst-stack-tag:batt-crit" "Your battery is running low" "${duration%:*} ($1%) remaining"
 }
 
 [[ $1 = "--high" ]] && high && exit 0
 [[ $1 = "--low" ]] && low $LOW_THRESH && exit 0
 
-pid=$(pgrep battery.sh)
+pid=$(pgrep battery)
 if [[ $(echo "$pid" | awk -F '[ ]' '{print (NF?NF-1:0)}') != "0" ]]; then
 	exit 0
 fi
 
-while :
-do
+notify-send -u low -i $IMGDIR/battery.png "Battery watcher started"
+
+while true; do
 	STATUS=$(cat /sys/class/power_supply/BAT1/status)
 	POWER=$(acpi -b | grep "Battery 0" | grep -o '[0-9]\+%' | tr -d '%')
 
 	if [[ $STATUS = "Charging" ]]; then
-		if [[ $POWER -ge $HIGH_THRESH ]]; then high; fi
+		[[ $POWER -ge $HIGH_THRESH ]] && high
 	else
-		if [[ $POWER -le $LOW_THRESH ]]; then low $POWER; fi
+		[[ $POWER -le $LOW_THRESH ]] && low $POWER
 	fi
-sleep 60
-#echo "run"
+	sleep 60
+	#echo "run"
 done
