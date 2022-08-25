@@ -24,7 +24,7 @@
 (deflisten l12 "scripts/cava/getlevel 11")
 
 ;; Sidebar scales
-(defpoll volume-val	:interval "5h"  "scripts/getval vol")
+(defpoll volume-val	:interval "5h" :initial "scripts/getval vol" "scripts/getval vol")
 (defpoll light-val	:interval "5h"  "scripts/getval light")
 (defpoll batt-val	:interval "120s"  "scripts/getval batt")
 (defpoll vol-icon	:interval "5h"  "scripts/geticon vol")
