@@ -327,10 +327,10 @@ bindsym $mod+e exec --no-startup-id /usr/bin/thunar
 bindsym $mod+Shift+p exec --no-startup-id $HOME/.config/i3/scripts/power-profiles
 
 # Custom keybinds for scripts
-bindsym $mod+t exec --no-startup-id $HOME/.config/i3/scripts/theme
+bindsym $mod+period exec --no-startup-id $HOME/.config/i3/scripts/theme
 bindsym $mod+m exec --no-startup-id $HOME/.config/i3/scripts/eww sidebar
 bindsym $mod+b exec --no-startup-id $HOME/.config/i3/scripts/eww bar
-bindsym $mod+n exec --no-startup-id $HOME/.config/i3/scripts/wsnaming/setwsname
+bindsym $mod+comma exec --no-startup-id $HOME/.config/i3/scripts/wsnaming/setwsname
 bindsym $mod+Shift+s exec --no-startup-id $HOME/.config/i3/scripts/screenshot
 bindsym Print exec --no-startup-id $HOME/.config/i3/scripts/screenshot desktop
 
@@ -364,7 +364,7 @@ set $ws10 "10 "
 for_window [class="Spotify"] move to workspace number 10
 # for_window [title="WhatsApp - Personal"] move to workspace number 8
 for_window [class="zoom"] move to workspace number 8
-for_window [class="Minecraft.*"] move to workspace number 9
+for_window [class="[mM]inecraft*"] move to workspace number 9
 assign [class="Google-chrome"] number 1
 assign [class="Microsoft-edge"] number 1
 assign [class="obsidian"] number 7
@@ -372,8 +372,7 @@ assign [class="obsidian"] number 7
 assign [class="whatsapp-nativefier-d40211"] number 8
 assign [class="TelegramDesktop"] number 8
 assign [class="Thunderbird"] number 8
-assign [instance="minecraft-launcher"] number 9
-assign [class="Minecraft.*"] number 9
+assign [class="[mM]inecraft*"] number 9
 assign [title="Steam"] number 9
 assign [class="Steam"] number 9
 assign [class="Stardew Valley"] number 9
@@ -484,6 +483,7 @@ exec_always --no-startup-id autotiling
 exec --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Tapping Enabled" 1
 exec --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Natural Scrolling Enabled" 1
 exec --no-startup-id i3-msg 'workspace $ws1'
+exec --no-startup-id $HOME/.config/i3/scripts/battery &
 exec --no-startup-id sleep 10 && $HOME/.config/i3/scripts/onedrive &
 exec --no-startup-id ibus-daemon -drxR
 exec --no-startup-id eww daemon && eww open bar
@@ -559,8 +559,8 @@ set $light-grey         #f9f9f9
 # inactive-text-light   #908c97
 # inactive-bg-dark      #2a2a2a
 # inactive-text-dark    #b4b4b4
-set $inactive-bg		#2a2a2a
-set $inactive-text		#b4b4b4
+set $inactive-bg		#f2f2f2
+set $inactive-text		#908c97
 set $urgent             #eb4d4b
 set $shade4             #8e24aa
 set $shade8             #ce93d8
