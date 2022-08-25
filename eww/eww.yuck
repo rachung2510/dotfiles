@@ -58,7 +58,7 @@
 
 ;; Workspace
 (deflisten workspace "scripts/workspace")
-(deflisten ws-mode "scripts/wsmode")
+(deflisten ws-mode "scripts/workspace mode")
 (deflisten ws-scratch "scripts/workspace scratch")
 (defpoll lang-val :interval "2s" "scripts/getval lang")
 

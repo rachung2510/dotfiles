@@ -6,7 +6,7 @@ notify_bluetooth() {
 	notify-send -u normal -i "~/.config/dunst/img/bluetooth-$1.png" "Bluetooth turned $1" "Status: $(eval $cmd)"
 }
 eww_update() {
-	eww update $1-bool=$(bash scripts/getbool.sh $1) &&
+	eww update $1-bool=$(bash scripts/getbool $1) &&
 	eww update $1-literal="$(eww get $1-literal)"
 }
 
@@ -17,7 +17,7 @@ if [[ $1 = "wifi" ]]; then
 		nmcli radio wifi on
 	fi
 	eww_update wifi
-	eww update wifi-tooltip=$(bash scripts/tooltip.sh wifi)
+	eww update wifi-tooltip=$(bash scripts/tooltip wifi)
 
 elif [[ $1 = "bluetooth" ]]; then
 	cmd="systemctl status bluetooth | grep 'Active:' | grep -oP '(?<=Active: ).*'"
@@ -31,8 +31,8 @@ elif [[ $1 = "bluetooth" ]]; then
 		notify_bluetooth on
 	fi
 	eww_update bluetooth
-	sleep 3 && eww update vol-tooltip=$(bash scripts/tooltip.sh vol)
-	if [[ "$status" != "" ]]; then sleep 5 && ~/.config/i3/scripts/bluetooth.sh; fi
+	sleep 3 && eww update vol-tooltip=$(bash scripts/tooltip vol)
+	if [[ "$status" != "" ]]; then sleep 5 && ~/.config/i3/scripts/bluetooth; fi
 
 elif [[ $1 = "notif" ]]; then
 	if [[ "$(eww get notif-bool)" != "" ]]; then
@@ -44,10 +44,10 @@ elif [[ $1 = "notif" ]]; then
 	eww_update notif
 
 elif [[ $1 = "lock" ]]; then
-	~/.config/i3/scripts/poweractions.sh "lock"
+	~/.config/i3/scripts/poweractions "lock"
 elif [[ $1 = "sleep" ]]; then
-	~/.config/i3/scripts/poweractions.sh "sleep"
+	~/.config/i3/scripts/poweractions "sleep"
 elif [[ $1 = "logout" ]]; then
-	~/.config/i3/scripts/poweractions.sh "exit"
+	~/.config/i3/scripts/poweractions "exit"
 
 fi
