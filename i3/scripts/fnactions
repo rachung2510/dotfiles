@@ -18,7 +18,6 @@ elif [[ $1 = "mute" ]]; then
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 	eww update mute-bool=$(~/.config/eww/scripts/getbool mute) &&
 	eww update vol-icon=$(~/.config/eww/scripts/geticon vol) &&
-	eww update vol-literal="$(eww get vol-literal)"
 	if [[ $2 != "notify" ]]; then exit 0; fi
 	val="$(~/.config/eww/scripts/getval vol)"
 	if [[ $(pactl get-sink-mute @DEFAULT_SINK@) = "Mute: yes" ]]; then

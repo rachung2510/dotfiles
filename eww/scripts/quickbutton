@@ -5,48 +5,50 @@ pw="root"
 notify_bluetooth() {
 	notify-send -u normal -i "~/.config/dunst/img/bluetooth-$1.png" "Bluetooth turned $1" "Status: $(eval $cmd)"
 }
-eww_update() {
-	eww update $1-bool=$(bash scripts/getbool $1) &&
-	eww update $1-literal="$(eww get $1-literal)"
-}
 
 if [[ $1 = "wifi" ]]; then
-	if [[ "$(eww get wifi-bool)" != "" ]]; then
+	status="$(nmcli radio wifi)"
+	if [[ $status = "enabled" ]]; then
+		eww update wifi-bool=""
+		eww update wifi-tooltip=""
 		nmcli radio wifi off
 	else
+		eww update wifi-bool="selected"
+		eww update wifi-tooltip="$(scripts/tooltip wifi)"
 		nmcli radio wifi on
 	fi
-	eww_update wifi
-	eww update wifi-tooltip=$(bash scripts/tooltip wifi)
 
 elif [[ $1 = "bluetooth" ]]; then
 	cmd="systemctl status bluetooth | grep 'Active:' | grep -oP '(?<=Active: ).*'"
-	status=$(eww get bluetooth-bool)
-	if [[ "$status" != "" ]]; then
-		# bluetooth.service must be disabled (sudo systemctl disable bluetooth)
+	status=$(eval $cmd | awk '{print $1}')
+	if [[ $status = "active" ]]; then
+		eww update bluetooth-bool=""
 		echo $pw | sudo -S systemctl stop bluetooth
 		notify_bluetooth off
 	else
+		eww update bluetooth-bool="selected"
 		echo $pw | sudo -S systemctl start bluetooth
 		notify_bluetooth on
 	fi
-	eww_update bluetooth
-	sleep 3 && eww update vol-tooltip=$(bash scripts/tooltip vol)
-	if [[ "$status" != "" ]]; then sleep 5 && ~/.config/i3/scripts/bluetooth; fi
+	sleep 1 && eww update vol-tooltip=$(scripts/tooltip vol)
 
 elif [[ $1 = "notif" ]]; then
-	if [[ "$(eww get notif-bool)" != "" ]]; then
+	status=$(dunstctl is-paused)
+	if [[ $status = "true" ]]; then
+		eww update notif-bool=""
 		dunstctl set-paused false
+		notify-send -h string:x-dunst-stack-tag:do-not-disturb "Do not disturb disabled" "Notifications will be shown"
 	else
+		eww update notif-bool="selected"
 		dunstctl set-paused true
-		notify-send "Do not disturb disabled" "Notifications will be shown"
 	fi
-	eww_update notif
 
 elif [[ $1 = "lock" ]]; then
-	~/.config/i3/scripts/poweractions "lock"
+	~/.config/i3/scripts/poweractions lock
+
 elif [[ $1 = "sleep" ]]; then
 	~/.config/i3/scripts/poweractions "sleep"
+
 elif [[ $1 = "logout" ]]; then
 	~/.config/i3/scripts/poweractions "exit"
 

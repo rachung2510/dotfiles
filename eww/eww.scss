@@ -2,127 +2,148 @@
 
 * {
 	all: unset;
-	font-family: MesloLGM Nerd Font;
+	font-family: Iosevka Nerd Font;
 }
 
-// ----- SIDE PANNEL -----
+// ----- SIDE PANEL -----
 
-.sidepannel { 
-	background-color: $alpha;
-	font-size: 15px;
+.sidepanel { 
+	background-color: rgba(#ff0000,.5);
+	font-size: 18px;
+	border-radius: 8px;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 0px 5px;
+	margin: .5rem;
+	margin-left: 0;
 }
-.sidepannel button:hover { 
+.sidepanel button:hover { 
 	color: $shade8; 
 	transition: 0.2s;
-}
+ }
 
 .container {
 	background-color: $window-bg;
-	padding: 0 0 .7rem .7rem;
-	// border-radius: 0 0 8px 0;
+	padding: .7rem .7rem 0 .7rem;
 }
-.container.time {
-	padding: 0 0 2rem 0.7rem;	
-	// border-radius: 0 8px 0 0;
+.container.first { border-top-right-radius: 8px; }
+.container.last { 
+	border-bottom-right-radius: 8px;
+	padding-bottom: .7rem;
 }
 
-.roundpannel {
+.roundpanel {
 	background-color: $bg;
 	border-radius: 8px;
-	padding: 0 .7rem;
-	margin: .7rem .7rem 0 0;
+	padding: .7rem;
 	color: $text;
-	transition: 0.6s;
 }
-.roundpannel.player { margin: 0 .7rem 0 0; }
-.roundpannel.settings { padding: .7rem }
-.roundpannel.weather { padding: 1.2rem 1.2rem 1.1rem 1.2rem; }
+.roundpanel.datetime { 
+	padding: .6rem 0 .8rem 0;
+	margin-bottom: 1.2rem;
+}
+.roundpanel.player { 
+	padding: .7rem 0;
+	margin-top: -.2rem;
+}
+.roundpanel.weather {
+	margin-left: .7rem;
+	padding: 1.2rem 1.2rem 1.1rem 1.2rem;
+}
+.roundpanel.stats { padding: 1rem; }
+.roundpanel.quickbuttons { padding: .9rem .7rem; }
 
-.vis { margin-left: -10px; }
-.vis scale trough { min-width: 20px; }
-.vis scale trough highlight { 
-	// background-color: $shade4;
-	background: linear-gradient($vis-light, $vis-dark);
+.cava { margin-left: -12px; }
+.cava scale trough { min-width: 20px; }
+.cava scale trough highlight { 
+	background-color: $cava;
+	// background: linear-gradient($vis-light, $vis-dark);
 }
 
-.label-time {
+.roundpanel .time {
 	color: $text-time;
 	font-family: Iosevka Nerd Font;
-	font-size: 4.5em;
+	font-size: 64px;
+	margin-bottom: -.1em;
 }
-.label-date {
-	font-size: 1.3em;
+.date {
+	font-size: 20px;
 	color: $text-label;
 }
 
-.labels {
-	font-size: 1.8em;
-	margin-bottom: -.7rem;
+.player-controls {
+	font-size: 26px;
+	margin-bottom: -.4rem;
 	color: $text;
 }
-.label-title { font-size: 1.3em; }
-.label-artist { color: $text-label; }
-.btn-play { font-size: 1.8em; font-family: MesloLGM Nerd Font; }
+.player-title { font-size: 20px; }
+.player-artist { color: $text-label; }
+.btn-play { 
+	font-size: 1.8em; 
+	font-family: MesloLGM Nerd Font; }
 .player.disabled { color: $grey; }
 
-.settings scale trough {
+.sidepanel .controls scale trough {
 	background-color: $trough;
 	margin: 0 1.1rem 0 .7rem;
-	min-height: 15px;
+	min-height: 13px;
 	border-radius: 10px;
 }
-.settings scale trough highlight { 
+.sidepanel .controls scale trough highlight { 
 	background-color: $trough-hl; 
 	border-radius: 50px;
 }
-.disabled scale trough { background-color: $trough-disabled; }
-.disabled scale trough highlight { background-color: $trough-hl-disabled; }
-.btn-settings { 
-	font-size: 1.4rem;
+.sidepanel .disabled scale trough { background-color: $trough-disabled; }
+.sidepanel .disabled scale trough highlight { background-color: $trough-hl-disabled; }
+.btn-controls { 
+	font-size: 22px;
 	margin-left: .5rem;
 }
-.settings button.no-hover:hover { color: $text; }
-.settings > .critical button { color: $urgent; }
-.settings > .critical button:hover { color: $urgent; }
-.settings > .critical scale trough { background-color: $trough-urgent; }
-.settings > .critical scale trough highlight { background-color: $urgent; }
+.sidepanel .controls button.no-hover:hover { color: $text; }
+.sidepanel .controls > .critical button { color: $urgent; }
+.sidepanel .controls > .critical button:hover { color: $urgent; }
+.sidepanel .controls > .critical scale trough { background-color: $trough-urgent; }
+.sidepanel .controls > .critical scale trough highlight { background-color: $urgent; }
 
-.weatherpannel { 
-	font-size: 3.2rem; 
+.weather-icon { 
+	font-size: 56px;
 	color: $text-label;
+	font-family: MesloLGM Nerd Font;
+	margin-bottom: -.2em;
 }
-.weatherpannel button:hover { color: $weather-icon-hover; }
-.label-weather {
+.weather-icon button:hover { color: $weather-icon-hover; }
+.weather-temp {
 	color: $text-label;
 	font-family: Iosevka Nerd Font;
-	font-size: 1.8rem;
+	font-size: 24px;
 }
-
+.weather-cond { 
+	font-size: 19px;
+	color: $shade6;
+}
 .radial {
 	color: $trough-hl;
 	background-color: $trough;
 }
 .radial-label {
 	color: $text;
-	font-size: 1em;
-	margin: 2.4rem;
+	font-size: 16px;
+	margin: 2.2rem;
 }
 
-.sys { background-color: $alpha; }
-.sys button {
+.quickbtn { background-color: $alpha; }
+.quickbtn button {
 	background-color: $trough;
 	border-radius: 100px;
-	margin: .3rem .65rem;
-	padding: 1rem;
-	font-size: 1.5em;
+	margin: 0 11px;
+	padding: 1rem 0rem;
+	font-size: 22px;
 	color: $fg;
 	transition: 0.4s;
 }
-.sys button.selected { 
+.quickbtn button.selected { 
 	background-color: $btn-select; 
 	border-radius: 100px;
 }
-.sys button:hover { 
+.quickbtn button:hover { 
 	background-color: $btn-hover;
 	color: $fg;
 }
@@ -132,11 +153,9 @@ button.selected:hover { background-color: $btn-hover; }
 
 // ----- TASKBAR -----
 
-.taskbar{
+.taskbar {
   background-color: $bar-bg;
-  padding: 0rem;
-  font-family: "MesloLGM Nerd Font";
-  font-size: 1.3em;
+  font-size: 20px;
   color: $bar-text;
 }
 .taskbar button:hover { color: $bar-hover; }
@@ -148,53 +167,56 @@ button.selected:hover { background-color: $btn-hover; }
 }
 
 // Workspaces
-.workspace { margin-bottom: -50px; }
+.workspace { margin-top: 20px; }
 .ws-label { 
 	font-size: .8rem;
 	margin-bottom: -8px;
 }
-.ws {
+.ws-icon {
 	padding: .5rem .6rem;
 	border-radius: 40px;
 }
-.urgent { 
+.ws-icon.urgent { 
 	background-color: $urgent;
 	color: $fg;
 }
-.focused { 
+.ws-icon.focused { 
 	background-color: $shade7;
 	color: $fg;
 }
 .ws-mode {
-	font-size: 1rem;
+	font-size: 15px;
 	background: $urgent;
 	color: $fg;
-	margin-top: 1em;
+	margin-top: .5rem;
 	padding: .4rem 0;
 }
 
 // Control Panel
-.control { padding: .5rem 0; }
-.batt-icon { font-size: 1.2em; }
-.batt-label { 
+.bar-widget.controls { padding: .5rem 0; }
+.bar-widget.controls button.no-hover:hover { color: $bar-text; }
+.bar-widget.controls .crit { color: $urgent; }
+.barbtn-icon-larger { font-size: 1.2em; }
+.barbtn-label { 
 	font-size: .9rem;
 	margin-top: -5px;
 }
-.control button.no-hover:hover { color: $bar-text; }
-.control .crit { color: $urgent; }
 
 // Clock
-.time-v {
+.taskbar .time {
   font-family: Iosevka Nerd Font;
   font-weight: bold;
-  padding: .8rem  0 .2rem 0;
-  margin-bottom: .5rem;
+  // padding: .8rem  0 .2rem 0;
+  margin: .5rem 0 .7rem 0;
 }
 .time-min { margin-top: -.8rem; }
 
+// Global
 .bold { font-weight: bold; }
 .red { background: rgba(255,0,0,1); }
 .green { background: rgba(0,255,0,1); }
 .blue { background: rgba(0,0,255,1); }
-.hidden { color: $alpha; }
-
+.hidden {
+	background-color: $alpha;
+	color: $alpha;
+}

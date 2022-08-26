@@ -1,75 +1,67 @@
-;; SIDEBAR
+;; SIDEBAR MENU
 
-(defvar top-height "0")
-(defvar end-height "0")
-(defvar time-height "140")
-(defvar cava-height "136")
-(defvar player-height "140")
-(defvar settings-height "220")
-(defvar stats-height "150")
-(defvar sys-height "120")
+(defvar cava-height "120")
+(defvar player-height "130")
+(defvar controls-height "210")
 
-(defwidget time []
-	(box :class "roundpannel time" :height time-height :valign "end"
+;; Individual widgets
+(defwidget datetime []
+	(box :class "roundpanel datetime" :valign "end"
 	(box :orientation "v" :space-evenly "false" :vexpand "true" :valign "center"
-		(label :text time :class "label-time")
-		(label :text date :class "label-date")
+		(label :text time :class "time")
+		(label :text date :class "date")
 )))
 
 (defwidget cava []
-	(box :height cava-height :orientation "v" :space-evenly "false"
+	(box :orientation "v" :space-evenly "false"
 		(box :height cava-height :orientation 'h' :halign 'center'
-		(box :class 'vis' :orientation 'h' :space-evenly 'true' :width '320' :vexpand 'true'
-			(scale :orientation 'v' :value l1 :flipped 'true')
-			(scale :orientation 'v' :value l2 :flipped 'true')
-			(scale :orientation 'v' :value l3 :flipped 'true')
-			(scale :orientation 'v' :value l4 :flipped 'true')
-			(scale :orientation 'v' :value l5 :flipped 'true')
-			(scale :orientation 'v' :value l6 :flipped 'true')
-			(scale :orientation 'v' :value l7 :flipped 'true')
-			(scale :orientation 'v' :value l8 :flipped 'true')
-			(scale :orientation 'v' :value l9 :flipped 'true')
+		(box :class 'cava' :orientation 'h' :space-evenly 'true' :width '320' :vexpand 'true'
+			(scale :orientation 'v' :value l1  :flipped 'true')
+			(scale :orientation 'v' :value l2  :flipped 'true')
+			(scale :orientation 'v' :value l3  :flipped 'true')
+			(scale :orientation 'v' :value l4  :flipped 'true')
+			(scale :orientation 'v' :value l5  :flipped 'true')
+			(scale :orientation 'v' :value l6  :flipped 'true')
+			(scale :orientation 'v' :value l7  :flipped 'true')
+			(scale :orientation 'v' :value l8  :flipped 'true')
+			(scale :orientation 'v' :value l9  :flipped 'true')
 			(scale :orientation 'v' :value l10 :flipped 'true')
 			(scale :orientation 'v' :value l11 :flipped 'true')
 			(scale :orientation 'v' :value l12 :flipped 'true')
 		))
-		;; (literal :content vis)
 ))
 
 (defwidget player []
-	(box :class "roundpannel player ${title == "" ? "disabled" : ""}" :height player-height
+	(box :class "roundpanel player ${title == "" ? "disabled" : ""}" :height player-height
 	(box :orientation "v" :space-evenly "false" :vexpand "true" :valign "center"
-		(label :class "label-title" :text "${title != "" ? "${title}" : "Offline"}" :halign "middle" :limit-width "20" )
-		(label :class "label-artist" :text "${artist != "" ? "${artist}" : ""}" :halign "middle" :limit-width "30")
+		(label :class "player-title" :text "${title != "" ? "${title}" : "Offline"}" :halign "middle" :limit-width "22" )
+		(label :class "player-artist" :text "${artist != "" ? "${artist}" : "~~"}" :halign "middle" :limit-width "34")
 		(literal :content "${title == "" ?
 			"(box :class 'labels' :orientation 'h' :spacing 20 :halign 'center' :space-evenly 'true'
 				(button '玲')
 				(button :class 'btn-play' play-icon)
 				(button '怜'))" :
-			"(box :class 'labels' :orientation 'h' :spacing 20 :halign 'center' :space-evenly 'true'
+			"(box :class 'player-controls' :orientation 'h' :spacing 20 :halign 'center' :space-evenly 'true'
 				(button :onclick 'playerctl -p playerctld previous' '玲')
 				(button :class 'btn-play' :onclick 'scripts/player action' play-icon)
 				(button :onclick 'playerctl -p playerctld next' '怜'))"}")
 )))
 
-(defvar vol-literal "
-	(slider
-		:value volume-val
-		:icon vol-icon
-		:tooltip 'Volume: \${volume-val}%
-\${vol-tooltip}'
-		:action-click '~/.config/i3/scripts/fnactions mute'
-		:action-slide 'amixer -D pulse sset Master {}%'
-		:modi mute-bool)
-")
-(defwidget settings []
-	(box :class "settings roundpannel" :space-evenly "true" :orientation "v" :height settings-height
-		(literal :content vol-literal)
+(defwidget sidebar-controls []
+	(box :class "controls roundpanel" :space-evenly "true" :orientation "v" :height controls-height
+		(slider
+			:value volume-val
+			:icon vol-icon
+			:tooltip "Volume: ${volume-val}%
+${vol-tooltip}"
+			:action-click "~/.config/i3/scripts/fnactions mute"
+			:action-slide "amixer -D pulse sset Master {}%"
+			:modi mute-bool)
 		(slider
 			:value light-val
 			:icon light-icon
 			:tooltip "Brightness: ${light-val}%"
-			:action-click "brightnessctl s 0"
+			:action-click "brightnessctl s 0 && eww update light-val=$(~/.config/eww/scripts/getval light)"
 			:action-slide ""
 			:modi "")
 		(slider
@@ -83,17 +75,22 @@ ${batt-tooltip}"
 ))
 
 (defwidget weather []
-	(box :class "roundpannel weather" :space-evenly "true" :orientation "h" :width "190" :height settings-height
+	(box :class "roundpanel weather" :space-evenly "true" :orientation "h" :width "190" :height controls-height
 	(box :space-evenly "false" :orientation "v"
 		(box :space-evenly "false" :orientation "v"
-			(label :text weather-loc  :valign "start" :halign "start" :class "bold")
-			(label :text weather-cond :valign "start" :halign "start" :xalign "0" :wrap "true" :limit-width "26")
-			(label :class "label-weather" :text weather-temp :valign "start" :halign "start"))
-		(box :class "weatherpannel" :space-evenly "false" :orientation "h" :halign "end" :valign "end" :vexpand "true"
+			(label :text weather-loc  :valign "start" :halign "start")
+			(label :text weather-cond :valign "start" :halign "start" :xalign "0" :wrap "true" :limit-width "26" :class "weather-cond")
+			(label :class "weather-temp" :text weather-temp :valign "start" :halign "start"))
+		(box :class "weather-icon" :space-evenly "false" :orientation "h" :halign "end" :valign "end" :vexpand "true"
 			(button :tooltip "Current Weather: ${weather-cond}, ${weather-temp}" :onclick "" weather-icon) 
 		))
 ))
 
+(defwidget stats []
+	(box :class "roundpanel stats" :orientation "h" :space-evenly "true" :vexpand "true" :valign "center"
+		(cpu)
+		(ram)
+		(hdd)))
 (defwidget ram []
 	(radialmeter	
 		:value "${ram-val}"
@@ -114,43 +111,46 @@ ${batt-tooltip}"
 		:tooltip "${hdd-used}M used, ${hdd-avail}M available"))
 
 (defwidget quickbuttons []
-	(box :class "roundpannel" :height sys-height
+	(box :class "roundpanel quickbuttons"
 	(box :orientation "h" :space-evenly "true" :vexpand "true" :valign "center"
-		(quickbutton :icon "直" :tooltip "" :action "scripts/quickbutton wifi" 		:type "wifi")
-		(quickbutton :icon ""  :tooltip "" :action "scripts/quickbutton bluetooth" :type "bluetooth")
-		(quickbutton :icon "ﮖ"  :tooltip "Do Not Disturb" :action "scripts/quickbutton notif" 	:type "notif")
-		(quickbutton :icon ""  :tooltip "Lock"  :action "scripts/quickbutton lock"  :type "")
-		(quickbutton :icon ""  :tooltip "Sleep" :action "scripts/quickbutton sleep" :type "")
+		(quickbtn :icon "直" 
+			:action "scripts/quickbutton wifi"
+			:tooltip wifi-tooltip 
+			:toggle wifi-bool)
+		(quickbtn :icon ""
+			:action "scripts/quickbutton bluetooth"
+			:tooltip ""
+			:toggle bluetooth-bool)
+		(quickbtn :icon "ﮖ"
+			:action "scripts/quickbutton notif"
+			:tooltip "Do Not Disturb" :toggle notif-bool)
+		(quickbtn :icon "" :tooltip "Lock"  :action "scripts/quickbutton lock" :toggle "")
+		(quickbtn :icon "" :tooltip "Sleep" :action "scripts/quickbutton sleep" :toggle "")
 )))
 
-(defwidget pannel []
-	 (box :class "sidepannel" :orientation "v" :space-evenly "false"
-	 	 ;; (box :class "container" :height top-height)
-		 (box :class "container time" :orientation "v" :space-evenly "false"
-			(time))
-		 (box :class "container cava" :orientation "v" :space-evenly "false"
-		 	(cava))
-		 (box :class "container" :orientation "v" :space-evenly "false"
-			(player)
-			 (box :orientation "h" :space-evenly "false"
-				 (settings)
-				 (weather))
-			 (box :class "roundpannel" :orientation "h" :space-evenly "true" :height stats-height
-			 (box :orientation "h" :space-evenly "true" :vexpand "true" :valign "center"
-				 (cpu)
-				 (ram)
-				 (hdd)))
-			 (quickbuttons))
-	 	 ;; (box :class "container" :height end-height)
-))
+;; Combined layout
+(defwidget sidebar []
+	(box :orientation "h"  :space-evenly "false" :class "hidden"
+		(revealer :transition "slideright" :duration ".3s" :reveal reveal-sidebar
+		(box :class "sidepanel" :orientation "v" :space-evenly "false"
+			(box :class "container first" (datetime))
+			(box :class "container" (cava))
+			(box :class "container" (player))
+			(box :class "container"
+				(box :orientation "h" :space-evenly "false"
+					(sidebar-controls)
+					(weather)))
+			(box :class "container" (stats))
+			(box :class "container last" (quickbuttons)))
+)))
+(defvar reveal-sidebar false)
 
+;; Window
 (defwindow sidebar
 	:monitor 0
 	:windowtype "toolbar"
 	:geometry (geometry :x "0"
-						:y "6%"
-						:width "450px"
-						:height "0")
+						:y "8%")
 	:wm-ignore true
 	:stacking "fg"
-	(pannel))
+	(sidebar))

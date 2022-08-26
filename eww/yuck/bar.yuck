@@ -1,21 +1,28 @@
+;; TASKBAR
+
 (defvar bar-width "40")
+
+;; Individual widgets
 (defwidget workspaces []
 	(box :class "workspace" :orientation "v" :space-evenly "false" :valign "center"
-		(literal :content workspace)
-		(label :class "${(ws-mode == "") ? "" : "ws-mode"}" :text ws-mode)
-		(box :class "${(ws-scratch > 0) ? "" : "hidden"}" :orientation "v" :space-evenly "false"
-			(label :text "")
-			(label :class "batt-label" :text ws-scratch))
-))
+		(literal :content workspace)))
+
+(defwidget wsmode []
+	(label :class "${(ws-mode == "") ? "" : "ws-mode"}" :text ws-mode))
+
+(defwidget scratchpad []
+	(box :class "${(ws-scratch > 0) ? "" : "hidden"}" :orientation "v" :space-evenly "false"
+		(label :text "")
+		(label :class "barbtn-label" :text ws-scratch)))
 
 (defwidget lang[]
 	(label :class "lang" :text lang-val)
 )
 
-(defwidget control []
+(defwidget bar-controls []
 	(box :orientation "v" 
 		 :space-evenly "false"
-		 :class "bar-widget control"
+		 :class "bar-widget controls"
 		 :width bar-width
 		 :spacing "8"
 		 (barbtn :icon vol-icon 
@@ -27,58 +34,63 @@ ${vol-tooltip}"
 		 	:action "alacritty -t nmtui -e nmtui-connect &"
 			:tooltip wifi-tooltip
 			:label "" :font "" :low-crit "" :high-crit "")
-		 (barbtn :icon batt-icon
+		 (barbtn-label :icon batt-icon
 		 	:tooltip batt-tooltip
 			:label batt-val :font "batt-icon"
 			:low-crit 16 :high-crit 200
 			:action "")
-		 (barbtn :icon ""
+		 (barbtn-label :icon ""
 		 	:label bar-cpu-val :font "batt-icon"
 			:low-crit 0 :high-crit 89
 		 	:action "" :tooltip "")
 ))
 
-(defwidget time-bar []
+(defwidget time []
 	(box :orientation "v" 
-		 :class "time-v" 
+		 :class "time"
 		 :valign "end"
-		 :spacing "0"
 	(label :text hour)
 	(label :text min :class "time-min")
 ))
 
+;; Combined layouts
 (defwidget top []
 	(box :orientation "v" 
 		:space-evenly "false"
 		:vexpand "true"
 		:valign "center"
-(workspaces)))
+		:spacing 5
+	(workspaces)
+	(wsmode)
+	(scratchpad)
+))
 (defwidget end []
 	(box :orientation "v" 
 		 :space-evenly "false" 
 		 :vexpand "false"
 		 :valign "end" 
 		 :spacing 5
-(lang)
-(control)
-(time-bar)))
+	(lang)
+	(bar-controls)
+	(time)
+))
 
+;; Final combined widget
 (defwidget bar []
-	(box :class "taskbar" 
+	(box :class "taskbar"
 		 :orientation "v" 
 		 :space-evenly "false"
-	;; (overlay
 (top)
 (end)
 ))
 
+;; Window
 (defwindow bar
 	:windowtype "dock"
 	:geometry (geometry :x "0" 
 						:y "0" 
-						:height "100%" 
-						:width "0")
+						:height "100%")
 	:monitor 0
 	:stacking "bg"
 	:wm-ignore "true"
-(bar))
+	(bar))

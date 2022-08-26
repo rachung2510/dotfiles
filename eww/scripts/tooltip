@@ -19,7 +19,8 @@ elif [[ $1 = "batt" ]]; then
 
 elif [[ $1 = "wifi" ]]; then
 	dev="enp4s0f3u2"
-	if [[ $(nmcli | grep $dev) != "" ]]; then
+	eth=$(nmcli | grep $dev | awk '{print $2}')
+	if [[ $eth != "disconnected" ]] && [[ $eth != "" ]]; then
 		name=$(nmcli | grep $dev | head -n 1 | grep -oP '(?<=connected to).*')
 	else
 		name=$(iwgetid -r)

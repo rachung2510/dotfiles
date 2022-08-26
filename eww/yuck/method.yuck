@@ -1,10 +1,10 @@
-;; METHOD.YUCK
-;; this is for methods
+;; REPEATED WIDGETS
 
+;; Slider for sidebar (vol, brightness, batt)
 (defwidget slider [value icon tooltip action-click action-slide modi]
 	(box :class {modi}  :space-evenly "false" :orientation "h" :vexpand "true" :valign "center"
 		(box :width "30"
-			(button :class "btn-settings ${action-click == "" ? "no-hover" : ""}" :onclick {action-click} {icon}))
+			(button :class "btn-controls ${action-click == "" ? "no-hover" : ""}" :onclick {action-click} {icon}))
 		(eventbox :onhover "eww update vol-tooltip=\"$(scripts/tooltip vol)\""
 		(scale :value {value}
 			:min 0
@@ -16,6 +16,7 @@
 			:width "200")
 )))
 
+;; Circular progress bar for stats (cpu, ram, hdd)
 (defwidget radialmeter [value text label tooltip]
     (circular-progress 
 		:value {value}
@@ -29,30 +30,31 @@
 			(label :class "small-text" :text {label})
 )))
 
-(defvar wifi-literal "
-	;; (eventbox :onhover 'eww update wifi-tooltip=\"$(scripts/tooltip wifi)\"'
-	(button :class wifi-bool :onclick {action} :tooltip '\${wifi-tooltip}' {icon})
-")
-(defvar bluetooth-literal "(button :class bluetooth-bool :onclick {action} {icon})")
-(defvar notif-literal	  "(button :tooltip {tooltip} :class notif-bool 	 :onclick {action} {icon})")
-(defvar btn-literal 	  "(button :tooltip {tooltip} :onclick {action} {icon})")
-(defwidget quickbutton [icon action tooltip type]
-	(box :class "sys" :space-evenly "false" :orientation "v"
-	(literal :content "${type == "wifi" ? wifi-literal : 
-		(type == "bluetooth" ? bluetooth-literal :
-		(type == "notif" ? notif-literal : btn-literal))}")
-))
+;; Quickbuttons for sidebar (wifi, bluetooth, dnd, lock, sleep)
+(defwidget quickbtn [icon action tooltip toggle]
+    (box :class "quickbtn" :space-evenly "false" :orientation "v"
+        (button :class {toggle} :onclick {action} :tooltip {tooltip} {icon})))
 
+;; Workspace
 (defwidget ws [num name modi]
     (eventbox :onclick "i3-msg workspace '${num} ${name}'"
-    (box :class "ws ${modi}" :orientation "v" :space-evenly "false" :spacing "4" :halign "center"
+    (box :class "ws-icon ${modi}" :orientation "v" :space-evenly "false" :spacing "4" :halign "center"
         (label :class "ws-label" :text "${num}")
         (label :text {name})
 )))
 
-(defwidget barbtn [icon action tooltip label font low-crit high-crit]
+;; Buttons on bar
+;; barbtn-label allows for additional info
+(defwidget barbtn [icon action tooltip]
+	(box :orientation "v" :space-evenly "false"
+		(button :class "${tooltip == "" ? "no-hover" : ""}" 
+			:onclick {action}
+			:tooltip {tooltip} {icon})
+))
+(defwidget barbtn-label [icon action tooltip label low-crit high-crit]
 	(box :orientation "v" :space-evenly "false" :class "${(label > high-crit) || (label < low-crit) ? 'crit' : ''}" 
-		(button :class "${font} ${(tooltip == "") ? "no-hover" : ""}"  :onclick {action} :tooltip {tooltip} {icon})
-		(literal :content "${(label != "" ) ?
-		"(label :class 'batt-label' :text '${label}%')" : ""}")
+		(button :class "barbtn-icon-larger ${tooltip == "" ? "no-hover" : ""}"
+			:onclick {action}
+			:tooltip {tooltip} {icon})
+		(label :class "barbtn-label" :text "${label}%")
 ))
