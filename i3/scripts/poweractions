@@ -9,17 +9,8 @@ fg=f9f9f9
 alpha=ffffff00
 font="Iosevka Nerd Font"
 
-pw="root"
-
-disable_bluetooth(){
-	# bluetooth.service must be disabled (sudo systemctl disable bluetooth)
-	echo $pw | sudo -S service bluetooth stop
-	eww update bluetooth-bool="" &&
-	eww update bluetooth-literal="$(eww get bluetooth-literal)"
-}
-
 if [[ $1 = "lock" ]]; then
-	pkill cava && eww close sidebar
+	eww close sidebar && eww open bar
 	playerctl -p playerctld pause
 	[[ $(~/.config/i3/scripts/theme -p) = "dark" ]] && bg=0000004d || bg=00000080
 	i3lock -c $bg -k --date-str="%a, %d %b %Y" --radius=140 --ring-width=10 \
@@ -33,10 +24,10 @@ if [[ $1 = "lock" ]]; then
 
 elif [[ $1 = "sleep" ]]; then
 	amixer set Master mute
-	disable_bluetooth
-	~/.config/i3/scripts/poweractions.sh "lock" &&
+	~/.config/i3/scripts/poweractions lock &&
 	systemctl suspend
 
 elif [[ $1 = "exit" ]]; then
 	i3-msg exit
+
 fi
