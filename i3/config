@@ -45,20 +45,20 @@ bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
 # switch/iterate between windows
-bindsym Mod1+Tab exec --no-startup-id $HOME/.config/i3/scripts/focus-next-visible.py
-bindsym Mod1+Shift+Tab exec --no-startup-id $HOME/.config/i3/scripts/focus-next-visible.py reverse
+bindsym Mod1+Tab exec --no-startup-id ~/.config/i3/scripts/focus-next-visible.py
+bindsym Mod1+Shift+Tab exec --no-startup-id ~/.config/i3/scripts/focus-next-visible.py reverse
 
 # switch to workspace
-bindsym $mod+1 exec --no-startup-id $HOME/.config/i3/scripts/eww; workspace number $ws1
-bindsym $mod+2 exec --no-startup-id $HOME/.config/i3/scripts/eww; workspace number $ws2
-bindsym $mod+3 exec --no-startup-id $HOME/.config/i3/scripts/eww; workspace number $ws3
-bindsym $mod+4 exec --no-startup-id $HOME/.config/i3/scripts/eww; workspace number $ws4
-bindsym $mod+5 exec --no-startup-id $HOME/.config/i3/scripts/eww; workspace number $ws5
-bindsym $mod+6 exec --no-startup-id $HOME/.config/i3/scripts/eww; workspace number $ws6
-bindsym $mod+7 exec --no-startup-id $HOME/.config/i3/scripts/eww; workspace number $ws7
-bindsym $mod+8 exec --no-startup-id $HOME/.config/i3/scripts/eww; workspace number $ws8
-bindsym $mod+9 exec --no-startup-id $HOME/.config/i3/scripts/eww; workspace number $ws9
-bindsym $mod+0 exec --no-startup-id $HOME/.config/i3/scripts/eww; workspace number $ws10
+bindsym $mod+1 exec --no-startup-id ~/.config/i3/scripts/eww; workspace number $ws1
+bindsym $mod+2 exec --no-startup-id ~/.config/i3/scripts/eww; workspace number $ws2
+bindsym $mod+3 exec --no-startup-id ~/.config/i3/scripts/eww; workspace number $ws3
+bindsym $mod+4 exec --no-startup-id ~/.config/i3/scripts/eww; workspace number $ws4
+bindsym $mod+5 exec --no-startup-id ~/.config/i3/scripts/eww; workspace number $ws5
+bindsym $mod+6 exec --no-startup-id ~/.config/i3/scripts/eww; workspace number $ws6
+bindsym $mod+7 exec --no-startup-id ~/.config/i3/scripts/eww; workspace number $ws7
+bindsym $mod+8 exec --no-startup-id ~/.config/i3/scripts/eww; workspace number $ws8
+bindsym $mod+9 exec --no-startup-id ~/.config/i3/scripts/eww; workspace number $ws9
+bindsym $mod+0 exec --no-startup-id ~/.config/i3/scripts/eww; workspace number $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -121,7 +121,7 @@ bindsym Ctrl+Shift+q kill
 bindsym Mod1+F4 kill
 
 # exit-menu
-bindsym $mod+Shift+e exec --no-startup-id $HOME/.config/i3/scripts/powermenu
+bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu
 
 # reload the configuration file
 bindsym $mod+Shift+c reload; exec --no-startup-id "notify-send 'i3wm reloaded'"
@@ -158,7 +158,7 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f exec --no-startup-id $HOME/.config/i3/scripts/eww bar; fullscreen toggle
+bindsym $mod+f exec --no-startup-id ~/.config/i3/scripts/eww bar; fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -185,18 +185,18 @@ bindsym $mod+minus move scratchpad
 bindsym $mod+equal scratchpad show
 
 # open new empty workspace
-bindsym $mod+Shift+n exec --no-startup-id $HOME/.config/i3/scripts/empty_workspace
+bindsym $mod+Shift+n exec --no-startup-id ~/.config/i3/scripts/empty_workspace
 
 # Multimedia Keys
 # volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $HOME/.config/i3/scripts/fnactions vol up
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $HOME/.config/i3/scripts/fnactions vol down
-bindsym F11 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +5% && $HOME/.config/i3/scripts/fnactions vol up
-bindsym F10 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ -5% && $HOME/.config/i3/scripts/fnactions vol down
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && ~/.config/i3/scripts/fnactions vol up
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && ~/.config/i3/scripts/fnactions vol down
+bindsym F11 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +5% && ~/.config/i3/scripts/fnactions vol up
+bindsym F10 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ -5% && ~/.config/i3/scripts/fnactions vol down
 
 # mute
-bindsym XF86AudioMute exec --no-startup-id $HOME/.config/i3/scripts/fnactions mute notify
-bindsym F9 exec --no-startup-id $HOME/.config/i3/scripts/fnactions mute notify
+bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/scripts/fnactions mute notify
+bindsym F9 exec --no-startup-id ~/.config/i3/scripts/fnactions mute notify
 
 # audio control
 bindsym F7 exec --no-startup-id playerctl play-pause
@@ -209,10 +209,10 @@ bindsym F6 exec --no-startup-id playerctl previous
 
 # backlight control
 set $bright-step 3
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +$bright-step% && $HOME/.config/i3/scripts/fnactions light up
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set $bright-step%- && $HOME/.config/i3/scripts/fnactions light down
-bindsym F4 exec --no-startup-id brightnessctl set +$bright-step% && $HOME/.config/i3/scripts/fnactions light up
-bindsym F3 exec --no-startup-id brightnessctl set $bright-step%- && $HOME/.config/i3/scripts/fnactions light down
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +$bright-step% && ~/.config/i3/scripts/fnactions light up
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set $bright-step%- && ~/.config/i3/scripts/fnactions light down
+bindsym F4 exec --no-startup-id brightnessctl set +$bright-step% && ~/.config/i3/scripts/fnactions light up
+bindsym F3 exec --no-startup-id brightnessctl set $bright-step%- && ~/.config/i3/scripts/fnactions light down
 
 # Redirect sound to headphones
 # bindsym $mod+p exec /usr/local/bin/switch-audio-port
@@ -223,15 +223,15 @@ bindsym $mod+e exec --no-startup-id /usr/bin/thunar
 # bindsym Print exec scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
 
 # Power Profiles menu switcher (rofi)
-bindsym $mod+Shift+p exec --no-startup-id $HOME/.config/i3/scripts/power-profiles
+bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/power-profiles
 
 # Custom keybinds for scripts
-bindsym $mod+period exec --no-startup-id $HOME/.config/i3/scripts/theme
-bindsym $mod+m exec --no-startup-id $HOME/.config/i3/scripts/eww sidebar
-bindsym $mod+b exec --no-startup-id $HOME/.config/i3/scripts/eww bar
-bindsym $mod+comma exec --no-startup-id $HOME/.config/i3/scripts/wsnaming/setwsname
-bindsym $mod+Shift+s exec --no-startup-id $HOME/.config/i3/scripts/screenshot
-bindsym Print exec --no-startup-id $HOME/.config/i3/scripts/screenshot desktop
+bindsym $mod+period exec --no-startup-id ~/.config/i3/scripts/theme
+bindsym $mod+m exec --no-startup-id ~/.config/i3/scripts/eww sidebar
+bindsym $mod+b exec --no-startup-id ~/.config/i3/scripts/eww bar
+bindsym $mod+comma exec --no-startup-id ~/.config/i3/scripts/wsnaming/setwsname
+bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/scripts/screenshot
+bindsym Print exec --no-startup-id ~/.config/i3/scripts/screenshot desktop
 
 ##########################################
 # configuration for workspace behaviour: #
@@ -263,8 +263,8 @@ set $ws10 "10 "
 for_window [class="Spotify"] move to workspace number 10
 for_window [class="zoom"] move to workspace number 8
 for_window [class="[mM]inecraft*"] move to workspace number 9
-assign [class="Google-chrome"] number 1
-assign [class="Microsoft-edge"] number 1
+# assign [class="Google-chrome"] number 1
+# assign [class="Microsoft-edge"] number 1
 assign [class="obsidian"] number 7
 assign [class="whatsapp-nativefier-d40211"] number 8
 assign [class="TelegramDesktop"] number 8
@@ -286,7 +286,7 @@ assign [class="Stardew Valley"] number 9
 ##############
 
 # using default config 
-exec_always --no-startup-id picom -b --experimental-backends --config $HOME/.config/picom/picom.conf
+exec_always --no-startup-id picom -b --experimental-backends --config ~/.config/picom/picom.conf
 # for custom config:
 #exec_always --no-startup-id picom --config  ~/.config/picom.conf
 
@@ -307,13 +307,13 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id dex /etc/xdg/autostart/eos-update-notifier.desktop
 
 # set wallpaper
-exec --no-startup-id feh --bg-scale $HOME/.config/i3/wallpapers/$($HOME/.config/i3/scripts/theme -p)-wallpaper.jpg
+exec --no-startup-id feh --bg-scale ~/.config/i3/wallpapers/$(~/.config/i3/scripts/theme -p)-wallpaper.jpg
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
 
 # Desktop notifications
-exec --no-startup-id dbus-launch dunst --config $HOME/.config/dunst/dunstrc
+exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 
 # autotiling script
 # https://github.com/nwg-piotr/autotiling
@@ -324,12 +324,13 @@ exec_always --no-startup-id autotiling
 exec --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Tapping Enabled" 1
 exec --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Natural Scrolling Enabled" 1
 exec --no-startup-id i3-msg 'workspace $ws1'
-exec --no-startup-id $HOME/.config/i3/scripts/battery &
-exec --no-startup-id sleep 10 && $HOME/.config/i3/scripts/onedrive &
+exec --no-startup-id ~/.config/i3/scripts/battery &
+exec --no-startup-id ~/.config/i3/scripts/network &
+exec --no-startup-id sleep 10 && ~/.config/i3/scripts/onedrive &
 exec --no-startup-id ibus-daemon -drxR
 exec --no-startup-id eww daemon && eww open bar
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-exec --no-startup-id $HOME/.config/i3/scripts/wsnaming/i3_workspace_names_daemon.py &
+exec --no-startup-id ~/.config/i3/scripts/wsnaming/i3_workspace_names_daemon.py &
 exec --no-startup-id autokey-gtk
 
 ###############
@@ -342,7 +343,7 @@ exec --no-startup-id autokey-gtk
 #exec --no-startup-id blueberry-tray
 
 # networkmanager-applet
-#exec --no-startup-id nm-applet
+# exec --no-startup-id nm-applet
 
 # clipman-applet
 #exec --no-startup-id xfce4-clipman
@@ -447,7 +448,7 @@ client.urgent           $alpha      $urgent         $dark-grey      $urgent     
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+d exec --no-startup-id "rofi -show run -modi run,drun,window -theme $HOME/.config/rofi/dmenu.rasi"
-bindsym $mod+slash exec --no-startup-id "rofi -no-lazy-grab -show drun -modi drun -theme $HOME/.config/rofi/launcher.rasi"
+bindsym $mod+d exec --no-startup-id "rofi -show run -modi run,drun,window -theme ~/.config/rofi/dmenu.rasi"
+bindsym $mod+slash exec --no-startup-id "rofi -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launcher.rasi"
 
 # vim: set ft=i3config :
