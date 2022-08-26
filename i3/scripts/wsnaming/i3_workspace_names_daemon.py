@@ -47,7 +47,6 @@ def build_rename(i3, args=None):
 	config = configparser.ConfigParser()
 	config.read(CONF)
 	app_icons = config['ICONS']
-	ws_icons = config['WSICONS']
 	default_icons = config['DEFAULTS']
 
 	def get_icon_or_name(leaf):
@@ -64,6 +63,10 @@ def build_rename(i3, args=None):
 
 	def rename(i3, e):
 		try:
+			config = configparser.ConfigParser()
+			config.read(CONF)
+			ws_icons = config['WSICONS']
+
 			workspaces = i3.get_tree().workspaces()
 			# need to use get_workspaces since the i3 con object doesn't have the visible property for some reason
 			workdicts = i3.get_workspaces()

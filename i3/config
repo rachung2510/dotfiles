@@ -260,19 +260,19 @@ set $ws10 "10 "
 #workspace $ws5 output HDMI-0
 
 # bind program to workspace and focus to them on startup:
-for_window [class="Spotify"] move to workspace number 10
-for_window [class="zoom"] move to workspace number 8
-for_window [class="[mM]inecraft*"] move to workspace number 9
+for_window [class="Spotify"] move to workspace number $ws10
+for_window [class="zoom"] move to workspace number $ws8
+for_window [class="[mM]inecraft*"] move to workspace number $ws9
 # assign [class="Google-chrome"] number 1
 # assign [class="Microsoft-edge"] number 1
-assign [class="obsidian"] number 7
-assign [class="whatsapp-nativefier-d40211"] number 8
-assign [class="TelegramDesktop"] number 8
-assign [class="Thunderbird"] number 8
-assign [class="[mM]inecraft*"] number 9
-assign [title="Steam"] number 9
-assign [class="Steam"] number 9
-assign [class="Stardew Valley"] number 9
+assign [class="obsidian"] number $ws7
+assign [class="whatsapp-nativefier-d40211"] number $ws8
+assign [class="TelegramDesktop"] number $ws8
+assign [class="Thunderbird"] number $ws8
+assign [class="[mM]inecraft*"] number $ws9
+assign [title="Steam"] number $ws9
+assign [class="Steam"] number $ws9
+assign [class="Stardew Valley"] number $ws9
 
 # automatic set focus new window if it opens on another workspace then the current:
 # for_window [class=Xfce4-terminal] focus
