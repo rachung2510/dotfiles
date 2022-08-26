@@ -1,8 +1,8 @@
 #!/bin/bash
 
-LOW_THRESH=15
+LOW_THRESH=16
 HIGH_THRESH=95
-IMGDIR="$HOME/.config/dunst/img"
+IMGDIR="~/.config/dunst/img"
 
 high() {
 	notify-send -u low -i $IMGDIR/battery-full.png -h "string:x-dunst-stack-tag:batt-full" "Battery is fully charged" "Please disconnect your charger"
@@ -16,12 +16,11 @@ low() {
 [[ $1 = "--high" ]] && high && exit 0
 [[ $1 = "--low" ]] && low $LOW_THRESH && exit 0
 
+notify-send -u low -i $IMGDIR/battery.png "Battery watcher started"
 pid=$(pgrep battery)
-if [[ $(echo "$pid" | awk -F '[ ]' '{print (NF?NF-1:0)}') != "0" ]]; then
+if [[ $(echo "$pid" | wc -l) -gt 1 ]]; then
 	exit 0
 fi
-
-notify-send -u low -i $IMGDIR/battery.png "Battery watcher started"
 
 while true; do
 	STATUS=$(cat /sys/class/power_supply/BAT1/status)

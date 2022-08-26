@@ -1,11 +1,10 @@
 #!/bin/bash
 
+notify-send -u low -i ~/.config/dunst/img/onedrive.png "OneDrive sync started"
 pid=$(pgrep onedrive)
-if [[ $(echo "$pid" | awk -F '[ ]' '{print (NF?NF-1:0)}') != "0" ]]; then
+if [[ $(echo "$pid" | wc -l) -gt 1 ]]; then
 	exit 0
 fi
-
-notify-send -u low -i ~/.config/dunst/img/onedrive.png "OneDrive sync started"
 
 while true; do
 	#check wifi
