@@ -1,7 +1,7 @@
 colors:
  primary:
-   background: '0xebebeb'
-   foreground: '0x424242'
+   background: '#f6f6f6'
+   foreground: '#424242'
  cursor:
    cursor: '#ab47bc'
  normal:
