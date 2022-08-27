@@ -6,7 +6,7 @@
 }
 
 // ----- SIDE PANEL -----
-
+.sidebar { margin-left: 100px; }
 .sidepanel { 
 	background-color: rgba(#ff0000,.5);
 	font-size: 18px;
@@ -129,7 +129,6 @@
 	margin: 2.2rem;
 }
 
-.quickbtn { background-color: $alpha; }
 .quickbtn button {
 	background-color: $trough;
 	border-radius: 100px;

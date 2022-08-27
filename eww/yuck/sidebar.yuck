@@ -1,8 +1,8 @@
 ;; SIDEBAR MENU
 
-(defvar cava-height "120")
+(defvar cava-height "110")
 (defvar player-height "130")
-(defvar controls-height "210")
+(defvar controls-height "170")
 
 ;; Individual widgets
 (defwidget datetime []
@@ -37,7 +37,7 @@
 		(label :class "player-title" :text "${title != "" ? "${title}" : "Offline"}" :halign "middle" :limit-width "22" )
 		(label :class "player-artist" :text "${artist != "" ? "${artist}" : "~~"}" :halign "middle" :limit-width "34")
 		(literal :content "${title == "" ?
-			"(box :class 'labels' :orientation 'h' :spacing 20 :halign 'center' :space-evenly 'true'
+			"(box :class 'player-controls' :orientation 'h' :spacing 20 :halign 'center' :space-evenly 'true'
 				(button '玲')
 				(button :class 'btn-play' play-icon)
 				(button '怜'))" :
@@ -75,16 +75,16 @@ ${batt-tooltip}"
 ))
 
 (defwidget weather []
-	(box :class "roundpanel weather" :space-evenly "true" :orientation "h" :width "190" :height controls-height
+	(box :class "roundpanel weather" :space-evenly "true" :orientation "h" :width 190 :height controls-height
 	(box :space-evenly "false" :orientation "v"
+		(overlay :height controls-height
 		(box :space-evenly "false" :orientation "v"
 			(label :text weather-loc  :valign "start" :halign "start")
-			(label :text weather-cond :valign "start" :halign "start" :xalign "0" :wrap "true" :limit-width "26" :class "weather-cond")
+			(label :text weather-cond :valign "start" :halign "start" :class "weather-cond" :limit-width 29)
 			(label :class "weather-temp" :text weather-temp :valign "start" :halign "start"))
 		(box :class "weather-icon" :space-evenly "false" :orientation "h" :halign "end" :valign "end" :vexpand "true"
-			(button :tooltip "Current Weather: ${weather-cond}, ${weather-temp}" :onclick "" weather-icon) 
-		))
-))
+			(button :tooltip "Current Weather: ${weather-cond}, ${weather-temp}" :onclick "" weather-icon))
+))))
 
 (defwidget stats []
 	(box :class "roundpanel stats" :orientation "h" :space-evenly "true" :vexpand "true" :valign "center"
@@ -113,7 +113,7 @@ ${batt-tooltip}"
 (defwidget quickbuttons []
 	(box :class "roundpanel quickbuttons"
 	(box :orientation "h" :space-evenly "true" :vexpand "true" :valign "center"
-		(quickbtn :icon "直" 
+		(quickbtn :icon "直"
 			:action "scripts/quickbutton wifi"
 			:tooltip wifi-tooltip 
 			:toggle wifi-bool)
@@ -130,16 +130,15 @@ ${batt-tooltip}"
 
 ;; Combined layout
 (defwidget sidebar []
-	(box :orientation "h"  :space-evenly "false" :class "hidden"
-		(revealer :transition "slideright" :duration ".3s" :reveal reveal-sidebar
+	(box :orientation "h" :space-evenly "false" :class "hidden" :width 600
+		(revealer :transition "slideright" :duration ".3s" :reveal "true"
 		(box :class "sidepanel" :orientation "v" :space-evenly "false"
 			(box :class "container first" (datetime))
 			(box :class "container" (cava))
 			(box :class "container" (player))
-			(box :class "container"
-				(box :orientation "h" :space-evenly "false"
-					(sidebar-controls)
-					(weather)))
+			(box :class "container" :orientation "h" :space-evenly "false"
+				(sidebar-controls)
+				(weather))
 			(box :class "container" (stats))
 			(box :class "container last" (quickbuttons)))
 )))

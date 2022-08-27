@@ -25,15 +25,20 @@ if [[ $icon = "" ]] || [[ $icon =~ [0-9] ]] ; then
 	cond="Weather data not available"
 fi
 
-ICONS=("" "" "" "" "")
+ICONS=("" "" "" "" "" "" "🌦")
 if [[ $1 = "icon" ]]; then
 	case $icon in
 		⛅️*) echo "" ;;
-		☀️*) echo "" ;;
+		☀️*) echo "" ;;
 		*) echo $icon ;;
 	esac
 elif [[ $1 = "temp" ]]; then
     echo $temp
 elif [[ $1 = "cond" ]]; then
-	echo $cond
+	lim=12
+	[[ ${#cond} -le $lim ]] && echo $cond && exit 0
+	l1="${cond:0:$lim}"
+	l2="$(echo ${cond:$lim} | sed 's/^\s//')"
+	echo -e "$l1\n$l2"
+
 fi
