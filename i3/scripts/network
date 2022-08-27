@@ -6,16 +6,18 @@ if [[ $(echo "$pid" | wc -l) -gt 1 ]]; then
 fi
 
 no_con_msg="There's no primary connection"
+IMGDIR="$HOME/.config/dunst/img"
 
 nmcli m | while read line; do
 	[[ $line != *"primary connection"* ]] && continue
 	# echo $line
 	if [[ "$line" = "$no_con_msg" ]]; then
 		eww update wifi-icon="睊"
-		notify-send "Disconnected" "The network connection has been disconnected"
+		notify-send -i $IMGDIR/wifi-off.png "Disconnected" "The network connection has been disconnected"
 	else
 		name=$(echo "$line" | awk -F"'" '{print $2}')
-		[[ $name = "Wired Connection"* ]] && eww update wifi-icon="" || eww update wifi-icon="直"
-		notify-send "Connection Established" "You are now connected to the Wi-Fi network \"$name\""
+		echo $line
+		[[ $name = "Wired connection"* ]] && eww update wifi-icon="" || eww update wifi-icon="直"
+		notify-send -i $IMGDIR/wifi-on.png "Connection Established" "You are now connected to the Wi-Fi network \"$name\""
 	fi
 done
