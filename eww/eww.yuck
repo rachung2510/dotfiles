@@ -52,7 +52,7 @@
 (defpoll bar-cpu-val :interval "5s" "scripts/getval cpu int")
 
 ;; Quickbuttons
-(defpoll wifi-icon		:interval "5s" "scripts/geticon wifi")
+(defpoll wifi-icon		:interval "5h" :initial "睊" "scripts/geticon wifi")
 (defpoll wifi-bool		:interval "5h" "scripts/getbool wifi")
 (defpoll bluetooth-bool :interval "5h" "scripts/getbool bluetooth")
 (defpoll notif-bool		:interval "5h" "scripts/getbool notif")

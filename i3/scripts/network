@@ -11,9 +11,11 @@ nmcli m | while read line; do
 	[[ $line != *"primary connection"* ]] && continue
 	# echo $line
 	if [[ "$line" = "$no_con_msg" ]]; then
+		eww update wifi-icon="睊"
 		notify-send "Disconnected" "The network connection has been disconnected"
 	else
 		name=$(echo "$line" | awk -F"'" '{print $2}')
+		[[ $name = "Wired Connection"* ]] && eww update wifi-icon="" || eww update wifi-icon="直"
 		notify-send "Connection Established" "You are now connected to the Wi-Fi network \"$name\""
 	fi
 done
