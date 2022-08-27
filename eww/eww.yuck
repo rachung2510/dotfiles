@@ -39,7 +39,7 @@
 
 ;; Weather
 (defpoll weather-loc  :interval "24h" "scripts/weather location")
-(defpoll weather-icon :interval "2s"  "scripts/weather icon")
+(defpoll weather-icon :interval "1h"  "scripts/weather icon")
 (defpoll weather-temp :interval "1h"  "scripts/weather temp")
 (defpoll weather-cond :interval "1h"  "scripts/weather cond")
 
