@@ -131,7 +131,7 @@ ${batt-tooltip}"
 ;; Combined layout
 (defwidget sidebar []
 	(box :orientation "h" :space-evenly "false" :class "hidden" :width 600
-		(revealer :transition "slideright" :duration ".3s" :reveal "true"
+		(revealer :transition "slideright" :duration ".3s" :reveal reveal-sidebar
 		(box :class "sidepanel" :orientation "v" :space-evenly "false"
 			(box :class "container first" (datetime))
 			(box :class "container" (cava))
