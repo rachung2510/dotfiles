@@ -6,8 +6,7 @@ if [[ $(echo "$pid" | wc -l) -gt 1 ]]; then
 	exit 0
 fi
 
-while true; do
-	#check wifi
+check_wifi () {
 	if [[ $(iwgetid -r) = "" ]]; then
 		choice=$(dunstify --action="kill,Kill process" "OneDrive sync failed" "WiFi not connected. Consider killing the OneDrive sync")
 		case "$choice" in
@@ -17,8 +16,11 @@ while true; do
 				;;
 		esac
 	fi
+}
 
-	echo "pass"
+while true; do
+	check_wifi
+
 	[[ -d ~/OneDrive ]] && onedrive --synchronize
 	[[ -d ~/Imperial ]] && onedrive --synchronize --confdir=~/.config/onedriveimperial
 	sleep 300
