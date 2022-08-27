@@ -26,12 +26,12 @@ eww open bar
 case $chosen in
     $shutdown)
 		ans=$(confirm_exit &)
-		[[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]
+		[[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]] &&
 			systemctl poweroff
 	;;
     $reboot)
 		ans=$(confirm_exit &)
-		[[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]
+		[[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]] &&
 			systemctl reboot
 	;;
     $lock)
