@@ -358,6 +358,7 @@ exec --no-startup-id autokey-gtk
 for_window [class="Org.gnome.Nautilus"] floating enable
 for_window [class="Thunar"] floating enable
 for_window [class="org.gnome.clocks"] floating enable
+for_window [class="org.gnome.Music"] floating enable
 for_window [class="gnome-calculator"] floating enable
 for_window [title="nmtui"] floating enable sticky enable
 for_window [class="GParted"] floating enable
