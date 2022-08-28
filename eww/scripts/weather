@@ -35,7 +35,7 @@ if [[ $1 = "icon" ]]; then
 elif [[ $1 = "temp" ]]; then
     echo $temp
 elif [[ $1 = "cond" ]]; then
-	lim=12
+	lim=13
 	[[ ${#cond} -le $lim ]] && echo $cond && exit 0
 	l1="${cond:0:$lim}"
 	l2="$(echo ${cond:$lim} | sed 's/^\s//')"
