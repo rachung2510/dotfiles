@@ -12,14 +12,38 @@ status() {
 metadata() {
 	player="$(playerctl metadata --format '{{playerName}}' 2>/dev/null)"
 	[[ $player = "" ]] && echo "" && return 0
-	title="$(playerctl metadata title)"
-	artist="$(playerctl metadata artist)"
-	if [[ $player = "spotify" ]]; then icon=""
-	elif [[ $title = *"YouTube" ]]; then icon=""
-	else icon=$icon; fi
-	[[ $1 = "title" ]] && echo "$icon ${title% -*}" && return 0
-	[[ $1 = "artist" ]] && echo $artist
+
+	if [[ $1 = "title" ]]; then
+		title="$(playerctl metadata title)"
+		if [[ $player = "spotify" ]]; then 
+			icon=""
+		elif [[ $title = *"YouTube" ]]; then 
+			icon=""
+			title=$(echo $title | sed 's/ - YouTube$//')
+		else 
+			icon=$icon;
+		fi
+
+		has_kanji=$(echo $title | grep -P $2)
+		[[ -n $has_kanji ]] && title="${title:0:24}..."
+		[[ -n $icon ]] && echo "$icon $title" || echo "$title"
+
+	elif [[ $1 = "artist" ]]; then
+		echo "$(playerctl metadata artist)"
+
+	fi
 }
+
+get_unicode_exp() {
+	unicodes=("Han" "Hangul" "Hiragana" "Katakana")
+	exp=''
+	for u in ${unicodes[@]}; do
+    	new="[\\p{$u}]"
+	    [[ -n $exp ]] && exp="$exp|$new" || exp=$new
+	done
+	echo $exp
+}
+
 
 if [[ $1 = "icon" ]]; then
 	status
@@ -27,14 +51,15 @@ if [[ $1 = "icon" ]]; then
     	status
 	done
 
-elif [[ $1 ==  "title" ]] || [[ $1 = "artist" ]]; then
+elif [[ $1 =  "title" ]] || [[ $1 = "artist" ]]; then
 	playerctld daemon 2>/dev/null
-	metadata $1
+	[[ $1 = "title" ]] && exp="$(get_unicode_exp)" || exp=""
+	metadata $1 $exp
 	playerctl -F metadata title | while read _; do
-   	metadata $1
+		metadata $1 $exp
 	done
 
-elif [[ $1 == "action" ]]; then
+elif [[ $1 = "action" ]]; then
 	if [[ "$(status -p)" = "Playing" ]]; then
     	playerctl -p playerctld pause -s
     	eww update play-icon=$play

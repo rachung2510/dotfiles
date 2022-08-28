@@ -34,8 +34,8 @@
 (defwidget player []
 	(box :class "roundpanel player ${title == "" ? "disabled" : ""}" :height player-height
 	(box :orientation "v" :space-evenly "false" :vexpand "true" :valign "center"
-		(label :class "player-title" :text "${title != "" ? "${title}" : "Offline"}" :halign "middle" :limit-width "22" )
-		(label :class "player-artist" :text "${artist != "" ? "${artist}" : "~~"}" :halign "middle" :limit-width "34")
+		(label :class "player-title" :text "${title != "" ? "${title}" : "Offline"}" :halign "middle" :limit-width "36" )
+		(label :class "player-artist" :text "${artist != "" ? "${artist}" : "~~"}" :halign "middle" :limit-width "30")
 		(literal :content "${title == "" ?
 			"(box :class 'player-controls' :orientation 'h' :spacing 20 :halign 'center' :space-evenly 'true'
 				(button '玲')
