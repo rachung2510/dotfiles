@@ -93,7 +93,7 @@ ${batt-tooltip}"
 		(hdd)))
 (defwidget ram []
 	(radialmeter	
-		:value "${ram-val}"
+		:value ram-perc
 		:text " RAM"
 		:label "${ram-val}G"
 		:tooltip ""))

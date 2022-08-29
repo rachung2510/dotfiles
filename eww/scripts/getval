@@ -23,8 +23,11 @@ elif [[ $1 = "cpu" ]]; then
 	echo "scale=1; $val/1" | bc
 
 elif [[ $1 = "ram" ]]; then
-#	val=$(free | grep Mem | awk '{print $3/$2 * 100.0}')
-	val=$(echo "scale=2; $(free -m |grep Mem | awk '{print $3}')/1000" | bc)
+	if [[ $2 = "perc" ]]; then
+		val=$(free | grep Mem | awk '{print $3/$2 * 100.0}')
+	else 
+		val=$(echo "scale=2; $(free -m |grep Mem | awk '{print $3}')/1000" | bc)
+	fi
 	echo $val
 
 elif [[ $1 = "hdd" ]]; then
