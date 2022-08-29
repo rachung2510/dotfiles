@@ -3,7 +3,8 @@
 pw="root"
 
 notify_bluetooth() {
-	notify-send -u normal -i "~/.config/dunst/img/bluetooth-$1.png" "Bluetooth turned $1" "Status: $(eval $cmd)"
+	details=$(systemctl status bluetooth | grep 'Active:' | grep -oP '(?<=Active: ).*')
+	notify-send -u normal -h string:x-dunst-stack-tag:bluetooth -i "~/.config/dunst/img/bluetooth-$1.png" "Bluetooth turned $1" "Status: $details"
 }
 
 if [[ $1 = "wifi" ]]; then
@@ -19,8 +20,7 @@ if [[ $1 = "wifi" ]]; then
 	fi
 
 elif [[ $1 = "bluetooth" ]]; then
-	cmd="systemctl status bluetooth | grep 'Active:' | grep -oP '(?<=Active: ).*'"
-	status=$(eval $cmd | awk '{print $1}')
+	status=$(systemctl status bluetooth | grep 'Active:' | awk '{print $2}')
 	if [[ $status = "active" ]]; then
 		eww update bluetooth-bool=""
 		echo $pw | sudo -S systemctl stop bluetooth
@@ -30,7 +30,7 @@ elif [[ $1 = "bluetooth" ]]; then
 		echo $pw | sudo -S systemctl start bluetooth
 		notify_bluetooth on
 	fi
-	sleep 1 && eww update vol-tooltip=$(scripts/tooltip vol)
+	sleep 1 && eww update vol-tooltip="$(scripts/tooltip vol)"
 
 elif [[ $1 = "notif" ]]; then
 	status=$(dunstctl is-paused)
