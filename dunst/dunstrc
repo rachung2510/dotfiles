@@ -4,7 +4,7 @@
     width = (270,360)
     height = 360
     origin = bottom-right
-    offset = 20x20
+    offset = 16x16
     idle_threshold = 120
 
     # Scale factor. It is auto-detected if value is 0.
@@ -42,7 +42,7 @@
     horizontal_padding = 15
     text_icon_padding = 10
 
-    frame_width = 1
+    frame_width = 0
     frame_color = "#8e24aa"
 	gap_size = 5
     separator_color = frame
@@ -127,7 +127,7 @@
     title = Dunst
     class = Dunst
 
-    corner_radius = 8
+    corner_radius = 0
     ignore_dbusclose = false
 
     force_xwayland = false
@@ -150,39 +150,40 @@
 
 
 [urgency_low]
-    background = "#ab47bc99"
-    foreground = "#ffffff"
+	background = "#ce93d8d9"
+    foreground = "#fff"
     timeout = 5
     default_icon = ~/.config/dunst/img/noti.png
 
 [urgency_normal]
-    background = "#ab47bc99"
-    foreground = "#ffffff"
+	background = "#ce93d8d9"
+    foreground = "#fff"
     timeout = 10
     default_icon = ~/.config/dunst/img/noti.png
-#	script = ~/.config/dunst/scripts/getinfo.sh
+	script = ~/.config/dunst/scripts/getinfo.sh
 
 [urgency_critical]
-    background = "#eb4d4bcc"
+    background = "#eb4d4b"
     foreground = "#ffffff"
-    frame_color = "#c0392b"
-    timeout = 0
+	timeout = 0
     default_icon = ~/.config/dunst/img/critical.png
 
 [Error]
     summary = "error"
 	urgency = "critical"
+
 [Spotify]
     appname=Spotify
-	frame_color = "#1a9947"
-    background = "#1daf52bf"
+    background = "#21c45c"
     foreground = "#ffffff"
     # format = "<b> %s</b>\n%b"
+
 [Screenshot]
 	appname=maim
 	summary = "Snip saved to clipboard"
 	icon_position = top
 	max_icon_size = 240
+
 [Whatsapp]
 	body = "web.whatsapp.com*"
 	format = ""
@@ -191,14 +192,15 @@
 	summary = "Whatsapp Web"
 	background = "#49eb66d9"
 	foreground = "#4d4d4d"
+
 [Volume Mute]
 	summary = "Speakers muted"
 	highlight = "#cccccc"
-	background = "#8c8c8cb2"
+	background = "#a6a6a6d9"
+
 [Telegram]
 	appname = "Telegram Desktop"
-	background = "#0399e2bf"
-	frame_color = "#242daa"
+	background = "#41a1d9"
 	timeout = 20
 
 # vim: set ft=dosini :
