@@ -150,17 +150,17 @@
 
 
 [urgency_low]
-	background = "#ce93d8d9"
+	background = "#c37cd0d9"
     foreground = "#fff"
     timeout = 5
     default_icon = ~/.config/dunst/img/noti.png
 
 [urgency_normal]
-	background = "#ce93d8d9"
+	background = "#c37cd0d9"
     foreground = "#fff"
     timeout = 10
     default_icon = ~/.config/dunst/img/noti.png
-	script = ~/.config/dunst/scripts/getinfo.sh
+	; script = ~/.config/dunst/scripts/getinfo.sh
 
 [urgency_critical]
     background = "#eb4d4b"
@@ -185,13 +185,8 @@
 	max_icon_size = 240
 
 [Whatsapp]
-	body = "web.whatsapp.com*"
-	format = ""
-	script = ~/.config/dunst/scripts/whatsapp.sh
-[Whatsapp Modified]
-	summary = "Whatsapp Web"
-	background = "#49eb66d9"
-	foreground = "#4d4d4d"
+	appname = "whatsapp-nativefier-d40211"
+	background = "#51b868"
 
 [Volume Mute]
 	summary = "Speakers muted"
