@@ -1,7 +1,6 @@
 # dependencies
 echo "[INFO] Installing dependencies..."
-yay -S alacritty rofi --noconfirm
-yay -S lxappearance-gtk3 brightnessctl playerctl pavucontrol feh acpi maim xclip --noconfirm
+yay -S alacritty rofi lxappearance-gtk3 brightnessctl playerctl pavucontrol feh acpi maim xclip cava --noconfirm
 sudo usermod -aG video ${USER} # run brightnessctl without sudo
 
 # configs
@@ -16,6 +15,7 @@ cp -r rofi ~/.config/
 
 # i3lock-color
 echo -e "\n[INFO] Installing i3lock-color..."
+cd ~
 yay -S autoconf cairo fontconfig gcc libev libjpeg-turbo libxinerama libxkbcommon-x11 libxrandr pam pkgconf xcb-util-image --noconfirm
 git clone https://github.com/Raymo111/i3lock-color.git
 cd i3lock-color
@@ -63,3 +63,4 @@ cp ~/dotfiles/FiraSans-Regular.ttf ./
 fc-cache -fv ~/.fonts
 
 cd ~/dotfiles
+echo "[FINISHED]."
