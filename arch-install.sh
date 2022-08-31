@@ -1,6 +1,6 @@
 # dependencies
 echo "[INFO] Installing dependencies..."
-yay -S lxappearance-gtk3 brightnessctl playerctl pavucontrol feh acpi maim xclip cava --noconfirm
+yay -S alacritty lxappearance-gtk3 brightnessctl playerctl pavucontrol feh acpi maim xclip cava autotiling --noconfirm
 sudo usermod -aG video ${USER} # run brightnessctl without sudo
 
 # configs
