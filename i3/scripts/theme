@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ROOTGTK3CONF="/root/.config/gtk-3.0/settings.ini"
+ROOTGTK2CONF="/root/.gtkrc-2.0"
 GTK3CONF="$HOME/.config/gtk-3.0/settings.ini"
 GTK2CONF="$HOME/.gtkrc-2.0"
 EWWCONF="$HOME/.config/eww/eww.scss"
@@ -34,8 +36,10 @@ esac
 
 feh --bg-scale ~/.config/i3/wallpapers/$ll-wallpaper.jpg
 sed -i -e "s:@import .*:@import \"styles/$ll.scss\";:g" $EWWCONF
-sed -i -e "s/gtk-theme-name=.*/gtk-theme-name=Orchis-Purple-$uu/g" $GTK2CONF
 sed -i -e "s/gtk-theme-name=.*/gtk-theme-name=Orchis-Purple-$uu/g" $GTK3CONF
+sed -i -e "s/gtk-theme-name=.*/gtk-theme-name=Orchis-Purple-$uu/g" $GTK2CONF
+echo root | sudo -S sed -i -e "s/gtk-theme-name=.*/gtk-theme-name=Orchis-Purple-$uu/g" $ROOTGTK3CONF
+sudo sed -i -e "s/gtk-theme-name=.*/gtk-theme-name=Orchis-Purple-$uu/g" $ROOTGTK2CONF
 sed -i -e "s:config/alacritty/.*:config/alacritty/$ll.yml:g" $ALACONF
 
 sed -i -e "s/@import .*/@import \"$ll\"/g" $ROFICONF
