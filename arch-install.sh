@@ -12,6 +12,8 @@ cp -r eww ~/.config/
 cp -r i3 ~/.config/
 cp -r picom ~/.config/
 cp -r rofi ~/.config/
+sudo mkdir /etc/media
+sudo cp ~/i3/wallpapers/blue-purple-city.jpg /etc/media/
 
 # i3lock-color
 echo -e "\n[INFO] Installing i3lock-color..."
