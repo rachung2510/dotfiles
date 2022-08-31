@@ -1,6 +1,6 @@
 # dependencies
 echo "[INFO] Installing dependencies..."
-yay -S alacritty rofi lxappearance-gtk3 brightnessctl playerctl pavucontrol feh acpi maim xclip cava --noconfirm
+yay -S lxappearance-gtk3 brightnessctl playerctl pavucontrol feh acpi maim xclip cava --noconfirm
 sudo usermod -aG video ${USER} # run brightnessctl without sudo
 
 # configs
@@ -47,8 +47,6 @@ cd Orchis-theme
 curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.sh | sh
 sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
-# curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.sh | sh
-# spicetify backup apply enable-devtools
 
 # fonts
 echo -e "\n[INFO] Installing fonts..."
@@ -58,9 +56,16 @@ wget https://github.com/adi1090x/rofi/raw/master/fonts/Icomoon-Feather.ttf
 wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Meslo/M/Regular/complete/Meslo%20LG%20M%20Regular%20Nerd%20Font%20Complete.ttf
 wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Medium/complete/Fira%20Code%20Medium%20Nerd%20Font%20Complete.ttf
 wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Iosevka/Medium/complete/Iosevka%20Medium%20Nerd%20Font%20Complete.ttf
-#wget https://github.com/rachung2510/dotfiles/raw/master/FiraSans-Regular.ttf
 cp ~/dotfiles/FiraSans-Regular.ttf ./
 fc-cache -fv ~/.fonts
+sudo mkdir /root/.themes
+sudo mkdir /root/.fonts
+sudo cp -r ~/.themes/* /root/.themes/
+sudo cp ~/.fonts/* /root/.fonts/
 
 cd ~/dotfiles
-echo "[FINISHED]."
+echo -e "[FINISHED].\n"
+echo "Start a new terminal and run:
+curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.sh | sh
+spicetify backup apply enable-devtools"
+
