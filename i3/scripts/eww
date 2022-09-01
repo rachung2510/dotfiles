@@ -1,13 +1,15 @@
 #!/bin/bash
 
-windows="$(eww windows) eol"
-open_windows=$(echo "$(eww windows)" | grep "*")
+# keypress constants
 ESC=9
 RETURN=36
 
-if [[ "$(eww ping)" = "" ]]; then
-	eww daemon
-fi
+windows="$(eww windows) eol"
+open_windows=$(echo "$(eww windows)" | grep "*")
+
+# start daemon if not started
+[[ ! -n "$(eww ping)" ]] && eww daemon
+
 close() {
 	for pid in $(pgrep -f cava_output); do kill $pid; done
 	eww update reveal-sidebar=false && sleep .2 && eww close sidebar
@@ -16,7 +18,7 @@ close() {
 	killall eww.sh
 }
 
-if [[ $1 != "" ]] && [[ $open_windows = *"$1"* ]]; then
+if [[ -n $1 ]] && [[ $open_windows = *"$1"* ]]; then
 	[ $1 = "bar" ] && eww close bar
 	[ $1 = "sidebar" ] && close
 
@@ -33,6 +35,11 @@ elif [[ $1 = "sidebar" ]]; then
 
 elif [[ $1 = "bar" ]]; then
 	eww open bar
+
+elif [[ $1 = "fullscreen" ]]; then
+	status=$(~/.config/i3/scripts/fullscreen.py)
+	[[ $status = "true" ]] && eww close bar
+	[[ $status = "false" ]] && eww open bar
 
 else
 	close
