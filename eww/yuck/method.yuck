@@ -37,7 +37,7 @@
 
 ;; Workspace
 (defwidget ws [num name modi]
-    (eventbox :onclick "i3-msg workspace '${num} ${name}'"
+    (eventbox :onclick "i3-msg workspace '${num} ${name}' && ~/.config/i3/scripts/eww fullscreen"
     (box :class "ws-icon ${modi}" :orientation "v" :space-evenly "false" :spacing "4" :halign "center"
         (label :class "ws-label" :text "${num}")
         (label :text {name})
