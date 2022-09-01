@@ -1,0 +1,7 @@
+#!/bin/bash
+
+while true; do
+	[[ -n $(iwgetid -r) ]] && /usr/local/bin/ncsync -a l2r
+	sleep 600
+done
+
