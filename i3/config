@@ -221,7 +221,7 @@ bindsym F3 exec --no-startup-id brightnessctl set $bright-step%- && ~/.config/i3
 
 ## App shortcuts
 bindsym $mod+c exec --no-startup-id microsoft-edge-stable
-bindsym $mod+e exec --no-startup-id /usr/bin/thunar
+bindsym $mod+e exec --no-startup-id thunar
 # bindsym Print exec scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
 
 # Power Profiles menu switcher (rofi)
@@ -357,6 +357,7 @@ exec --no-startup-id autokey-gtk
 # set floating (nontiling) for apps needing it
 for_window [class="Org.gnome.Nautilus"] floating enable
 for_window [class="Thunar"] floating enable
+for_window [class="Catfish"] floating enable
 for_window [class="org.gnome.clocks"] floating enable
 for_window [class="org.gnome.Music"] floating enable
 for_window [class="gnome-calculator"] floating enable
