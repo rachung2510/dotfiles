@@ -43,6 +43,16 @@ elif [[ $1 = "notif" ]]; then
 		dunstctl set-paused true
 	fi
 
+elif [[ $1 = "timeout" ]]; then
+	status=$(xset q | grep "DPMS is" | awk '{print $3}')
+	if [[ $status = "Disabled" ]]; then
+		eww update timeout-bool=""
+		xset s on +dpms
+	else
+		eww update timeout-bool="selected"
+		xset s off -dpms
+	fi
+
 elif [[ $1 = "lock" ]]; then
 	~/.config/i3/scripts/poweractions lock
 

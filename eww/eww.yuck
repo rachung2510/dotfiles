@@ -57,6 +57,7 @@
 (defpoll wifi-bool		:interval "5h" "scripts/getbool wifi")
 (defpoll bluetooth-bool :interval "5h" "scripts/getbool bluetooth")
 (defpoll notif-bool		:interval "5h" "scripts/getbool notif")
+(defpoll timeout-bool	:interval "5h" "scripts/getbool timeout")
 
 ;; Workspace
 (deflisten workspace "scripts/workspace")

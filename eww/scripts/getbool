@@ -16,4 +16,8 @@ elif [[ $1 = "mute" ]]; then
 	mute=$(pactl get-sink-mute @DEFAULT_SINK@)
 	[[ $mute = "Mute: yes" ]] && echo "disabled" || echo ""
 
+elif [[ $1 = "timeout" ]]; then
+	status=$(xset q | grep "DPMS is" | awk '{print $3}')
+	[[ $status = "Disabled" ]] && echo "selected" || echo ""
+
 fi
