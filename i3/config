@@ -264,14 +264,14 @@ set $ws10 "10 "
 # bind program to workspace and focus to them on startup:
 for_window [class="Spotify"] move to workspace number $ws10
 for_window [class="zoom"] move to workspace number $ws8
-for_window [class="[mM]inecraft*"] move to workspace number $ws9
+for_window [class="[mM]inecraft.*"] move to workspace number $ws9
 # assign [class="Google-chrome"] number 1
 # assign [class="Microsoft-edge"] number 1
 assign [class="obsidian"] number $ws7
 assign [class="whatsapp-nativefier-d40211"] number $ws8
 assign [class="TelegramDesktop"] number $ws8
-assign [class="Thunderbird"] number $ws8
-assign [class="[mM]inecraft*"] number $ws9
+assign [class="[tT]hunderbird"] number $ws8
+assign [class="[mM]inecraft.*"] number $ws9
 assign [title="Steam"] number $ws9
 assign [class="Steam"] number $ws9
 assign [class="Stardew Valley"] number $ws9
