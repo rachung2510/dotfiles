@@ -195,6 +195,7 @@ button.selected:hover { background-color: $btn-hover; }
 .bar-widget.controls { padding: .5rem 0; }
 .bar-widget.controls button.no-hover:hover { color: $bar-text; }
 .bar-widget.controls .crit { color: $urgent; }
+.bar-widget.controls .crit button.no-hover:hover { color: $urgent; }
 .barbtn-icon-larger { font-size: 1.2em; }
 .barbtn-label { 
 	font-size: .9rem;
