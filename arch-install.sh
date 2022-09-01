@@ -14,6 +14,7 @@ cp -r picom ~/.config/
 cp -r rofi ~/.config/
 sudo mkdir /etc/media
 sudo cp ~/i3/wallpapers/blue-purple-city.jpg /etc/media/
+sudo ln -t /usr/local/bin/  ~/.config/i3/scripts/picom-toggle
 
 # i3lock-color
 echo -e "\n[INFO] Installing i3lock-color..."
