@@ -220,7 +220,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set $bright-ste
 # bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 ## App shortcuts
-bindsym $mod+c exec --no-startup-id microsoft-edge-stable
+bindsym $mod+c exec --no-startup-id microsoft-edge-beta
 bindsym $mod+e exec --no-startup-id thunar
 # bindsym Print exec scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
 
