@@ -64,6 +64,7 @@ fc-cache -fv ~/.fonts
 sudo mkdir /root/.themes
 sudo mkdir /root/.fonts
 sudo cp -r ~/.themes/* /root/.themes/
+sudo cp -r ~/.themes/* /usr/share/themes/
 sudo cp ~/.fonts/* /root/.fonts/
 
 cd ~/dotfiles
