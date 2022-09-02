@@ -13,11 +13,12 @@ window {
     transparency:                   "real";
     background-color:               @window-bg;
     text-color:                     @pfg;
-    height:                         100%;
+    height:                         101%;
     width:                          12.25%;
     location:                       west;
+	x-offset:						-2px;
 	border: 2px;
-	border-color: #ccc;
+	border-color: @border;
 }
 mainbox {
     background-color:               inherit;

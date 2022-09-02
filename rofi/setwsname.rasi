@@ -8,17 +8,17 @@ configuration {
 
 * {
 	spacing: 0;
-	background-color: @window-bg;
+	background-color: @obg;
 }
 
 @import "/home/user/.config/rofi/styles/colors.rasi"
 window {
 	transparency: "real";
-	background-color: @window-bg;
+	background-color: @obg;
 	width: 20%;
 	border: 2px;
 	border-radius: 20px;
-	border-color: #ccc;
+	border-color: @border;
 	padding: 14 20 20 20;
 }
 mainbox {
@@ -28,7 +28,7 @@ mainbox {
 inputbar {
     children: [prompt, entry];
     // background-color: @dac-al;
-    text-color: @lfg;
+    text-color: @ofg;
 }
 prompt {
     background-color: inherit;
@@ -52,10 +52,10 @@ element {
 	border: 0px;
 	border-radius: 100%;
 	padding: 10px 20px;
-	background-color: @window-bg;
-	text-color: @lfg; 
+	background-color: @obg;
+	text-color: @ofg; 
 }
 element selected { 
-	background-color: @shade7;
-	text-color: @window-bg;
+	background-color: @ose;
+	text-color: @obg;
 }
