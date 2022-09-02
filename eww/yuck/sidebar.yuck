@@ -80,7 +80,7 @@ ${batt-tooltip}"
 		(overlay :height controls-height
 		(box :space-evenly "false" :orientation "v"
 			(label :text weather-loc  :valign "start" :halign "start")
-			(label :text weather-cond :valign "start" :halign "start" :class "weather-cond" :limit-width 29)
+			(label :text weather-cond :valign "start" :halign "start" :class "weather-cond")
 			(label :class "weather-temp" :text weather-temp :valign "start" :halign "start"))
 		(box :class "weather-icon" :space-evenly "false" :orientation "h" :halign "end" :valign "end" :vexpand "true"
 			(button :tooltip "Current Weather: ${weather-cond}, ${weather-temp}" :onclick "" weather-icon))

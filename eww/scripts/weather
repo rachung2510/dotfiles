@@ -35,10 +35,11 @@ if [[ $1 = "icon" ]]; then
 elif [[ $1 = "temp" ]]; then
     echo $temp
 elif [[ $1 = "cond" ]]; then
-	lim=13
+	lim=15
 	[[ ${#cond} -le $lim ]] && echo $cond && exit 0
-	l1="${cond:0:$lim}"
-	l2="$(echo ${cond:$lim} | sed 's/^\s//')"
+	l1="${cond:0:$lim}" && l1="${l1% *}"
+	l2=$(echo $cond | grep -oP "(?<=${l1} ).*")
+	[[ ${#l2} -gt $lim ]] && l2="${l2:0:11}..."
 	echo -e "$l1\n$l2"
 
 fi
