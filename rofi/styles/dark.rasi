@@ -3,6 +3,7 @@
 	window-bg:		#333;
 	popup-bg:		#ba68c899;
 	popup-bd:		@shade4;
+	border:			#595959;
 
 	// Powermenu
 	elem:			@dark-purple;
@@ -28,4 +29,10 @@
 	lse:			#141c21;
 	lfg:			#f7f7f8;
 	lac:			#ba68c8;
+
+	// Options
+	obg:			@window-bg;
+	ose:			@shade7;
+	ofg:			@lfg;
+
 }
