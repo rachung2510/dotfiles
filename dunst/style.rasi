@@ -27,8 +27,8 @@ configuration {
 }
 
 window {
-    border:				0px;
-    border-color:		@ac;
+    border:				2px;
+    border-color:		#ccc;
     border-radius:		20px;
     padding:			20;
     width:				30%;

@@ -16,6 +16,8 @@ window {
     height:                         100%;
     width:                          12.25%;
     location:                       west;
+	border: 2px;
+	border-color: #ccc;
 }
 mainbox {
     background-color:               inherit;
@@ -69,7 +71,7 @@ element-text {
 element selected {
     background-color:               @pse;
     text-color:                     @pfg-se;
-    border:							0.2%;
+    border:							0 % 0.2% 0% 0%;
     border-radius:                  100%;
     border-color:					@pbd;
 }
