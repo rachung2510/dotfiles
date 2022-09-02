@@ -1,5 +1,5 @@
 #!/bin/bash
-l1="inactive-opacity = 0.90;"
+l1="inactive-opacity = 0.95;"
 l2="opacity-rule = \[\];"
 l3="inactive-dim = 0;"
 arr=("$l1" "$l2" "$l3")
@@ -16,4 +16,4 @@ for l in ${arr[@]}; do
 done
 
 [[ $status = "enabled" ]] && newstatus="disabled" || newstatus="enabled"
-notify-send "Compositor $newstatus"
+# notify-send "Compositor $newstatus"
