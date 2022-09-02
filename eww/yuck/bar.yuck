@@ -12,7 +12,7 @@
 
 (defwidget scratchpad []
 	(box :class "${(ws-scratch > 0) ? "" : "hidden"}" :orientation "v" :space-evenly "false"
-		(label :text "")
+		(button :onclick "i3-msg scratchpad show" "")
 		(label :class "barbtn-label" :text ws-scratch)))
 
 (defwidget lang[]
