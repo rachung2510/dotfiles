@@ -35,6 +35,7 @@ if [[ $1 = "icon" ]]; then
 elif [[ $1 = "temp" ]]; then
     echo $temp
 elif [[ $1 = "cond" ]]; then
+	[[ $2 != "short" ]] && echo $cond && exit 0
 	lim=15
 	[[ ${#cond} -le $lim ]] && echo $cond && exit 0
 	l1="${cond:0:$lim}" && l1="${l1% *}"
