@@ -152,7 +152,7 @@ ${batt-tooltip}"
 	:monitor 0
 	:windowtype "toolbar"
 	:geometry (geometry :x "0"
-						:y "8%")
+						:y "9%")
 	:wm-ignore true
 	:stacking "fg"
 	(sidebar))
