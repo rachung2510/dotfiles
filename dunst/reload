@@ -4,8 +4,8 @@ dunst &
 sleep 0.2
 notify-send -u critical "Test message" "Critical test 1"
 notify-send -u normal "Test message" "Normal test 2"
-notify-send -u low "Test message" "Low test 3"
+# notify-send -u low "Test message" "Low test 3"
 #notify-send -u normal "Chat" "<a href='https://web.whatsapp.com/'>web.whatsapp.com</a>\n\nBob: content"
 #notify-send -u normal " Song name" "Artist - Album"
-#dunstify --action="action1,label1" --action="action2,label2" "Summary" "Body"
+dunstify --action="action1,label1" --action="action2,label2" "Summary" "Body"
 #notify-send -h int:value:42 "Working ..."
