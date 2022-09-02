@@ -7,8 +7,8 @@
 
 	// Powermenu
 	elem:			@dark-purple;
-	pac:			@pse;
-	pse:			#bf74cd;
+	pac:			@shade8;
+	pse:			@shade8;
 	pfg:			@fg;
 	pfg-se:			@dark-purple;
 	pfg-in:			@window-bg;
