@@ -15,7 +15,7 @@ close() {
 	eww update reveal-sidebar=false && sleep .2 && eww close sidebar
 	[[ $(~/.config/i3/scripts/fullscreen.py) = "false" ]] && eww open bar
 	for i in $(seq 1 12); do eww update l$i=0; done
-	killall eww.sh
+	killall eww-controller
 }
 
 if [[ -n $1 ]] && [[ $open_windows = *"$1"* ]]; then
