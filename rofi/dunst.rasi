@@ -1,12 +1,3 @@
-/*
- *
- * Author  : Aditya Shakya
- * Mail    : adi1090x@gmail.com
- * Github  : @adi1090x
- * Twitter : @adi1090x
- *
- */
-
 configuration {
     font:				"Fira Sans 13";
 	fixed-num-lines:	false;
@@ -18,17 +9,13 @@ configuration {
 }
 
 * {
-	al:		#00000000;
-	bg:		#e8e9ecFF;
-	se:		#E3E3E3FF;
-	fg:		#141c21CC;
-	ac:		#ba68c8FF;
-    background-color: @bg;
+    background-color: @obg;
 }
 
+@import "/home/user/.config/rofi/styles/colors.rasi"
 window {
     border:				2px;
-    border-color:		#ccc;
+    border-color:		@border;
     border-radius:		20px;
     padding:			20;
     width:				30%;
@@ -42,14 +29,13 @@ listview {
     columns:			1;
     fixed-height:		0;
     border:				0px;
-    border-color:		@ac;
     spacing:			0;
     scrollbar:			false;
 	padding:			0;
 }
 
 element-text, element-icon {
-    background-color:	#00000000;
+    background-color:	@alpha;
     text-color:			inherit;
 }
 
@@ -59,10 +45,10 @@ element {
     padding:			10px 20px;
 }
 element normal {
-    background-color:	@bg;
-    text-color:			@fg;
+    background-color:	@obg;
+    text-color:			@ofg;
 }
 element selected {
-    background-color:	@ac;
-    text-color:			@bg;
+    background-color:	@ose;
+    text-color:			@obg;
 }
