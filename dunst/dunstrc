@@ -116,7 +116,7 @@
 
     # dmenu path.
 #	dmenu = /usr/bin/dmenu -p dunst:
-    dmenu = /usr/bin/rofi -dmenu -theme ~/.config/dunst/style.rasi
+    dmenu = /usr/bin/rofi -dmenu -p dunst -theme ~/.config/dunst/style.rasi
 
     # Browser for opening urls in context menu.
     browser = /usr/bin/microsoft-edge
