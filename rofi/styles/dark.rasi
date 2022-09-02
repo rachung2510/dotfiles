@@ -7,12 +7,12 @@
 
 	// Powermenu
 	elem:			@dark-purple;
-	pac:			@shade8;
-	pse:			@shade8;
+	pac:			@pse;
+	pse:			#bf74cd;
 	pfg:			@fg;
 	pfg-se:			@dark-purple;
 	pfg-in:			@window-bg;
-	pbd:			@shade6;
+	pbd:			@shade4;
 	// Theme
 	elem-disabled:	#666;
 	pfg-disabled:	#999;
