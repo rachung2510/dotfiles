@@ -193,12 +193,12 @@ bindsym $mod+Shift+n exec --no-startup-id ~/.config/i3/scripts/empty_workspace
 # volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && ~/.config/i3/scripts/fnactions vol up
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && ~/.config/i3/scripts/fnactions vol down
-bindsym $mod+F11 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +5% && ~/.config/i3/scripts/fnactions vol up
-bindsym $mod+F10 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ -5% && ~/.config/i3/scripts/fnactions vol down
+bindsym F11 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +5% && ~/.config/i3/scripts/fnactions vol up
+bindsym F10 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ -5% && ~/.config/i3/scripts/fnactions vol down
 
 # mute
 bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/scripts/fnactions mute notify
-bindsym $mod+F9 exec --no-startup-id ~/.config/i3/scripts/fnactions mute notify
+bindsym F9 exec --no-startup-id ~/.config/i3/scripts/fnactions mute notify
 
 # audio control
 bindsym $mod+F7 exec --no-startup-id playerctl play-pause
@@ -288,7 +288,8 @@ assign [class="Stardew Valley"] number $ws9
 ##############
 
 # using default config 
-exec_always --no-startup-id picom -b --experimental-backends --config ~/.config/picom/picom.conf
+# exec_always --no-startup-id picom -b --experimental-backends --config ~/.config/picom/picom.conf
+exec_always --no-startup-id picom -f --experimental-backends &
 # for custom config:
 #exec_always --no-startup-id picom --config  ~/.config/picom.conf
 
