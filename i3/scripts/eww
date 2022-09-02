@@ -13,7 +13,7 @@ open_windows=$(echo "$(eww windows)" | grep "*")
 close() {
 	for pid in $(pgrep -f cava_output); do kill $pid; done
 	eww update reveal-sidebar=false && sleep .2 && eww close sidebar
-	eww open bar
+	[[ $(~/.config/i3/scripts/fullscreen.py) = "false" ]] && eww open bar
 	for i in $(seq 1 12); do eww update l$i=0; done
 	killall eww.sh
 }
