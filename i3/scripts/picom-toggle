@@ -16,4 +16,4 @@ for l in ${arr[@]}; do
 done
 
 [[ $status = "enabled" ]] && newstatus="disabled" || newstatus="enabled"
-notify-send "Picom compositor $newstatus"
+notify-send "Compositor $newstatus"
