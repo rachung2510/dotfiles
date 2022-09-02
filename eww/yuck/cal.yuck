@@ -12,7 +12,7 @@
 ;; Window
 (defwindow cal
 	:windowtype "dock"
-	:geometry (geometry :x "54px" 
+	:geometry (geometry :x "52px" 
 						:y "0" 
 						:height "0%"
 						:anchor "bottom left")
