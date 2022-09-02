@@ -1,0 +1,3 @@
+[[ "$(eww windows)" = *"*cal"* ]] && eww close cal || eww open cal
+
+# vim: set ft=sh :

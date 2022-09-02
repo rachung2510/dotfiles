@@ -46,11 +46,12 @@ ${vol-tooltip}"
 ))
 
 (defwidget time []
+	(button :onclick "scripts/cal-toggle"
 	(box :orientation "v" 
 		 :class "time"
 		 :valign "end"
 	(label :text hour)
-	(label :text min :class "time-min")
+	(label :text min :class "time-min"))
 ))
 
 ;; Combined layouts
@@ -80,8 +81,8 @@ ${vol-tooltip}"
 	(box :class "taskbar"
 		 :orientation "v" 
 		 :space-evenly "false"
-(top)
-(end)
+		(top)
+		(end)
 ))
 
 ;; Window

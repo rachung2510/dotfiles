@@ -212,6 +212,24 @@ button.selected:hover { background-color: $btn-hover; }
 }
 .time-min { margin-top: -.8rem; }
 
+// Calendar
+.calbox {
+	box-shadow: rgba(0, 0, 0, 0.2) 2.4px -2.4px 3.2px;
+	background: $cal-bg;
+	border-radius: 10px;
+	color: $cal-fg;
+	padding: 5px 10px;
+	margin: 10px 10px 5px 0;
+}
+calendar:selected { 
+	background: $cal-se-bg;
+	color: $cal-se-fg;
+	border-radius: 50px;
+}
+calendar.header, calendar.button { color: $cal-header; }
+calendar.highlight { color: $cal-hl; }
+calendar:indeterminate { color: $cal-ind; }
+
 // Global
 .bold { font-weight: bold; }
 .red { background: rgba(255,0,0,1); }

@@ -1,0 +1,23 @@
+(defwidget cal []
+	(box :orientation "v" :width 240 :valign "end"
+		(box :class "calbox"
+		(calendar 
+			:show-day-names "true"
+			:show-heading "true"
+			:day cal-d
+			:month cal-m
+			:year cal-y))
+))
+
+;; Window
+(defwindow cal
+	:windowtype "dock"
+	:geometry (geometry :x "54px" 
+						:y "0" 
+						:height "0%"
+						:anchor "bottom left")
+	:monitor 0
+	:stacking "bg"
+	:wm-ignore "true"
+	(cal)
+)
