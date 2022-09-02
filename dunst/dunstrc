@@ -135,9 +135,9 @@
     ### Legacy
     force_xinerama = false
 
-    mouse_left_click = context
+    mouse_left_click = close_current
     mouse_middle_click = context
-    mouse_right_click = context
+    mouse_right_click = close_all
 
 	enable_posix_regex = true
 
