@@ -8,6 +8,9 @@ check_fullscreen() {
 	win_geometry=$(xdotool getwindowfocus getwindowgeometry | grep "Geometry:" | awk '{print $2}')
 	[[ $win_geometry = $display_geometry ]] && echo "true" || echo "false"
 }
+check_sidebar() {
+	[[ $(eww windows) = *"*sidebar"* ]] && echo "true" || echo "false"
+}
 
 [[ $1 = "-p" ]] && check_fullscreen && exit 0
 
@@ -15,7 +18,7 @@ pid=$(pgrep fullscreen)
 [[ $(echo "$pid" | wc -l) -gt 1 ]] && exit 0
 
 i3-msg -t subscribe -m '[ "window" ]' | while read _; do
-	[[ $(check_fullscreen) = "true" ]] && eww close bar || eww open bar
+	[[ $(check_fullscreen) = "true" ]] && [[ $(check_sidebar) = "false" ]] && eww close bar || eww open bar
 done
 
 # vim: set ft=sh:
