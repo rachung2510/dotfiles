@@ -124,10 +124,13 @@ ${batt-tooltip}"
 		(quickbtn :icon "ﮖ"
 			:action "scripts/quickbutton notif"
 			:tooltip "Do Not Disturb" :toggle notif-bool)
-		(quickbtn :icon "零"
+		(quickbtn :icon "鈴"
 			:action "scripts/quickbutton timeout"
-			:tooltip "Disable Screen Timeout" :toggle timeout-bool)
-		(quickbtn :icon "" :tooltip "Lock"  :action "scripts/quickbutton lock" :toggle "")
+			:tooltip "Screen Timeout" :toggle timeout-bool)
+		(quickbtn :icon "頋"
+			:action "scripts/quickbutton picom"
+			:tooltip "Compositor" :toggle picom-bool)
+		;; (quickbtn :icon "" :tooltip "Lock"  :action "scripts/quickbutton lock" :toggle "")
 		;; (quickbtn :icon "" :tooltip "Sleep" :action "scripts/quickbutton sleep" :toggle "")
 )))
 
