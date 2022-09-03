@@ -5,7 +5,7 @@ h=$(xdotool getdisplaygeometry | awk '{print $2}')
 display_geometry="${w}x${h}"
 
 check_fullscreen() {
-	win_geometry=$(xdotool getwindowfocus getwindowgeometry | grep "Geometry:" | awk '{print $2}')
+	win_geometry=$(xdotool getactivewindow getwindowgeometry | grep "Geometry:" | awk '{print $2}')
 	[[ $win_geometry = $display_geometry ]] && echo "true" || echo "false"
 }
 check_sidebar() {
@@ -18,7 +18,11 @@ pid=$(pgrep fullscreen)
 [[ $(echo "$pid" | wc -l) -gt 1 ]] && exit 0
 
 i3-msg -t subscribe -m '[ "window" ]' | while read _; do
-	[[ $(check_fullscreen) = "true" ]] && [[ $(check_sidebar) = "false" ]] && eww close bar || eww open bar
+	if [[ $(check_fullscreen) = "true" ]] && [[ $(check_sidebar) = "false" ]]; then
+		eww close bar &> /dev/null
+	else
+		eww open bar
+	fi
 done
 
 # vim: set ft=sh:
