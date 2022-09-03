@@ -124,9 +124,9 @@ ${batt-tooltip}"
 		(quickbtn :icon "ﮖ"
 			:action "scripts/quickbutton notif"
 			:tooltip "Do Not Disturb" :toggle notif-bool)
-		(quickbtn :icon "鈴"
+		(quickbtn :icon "零"
 			:action "scripts/quickbutton timeout"
-			:tooltip "Screen Timeout" :toggle timeout-bool)
+			:tooltip "Disable Screen Timeout" :toggle timeout-bool)
 		(quickbtn :icon "" :tooltip "Lock"  :action "scripts/quickbutton lock" :toggle "")
 		;; (quickbtn :icon "" :tooltip "Sleep" :action "scripts/quickbutton sleep" :toggle "")
 )))

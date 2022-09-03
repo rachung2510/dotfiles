@@ -45,7 +45,7 @@ elif [[ $1 = "notif" ]]; then
 
 elif [[ $1 = "timeout" ]]; then
 	status=$(xset q | grep "DPMS is" | awk '{print $3}')
-	if [[ $status = "Disabled" ]]; then
+	if [[ $status = "Enabled" ]]; then
 		eww update timeout-bool="selected"
 		xset s on +dpms
 	else

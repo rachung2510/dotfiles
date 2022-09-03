@@ -18,6 +18,6 @@ elif [[ $1 = "mute" ]]; then
 
 elif [[ $1 = "timeout" ]]; then
 	status=$(xset q | grep "DPMS is" | awk '{print $3}')
-	[[ $status = "Enabled" ]] && echo "selected" || echo ""
+	[[ $status = "Disabled" ]] && echo "selected" || echo ""
 
 fi
