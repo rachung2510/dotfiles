@@ -54,8 +54,8 @@ elif [[ $1 = "timeout" ]]; then
 	fi
 
 elif [[ $1 = "picom" ]]; then
-	~/.config/i3/scripts/picom-toggle
-	status=$(~/.config/i3/scripts/picom-toggle -p)
+	~/.config/i3/scripts/picom_toggle
+	status=$(~/.config/i3/scripts/picom_toggle -p)
 	[[ $status = "enabled" ]] && eww update picom-bool="selected" || eww update picom-bool=""
 
 elif [[ $1 = "lock" ]]; then
