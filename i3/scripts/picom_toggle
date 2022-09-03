@@ -8,6 +8,8 @@ CONF="$HOME/.config/picom/picom.conf"
 pt=$(cat $CONF | grep "$l1" | awk '{print $1}')
 [[ $pt = "#" ]] && status="enabled" || status="disabled"
 
+[[ $1 = "-p" ]] && echo $status && exit 0
+
 IFS=$'\n'
 for l in ${arr[@]}; do
 	ln=$(cat $CONF | grep -n "$l" | awk -F':' '{print $1}')
@@ -15,5 +17,5 @@ for l in ${arr[@]}; do
 	sed -i "${ln}s/.*/$newline/" $CONF
 done
 
-[[ $status = "enabled" ]] && newstatus="disabled" || newstatus="enabled"
+# [[ $status = "enabled" ]] && newstatus="disabled" || newstatus="enabled"
 # notify-send "Compositor $newstatus"
