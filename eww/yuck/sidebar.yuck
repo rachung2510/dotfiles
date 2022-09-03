@@ -127,10 +127,7 @@ ${batt-tooltip}"
 		(quickbtn :icon "鈴"
 			:action "scripts/quickbutton timeout"
 			:tooltip "Screen Timeout" :toggle timeout-bool)
-		(quickbtn :icon "頋"
-			:action "scripts/quickbutton picom"
-			:tooltip "Compositor" :toggle picom-bool)
-		;; (quickbtn :icon "" :tooltip "Lock"  :action "scripts/quickbutton lock" :toggle "")
+		(quickbtn :icon "" :tooltip "Lock"  :action "scripts/quickbutton lock" :toggle "")
 		;; (quickbtn :icon "" :tooltip "Sleep" :action "scripts/quickbutton sleep" :toggle "")
 )))
 

@@ -53,11 +53,6 @@ elif [[ $1 = "timeout" ]]; then
 		xset s on +dpms
 	fi
 
-elif [[ $1 = "picom" ]]; then
-	~/.config/i3/scripts/picom_toggle
-	status=$(~/.config/i3/scripts/picom_toggle -p)
-	[[ $status = "enabled" ]] && eww update picom-bool="selected" || eww update picom-bool=""
-
 elif [[ $1 = "lock" ]]; then
 	~/.config/i3/scripts/poweractions lock
 
