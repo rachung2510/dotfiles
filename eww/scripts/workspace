@@ -9,15 +9,10 @@ run() {
 	FOCUSES=($(echo $ws_info | grep -oP '"focused":\s*\K[^\s,]*(?=\s*,)'))
 	len=${#NUMS[@]}
 	for i in $(seq 0 $((len-1))); do
-		# t1=$(date +%s%3N)
 		NUM=${NUMS[$i]}
-		# t2=$(date +%s%3N)
 		NAME=${NAMES[$i]}
-		# t3=$(date +%s%3N)
 		URGENT=${URGENTS[$i]}
-		# t4=$(date +%s%3N)
 		FOCUSED=${FOCUSES[$i]}
-		# t5=$(date +%s%3N)
 		[[ $URGENT = true ]] && MODI="urgent" || MODI=""
 		[[ $FOCUSED = true ]] && MODI="focused"
 		LITERAL="$LITERAL (ws :num $NUM :name '$NAME' :modi '$MODI')"
@@ -53,4 +48,5 @@ elif [[ $1 = "scratch" ]]; then
 	i3-msg -t subscribe -m '[ "window" ]' | while read _; do
 		get_scratch
 	done
+
 fi
