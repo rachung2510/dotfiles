@@ -125,9 +125,9 @@ bindsym Mod1+F4 kill
 bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu
 
 # reload the configuration file
-bindsym $mod+Shift+c reload; exec --no-startup-id "notify-send 'i3wm reloaded'"
+bindsym $mod+Shift+c reload, exec --no-startup-id "notify-send 'i3wm reloaded'"
 # restart i3 inplace (preserves your layout/session, can be used to update i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r exec i3-msg restart & sleep 1 && eww reload
 
 # change focus
 bindsym $mod+j focus left
