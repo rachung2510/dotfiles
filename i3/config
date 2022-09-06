@@ -302,7 +302,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id dex /etc/xdg/autostart/eos-update-notifier.desktop
 
 # set wallpaper
-exec --no-startup-id feh --bg-scale ~/.config/i3/wallpapers/$(~/.config/i3/scripts/theme -p)-wallpaper.jpg
+exec --no-startup-id feh --bg-fill ~/.config/i3/wallpapers/$(~/.config/i3/scripts/theme -p)-wallpaper.jpg
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
