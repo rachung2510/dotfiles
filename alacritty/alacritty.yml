@@ -1,13 +1,14 @@
+import:
+ - ~/.config/alacritty/dark.yml
+
 window:
   dynamic_title: true
+  opacity: 1.0
 
 font:
   size: 8.0
   normal:
     family: MesloLGM Nerd Font
-
-import:
- - ~/.config/alacritty/light.yml
 
 cursor:
   style:
