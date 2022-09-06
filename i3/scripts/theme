@@ -1,5 +1,7 @@
 #!/bin/bash
 
+[[ $1 = "daemon" ]] && echo root | sudo -S xsettingsd && exit 0
+
 XCONF="/etc/xsettingsd/xsettingsd.conf"
 EWWCONF="$HOME/.config/eww/eww.scss"
 ALACONF="$HOME/.config/alacritty/alacritty.yml"
@@ -25,10 +27,12 @@ case $chosen in
 	$DARK)
 		uu=Dark
 		ll=dark
+		term_opacity=1.0
 	;;
 	$LIGHT)
 		uu=Light
 		ll=light
+		term_opacity=0.9
 	;;
 esac
 
