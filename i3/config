@@ -313,6 +313,8 @@ exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 # `yay -S autotiling ;) (it is in AUR)
 exec_always --no-startup-id autotiling
 
+exec --no-startup-id echo root | sudo xsettingsd &
+
 # Others
 exec --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Tapping Enabled" 1
 exec --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Natural Scrolling Enabled" 1

@@ -1,5 +1,6 @@
 # dependencies
 echo "[INFO] Installing dependencies..."
+echo root | sudo -S pacman -S xsettingsd
 yay -S alacritty lxappearance-gtk3 brightnessctl playerctl pavucontrol feh acpi maim xclip cava autotiling --noconfirm
 sudo usermod -aG video ${USER} # run brightnessctl without sudo
 
@@ -13,8 +14,11 @@ cp -r i3 ~/.config/
 cp -r picom ~/.config/
 cp -r rofi ~/.config/
 sudo mkdir /etc/media
-sudo cp ~/i3/wallpapers/blue-purple-city.jpg /etc/media/
+sudo cp ~/i3/wallpapers/login-wallpaper.jpg /etc/media/
 sudo ln -t /usr/local/bin/  ~/.config/i3/scripts/picom-toggle
+sudo mkdir /etc/xsettingsd
+sudo touch /etc/xsettingsd/xsettingsd.conf
+echo "Net/ThemeName \"Orchis-Purple-Light\" | sudo tee /etc/xsettingsd/xsettingsd.conf
 
 # i3lock-color
 echo -e "\n[INFO] Installing i3lock-color..."

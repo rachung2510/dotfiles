@@ -1,21 +1,19 @@
 #!/bin/bash
 
-ROOTGTK3CONF="/root/.config/gtk-3.0/settings.ini"
-ROOTGTK2CONF="/root/.gtkrc-2.0"
-GTK3CONF="$HOME/.config/gtk-3.0/settings.ini"
-GTK2CONF="$HOME/.gtkrc-2.0"
+XCONF="/etc/xsettingsd/xsettingsd.conf"
 EWWCONF="$HOME/.config/eww/eww.scss"
 ALACONF="$HOME/.config/alacritty/alacritty.yml"
 I3CONF="$HOME/.config/i3/config"
 ROFICONF="$HOME/.config/rofi/styles/colors.rasi"
 
-if [[ -f $GTK3CONF ]]; then
-	theme=$(grep "gtk-theme-name" $GTK3CONF | cut -d "=" -f2)
+if [[ -f $XCONF ]]; then
+	theme=$(grep "Net/ThemeName" $XCONF | awk -F'"' '{print $2}')
 	[[ "${theme,,}" = *"dark"* ]] && uu="Dark" || uu="Light"
 else
 	uu="Light"
 fi
 ll="$(echo $uu | tr '[:upper:]' '[:lower:]')"
+[[ $ll = "dark" ]] && term_opacity=1.0 || term_opacity=0.9
 [[ $1 = "-p" ]] && echo "$ll" && exit 0
 
 DARK=""
@@ -27,24 +25,17 @@ case $chosen in
 	$DARK)
 		uu=Dark
 		ll=dark
-		term_opacity=1.0
 	;;
 	$LIGHT)
 		uu=Light
 		ll=light
-		term_opacity=0.9
 	;;
 esac
 
-feh --bg-scale ~/.config/i3/wallpapers/$ll-wallpaper.jpg
-sed -i -e "s:@import .*:@import \"styles/$ll.scss\";:g" $EWWCONF
-sed -i -e "s/gtk-theme-name=.*/gtk-theme-name=Orchis-Purple-$uu/g" $GTK3CONF
-sed -i -e "s/gtk-theme-name=.*/gtk-theme-name=Orchis-Purple-$uu/g" $GTK2CONF
-echo root | sudo -S sed -i -e "s/gtk-theme-name=.*/gtk-theme-name=Orchis-Purple-$uu/g" $ROOTGTK3CONF
-sudo sed -i -e "s/gtk-theme-name=.*/gtk-theme-name=Orchis-Purple-$uu/g" $ROOTGTK2CONF
-sed -i -e "s:config/alacritty/.*:config/alacritty/$ll.yml:g" $ALACONF
-sed -i -e "s/opacity:.*/opacity: $term_opacity/g" $ALACONF
-
+feh --bg-fill ~/.config/i3/wallpapers/$ll-wallpaper.jpg
+sed -i -e "s:@import .*:@import \"styles/$ll.scss\";:" $EWWCONF
+sed -i -e "s:config/alacritty/.*:config/alacritty/$ll.yml:" $ALACONF
+sed -i -e "s/opacity:.*/opacity: $term_opacity/" $ALACONF
 sed -i -e "s/@import .*/@import \"$ll\"/g" $ROFICONF
 
 inactive_bg=$(grep "inactive-bg-$ll" $I3CONF | awk '{print $3}')
@@ -52,6 +43,6 @@ inactive_text=$(grep "inactive-text-$ll" $I3CONF | awk '{print $3}')
 sed -i -e "s/set \$inactive-bg.*/set \$inactive-bg\t\t$inactive_bg/g" $I3CONF
 sed -i -e "s/set \$inactive-text.*/set \$inactive-text\t\t$inactive_text/g" $I3CONF
 
-pkill polkit-gnome-au
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 i3-msg reload
+echo root | sudo -S sed -i -e "s:Net/ThemeName.*:Net/ThemeName \"Orchis-Purple-$uu\":" $XCONF
+sudo killall -HUP xsettingsd
