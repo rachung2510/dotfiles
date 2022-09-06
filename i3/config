@@ -280,8 +280,6 @@ assign [class="Stardew Valley"] number $ws9
 # using default config 
 # exec_always --no-startup-id picom -b --experimental-backends --config ~/.config/picom/picom.conf
 exec_always --no-startup-id picom -f --experimental-backends &
-# for custom config:
-#exec_always --no-startup-id picom --config  ~/.config/picom.conf
 
 #############################################
 # autostart applications/services on login: #
@@ -313,14 +311,13 @@ exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 # `yay -S autotiling ;) (it is in AUR)
 exec_always --no-startup-id autotiling
 
-exec --no-startup-id echo root | sudo xsettingsd &
-
 # Others
 exec --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Tapping Enabled" 1
 exec --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Natural Scrolling Enabled" 1
 exec --no-startup-id i3-msg 'workspace $ws1'
 exec --no-startup-id ~/.config/i3/scripts/battery &
 exec --no-startup-id ~/.config/i3/scripts/network &
+exec --no-startup-id ~/.config/i3/scripts/theme daemon &
 exec --no-startup-id sleep 10 && ~/.config/i3/scripts/onedrive &
 exec --no-startup-id ibus-daemon -drxR
 exec --no-startup-id eww daemon && eww open bar
@@ -328,6 +325,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec_always --no-startup-id ~/.config/i3/scripts/wsnaming/i3_workspace_names_daemon.py &
 exec --no-startup-id autokey-gtk
 exec_always --no-startup-id ~/.config/i3/scripts/fullscreen
+exec --no-startup-id ~/.config/i3/scripts/floating.py &
 
 ###############
 # system tray #
@@ -393,8 +391,8 @@ set $light-grey         #f9f9f9
 # inactive-text-light   #908c97
 # inactive-bg-dark      #2a2a2a
 # inactive-text-dark    #b4b4b4
-set $inactive-bg		#2a2a2a
-set $inactive-text		#b4b4b4
+set $inactive-bg		#f2f2f2
+set $inactive-text		#908c97
 set $urgent             #eb4d4b
 set $shade4             #8e24aa
 set $shade8             #ce93d8
