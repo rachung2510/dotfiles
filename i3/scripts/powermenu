@@ -22,17 +22,16 @@ options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
 
 eww close sidebar 2> /dev/null
 chosen="$(echo -e "$options" | rofi -p powermenu -theme $ROFIDIR/powermenu.rasi -dmenu -selected-row 2)"
-eww open bar
+[[ $(~/.config/i3/scripts/fullscreen -p) = "false" ]] && eww open bar
+
 case $chosen in
     $shutdown)
 		ans=$(confirm_exit &)
-		[[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]] &&
-			systemctl poweroff
+		[[ $ans =~ ^([yY]es|[yY])$ ]] && systemctl poweroff
 	;;
     $reboot)
 		ans=$(confirm_exit &)
-		[[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]] &&
-			systemctl reboot
+		[[ $ans =~ ^([yY]es|[yY])$ ]] && systemctl reboot
 	;;
     $lock)
 		~/.config/i3/scripts/poweractions lock
@@ -42,7 +41,6 @@ case $chosen in
 	;;
     $logout)
 		ans=$(confirm_exit &)
-		[[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]] &&
-			~/.config/i3/scripts/poweractions exit
+		[[ $ans =~ ^([yY]es|[yY])$ ]] && ~/.config/i3/scripts/poweractions exit
 	;;
 esac

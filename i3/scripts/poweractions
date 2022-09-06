@@ -10,8 +10,6 @@ alpha=ffffff00
 font="Iosevka Nerd Font"
 
 if [[ $1 = "lock" ]]; then
-	eww close sidebar
-	[[ $(~/.config/i3/scripts/fullscreen -p) = "false" ]] && eww open bar
 	playerctl -p playerctld pause
 	[[ $(~/.config/i3/scripts/theme -p) = "dark" ]] && bg=0000004d || bg=00000080
 	i3lock -c $bg -k --date-str="%a, %d %b %Y" --radius=140 --ring-width=10 \
