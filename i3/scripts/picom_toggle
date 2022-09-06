@@ -1,5 +1,5 @@
 #!/bin/bash
-l1="inactive-opacity = 0.95;"
+l1="inactive-opacity = 1.0;"
 l2="opacity-rule = \[\];"
 l3="inactive-dim = 0;"
 arr=("$l1" "$l2" "$l3")
@@ -17,5 +17,6 @@ for l in ${arr[@]}; do
 	sed -i "${ln}s/.*/$newline/" $CONF
 done
 
+pkill -USR1 picom
 # [[ $status = "enabled" ]] && newstatus="disabled" || newstatus="enabled"
 # notify-send "Compositor $newstatus"
