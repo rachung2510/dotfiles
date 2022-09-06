@@ -279,7 +279,7 @@ assign [class="Stardew Valley"] number $ws9
 
 # using default config 
 # exec_always --no-startup-id picom -b --experimental-backends --config ~/.config/picom/picom.conf
-exec_always --no-startup-id picom -f --experimental-backends &
+exec --no-startup-id picom -b --experimental-backends
 
 #############################################
 # autostart applications/services on login: #
