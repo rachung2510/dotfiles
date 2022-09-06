@@ -71,4 +71,6 @@ cd ~/dotfiles
 echo -e "[FINISHED].\n"
 echo "Start a new terminal and run:
 curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.sh | sh
-spicetify backup apply enable-devtools"
+spicetify backup apply enable-devtools
+
+Rebind the power key at /etc/systemd/logind.conf"
