@@ -27,10 +27,12 @@ case $chosen in
 	$DARK)
 		uu=Dark
 		ll=dark
+		term_opacity=1.0
 	;;
 	$LIGHT)
 		uu=Light
 		ll=light
+		term_opacity=0.9
 	;;
 esac
 
@@ -41,6 +43,7 @@ sed -i -e "s/gtk-theme-name=.*/gtk-theme-name=Orchis-Purple-$uu/g" $GTK2CONF
 echo root | sudo -S sed -i -e "s/gtk-theme-name=.*/gtk-theme-name=Orchis-Purple-$uu/g" $ROOTGTK3CONF
 sudo sed -i -e "s/gtk-theme-name=.*/gtk-theme-name=Orchis-Purple-$uu/g" $ROOTGTK2CONF
 sed -i -e "s:config/alacritty/.*:config/alacritty/$ll.yml:g" $ALACONF
+sed -i -e "s/opacity:.*/opacity: $term_opacity/g" $ALACONF
 
 sed -i -e "s/@import .*/@import \"$ll\"/g" $ROFICONF
 
