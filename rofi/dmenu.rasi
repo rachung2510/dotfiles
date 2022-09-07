@@ -11,18 +11,16 @@ configuration {
 	disable-history: true;
 }
 
-@import "styles/colors.rasi"
+@import "/home/user/.config/rofi/styles/colors.rasi"
 
 * {
-	border: 0;
-	margin: 0;
-	padding: 0;
+	background-color: @alpha;
 	spacing: 0;
 }
 
 window { 
 	transparency: "real";
-	background-color: @alpha;
+	width: 40%;
 }
 mainbox { 
 	children: [inputbar, listview];
@@ -31,31 +29,36 @@ mainbox {
 
 inputbar {
 	children: [prompt, entry];
-	background-color: @dac-al;
+	background-color: @ose;
 	text-color: @dfg;
+	border-radius: 20px 20px 0 0;
 }
 prompt {
 	background-color: inherit;
 	text-color: inherit;
-	padding: 12px;
+	padding: 18px;
 }
 entry {
 	background-color: inherit;
 	text-color: inherit;
-	padding: 12px 3px;
+	padding: 18px 3px;
 }
 
 listview {
-	lines: 10;
-	background-color: @dbg;
+	lines: 7;
+	background-color: @obg;
+	border: 0 2px 2px 2px;
+	border-radius: 0 0 20px 20px;
+	border-color: @border;
+	padding: 5 0 10 0;
 }
 element {
 	children: [element-icon, element-text];
 	background-color: @alpha;
-	text-color: @dfga;
+	text-color: @ofg;
 }
 element-icon { 
-	padding: 10px 10px;
+	padding: 10 10 10 20;
 	background-color: inherit;
 }
 element-text {
@@ -63,4 +66,4 @@ element-text {
 	background-color: inherit;
 	text-color: inherit;
 }
-element-text selected { text-color: @dac; }
+element-text selected { text-color: @ose; }

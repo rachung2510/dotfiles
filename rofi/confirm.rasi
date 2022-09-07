@@ -1,24 +1,23 @@
 @import "styles/colors.rasi"
 
 * { 
-	background-color:		@alpha;
-	text-color:				@fg;
-	font:					"FiraCode Nerd Font 14";
+	background-color:		@obg;
+	text-color:				@ofg;
+	font:					"MesloLGM Nerd Font Medium 14";
 }
 
 window {
-	background-color:		@popup-bg;
-    width:					260px;
-    padding:				25px 25px 20px 25px;
-    border:					1px;
-    border-radius:          10px;
-    border-color:           @popup-bd;
+	background-color:		@obg;
+    width:					270px;
+    padding:				25px 20px 25px 25px;
+    border:					2px;
+    border-radius:          20px;
+    border-color:           @border;
     location:               center;
-    // y-offset:               -2em;
 }
 
 entry {
 	background-color:		@alpha;
-    text-color:				#f1e4f6;
+	text-color:				@ose;
     expand:					true;
 }
