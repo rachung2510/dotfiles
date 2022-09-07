@@ -18,7 +18,7 @@ pid=$(pgrep fullscreen)
 [[ $(echo "$pid" | wc -l) -gt 1 ]] && exit 0
 
 i3-msg -t subscribe -m '[ "window" ]' | while read _; do
-	if [[ $(check_fullscreen) = "true" ]] && [[ $(check_sidebar) = "false" ]]; then
+	if [[ $(check_fullscreen) = "true" ]] || [[ $(check_sidebar) = "false" ]]; then
 		eww close bar &> /dev/null
 	else
 		eww open bar
