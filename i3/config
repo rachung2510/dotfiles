@@ -362,6 +362,8 @@ for_window [class="mpv"] floating enable
 for_window [class="System-config-printer.py"] floating enable
 for_window [class="Yad" instance="yad"] floating enable
 for_window [class="Pavucontrol"] floating enable, resize set 780 400, move position center
+for_window [class="Device Manager"] floating enable
+for_window [window_role="pop-up"] floating enable
 
 # set floating (nontiling) for special apps
 for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
@@ -391,8 +393,8 @@ set $light-grey         #f9f9f9
 # inactive-text-light   #908c97
 # inactive-bg-dark      #2a2a2a
 # inactive-text-dark    #b4b4b4
-set $inactive-bg		#f2f2f2
-set $inactive-text		#908c97
+set $inactive-bg		#2a2a2a
+set $inactive-text		#b4b4b4
 set $urgent             #eb4d4b
 set $shade4             #8e24aa
 set $shade8             #ce93d8
