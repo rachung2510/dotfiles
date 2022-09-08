@@ -1,6 +1,6 @@
 @import "global.scss";
 
-$lighter-shade8: #d8b3e5;
+$lighter-shade8: #dca8f0;
 
 // Sidebar
 $window-bg: #333;
@@ -20,10 +20,11 @@ $weather-cond: $lighter-shade8;
 $cava: $shade4;
 
 // Taskbar
-$bar-bg: rgba(#504158,.6);
-$bar-widget-bg: rgba(#333,.6);
+// $bar-bg: rgba(#504158,.6);
+$bar-bg: rgba(#333,.2);
+$bar-widget-bg: rgba(#333,.7);
 $bar-text: $lighter-shade8;
-$bar-widget-text: $shade8;
+$bar-widget-text: $lighter-shade8;
 $bar-hover: $shade6;
 $cal-bg: $window-bg;
 $cal-fg: $light-purple;
