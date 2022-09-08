@@ -1,6 +1,6 @@
 @import "global.rasi"
 * {
-	window-bg:		#e8e9ec;
+	window-bg:		#eff0f1;
 	popup-bg:		#ab47bc99;
 	popup-bd:		@shade4;
 	border:			#ccc;
