@@ -16,7 +16,11 @@ check_tray() {
 	fi
 }
 
-[[ $1 = "-p" ]] && check_fullscreen && exit 0
+if [[ $1 = "-p" ]]; then
+	[[ $(check_fullscreen) = "true" ]] || [[ $(check_tray) = "true" ]] && 
+		echo "true" || echo "false"
+	exit 0
+fi
 
 pid=$(pgrep fullscreen)
 [[ $(echo "$pid" | wc -l) -gt 1 ]] && exit 0
