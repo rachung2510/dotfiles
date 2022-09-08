@@ -336,7 +336,7 @@ exec --no-startup-id ~/.config/i3/scripts/floating.py &
 #exec --no-startup-id blueberry-tray
 
 # networkmanager-applet
-# exec --no-startup-id nm-applet
+exec --no-startup-id nm-applet
 
 # clipman-applet
 #exec --no-startup-id xfce4-clipman
