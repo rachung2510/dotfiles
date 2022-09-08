@@ -26,7 +26,7 @@ c=0
 i3-msg -t subscribe -m '[ "window" ]' | while read _; do
 	val=$(check_fullscreen)
 	if [[ $val != $prev ]]; then
-		[[ $val = "true"]] &&
+		[[ $val = "true" ]] && 
 			eww close bar 2> /dev/null && i3-msg gaps left all set 0		
 		[[ $val = "false" ]] && [[ $(check_tray) = "false" ]] &&
 			eww open bar && i3-msg gaps left all set 50
