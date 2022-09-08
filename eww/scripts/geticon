@@ -1,6 +1,6 @@
 #!/bin/bash
 
-batt_icons=("" "" "" "" "" "")
+batt_icons=("" "" "" "" "" "")
 light_icons=("" "" "")
 
 if [[ $1 = "vol" ]]; then
