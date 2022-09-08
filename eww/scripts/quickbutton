@@ -6,10 +6,13 @@ notify_bluetooth() {
 	details=$(systemctl status bluetooth | grep 'Active:' | grep -oP '(?<=Active: ).*')
 	notify-send -u normal -h string:x-dunst-stack-tag:bluetooth -i "~/.config/dunst/img/bluetooth-$1.png" "Bluetooth turned $1" "Status: $details"
 }
+get_bool() {
+	echo $(~/.config/eww/scripts/getbool $1)
+}
 
 if [[ $1 = "wifi" ]]; then
-	status="$(nmcli radio wifi)"
-	if [[ $status = "enabled" ]]; then
+	status=$(get_bool $1)
+	if [[ $status = "selected" ]]; then
 		eww update wifi-bool=""
 		eww update wifi-tooltip=""
 		nmcli radio wifi off
@@ -20,8 +23,8 @@ if [[ $1 = "wifi" ]]; then
 	fi
 
 elif [[ $1 = "bluetooth" ]]; then
-	status=$(systemctl status bluetooth | grep 'Active:' | awk '{print $2}')
-	if [[ $status = "active" ]]; then
+	status=$(get_bool $1)
+	if [[ $status = "selected" ]]; then
 		eww update bluetooth-bool=""
 		echo $pw | sudo -S systemctl stop bluetooth
 		notify_bluetooth off
@@ -33,8 +36,8 @@ elif [[ $1 = "bluetooth" ]]; then
 	sleep 1 && eww update vol-tooltip="$(scripts/tooltip vol)"
 
 elif [[ $1 = "notif" ]]; then
-	status=$(dunstctl is-paused)
-	if [[ $status = "true" ]]; then
+	status=$(get_bool $1)
+	if [[ $status = "selected" ]]; then
 		eww update notif-bool=""
 		dunstctl set-paused false
 		notify-send -h string:x-dunst-stack-tag:do-not-disturb "Do not disturb disabled" "Notifications will be shown"
@@ -44,8 +47,8 @@ elif [[ $1 = "notif" ]]; then
 	fi
 
 elif [[ $1 = "timeout" ]]; then
-	status=$(xset q | grep "DPMS is" | awk '{print $3}')
-	if [[ $status = "Enabled" ]]; then
+	status=$(get_bool $1)
+	if [[ $status = "" ]]; then
 		eww update timeout-bool="selected"
 		xset s on +dpms
 	else
