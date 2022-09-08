@@ -226,7 +226,6 @@ bindsym $mod+e exec --no-startup-id nemo
 # Custom keybinds for scripts
 bindsym $mod+period exec --no-startup-id ~/.config/i3/scripts/theme
 bindsym $mod+m exec --no-startup-id ~/.config/i3/scripts/eww_controller sidebar
-bindsym $mod+b exec --no-startup-id ~/.config/i3/scripts/eww_controller bar
 bindsym $mod+comma exec --no-startup-id ~/.config/i3/scripts/wsnaming/setwsname
 bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/scripts/screenshot
 bindsym Print exec --no-startup-id ~/.config/i3/scripts/screenshot desktop
@@ -385,6 +384,7 @@ bindsym $mod+Shift+m move position center
 
 # Define colors variables:
 set $alpha              #ffffff00
+set $light-purple		#e7d0f0
 set $bar-bg             #e7d0f0cc
 set $white-alpha        #ffffffb2
 set $dark-grey          #141c21
@@ -393,8 +393,8 @@ set $light-grey         #f9f9f9
 # inactive-text-light   #908c97
 # inactive-bg-dark      #2a2a2a
 # inactive-text-dark    #b4b4b4
-set $inactive-bg		#2a2a2a
-set $inactive-text		#b4b4b4
+set $inactive-bg		#f2f2f2
+set $inactive-text		#908c97
 set $urgent             #eb4d4b
 set $shade4             #8e24aa
 set $shade8             #ce93d8
@@ -412,16 +412,25 @@ client.urgent           $alpha      $urgent         $dark-grey      $urgent     
 
 # Start i3bar to display a workspace bar
 # (plus the system information i3status finds out, if available)
-# bar {
-# 	font pango: Noto Sans Regular 10
-# 	status_command i3blocks -c ~/.config/i3/i3blocks.conf
-# 	position bottom
-# 	i3bar_command i3bar --transparency
-# 	tray_output primary
-# 	tray_padding 0
-# 	strip_workspace_numbers yes
-# 		# strip_workspace_name no
-# }
+bindsym $mod+b bar mode toggle; exec --no-startup-id ~/.config/i3/scripts/eww_controller bar
+bar {
+	# status_command i3blocks -c ~/.config/i3/i3blocks.conf
+	status_command i3status -c ~/.config/i3/i3status.conf
+	mode hide
+	modifier none
+	position bottom
+	tray_output primary
+	tray_padding 0
+	separator_symbol "  "
+	colors {
+		background $light-purple
+		statusline $shade4
+		#					border			background		text
+		focused_workspace	$shade8			$shade8			#ffffff
+		inactive_workspace	$light-purple	$light-purple	$shade4
+		urgent_workspace	$urgent			$urgent			#ffffff
+	}
+}
 
 #####################################
 # Application menu handled by rofi: #
