@@ -4,7 +4,7 @@ batt_icons=("" "" "" "" "" "")
 light_icons=("" "" "")
 
 if [[ $1 = "vol" ]]; then
-	mute=$(eww get mute-bool)
+	mute=$(~/.config/eww/scripts/getbool mute)
 	if [[ $mute = "disabled" ]]; then
 		echo ""
 	else
@@ -12,7 +12,7 @@ if [[ $1 = "vol" ]]; then
 	fi
 
 elif [[ $1 = "light" ]]; then
-	level=$(eww get light-val)
+	level=$(~/.config/eww/scripts/getval light)
 	if [[ level -le 30 ]]; then ramp=0;
 	elif [[ level -le 60 ]]; then ramp=1;
 	else ramp=2; fi
