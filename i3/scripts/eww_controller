@@ -13,28 +13,27 @@ open_windows=$(echo "$(eww windows)" | grep "*")
 close() {
 	for pid in $(pgrep -f cava_output); do kill $pid; done
 	eww update reveal-sidebar=false && sleep .2 && eww close sidebar
-	[[ $(~/.config/i3/scripts/fullscreen -p) = "false" ]] && eww open bar
 	for i in $(seq 1 12); do eww update l$i=0; done
 	killall eww_controller
 }
 
 if [[ -n $1 ]] && [[ $open_windows = *"$1"* ]]; then
-	[ $1 = "bar" ] && eww close bar
+	[ $1 = "bar" ] && eww close bar && i3-msg gaps left all set 3
 	[ $1 = "sidebar" ] && close
 
 elif [[ $1 = "sidebar" ]]; then
 	$HOME/.config/eww/scripts/cava/cava_output &
-	eww close bar
 	eww open sidebar && eww update reveal-sidebar=true
 	xinput test-xi2 --root 3 | grep -A2 --line-buffered RawKeyRelease | while read -r line; do
 	    if [[ $line == *"detail"* ]]; then
 	        key=$( echo $line | sed "s/[^0-9]*//g")
-			if [[ $key = $ESC ]] || [[ $key = $RETURN ]]; then close; fi
+			[[ $key =~ ^($ESC|$RETURN)$ ]] && close
 		fi
 	done
 
 elif [[ $1 = "bar" ]]; then
 	eww open bar
+	i3-msg gaps left all set 50
 
 else
 	close
