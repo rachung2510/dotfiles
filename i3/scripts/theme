@@ -36,7 +36,7 @@ case $chosen in
 	;;
 esac
 
-feh --bg-fill ~/.config/i3/wallpapers/$ll-wallpaper.jpg
+eww close bar
 sed -i -e "s:@import .*:@import \"styles/$ll.scss\";:" $EWWCONF
 sed -i -e "s:config/alacritty/.*:config/alacritty/$ll.yml:" $ALACONF
 sed -i -e "s/opacity:.*/opacity: $term_opacity/" $ALACONF
@@ -52,6 +52,7 @@ sed -i -e "s/set \$bar-bg.*/set \$bar-bg\t\t\t\t$bar_bg/" $I3CONF
 sed -i -e "s/set \$bar-text.*/set \$bar-text\t\t\t$bar_text/" $I3CONF
 
 i3-msg reload
+feh --bg-fill ~/.config/i3/wallpapers/$ll-wallpaper.jpg
 [[ $(~/.config/i3/scripts/fullscreen -p) = "false" ]] && eww open bar
 echo root | sudo -S sed -i -e "s:Net/ThemeName.*:Net/ThemeName \"Orchis-Purple-$uu\":" $XCONF
 sudo killall -HUP xsettingsd
