@@ -1,73 +1,40 @@
-configuration {
-	font:							"MesloLGM Nerd Font 14";
-    show-icons:                     false;
-	icon-theme:						"Papirus";
-    drun-display-format:            "{name}";
-    disable-history:                false;
-	sidebar-mode:					false;
-}
-
 @import "styles/colors.rasi"
 
 window {
     transparency:                   "real";
-    background-color:               @window-bg;
+    background-color:               @lbg;
     text-color:                     @pfg;
     height:                         101%;
-    width:                          12.25%;
-    location:                       west;
-	x-offset:						-2px;
-	border: 2px;
-	border-color: @border;
+    width:                          100%;
 }
 mainbox {
-    background-color:               inherit;
-    children:                       [ inputbar, listview ];
+    background-color:               @alpha;
+    children:                       [ listview ];
     spacing:                        3%;
-    padding:                        4% 2% 0% 2%;
-}
-
-inputbar {
-	children:						[ textbox ];
-    background-color:               @pac;
-    text-color:                     @pfg-in;
-    expand:                         false;
-    border:							0%;
-    border-radius:                  100%;
-    margin:                         0%;
-    padding:                        0.5%;
-    position:                       center;
-}
-textbox {
-	expand:							false;
-	str:							"System";
-	background-color:				inherit;
-	text-color:						inherit;
-    padding:                        1% 1% 1% 2%;
+    padding:                         43% 0 0 15%;
 }
 
 listview {
     background-color:               @alpha;
-    margin:                         0%;
     spacing:                        3%;
     cycle:                          true;
     dynamic:                        true;
-    layout:                         vertical;
+    layout:                         horizontal;
 }
 element {
     background-color:               @elem;
     text-color:                     @pfg;
-    orientation:                    vertical;
+    orientation:                    horizontal;
     border-radius:                  100%;
 }
 element-text {
     background-color:				inherit;
     text-color:						inherit;
-	font:							"feather 32";
+	font:							"feather 40";
     expand:                         true;
     horizontal-align:               0.5;
     vertical-align:                 0.5;
-    margin:                         4.6% 0%;
+    margin:                         6.5% 4.3%;
 }
 element selected {
     background-color:               @pse;
