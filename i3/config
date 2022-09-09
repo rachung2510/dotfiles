@@ -336,7 +336,7 @@ exec --no-startup-id ~/.config/i3/scripts/floating.py &
 #exec --no-startup-id blueberry-tray
 
 # networkmanager-applet
-exec --no-startup-id nm-applet
+# exec --no-startup-id nm-applet
 
 # clipman-applet
 #exec --no-startup-id xfce4-clipman
@@ -393,7 +393,7 @@ set $shade8             #ce93d8
 # bar-bg-light			#e7d0f0
 # bar-bg-dark			#333333
 # bar-text-light		#8e24aa
-# bar-text-dark			#d8b3e5
+# bar-text-dark			#dca8f0
 set $bar-bg				#e7d0f0
 set $bar-text			#8e24aa
 # inactive-bg-light     #f2f2f2
@@ -415,12 +415,10 @@ client.urgent           $alpha      $urgent         $dark-grey      $urgent     
 ############################################
 
 # Start i3bar to display a workspace bar
-# (plus the system information i3status finds out, if available)
-bindsym $mod+b bar mode toggle; exec --no-startup-id ~/.config/i3/scripts/eww_controller bar
+bindsym $mod+b exec --no-startup-id ~/.config/i3/scripts/eww_controller bar &  ~/.config/i3/scripts/bar_toggle
 bar {
-	# status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	status_command i3status -c ~/.config/i3/i3status.conf
-	mode hide
+	mode invisible
 	modifier none
 	position bottom
 	tray_output primary
