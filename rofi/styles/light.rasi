@@ -6,7 +6,7 @@
 	border:			#ccc;
 
 	// Powermenu
-	elem:			@light-purple;
+	elem:			#e3b9f3;
 	pac:			@shade4;
 	pse:			@shade7;
 	pfg:			@shade4;
