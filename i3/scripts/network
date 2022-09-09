@@ -16,7 +16,6 @@ nmcli m | while read line; do
 		notify-send -i $IMGDIR/wifi-off.png "Disconnected" "The network connection has been disconnected"
 	else
 		name=$(echo "$line" | awk -F"'" '{print $2}')
-		echo $line
 		[[ $name = "Wired connection"* ]] && eww update wifi-icon="" || eww update wifi-icon="直"
 		notify-send -i $IMGDIR/wifi-on.png "Connection Established" "You are now connected to the Wi-Fi network \"$name\""
 	fi
