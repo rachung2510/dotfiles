@@ -1,6 +1,6 @@
 # dependencies
 echo "[INFO] Installing dependencies..."
-echo root | sudo -S pacman -S xsettingsd
+echo root | sudo -S pacman -S xsettingsd xdotool
 yay -S alacritty lxappearance-gtk3 brightnessctl playerctl pavucontrol feh acpi maim xclip cava autotiling --noconfirm
 sudo usermod -aG video ${USER} # run brightnessctl without sudo
 
