@@ -2,6 +2,7 @@
 
 play=""
 pause=""
+kanji_wrap_limit=24
 
 status() {
 	STATUS="$(playerctl -p playerctld status)";
@@ -25,7 +26,7 @@ metadata() {
 		fi
 
 		has_kanji=$(echo $title | grep -P $2)
-		[[ -n $has_kanji ]] && title="${title:0:24}..."
+		[[ -n $has_kanji ]] && [[ ${#title} -gt $kanji_wrap_limit ]] && title="${title:0:$kanji_wrap_limit}..."
 		[[ -n $icon ]] && echo "$icon $title" || echo "$title"
 
 	elif [[ $1 = "artist" ]]; then
