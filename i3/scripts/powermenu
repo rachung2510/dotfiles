@@ -18,7 +18,7 @@ confirm_exit() {
 }
 
 # Variable passed to rofi
-options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
+options="$shutdown\n$reboot\n$suspend\n$lock\n$logout"
 
 eww close sidebar 2> /dev/null
 chosen="$(echo -e "$options" | rofi -p powermenu -theme $ROFIDIR/powermenu.rasi -dmenu -selected-row 2)"
