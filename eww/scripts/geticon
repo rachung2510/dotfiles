@@ -4,8 +4,8 @@ batt_icons=("" "" "" "" "" "")
 light_icons=("" "" "")
 
 if [[ $1 = "vol" ]]; then
-	mute=$(~/.config/eww/scripts/getbool mute)
-	if [[ $mute = "disabled" ]]; then
+	mute=$(pactl get-sink-mute @DEFAULT_SINK@)
+	if [[ $mute = "Mute: yes" ]]; then
 		echo ""
 	else
 		echo ""
