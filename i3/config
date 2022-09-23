@@ -325,6 +325,7 @@ exec_always --no-startup-id ~/.config/i3/scripts/wsnaming/i3_workspace_names_dae
 exec --no-startup-id autokey-gtk
 exec_always --no-startup-id ~/.config/i3/scripts/fullscreen
 exec --no-startup-id ~/.config/i3/scripts/floating.py &
+exec --no-startup-id ~/.config/i3/scripts/volume &
 
 ###############
 # system tray #

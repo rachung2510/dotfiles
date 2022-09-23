@@ -1,0 +1,12 @@
+#!/bin/bash
+
+run() {
+	val="$(~/.config/eww/scripts/getval vol)"
+	eww update volume-val=$val
+	eww update mute-bool=$(~/.config/eww/scripts/getbool mute)
+	eww update vol-icon=$(~/.config/eww/scripts/geticon vol)
+}
+
+pactl subscribe | while read _; do
+	run
+done
