@@ -5,11 +5,7 @@ light_icons=("" "" "")
 
 if [[ $1 = "vol" ]]; then
 	mute=$(pactl get-sink-mute @DEFAULT_SINK@)
-	if [[ $mute = "Mute: yes" ]]; then
-		echo ""
-	else
-		echo ""
-	fi
+	[[ $mute = "Mute: yes" ]] && echo "" || echo ""
 
 elif [[ $1 = "light" ]]; then
 	level=$(~/.config/eww/scripts/getval light)
