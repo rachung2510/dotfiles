@@ -62,7 +62,7 @@ ${vol-tooltip}"
 			:icon light-icon
 			:tooltip "Brightness: ${light-val}%"
 			:action-click "brightnessctl s 0 && eww update light-val=$(~/.config/eww/scripts/getval light)"
-			:action-slide ""
+			:action-slide "brightnessctl s {}%"
 			:modi "")
 		(slider
 			:value batt-val
