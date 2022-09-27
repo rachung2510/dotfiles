@@ -1,17 +1,29 @@
 #!/bin/bash
 
+TAG="screenshot"
 dir="$HOME/Pictures/Screenshots"
-[[ ! -d $dir ]] && mkdir -p $dir
 path="$dir/$(date '+%Y-%m-%d %H:%M:%S')_screenshot.png"
+tmp_file="$(mktemp).png"
 
 if [[ $1 = 'desktop' ]]; then
+	[[ ! -d $dir ]] && mkdir -p $dir
 	maim "$path"
 else
-	maim -s "$path"
-	xclip -selection clipboard -t image/png "$path"
+	maim -s "$tmp_file"
+	xclip -selection clipboard -t image/png "$tmp_file"
 fi
 
-if [[ -f $path ]]; then
-	notify-send -a maim -u normal -i "$path" "Snip saved to clipboard" "Screenshot saved to Pictures."
+if [[ -f "$tmp_file" ]]; then
+	# notify-send -a maim -u normal -i "$tmp_file" "Snip saved to clipboard" "Screenshot saved to Pictures."
+	choice=$(dunstify --action="save,Save to Pictures" -a maim -t 20000 -h string:x-dunst-stack-tag:$TAG -i "$tmp_file" "Snip saved to clipboard")
+	case "$choice" in
+		"save")
+			[[ ! -d $dir ]] && mkdir -p $dir
+			cp "$tmp_file" "$path"
+			notify-send -a maim -t 3000 -i "$tmp_file" "Screenshot saved to Pictures"
+			;;
+	esac
+	rm "${tmp_file%.*}"*
 fi
+
 

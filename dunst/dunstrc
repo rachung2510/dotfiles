@@ -180,7 +180,6 @@
 
 [Screenshot]
 	appname=maim
-	summary = "Snip saved to clipboard"
 	icon_position = top
 	max_icon_size = 240
 
