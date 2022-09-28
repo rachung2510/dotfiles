@@ -19,7 +19,7 @@ workspace_layout default
 ##############################
 
 #border indicator on windows:
-new_window pixel 2
+default_border pixel 2
 
 # thin borders
 hide_edge_borders both
@@ -264,13 +264,15 @@ for_window [class="[mM]inecraft.*"] move to workspace number $ws9
 # assign [class="Google-chrome"] number 1
 # assign [class="Microsoft-edge"] number 1
 assign [class="obsidian"] number $ws7
-assign [class="whatsapp-nativefier-d40211"] number $ws8
-assign [class="TelegramDesktop"] number $ws8
+assign [class="discord"] number $ws8
+assign [class="Microsoft Teams - Preview"] number $ws8
 assign [class="[tT]hunderbird"] number $ws8
 assign [class="[mM]inecraft.*"] number $ws9
 assign [title="Steam"] number $ws9
 assign [class="Steam"] number $ws9
 assign [class="Stardew Valley"] number $ws9
+assign [class="whatsapp-nativefier-d40211"] number $ws10
+assign [class="TelegramDesktop"] number $ws10
 
 ##############
 # compositor #
