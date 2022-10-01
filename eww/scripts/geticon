@@ -5,7 +5,12 @@ light_icons=("" "" "")
 
 if [[ $1 = "vol" ]]; then
 	mute=$(pactl get-sink-mute @DEFAULT_SINK@)
-	[[ $mute = "Mute: yes" ]] && echo "" || echo ""
+	if [[ $mute = "Mute: no" ]]; then
+		[[ "$(eww get vol-tooltip | awk '{print $2}')" = "Headphones" ]] && 
+			echo "" || echo ""
+	else
+		echo ""
+	fi
 
 elif [[ $1 = "light" ]]; then
 	level=$(~/.config/eww/scripts/getval light)
