@@ -36,7 +36,7 @@
 (defpoll mute-bool	:interval "5h"  "scripts/getbool mute")
 
 ;; Tooltips
-(defpoll vol-tooltip	:interval "5s"	"scripts/tooltip vol")
+(defpoll vol-tooltip	:interval "5h"	"scripts/tooltip vol")
 (defpoll batt-tooltip	:interval "5s"	"scripts/tooltip batt")
 (defpoll wifi-tooltip	:interval "5s"	"scripts/tooltip wifi")
 

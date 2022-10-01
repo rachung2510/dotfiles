@@ -5,7 +5,8 @@ run() {
 	bool="$(~/.config/eww/scripts/getbool mute)"
 	[[ $(eww get volume-val) = $val ]] && [[ $(eww get mute-bool) = $bool ]] && return
 	eww update volume-val=$val
-	eww update mute-bool=$bool
+	eww update mute-bool=$bool &&
+	eww update vol-tooltip="$(~/.config/eww/scripts/tooltip vol)" &&
 	eww update vol-icon=$(~/.config/eww/scripts/geticon vol)
 }
 
