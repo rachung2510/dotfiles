@@ -19,6 +19,7 @@ WSICONMAP = {
 	"window_class=Evince": "pdf",
 	"window_class=[fF]ont-.*": "fonts",
 	"window_class=Inkscape": "draw",
+	"window_class=jetbrains-studio": "code",
 	"window_class=libreoffice-calc": "excel",
 	"window_class=libreoffice-writer": "word",
 	"window_class=Microsoft-edge": "browser",
