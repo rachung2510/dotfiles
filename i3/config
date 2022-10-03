@@ -412,8 +412,8 @@ set $inactive-text		#908c97
 # define colors for windows:
 #class		        	border		bground			text			indicator	child_border
 client.focused          $alpha      $shade8         $dark-grey      $shade8     $shade8
-client.unfocused        $alpha      $inactive-bg    $inactive-text  $alpha      $alpha
-client.focused_inactive $alpha      $inactive-bg    $inactive-text  $alpha      $alpha
+client.unfocused        $alpha      $inactive-bg    $inactive-text  $alpha      $inactive-bg
+client.focused_inactive $alpha      $inactive-bg    $inactive-text  $alpha      $inactive-bg
 client.urgent           $alpha      $urgent         $dark-grey      $urgent     $urgent
 
 ############################################
