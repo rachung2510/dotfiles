@@ -24,6 +24,8 @@ if [[ -f "$tmp_file" ]]; then
 			;;
 	esac
 	rm "${tmp_file%.*}"*
+elif [[ -f "$path" ]]; then
+	notify-send -a maim -t 3000 -i "$path" "Screenshot saved to Pictures"
 fi
 
 
