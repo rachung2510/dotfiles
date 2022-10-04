@@ -1,4 +1,4 @@
-@import "styles/dark.scss";
+@import "styles/light.scss";
 
 * {
 	all: unset;
@@ -46,7 +46,7 @@
 }
 .roundpanel.weather {
 	margin-left: .7rem;
-	padding: 1.2rem 1.2rem 1.1rem 1.2rem;
+	padding: 1.2rem 1.2rem 1.2rem 1.2rem;
 }
 .roundpanel.stats { padding: 1rem; }
 .roundpanel.quickbuttons { padding: .9rem .7rem; }
@@ -107,7 +107,7 @@
 	font-size: 56px;
 	color: $text-label;
 	font-family: MesloLGM Nerd Font;
-	margin-bottom: -.2em;
+	// margin-bottom: -.2em;
 }
 .weather-icon button:hover { color: $weather-icon-hover; }
 .weather-temp {

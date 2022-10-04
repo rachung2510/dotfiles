@@ -1,22 +1,29 @@
 #!/bin/bash
+lim=15
 
+# $1=str, $2=lim
+wrapline() {
+	[[ ${#1} -le $2 ]] && echo $1 && return
+	l1="${1:0:$2}" && l1="${l1% *}"
+	l2=$(echo $1 | grep -oP "(?<=${l1} ).*")
+	[[ ${#l2} -gt $2 ]] && l2="${l2:0:11}..."
+	echo -e "$l1\n$l2"
+}
+
+ip=$(curl https://ipinfo.io/ip)
+data=$(curl "https://ipinfo.io/$ip")
 if [[ $1 = "location" ]]; then
-	## requires API access token
-	ip=$(curl https://ipinfo.io/ip)
-	city=$(curl "https://ipinfo.io/$ip" | grep "city" | awk '{print $2}' | grep -oP '(?<=").*(?=")')
-	[[ -n $city ]] && echo $city || echo "~"
-#	region=$(curl https://ipinfo.io/$ip | grep "region" | awk '{print $2}' | grep -oP '(?<=").*(?=")')
-#	if [[ $city = $region ]]; then location=$region
-#	else location="$city, $region"; fi
-	# location="Pasir Panjang"
-	# echo $location
+	city=$(echo "$data" | jq '.city' | tr -d '"')
+	[[ ! -n "$city" ]] && echo "~" || wrapline "$city" $lim
 	exit 0
 fi
 
-loc="$(~/.config/eww/scripts/weather location)"
-cm1=$(curl wttr.in/$loc?format=%t-%c-%C 2> /dev/null) # suppress curl output
+loc=$(echo "$data" | jq '.loc' | tr -d '"')
+lat=$(echo "$loc" | awk -F ',' '{printf "%.2f", $1}')
+long=$(echo "$loc" | awk -F ',' '{printf "%.2f", $2}')
+cm1=$(curl wttr.in/$lat,$long?format=%t-%c-%C 2> /dev/null) # suppress curl output
 IFS="-" read -r temp icon cond <<< "$cm1" 2> /dev/null # suppress "Unknown..."
-#echo $cm1
+# echo $cm1
 
 if [[ $icon = "" ]] || [[ $icon =~ [0-9] ]] ; then
 	icon=""
@@ -35,11 +42,6 @@ elif [[ $1 = "temp" ]]; then
     echo $temp
 elif [[ $1 = "cond" ]]; then
 	[[ $2 != "short" ]] && echo $cond && exit 0
-	lim=15
-	[[ ${#cond} -le $lim ]] && echo $cond && exit 0
-	l1="${cond:0:$lim}" && l1="${l1% *}"
-	l2=$(echo $cond | grep -oP "(?<=${l1} ).*")
-	[[ ${#l2} -gt $lim ]] && l2="${l2:0:11}..."
-	echo -e "$l1\n$l2"
+	wrapline "$cond" "$lim"
 
 fi
