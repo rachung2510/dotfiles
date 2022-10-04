@@ -25,8 +25,8 @@ default_border pixel 2
 hide_edge_borders both
 
 # Set inner/outer gaps
-gaps inner 3
-gaps outer 3
+gaps inner 5
+gaps outer 2
 gaps left 50
 smart_borders on
 
@@ -410,11 +410,11 @@ set $inactive-bg		#f2f2f2
 set $inactive-text		#908c97
 
 # define colors for windows:
-#class		        	border		bground			text			indicator	child_border
-client.focused          $alpha      $shade8         $dark-grey      $shade8     $shade8
-client.unfocused        $alpha      $inactive-bg    $inactive-text  $alpha      $inactive-bg
-client.focused_inactive $alpha      $inactive-bg    $inactive-text  $alpha      $inactive-bg
-client.urgent           $alpha      $urgent         $dark-grey      $urgent     $urgent
+#class		        	border	bground			text			indicator		child_border
+client.focused          $alpha  $shade8         $dark-grey      $shade8			$shade8
+client.unfocused        $alpha  $inactive-bg    $inactive-text  $inactive-bg	$inactive-bg
+client.focused_inactive $alpha  $inactive-bg    $inactive-text  $inactive-bg	$inactive-bg
+client.urgent           $alpha  $urgent         $dark-grey      $urgent			$urgent
 
 ############################################
 # bar settings (input comes from i3blocks) #
