@@ -1,56 +1,7 @@
 #!/bin/bash
 
-rem="/mnt/Nextcloud/"
-loc="$HOME/Nextcloud/"
-icon="~/.config/dunst/img/nextcloud.png"
-cmd="--include='*/' --include='vault/**' --exclude='*'"
-pat="/building file list/{flag=1; next} /sent/{flag=0} flag"
-
 run() {
-	# Remote repo not mounted
-	# login details to save to /etc/davfs2/secrets
-	[[ ! -n "$(ls -A $rem)" ]] && echo y | mount /mnt/Nextcloud
-
-	var1=$(rsync -aumvz $cmd $rem $loc | awk "$pat")
-	var2=$(rsync --dry-run -amvz $cmd $rem $loc | awk "$pat")
-
-	# Skip sync if no differences
-	[[ ! -n "$var2" ]] && return
-
-	tmp=$(mktemp)
-	for line in $var2; do
-		[[ ! "$var1" =~ .*"$line".* ]] && echo $line | tee -a $tmp;
-	done
-
-	filelist=$(cat $tmp)
-
-	if [[ -s $tmp ]]; then
-		choice=$(dunstify -i "$icon" -u critical \
---action="l2r,Keep local files" \
---action="r2l,Keep server files" \
---action="copy,Make copies" \
-"Some files couldn't be synced" "$filelist")
-
-		case "$choice" in
-			"l2r")
-				notify-send -i "$icon" "Syncing local files" "Server files will be overwritten"
-				echo "root" | sudo -S rsync -amvz --delete $cmd $loc $rem
-				;;
-			"r2l")
-				notify-send -i "$icon" "Syncing server files" "Local files will be overwritten"
-				rsync -amvz --files-from=$tmp $rem $loc
-				;;
-			"copy")
-				notify-send -i "$icon" "Copying server files"
-				cat $tmp | while read file; do
-					[[ -f $rem$file ]] && cp $rem$file "$loc$file (1)"
-				done
-				echo "root" | sudo -S rsync -amvz --delete $cmd $loc $rem
-				;;
-		esac
-	fi
-
-	rm $tmp
+	/usr/local/bin/bsync ~/Nextcloud/ /mnt/Nextcloud/
 }
 
 [[ $1 = "run" ]] && run && exit
