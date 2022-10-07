@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [[ $1 = 'sync' ]]; then
+	[[ $2 = 'imperial' ]] && onedrive --synchronize --confdir=~/.config/onedriveimperial || onedrive --synchronize 
+	exit 0
+fi
+
 notify-send -u low -i ~/.config/dunst/img/onedrive.png "OneDrive sync started"
 pid=$(pgrep onedrive)
 if [[ $(echo "$pid" | wc -l) -gt 1 ]]; then
