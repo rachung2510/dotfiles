@@ -25,7 +25,7 @@ window {
 prompt, inputbar { enabled: false; }
 
 listview {
-    lines:				3;
+    lines:				4;
     columns:			1;
     fixed-height:		0;
     border:				0px;
