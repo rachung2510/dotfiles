@@ -1,7 +1,10 @@
 #!/bin/bash
 
+rem="/mnt/Nextcloud/"
+loc="$HOME/Nextcloud/"
 run() {
-	/usr/local/bin/bsync ~/Nextcloud/ /mnt/Nextcloud/
+	[[ ! -n "$(ls -A $rem)" ]] && echo y | mount /mnt/Nextcloud # login details to save to /etc/davfs2/secrets
+	/usr/local/bin/bsync $loc $rem
 }
 
 [[ $1 = "run" ]] && run && exit
