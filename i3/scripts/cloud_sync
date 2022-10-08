@@ -6,7 +6,7 @@ check_wifi() {
 	choice=$(dunstify --action="kill,Kill process" "OneDrive sync failed" "WiFi not connected. Consider killing the OneDrive sync")
 	case "$choice" in
 		"kill")
-			notify-send "OneDrive and Nextcloud sync stopped"
+			notify-send -u low -i ~/.config/dunst/img/cloud_sync_stop.png "OneDrive and Nextcloud sync stopped"
 			eww update sync-bool="false"
 			exit 0
 			;;
@@ -43,7 +43,7 @@ if [[ $1 = "run" ]]; then
 fi
 
 # Only allow one instance to run
-notify-send -u low -i ~/.config/dunst/img/onedrive.png "OneDrive and Nextcloud sync started"
+notify-send -u low -i ~/.config/dunst/img/cloud_sync.png "OneDrive and Nextcloud sync started"
 pid=$(pgrep `basename "$0"`)
 [[ $(echo "$pid" | wc -l) -gt 1 ]] && exit 0
 
