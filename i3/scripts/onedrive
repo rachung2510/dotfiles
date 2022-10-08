@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ $1 = 'sync' ]]; then
+if [[ $1 = 'run' ]]; then
 	[[ $2 = 'imperial' ]] && onedrive --synchronize --confdir=~/.config/onedriveimperial || onedrive --synchronize 
 	exit 0
 fi
