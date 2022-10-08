@@ -25,15 +25,13 @@
 		 :class "bar-widget controls"
 		 :width bar-width
 		 :spacing "8"
-		 (barbtn :icon vol-icon 
+		 (barbtn :icon vol-icon :modi ""
 		 	:action "~/.config/i3/scripts/fnactions mute"
-			:tooltip "Volume: ${volume-val}%
-${vol-tooltip}"
-			:label "" :font "" :low-crit "" :high-crit "")
+			:tooltip "Volume: ${volume-val}% 
+${vol-tooltip}")
 		 (barbtn :icon wifi-icon
 		 	:action "alacritty -t nmtui -e nmtui-connect &"
-			:tooltip wifi-tooltip
-			:label "" :font "" :low-crit "" :high-crit "")
+			:tooltip wifi-tooltip :modi "")
 		 (barbtn-label :icon batt-icon
 		 	:tooltip batt-tooltip
 			:label batt-val :font "batt-icon"
@@ -43,6 +41,10 @@ ${vol-tooltip}"
 		 	:label bar-cpu-val :font "batt-icon"
 			:low-crit 0 :high-crit 89
 		 	:action "" :tooltip "")
+		 (barbtn :icon sync-icon
+		 	:modi sync-bool
+		 	:action '' :tooltip '')
+
 ))
 
 (defwidget time []

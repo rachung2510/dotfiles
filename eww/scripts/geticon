@@ -44,4 +44,8 @@ elif [[ $1 = "wifi" ]]; then
 	[[ "$(iwgetid -r)" = "" ]] && echo "睊" && exit 0
 	echo "直"
 
+elif [[ $1 = "sync" ]]; then
+	[[ $2 = "syncing" ]] && echo "" && exit 0
+	echo ""
+
 fi
