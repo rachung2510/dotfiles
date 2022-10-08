@@ -45,7 +45,7 @@ elif [[ $1 = "wifi" ]]; then
 	echo "直"
 
 elif [[ $1 = "sync" ]]; then
-	[[ $2 = "syncing" ]] && echo "" && exit 0
+	[[ $2 = "syncing" ]] && echo "" && exit 0
 	echo ""
 
 fi
