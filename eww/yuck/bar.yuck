@@ -11,7 +11,7 @@
 	(label :class "${(ws-mode == "") ? "" : "ws-mode"}" :text ws-mode))
 
 (defwidget scratchpad []
-	(box :class "${(ws-scratch > 0) ? "" : "hidden"}" :orientation "v" :space-evenly "false"
+	(box :visible "${(ws-scratch > 0) ? "true" : "false"}" :orientation "v" :space-evenly "false"
 		(button :onclick "i3-msg scratchpad show" "")
 		(label :class "barbtn-label" :text ws-scratch)))
 
