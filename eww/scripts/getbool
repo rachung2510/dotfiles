@@ -21,6 +21,6 @@ elif [[ $1 = "timeout" ]]; then
 	[[ $status = "Disabled" ]] && echo "selected" || echo ""
 
 elif [[ $1 = "sync" ]]; then
-	[[ -n $(pgrep onedrive) ]] && echo "true" || echo "false"
+	[[ -n $(pgrep cloud_sync) ]] && echo "true" || echo "false"
 
 fi
