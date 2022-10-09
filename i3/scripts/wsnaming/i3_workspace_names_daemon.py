@@ -27,6 +27,7 @@ WSICONMAP = {
 	"window_class=[mM]inecraft.*": "minecraft",
 	"window_class=obsidian": "note", 
 	"window_class=Nemo": "files",
+	"window_class=Spotify": "music",
 	"window_class=TelegramDesktop": "telegram",
 	"window_class=[tT]hunderbird": "email",
 	"window_class=VirtualBox Manager": "virtualbox",
