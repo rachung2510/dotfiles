@@ -55,6 +55,7 @@ while true; do
 	eww update sync-icon="$(~/.config/eww/scripts/geticon sync syncing)"
 	onedrive_sync & nextcloud_sync
 	eww update sync-icon="$(~/.config/eww/scripts/geticon sync)"
-	
+
+	eww update sync-start="$(date +%s)"
 	sleep 300
 done

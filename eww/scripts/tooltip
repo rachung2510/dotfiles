@@ -30,4 +30,14 @@ elif [[ $1 = "wifi" ]]; then
 		ip=$(ip addr show dev $dev | grep "inet " | awk '{print $2}')
 		echo -e "Network: $name\nIP: $ip"
 	fi
+
+elif [[ $1 = "sync" ]]; then
+	[[ "$(eww get sync-icon)" != "" ]] && exit 0
+	tic=$(eww get sync-start)
+	[[ $tic = 0 ]] && exit 0
+	toc=$(date +%s)
+	elapsed=$((toc-tic))
+	remaining=$((300-elapsed))
+	echo "$(date -d@$remaining -u +%M:%S) remaining till next sync"
+
 fi

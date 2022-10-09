@@ -41,9 +41,9 @@ ${vol-tooltip}")
 		 	:label bar-cpu-val :font "batt-icon"
 			:low-crit 0 :high-crit 89
 		 	:action "" :tooltip "")
-		 (barbtn :icon sync-icon
-		 	:modi sync-bool
-		 	:action '' :tooltip '')
+		 (barbtn :icon sync-icon :modi sync-bool
+			:tooltip sync-tooltip
+		 	:action "")
 
 ))
 

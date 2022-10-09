@@ -39,6 +39,7 @@
 (defpoll vol-tooltip	:interval "5h"	"scripts/tooltip vol")
 (defpoll batt-tooltip	:interval "5s"	"scripts/tooltip batt")
 (defpoll wifi-tooltip	:interval "5s"	"scripts/tooltip wifi")
+(defpoll sync-tooltip	:interval "5s"	"scripts/tooltip sync")
 
 ;; Weather
 (defpoll weather-loc  :interval "24h" "scripts/weather location")
@@ -55,8 +56,11 @@
 (defpoll hdd-used :interval "300s" "scripts/getval hdd used")
 (defpoll hdd-avail :interval "300s" "scripts/getval hdd avail")
 (defpoll bar-cpu-val :interval "5s" "scripts/getval cpu int")
+
+;; Sync
 (defpoll sync-icon :interval "5h" "scripts/geticon sync")
 (defpoll sync-bool :interval "5h" "scripts/getbool sync")
+(defvar sync-start "0")
 
 ;; Quickbuttons
 (defpoll wifi-icon		:interval "5h" "scripts/geticon wifi")
