@@ -80,6 +80,7 @@
 	font-size: 1.8em; 
 	font-family: MesloLGM Nerd Font; }
 .player.disabled { color: $grey; }
+.player.disabled button:hover { color: $grey; }
 
 .sidepanel .controls scale trough {
 	background-color: $trough;
