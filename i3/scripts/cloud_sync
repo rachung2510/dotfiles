@@ -3,7 +3,8 @@
 # Check for wifi else notify to kill process
 check_wifi() {
 	[[ $(iwgetid -r) != "" ]] && return
-	choice=$(dunstify --action="kill,Kill process" "OneDrive sync failed" "WiFi not connected. Consider killing the OneDrive sync")
+	eww update sync-icon="~/.config/eww/scripts/geticon off"
+	choice=$(dunstify -u critical --action="kill,Kill process" "Cloud sync failed" "WiFi not connected. Consider killing the cloud syncing process")
 	case "$choice" in
 		"kill")
 			notify-send -u low -i ~/.config/dunst/img/cloud_sync_stop.png "OneDrive and Nextcloud sync stopped"
@@ -52,8 +53,7 @@ while true; do
 	check_wifi
 
 	eww update sync-icon="$(~/.config/eww/scripts/geticon sync syncing)"
-	onedrive_sync
-	nextcloud_sync
+	onedrive_sync & nextcloud_sync
 	eww update sync-icon="$(~/.config/eww/scripts/geticon sync)"
 	
 	sleep 300
