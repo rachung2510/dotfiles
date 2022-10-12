@@ -26,7 +26,7 @@ onedrive_sync() {
 	[[ $1 = "imperial" ]] && SYNC_ME=0 && SYNC_IMP=1
 	[[ $1 = "both" ]] && SYNC_IMP=1
 	[[ $SYNC_ME = 1 ]] && [[ -d ~/OneDrive ]] && onedrive --synchronize
-	[[ $SYNC_IMP = 1 ]] && [[ -d ~/Imperial ]] && out=$(onedrive --synchronize --confdir=~/.config/onedriveimperial)
+	[[ $SYNC_IMP = 1 ]] && [[ -d ~/Imperial ]] && out=$(onedrive --synchronize --confdir=~/.config/onedriveimperial | tee /dev/fd/2)
 	[[ -n "$(echo $out | grep 'Initializing')" ]] && return
 	choice=$(dunstify -u critical -i ~/.config/dunst/img/cloud_sync_stop.png --action="reauth,Reauthenticate OneDrive" "OneDrive Imperial not synced successfully" "Reauthenticate the account")
 	case "$choice" in
