@@ -41,7 +41,8 @@ elif [[ $1 = "sync" ]]; then
 		"$(get_sync_icon)")
 			tic=$(eww get sync-start)
 			[[ $tic = 0 ]] && exit 0
-			echo -e "Last synced on $(date -d@$tic '+%H:%M')"
+			toc=$((tic+300))
+			echo -e "Last synced on $(date -d@$tic '+%H:%M')\nNext sync at $(date -d@$toc '+%H:%M')"
 		;;
 	esac
 
