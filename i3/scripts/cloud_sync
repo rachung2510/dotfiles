@@ -1,9 +1,14 @@
 #!/bin/bash
 
+update_sync_tooltip() {
+	eww update sync-tooltip="~/.config/eww/scripts/tooltip sync"
+}
+
 # Check for wifi else notify to kill process
 check_wifi() {
 	[[ $(iwgetid -r) != "" ]] && return
 	eww update sync-icon="~/.config/eww/scripts/geticon off"
+	update_sync_tooltip
 	choice=$(dunstify -u critical --action="kill,Kill process" "Cloud sync failed" "WiFi not connected. Consider killing the cloud syncing process")
 	case "$choice" in
 		"kill")
@@ -21,7 +26,14 @@ onedrive_sync() {
 	[[ $1 = "imperial" ]] && SYNC_ME=0 && SYNC_IMP=1
 	[[ $1 = "both" ]] && SYNC_IMP=1
 	[[ $SYNC_ME = 1 ]] && [[ -d ~/OneDrive ]] && onedrive --synchronize
-	[[ $SYNC_IMP = 1 ]] && [[ -d ~/Imperial ]] && onedrive --synchronize --confdir=~/.config/onedriveimperial
+	[[ $SYNC_IMP = 1 ]] && [[ -d ~/Imperial ]] && out=$(onedrive --synchronize --confdir=~/.config/onedriveimperial)
+	[[ -n "$(echo $out | grep 'Initializing')" ]] && return
+	choice=$(dunstify -u critical -i ~/.config/dunst/img/cloud_sync_stop.png --action="reauth,Reauthenticate OneDrive" "OneDrive Imperial not synced successfully" "Reauthenticate the account")
+	case "$choice" in
+		"reauth")
+			alacritty --class floating -e onedrive --synchronize --confdir=~/.config/onedriveimperial --reauth
+		;;
+	esac
 }
 
 # Sync Nextcloud
@@ -53,8 +65,10 @@ while true; do
 	check_wifi
 
 	eww update sync-icon="$(~/.config/eww/scripts/geticon sync syncing)"
+	update_sync_tooltip
 	onedrive_sync & nextcloud_sync
 	eww update sync-icon="$(~/.config/eww/scripts/geticon sync)"
+	update_sync_tooltip
 
 	eww update sync-start="$(date +%s)"
 	sleep 300
