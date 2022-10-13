@@ -1,5 +1,7 @@
 #!/bin/bash
 
+[[ $1 =~ ^(-h|--help)$ ]] && echo "cloud_sync [run] [onedrive/nextcloud] [me/personal]" && exit 0 
+
 update_sync_tooltip() {
 	eww update sync-tooltip="~/.config/eww/scripts/tooltip sync"
 }
@@ -22,18 +24,20 @@ check_wifi() {
 # Sync OneDrive
 onedrive_sync() {
 	SYNC_ME=1
-	SYNC_IMP=0
-	[[ $1 = "imperial" ]] && SYNC_ME=0 && SYNC_IMP=1
-	[[ $1 = "both" ]] && SYNC_IMP=1
+	SYNC_IMP=1
+	[[ $1 = "me" ]] && SYNC_IMP=0
+	[[ $1 = "imperial" ]] && SYNC_ME=0
 	[[ $SYNC_ME = 1 ]] && [[ -d ~/OneDrive ]] && onedrive --synchronize
-	[[ $SYNC_IMP = 1 ]] && [[ -d ~/Imperial ]] && out=$(onedrive --synchronize --confdir=~/.config/onedriveimperial | tee /dev/fd/2)
-	[[ -n "$(echo $out | grep 'Initializing')" ]] && return
-	choice=$(dunstify -u critical -i ~/.config/dunst/img/cloud_sync_stop.png --action="reauth,Reauthenticate OneDrive" "OneDrive Imperial not synced successfully" "Reauthenticate the account")
-	case "$choice" in
-		"reauth")
-			alacritty --class floating -e onedrive --synchronize --confdir=~/.config/onedriveimperial --reauth
-		;;
-	esac
+	if [[ $SYNC_IMP = 1 ]]; then
+		[[ -d ~/Imperial ]] && out=$(onedrive --synchronize --confdir=~/.config/onedriveimperial | tee /dev/fd/2)
+		[[ -n "$(echo $out | grep 'Initializing')" ]] && return
+		choice=$(dunstify -u critical -i ~/.config/dunst/img/cloud_sync_stop.png --action="reauth,Reauthenticate OneDrive" "OneDrive Imperial not synced successfully" "Reauthenticate the account")
+		case "$choice" in
+			"reauth")
+				alacritty --class floating -e onedrive --synchronize --confdir=~/.config/onedriveimperial --reauth
+			;;
+		esac
+	fi
 }
 
 # Sync Nextcloud
@@ -50,7 +54,7 @@ if [[ $1 = "run" ]]; then
 	SYNC_NC=1
 	[[ $2 = "onedrive" ]] && SYNC_NC=0
 	[[ $2 = "nextcloud" ]] && SYNC_ONE=0
-	[[ $SYNC_ONE = 1 ]] && onedrive_sync "$3"
+	[[ $SYNC_ONE = 1 ]] && onedrive_sync "$3" &
 	[[ $SYNC_NC = 1 ]] && nextcloud_sync
 	exit 0
 fi
