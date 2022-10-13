@@ -1,0 +1,17 @@
+#!/bin/bash
+
+c1="Sync OneDrive (Personal)"
+c2="Sync OneDrive (Imperial)"
+c3="Sync Nextcloud"
+c4="Sync all"
+CHOICES="$c1\n$c2\n$c3\n$c4"
+
+choice=$(echo -e "$CHOICES" | rofi -dmenu -theme ~/.config/rofi/dunst.rasi)
+
+cmd="alacritty --class floating -e ~/.config/i3/scripts/cloud_sync run"
+case "$choice" in
+	"$c1") eval "$cmd onedrive me";;
+	"$c2") eval "$cmd onedrive imperial";;
+	"$c3") eval "$cmd nextcloud";;
+	"$c4") eval "$cmd";;
+esac

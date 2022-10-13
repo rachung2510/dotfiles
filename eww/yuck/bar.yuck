@@ -43,7 +43,7 @@ ${vol-tooltip}")
 		 	:action "" :tooltip "")
 		 (barbtn :icon sync-icon :modi sync-bool
 			:tooltip sync-tooltip
-		 	:action "")
+		 	:action "scripts/sync")
 
 ))
 
