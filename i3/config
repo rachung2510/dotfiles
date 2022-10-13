@@ -113,8 +113,8 @@ bindsym $mod+r mode "resize"
 ######################################
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id alacritty
-bindsym $mod+Shift+Return exec --no-startup-id alacritty --class floating
+bindsym $mod+Return exec alacritty
+bindsym $mod+Shift+Return exec alacritty --class floating
 
 # kill focused window
 bindsym Ctrl+Shift+q kill
@@ -218,8 +218,8 @@ bindsym $mod+F3 exec --no-startup-id brightnessctl set $bright-step%- && ~/.conf
 # bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 ## App shortcuts
-bindsym $mod+c exec --no-startup-id microsoft-edge-beta
-bindsym $mod+e exec --no-startup-id nemo
+bindsym $mod+c exec microsoft-edge-beta
+bindsym $mod+e exec nemo
 # bindsym Print exec scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
 
 # Custom keybinds for scripts
@@ -378,6 +378,7 @@ for_window [window_role="About"] floating enable
 for_window [class="zoom" title="Settings"] floating enable
 for_window [class="Alacritty" instance="floating"] floating enable
 for_window [title="Microsoft Teams Notification"] floating enable
+for_window [title="Steam - News.*"] floating enable
 
 # set size of floating window
 for_window [window_role="(?i)GtkFileChooserDialog"] resize set 640 480 #to set size of file choose dialog
