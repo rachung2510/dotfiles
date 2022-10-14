@@ -32,7 +32,7 @@
 (defpoll batt-val	:interval "120s"  "scripts/getval batt")
 (defpoll vol-icon	:interval "5h"	"scripts/geticon vol")
 (defpoll light-icon	:interval "5h"  "scripts/geticon light")
-(defpoll batt-icon	:interval "5s"	"scripts/geticon batt")
+(defpoll batt-icon	:interval "120s"	"scripts/geticon batt")
 (defpoll mute-bool	:interval "5h"  "scripts/getbool mute")
 
 ;; Tooltips
