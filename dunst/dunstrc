@@ -1,7 +1,7 @@
 [global]
     monitor = 1
     follow = none
-    width = 320
+    width = 360
     height = 320
     origin = bottom-right
     offset = 16x16
@@ -135,7 +135,7 @@
     ### Legacy
     force_xinerama = false
 
-    mouse_left_click = close_current
+    mouse_left_click = context, close_current
     mouse_middle_click = context
     mouse_right_click = close_all
 
