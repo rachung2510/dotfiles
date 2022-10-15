@@ -174,7 +174,7 @@
 
 [Spotify]
     appname=Spotify
-    background = "#21c45c"
+    background = "#199949"
     foreground = "#ffffff"
     # format = "<b> %s</b>\n%b"
 
