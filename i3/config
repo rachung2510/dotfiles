@@ -114,7 +114,7 @@ bindsym $mod+r mode "resize"
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id alacritty
-bindsym $mod+Shift+Return exec --no-startup-id alacritty --class floating
+bindsym $mod+Shift+Return exec --no-startup-id "alacritty --class Alacritty,floating"
 
 # kill focused window
 bindsym Ctrl+Shift+q kill
