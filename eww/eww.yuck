@@ -1,5 +1,4 @@
 ;; Time
-(defpoll time :interval "30s" "date '+%H:%M'")
 (defpoll date :interval "12h" "date '+%a, %d %b %Y'")
 (defpoll hour :interval "30s" "date '+%H'")
 (defpoll min  :interval "30s" "date '+%M'")

@@ -8,7 +8,7 @@
 (defwidget datetime []
 	(box :class "roundpanel datetime" :valign "end"
 	(box :orientation "v" :space-evenly "false" :vexpand "true" :valign "center"
-		(label :text time :class "time")
+		(label :text "${hour}:${min}" :class "time")
 		(label :text date :class "date")
 )))
 
