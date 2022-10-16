@@ -47,7 +47,7 @@
 ;; barbtn-label allows for additional info
 (defwidget barbtn [icon action tooltip modi]
 	(box :orientation "v" :space-evenly "false" :visible "${modi}"
-		(button :class "${tooltip == "" ? "no-hover" : ""}"
+		(button :class "${action == "" ? "no-hover" : ""}"
 			:onclick {action}
 			:tooltip {tooltip} {icon})
 ))

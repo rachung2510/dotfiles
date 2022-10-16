@@ -168,7 +168,7 @@ button.selected:hover { background-color: $btn-hover; }
 }
 
 // Workspaces
-.workspace { margin-top: 20px; }
+.workspace { margin-top: 30px; }
 .ws-label { 
 	font-size: .8rem;
 	margin-bottom: -8px;
@@ -192,6 +192,7 @@ button.selected:hover { background-color: $btn-hover; }
 	margin-top: .5rem;
 	padding: .4rem 0;
 }
+.ws-scratch { margin-top: 1.2rem; }
 
 // Control Panel
 .bar-widget.controls { padding: .5rem 0; }
