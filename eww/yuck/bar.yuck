@@ -8,10 +8,10 @@
 		(literal :content workspace)))
 
 (defwidget wsmode []
-	(label :class "${(ws-mode == "") ? "" : "ws-mode"}" :text ws-mode))
+	(label :visible "${(ws-mode == "") ? "false" : "true"}" :class "ws-mode" :text ws-mode))
 
 (defwidget scratchpad []
-	(box :visible "${(ws-scratch > 0) ? "true" : "false"}" :orientation "v" :space-evenly "false"
+	(box :visible "${(ws-scratch > 0) ? "true" : "false"}" :class "ws-scratch" :orientation "v" :space-evenly "false"
 		(button :onclick "i3-msg scratchpad show" "")
 		(label :class "barbtn-label" :text ws-scratch)))
 
@@ -58,7 +58,7 @@ ${vol-tooltip}")
 
 ;; Combined layouts
 (defwidget top []
-	(box :orientation "v" 
+	(box :orientation "v"
 		:space-evenly "false"
 		:vexpand "true"
 		:valign "center"
