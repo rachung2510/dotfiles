@@ -45,7 +45,9 @@ rem="/mnt/Nextcloud/"
 loc="$HOME/Nextcloud/"
 nextcloud_sync() {
 	[[ ! -n "$(ls -A $rem)" ]] && echo y | mount /mnt/Nextcloud # login details to save to /etc/davfs2/secrets
-	/usr/local/bin/bsync $loc $rem
+	out=$(/usr/local/bin/bsync $loc $rem | tee /dev/fd/2)
+	[[ ! -n "$(echo $out | grep 'Error')" ]] && return
+	notify-send -u critical -i ~/.config/dunst/img/cloud_sync_stop.png "Nextcloud not synced successfully"
 }
 
 # Run once
