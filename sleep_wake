@@ -1,0 +1,10 @@
+#!/bin/sh
+case $1 in
+  pre)
+    dunstctl set-paused true
+    ;;
+  post)
+    dunstctl set-paused false
+    eww reload
+    ;;
+esac
