@@ -1,5 +1,6 @@
 #!/bin/bash
 
+HOME=/home/user
 shade4=8e24aa
 shade8=ce93d8
 urgent=eb4d4b
@@ -11,7 +12,7 @@ font="Iosevka Nerd Font"
 
 if [[ $1 = "lock" ]]; then
 	playerctl -p playerctld pause
-	[[ $(~/.config/i3/scripts/theme -p) = "dark" ]] && bg=0000004d || bg=00000080
+	[[ $($HOME/.config/i3/scripts/theme -p) = "dark" ]] && bg=0000004d || bg=00000080
 	i3lock -c $bg -k --date-str="%a, %d %b %Y" --radius=140 --ring-width=10 \
 		--ring-color=$shade8 --ringwrong-color=$urgent --keyhl-color=$shade4 --separator-color=$alpha \
 		--time-color=$fg --date-color=$fg --verif-color=$fg --wrong-color=$fg \
@@ -23,7 +24,6 @@ if [[ $1 = "lock" ]]; then
 
 elif [[ $1 = "sleep" ]]; then
 	# amixer set Master mute
-	~/.config/i3/scripts/poweractions lock &&
 	systemctl suspend
 
 elif [[ $1 = "exit" ]]; then

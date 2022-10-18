@@ -1,20 +1,21 @@
 #!/bin/bash
 
+HOME=/home/user
 [[ $1 =~ ^(-h|--help)$ ]] && echo "cloud_sync [run] [onedrive/nextcloud] [me/personal]" && exit 0 
 
 update_sync_tooltip() {
-	eww update sync-tooltip="~/.config/eww/scripts/tooltip sync"
+	eww update sync-tooltip="$HOME/.config/eww/scripts/tooltip sync"
 }
 
 # Check for wifi else notify to kill process
 check_wifi() {
 	[[ $(iwgetid -r) != "" ]] && return
-	eww update sync-icon="~/.config/eww/scripts/geticon sync off"
+	eww update sync-icon="$($HOME/.config/eww/scripts/geticon sync off)"
 	update_sync_tooltip
 	choice=$(dunstify -u critical --action="kill,Kill process" "Cloud sync failed" "WiFi not connected. Consider killing the cloud syncing process")
 	case "$choice" in
 		"kill")
-			notify-send -u low -i ~/.config/dunst/img/cloud_sync_stop.png "OneDrive and Nextcloud sync stopped"
+			notify-send -u low -i $HOME/.config/dunst/img/cloud_sync_stop.png "OneDrive and Nextcloud sync stopped"
 			eww update sync-bool="false"
 			exit 0
 			;;
@@ -22,21 +23,26 @@ check_wifi() {
 }
 
 # Sync OneDrive
+err=/tmp/ERROR
 onedrive_sync() {
 	SYNC_ME=1
 	SYNC_IMP=1
 	[[ $1 = "me" ]] && SYNC_IMP=0
 	[[ $1 = "imperial" ]] && SYNC_ME=0
-	[[ $SYNC_ME = 1 ]] && [[ -d ~/OneDrive ]] && onedrive --synchronize
+	[[ $SYNC_ME = 1 ]] && [[ -d $HOME/OneDrive ]] && onedrive --synchronize
 	if [[ $SYNC_IMP = 1 ]]; then
-		[[ -d ~/Imperial ]] && out=$(onedrive --synchronize --confdir=~/.config/onedriveimperial | tee /dev/fd/2)
-		[[ -n "$(echo \"$out\" | grep 'Initializing')" ]] && return
-		choice=$(dunstify -u critical -i ~/.config/dunst/img/cloud_sync_stop.png --action="reauth,Reauthenticate OneDrive" "OneDrive Imperial not synced successfully" "Reauthenticate the account")
+		# [[ -d $HOME/Imperial ]] && out=$(onedrive --synchronize --confdir=$HOME/.config/onedriveimperial | tee /dev/fd/2)
+		[[ -d $HOME/Imperial ]] && out=$(onedrive --synchronize --confdir=$HOME/.config/onedriveimperial 2>$err)
+		ERROR=$(<$err)
+		[[ ! -n "$ERROR" ]] && rm $err && return
+		# [[ -n "$(echo \"$out\" | grep 'Initializing')" ]] && return
+		choice=$(dunstify -u critical -i $HOME/.config/dunst/img/cloud_sync_stop.png --action="reauth,Reauthenticate OneDrive" "OneDrive Imperial not synced successfully" "Reauthenticate the account")
 		case "$choice" in
 			"reauth")
-				alacritty --class floating -e onedrive --synchronize --confdir=~/.config/onedriveimperial --reauth
+				alacritty --class floating -e onedrive --synchronize --confdir=$HOME/.config/onedriveimperial --reauth
 			;;
 		esac
+		rm $err
 	fi
 }
 
@@ -45,9 +51,16 @@ rem="/mnt/Nextcloud/"
 loc="$HOME/Nextcloud/"
 nextcloud_sync() {
 	[[ ! -n "$(ls -A $rem)" ]] && echo y | mount /mnt/Nextcloud # login details to save to /etc/davfs2/secrets
-	ERROR=$(/usr/local/bin/bsync $loc $rem 2>&1 >/dev/null)
-	[[ ! -n "$ERROR" ]] && return
-	notify-send -u critical -i ~/.config/dunst/img/cloud_sync_stop.png "Nextcloud not synced successfully"
+	/usr/local/bin/bsync $loc $rem 2>$err
+	ERROR=$(<$err)
+	if [[ -n "$ERROR" ]]; then
+		choice=$(dunstify -u critical -i $HOME/.config/dunst/img/cloud_sync_stop.png --action="fix,Resync with fix" "Nextcloud not synced successfully")
+		if [[ "$choice" = "fix" ]]; then
+			rm $rem.bsync-snap* $loc.bsync-snap*
+			/usr/local/bin/bsync $loc $rem
+		fi
+	fi
+	rm $err:
 }
 
 # Run once
@@ -62,7 +75,7 @@ if [[ $1 = "run" ]]; then
 fi
 
 # Only allow one instance to run
-notify-send -u low -i ~/.config/dunst/img/cloud_sync.png "OneDrive and Nextcloud sync started"
+notify-send -u low -i $HOME/.config/dunst/img/cloud_sync.png "OneDrive and Nextcloud sync started"
 pid=$(pgrep `basename "$0"`)
 [[ $(echo "$pid" | wc -l) -gt 1 ]] && exit 0
 
@@ -70,12 +83,12 @@ eww update sync-bool="true"
 while true; do
 	check_wifi
 
-	eww update sync-icon="$(~/.config/eww/scripts/geticon sync syncing)"
+	eww update sync-icon="$($HOME/.config/eww/scripts/geticon sync syncing)"
 	update_sync_tooltip
 	onedrive_sync & nextcloud_sync
-	eww update sync-icon="$(~/.config/eww/scripts/geticon sync)"
-	update_sync_tooltip
-
+	eww update sync-icon="$($HOME/.config/eww/scripts/geticon sync)"
 	eww update sync-start="$(date +%s)"
+	update_sync_tooltip
+	
 	sleep 300
 done

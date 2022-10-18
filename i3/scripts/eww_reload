@@ -1,0 +1,6 @@
+#!/bin/bash
+
+eww update hour="$(date +%H)"
+eww update min="$(date +%M)"
+eww update batt-val="$(~/.config/eww/scripts/getval batt)"
+eww update batt-icon="$(~/.config/eww/scripts/geticon batt)"
