@@ -228,7 +228,7 @@ bindsym $mod+m exec --no-startup-id ~/.config/i3/scripts/eww_controller sidebar
 bindsym $mod+comma exec --no-startup-id ~/.config/i3/scripts/wsnaming/setwsname
 bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/scripts/screenshot
 bindsym Print exec --no-startup-id ~/.config/i3/scripts/screenshot desktop
-bindsym --release XF86PowerOff exec --no-startup-id ~/.config/i3/scripts/poweractions sleep
+# bindsym --release XF86PowerOff exec --no-startup-id ~/.config/i3/scripts/poweractions sleep
 
 ##########################################
 # configuration for workspace behaviour: #
