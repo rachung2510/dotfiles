@@ -6,12 +6,26 @@ c3="Sync Nextcloud"
 c4="Sync all"
 CHOICES="$c1\n$c2\n$c3\n$c4"
 
-choice=$(echo -e "$CHOICES" | rofi -dmenu -theme ~/.config/rofi/dunst.rasi)
+# $1=tooltip, $2=cmd options
+sync() {
+	eww update sync-icon="$(~/.config/eww/scripts/geticon sync syncing)"
+	eww update sync-tooltip="Syncing $1..."
+	eval "~/.config/i3/scripts/cloud_sync run $2" 
+	eww update sync-icon="$(~/.config/eww/scripts/geticon sync)"
+	eww update sync-tooltip="$(~/.config/eww/scripts/tooltip sync)"
+}
 
-cmd="alacritty --class floating -e ~/.config/i3/scripts/cloud_sync run"
-case "$choice" in
-	"$c1") eval "$cmd onedrive me";;
-	"$c2") eval "$cmd onedrive imperial";;
-	"$c3") eval "$cmd nextcloud";;
-	"$c4") eval "$cmd";;
-esac
+run() {
+	choice=$(echo -e "$CHOICES" | rofi -dmenu -theme ~/.config/rofi/dunst.rasi)
+	echo "$choice"
+	case "$choice" in
+		"$c1") sync "OneDrive (Personal)" "onedrive me";;
+		"$c2") sync "OneDrive (Imperial)" "onedrive imperial";;
+		"$c3") sync "Nextcloud" "nextcloud";;
+		"$c4") sync;;
+	esac
+}
+
+[[ $1 = "run" ]] && run && exit
+
+alacritty --class Alacritty,floating -e ~/.config/eww/scripts/sync run
