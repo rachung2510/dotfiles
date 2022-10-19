@@ -3,7 +3,8 @@
 HOME=/home/user
 [[ $1 =~ ^(-h|--help)$ ]] && echo "cloud_sync [run] [onedrive/nextcloud] [me/personal]" && exit 0 
 
-update_sync_tooltip() {
+# Update eww sync tooltip
+update_sync_tooltip() { 
 	eww update sync-tooltip="$($HOME/.config/eww/scripts/tooltip sync)"
 }
 
