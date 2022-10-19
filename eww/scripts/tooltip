@@ -15,7 +15,7 @@ elif [[ $1 = "batt" ]]; then
 	volt=$(cat /sys/class/power_supply/BAT1/voltage_now)
     curr=$(cat /sys/class/power_supply/BAT1/current_now)
     watt=$(echo "scale=2; ${volt}*${curr}/1000000/1000000" | bc)
-	echo -e "\nTime: ${duration%:*}\nRate: $watt W"
+	echo -e "Time: ${duration%:*}\nRate: $watt W"
 
 elif [[ $1 = "wifi" ]]; then
 	dev="enp4s0f3u2"
