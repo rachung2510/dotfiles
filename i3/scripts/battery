@@ -7,7 +7,6 @@ IMGDIR="~/.config/dunst/img"
 high() {
 	notify-send -u low -i $IMGDIR/battery-full.png -h "string:x-dunst-stack-tag:batt-full" "Battery is fully charged" "Please disconnect your charger"
 }
-
 low() {
 	duration=$(acpi -b | grep -oP '(?<=%, ).*(?= remaining)')
 	notify-send -u critical -i $IMGDIR/battery-critical.png -h "string:x-dunst-stack-tag:batt-crit" "Your battery is running low" "${duration%:*} ($1%) remaining"
@@ -16,12 +15,14 @@ low() {
 [[ $1 = "--high" ]] && high && exit 0
 [[ $1 = "--low" ]] && low $LOW_THRESH && exit 0
 
-notify-send -u low -i $IMGDIR/battery.png "Battery watcher started"
+# notify-send -u low -i $IMGDIR/battery.png "Battery watcher started"
 pid=$(pgrep battery)
 if [[ $(echo "$pid" | wc -l) -gt 1 ]]; then
 	exit 0
 fi
 
+# Normal polling every min
+poll() {
 while true; do
 	STATUS=$(cat /sys/class/power_supply/BAT1/status)
 	POWER=$(acpi -b | grep "Battery 0" | grep -o '[0-9]\+%' | tr -d '%')
@@ -32,5 +33,15 @@ while true; do
 		[[ $POWER -le $LOW_THRESH ]] && low $POWER
 	fi
 	sleep 60
-	#echo "run"
 done
+}
+
+# Monitor for charging/uncharging
+monitor() {
+	upower -m | while read line; do
+		[[ ! -n "$(echo $line | grep 'daemon changed')" ]] && continue
+		eww update batt-icon="$(~/.config/eww/scripts/geticon batt)"
+	done
+}
+
+poll & monitor
