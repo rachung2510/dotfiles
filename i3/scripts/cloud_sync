@@ -3,6 +3,14 @@
 HOME=/home/user
 [[ $1 =~ ^(-h|--help)$ ]] && echo "cloud_sync [run] [onedrive/nextcloud] [me/personal]" && exit 0 
 
+# Capture SIGTERM (kill -- -$(pgrep cloud_sync))
+exit_script() {
+    eww update sync-bool=false
+    trap - SIGINT SIGTERM # clear the trap
+    kill -- -$$ # Sends SIGTERM to child/sub processes
+}
+trap exit_script SIGINT SIGTERM
+
 # Update eww sync tooltip
 update_sync_tooltip() { 
 	eww update sync-tooltip="$($HOME/.config/eww/scripts/tooltip sync)"
