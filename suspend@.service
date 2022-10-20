@@ -6,7 +6,8 @@ Before=suspend.target sleep.target
 User=user
 Type=forking
 Environment=DISPLAY=:0
-ExecStartPre= -/usr/bin/killall -g cloud_sync
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+ExecStartPre= -/usr/bin/pkill cloud_sync
 ExecStart=/home/user/.config/i3/scripts/poweractions lock
 
 [Install]
