@@ -2,5 +2,7 @@
 
 eww update hour="$(date +%H)"
 eww update min="$(date +%M)"
+eww update sync-bool=false
+# [[ ! -n $(pgrep cloud_sync) ]] && eww update sync-bool=false || eww update sync-bool=true
 eww update batt-val="$(~/.config/eww/scripts/getval batt)"
 eww update batt-icon="$(~/.config/eww/scripts/geticon batt)"
