@@ -26,13 +26,15 @@ poll() {
 while true; do
 	STATUS=$(cat /sys/class/power_supply/BAT1/status)
 	POWER=$(acpi -b | grep "Battery 0" | grep -o '[0-9]\+%' | tr -d '%')
+	eww update batt-val=$POWER
+	eww update batt-icon="$(~/.config/eww/scripts/geticon batt)"
 
 	if [[ $STATUS = "Charging" ]]; then
 		[[ $POWER -ge $HIGH_THRESH ]] && high
 	else
 		[[ $POWER -le $LOW_THRESH ]] && low $POWER
 	fi
-	sleep 60
+	sleep 100
 done
 }
 
