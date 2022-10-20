@@ -81,10 +81,10 @@ notify-send -u low -i $HOME/.config/dunst/img/cloud_sync.png "OneDrive and Nextc
 pid=$(pgrep `basename "$0"`)
 [[ $(echo "$pid" | wc -l) -gt 1 ]] && exit 0
 
-eww update sync-bool="true"
 while true; do
 	check_wifi
 
+	eww update sync-bool="true"
 	eww update sync-icon="$($HOME/.config/eww/scripts/geticon sync syncing)"
 	update_sync_tooltip
 	onedrive_sync & nextcloud_sync
