@@ -18,7 +18,10 @@ sudo cp ~/i3/wallpapers/login-wallpaper.jpg /etc/media/
 sudo ln -t /usr/local/bin/  ~/.config/i3/scripts/picom-toggle
 sudo mkdir /etc/xsettingsd
 sudo cp xsettingsd.conf /etc/xsettingsd/
-sudo cp suspend /lib/systemd/system-sleep/
+sudo cp suspend@.service /etc/systemd/system/
+sudo cp resume@.service /etc/systemd/system/
+sudo systemctl enable suspend@user
+sudo systemctl enable resume@user
 
 # i3lock-color
 echo -e "\n[INFO] Installing i3lock-color..."

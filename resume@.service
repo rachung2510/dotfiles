@@ -1,0 +1,13 @@
+[Unit]
+Description=User suspend actions
+After=suspend.target sleep.target
+
+[Service]
+User=user
+Type=simple
+Environment=DISPLAY=:0
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+ExecStart=/home/user/.config/i3/scripts/resume
+
+[Install]
+WantedBy=suspend.target sleep.target
