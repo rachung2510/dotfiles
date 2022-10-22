@@ -60,6 +60,7 @@
 (defpoll sync-icon :interval "5h" "scripts/geticon sync")
 (defpoll sync-bool :interval "5h" "scripts/getbool sync")
 (defvar sync-start "0")
+(defvar sync-next "0")
 
 ;; Quickbuttons
 (defpoll wifi-icon		:interval "5h" "scripts/geticon wifi")
