@@ -185,7 +185,6 @@
 
 [Whatsapp]
 	appname = "whatsapp-nativefier-d40211"
-    format = "<b>甆 %s</b>\n%b"
 	background = "#51b868"
 
 [Volume Mute]
