@@ -25,7 +25,6 @@ check_wifi() {
 
 # Sync OneDrive
 onedrive_sync() {
-	err=/tmp/ONEERR
 	SYNC_ME=1
 	SYNC_IMP=1
 	[[ $1 = "me" ]] && SYNC_IMP=0
@@ -34,9 +33,8 @@ onedrive_sync() {
 		onedrive --synchronize
 	fi
 	if [[ $SYNC_IMP = 1 ]] && [[ -d $HOME/Imperial ]]; then
-		onedrive --synchronize --confdir=$HOME/.config/onedriveimperial 2>$err
-		ERROR=$(<$err)
-		[[ ! -n "$ERROR" ]] && rm $err && return
+		out=$(onedrive --synchronize --confdir=$HOME/.config/onedriveimperial | tee /dev/fd/2)
+		[[ -n "$(echo \"$out\" | grep 'Initializing')" ]] && return
 		choice=$(dunstify -u critical -i $HOME/.config/dunst/img/cloud_sync_stop.png --action="reauth,Reauthenticate OneDrive" "OneDrive Imperial not synced successfully" "Reauthenticate the account")
 		[[ "$choice" = "reauth" ]] && alacritty --class floating -e onedrive --synchronize --confdir=$HOME/.config/onedriveimperial --reauth
 		rm $err
@@ -51,6 +49,7 @@ nextcloud_sync() {
 	[[ ! -n "$(ls -A $rem)" ]] && echo y | mount /mnt/Nextcloud # login details to save to /etc/davfs2/secrets
 	/usr/local/bin/bsync $loc $rem 2>$err
 	ERROR=$(<$err)
+	notify-send "$ERROR"
 	[[ ! -n "$ERROR" ]] && rm $err && return
 	choice=$(dunstify -u critical -i $HOME/.config/dunst/img/cloud_sync_stop.png --action="fix,Resync with fix" "Nextcloud not synced successfully")
 	if [[ "$choice" = "fix" ]]; then
@@ -84,7 +83,10 @@ while true; do
 	update_sync_tooltip
 	onedrive_sync & nextcloud_sync
 	eww update sync-icon="$($HOME/.config/eww/scripts/geticon sync)"
-	eww update sync-start="$(date +%s)"
+	tic="$(date +%s)"
+	toc="$((tic + 300))"
+	eww update sync-start="$tic"
+	eww update sync-next="$toc"
 	update_sync_tooltip
 	
 	sleep 300
