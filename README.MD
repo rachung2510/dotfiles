@@ -13,7 +13,7 @@ i3bar used when system tray needs to be accessed.
 - Workspace icon changes based on window + manual setting of workspace icon via dmenu
 
 # Installation
-Run arch_install.sh.
+Run ```arch_install.sh```.
 
 # Keybinds
 Default i3 keybinds unless otherwise stated.
