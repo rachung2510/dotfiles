@@ -1,4 +1,9 @@
 # Rice Setup
+<img src="https://github.com/rachung2510/dotfiles/blob/master/screenshots/sidebar-menu.png?raw=true" alt="Home Page" width="800" />
+<img src="https://github.com/rachung2510/dotfiles/blob/master/screenshots/dark-theme.png?raw=true" alt="Home Page" width="800" />
+<img src="https://github.com/rachung2510/dotfiles/blob/master/screenshots/light-theme.png?raw=true" alt="Home Page" width="800" />
+i3bar used when system tray needs to be accessed.
+<img src="https://github.com/rachung2510/dotfiles/blob/master/screenshots/i3bar.png?raw=true" alt="Home Page" width="800" />
 
 # Features
 - i3wm
