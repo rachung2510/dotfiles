@@ -44,12 +44,12 @@ onedrive_sync() {
 # Sync Nextcloud
 rem="/mnt/Nextcloud/"
 loc="$HOME/Nextcloud/"
+err=/tmp/ERROR
 nextcloud_sync() {
-	err=/tmp/NCERR
 	[[ ! -n "$(ls -A $rem)" ]] && echo y | mount /mnt/Nextcloud # login details to save to /etc/davfs2/secrets
 	/usr/local/bin/bsync $loc $rem 2>$err
-	ERROR=$(<$err)
-	notify-send "$ERROR"
+	# ERROR=$(<$err)
+	ERROR=$(cat $err | grep "Error:")
 	[[ ! -n "$ERROR" ]] && rm $err && return
 	choice=$(dunstify -u critical -i $HOME/.config/dunst/img/cloud_sync_stop.png --action="fix,Resync with fix" "Nextcloud not synced successfully")
 	if [[ "$choice" = "fix" ]]; then
