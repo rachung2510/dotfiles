@@ -15,6 +15,7 @@ WSICONMAP = {
 	"window_title=.*WhatsApp - Personal.*": "whatsapp",
 	"window_title=.*YouTube.*": "youtube",
 	"window_class=Alacritty": "terminal",
+	"window_class=code-oss": "code",
 	"window_class=discord": "video",
 	"window_class=Evince": "pdf",
 	"window_class=[fF]ont-.*": "fonts",
