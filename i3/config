@@ -30,9 +30,8 @@ smart_borders on
 # border_radius 5
 
 # show window title bars (not officially supported with i3gaps)
-# default_border normal
 for_window [all] border pixel 2
-default_border pixel 2
+# default_border pixel 2
 default_floating_border pixel 0
 
 # window title alignment
