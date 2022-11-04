@@ -3,39 +3,43 @@
 LOW_THRESH=16
 HIGH_THRESH=95
 IMGDIR="~/.config/dunst/img"
+RAND_ID=$(shuf -i 100-999 -n 1) # random id for dunst notification
 
 high() {
 	notify-send -u low -i $IMGDIR/battery-full.png -h "string:x-dunst-stack-tag:batt-full" "Battery is fully charged" "Please disconnect your charger"
 }
 low() {
 	duration=$(acpi -b | grep -oP '(?<=%, ).*(?= remaining)')
-	notify-send -u critical -i $IMGDIR/battery-critical.png -h "string:x-dunst-stack-tag:batt-crit" "Your battery is running low" "${duration%:*} ($1%) remaining"
+	dunstify -u critical -r $RAND_ID -i $IMGDIR/battery-critical.png "Your battery is running low" "${duration%:*} ($1%) remaining"
 }
 
-[[ $1 = "--high" ]] && high && exit 0
-[[ $1 = "--low" ]] && low $LOW_THRESH && exit 0
+[[ $1 = "high" ]] && high && exit 0
+[[ $1 = "low" ]] && low $LOW_THRESH && exit 0
 
-# notify-send -u low -i $IMGDIR/battery.png "Battery watcher started"
+# Only allow 1 instance of script to run
 pid=$(pgrep battery)
-if [[ $(echo "$pid" | wc -l) -gt 1 ]]; then
-	exit 0
-fi
+[[ $(echo "$pid" | wc -l) -gt 1 ]] && exit 0
+
+# Get current battery status
+batt_status() {
+	echo "$(cat /sys/class/power_supply/BAT1/status)"
+}
 
 # Normal polling every min
 poll() {
-while true; do
-	STATUS=$(cat /sys/class/power_supply/BAT1/status)
-	POWER=$(acpi -b | grep "Battery 0" | grep -o '[0-9]\+%' | tr -d '%')
-	eww update batt-val=$POWER
-	eww update batt-icon="$(~/.config/eww/scripts/geticon batt)"
+	while true; do
+		# STATUS=$(cat /sys/class/power_supply/BAT1/status)
+		POWER=$(acpi -b | grep "Battery 0" | grep -o '[0-9]\+%' | tr -d '%')
+		eww update batt-val=$POWER
+		eww update batt-icon="$(~/.config/eww/scripts/geticon batt)"
 
-	if [[ $STATUS = "Charging" ]]; then
-		[[ $POWER -ge $HIGH_THRESH ]] && high
-	else
-		[[ $POWER -le $LOW_THRESH ]] && low $POWER
-	fi
-	sleep 100
-done
+		if [[ $(batt_status) = "Charging" ]]; then
+			[[ $POWER -ge $HIGH_THRESH ]] && high
+		else
+			[[ $POWER -le $LOW_THRESH ]] && low $POWER
+		fi
+		sleep 100
+	done
 }
 
 # Monitor for charging/uncharging
@@ -43,6 +47,7 @@ monitor() {
 	upower -m | while read line; do
 		[[ ! -n "$(echo $line | grep 'daemon changed')" ]] && continue
 		eww update batt-icon="$(~/.config/eww/scripts/geticon batt)"
+		[[ $(batt_status) = "Charging" ]] && dunstify -C $RAND_ID
 	done
 }
 
