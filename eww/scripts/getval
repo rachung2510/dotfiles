@@ -2,7 +2,9 @@
 
 if [[ $1 = "vol" ]]; then
 	# echo $(pactl get-sink-volume @DEFAULT_SINK@) | grep -oP '(?<=\/)(?:\s*)\K.*?(?=%){1}' | head -n 1
-	echo "$(amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%')"
+	channel=$(amixer -D pulse sget Master | grep "Playback channels" | awk -F: '{printf $2}')
+	[[ $channel = *"Mono"* ]] && key="Mono" || key="Left"
+	echo "$(amixer -D pulse sget Master | grep "$key:" | awk -F'[][]' '{ print $2 }' | tr -d '%')"
 
 elif [[ $1 = "light" ]]; then
 	echo "100*$(brightnessctl g)/$(brightnessctl m)" | bc
