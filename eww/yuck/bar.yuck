@@ -27,7 +27,7 @@
 		 :spacing "8"
 		 (barbtn :icon vol-icon :modi ""
 		 	:action "~/.config/i3/scripts/fnactions mute"
-			:tooltip "Volume: ${volume-val}% 
+			:tooltip "Volume: ${vol-val}% 
 ${vol-tooltip}")
 		 (barbtn :icon wifi-icon
 		 	:action "alacritty -t nmtui -e nmtui-connect &"

@@ -4,7 +4,7 @@ TAG="fn"
 
 # $1=icon, $2=value, $3=summary
 alert() {
-	notify-send -u "low" -i "$DUNST/img/$1.png" -h int:value:$2 -h string:x-dunst-stack-tag:$TAG "Current $3: $2%"
+	notify-send -u "low" -i "$DUNST/img/$1.png" -h int:value:$2 -h string:x-dunst-stack-tag:$TAG -h "string:wired-tag:$TAG" "Current $3: $2%"
 }
 
 if [[ $1 = "vol" ]]; then
@@ -16,9 +16,9 @@ elif [[ $1 = "mute" ]]; then
 	if [[ $2 != "notify" ]]; then exit 0; fi
 	val="$(~/.config/eww/scripts/getval vol)"
 	if [[ $(pactl get-sink-mute @DEFAULT_SINK@) = "Mute: yes" ]]; then
-		notify-send -u "low" -i "$DUNST/img/volume-mute.png" -h int:value:$val -h string:x-dunst-stack-tag:$TAG "Speakers muted"
+		notify-send -u "low" -i "$DUNST/img/volume-mute.png" -h int:value:$val -h string:x-dunst-stack-tag:$TAG -h "string:wired-tag:$TAG" "Speakers muted"
 	else
-		notify-send -u "low" -i "$DUNST/img/volume-up.png" -h int:value:$val -h string:x-dunst-stack-tag:$TAG "Speakers unmuted"
+		notify-send -u "low" -i "$DUNST/img/volume-up.png" -h int:value:$val -h string:x-dunst-stack-tag:$TAG -h "string:wired-tag:$TAG" "Speakers unmuted"
 	fi
 
 elif [[ $1 = "light" ]]; then

@@ -50,9 +50,9 @@
 (defwidget sidebar-controls []
 	(box :class "controls roundpanel" :space-evenly "true" :orientation "v" :height controls-height
 		(slider
-			:value volume-val
+			:value vol-val
 			:icon vol-icon
-			:tooltip "Volume: ${volume-val}%
+			:tooltip "Volume: ${vol-val}%
 ${vol-tooltip}"
 			:action-click "~/.config/i3/scripts/fnactions mute"
 			:action-slide "amixer -D pulse sset Master {}%"
