@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOW_THRESH=16
+LOW_THRESH=15
 HIGH_THRESH=95
 IMGDIR="~/.config/dunst/img"
 RAND_ID=$(shuf -i 100-999 -n 1) # random id for dunst notification
