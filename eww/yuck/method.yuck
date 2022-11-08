@@ -52,7 +52,7 @@
 			:tooltip {tooltip} {icon})
 ))
 (defwidget barbtn-label [icon action tooltip label low-crit high-crit]
-	(box :orientation "v" :space-evenly "false" :class "${(label > high-crit) || (label < low-crit) ? 'crit' : ''}" 
+	(box :orientation "v" :space-evenly "false" :class "${(icon != "") && ((label > high-crit) || (label < low-crit)) ? 'crit' : ''}" 
 		(button :class "barbtn-icon-larger ${tooltip == "" ? "no-hover" : ""}"
 			:onclick {action}
 			:tooltip {tooltip} {icon})
