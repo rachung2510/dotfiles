@@ -9,10 +9,8 @@ CHOICES="$c1\n$c2\n$c3\n$c4"
 # $1=tooltip, $2=cmd options
 sync() {
 	eww update sync-icon="$(~/.config/eww/scripts/geticon sync syncing)"
-	eww update sync-tooltip="Syncing $1..."
 	eval "~/.config/i3/scripts/cloud_sync run $2" 
 	eww update sync-icon="$(~/.config/eww/scripts/geticon sync)"
-	eww update sync-tooltip="$(~/.config/eww/scripts/tooltip sync)"
 }
 
 run() {
