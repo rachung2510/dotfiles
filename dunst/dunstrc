@@ -172,6 +172,18 @@
     summary = "error"
 	urgency = "critical"
 
+[Nextcloud]
+	appname = Nextcloud
+    ; icon = ~/.config/dunst/img/noti.png
+	format = "<b>Nextcloud</b>\n%s"
+
+[OneDrive1]
+	body = "Initializing monitor ..."
+	format = ""
+[OneDrive2]
+	body = "Initializing the Synchronization Engine ..."
+	format = ""
+
 [Spotify]
     appname=Spotify
     background = "#199949"

@@ -295,6 +295,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
 # exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id dex /etc/xdg/autostart/eos-update-notifier.desktop
+exec --no-startup-id dex /etc/xdg/autostart/gnome-keyring-*.desktop
 
 # set wallpaper
 exec --no-startup-id feh --bg-fill ~/.config/i3/wallpapers/$(~/.config/i3/scripts/theme -p)-wallpaper.jpg
@@ -317,7 +318,7 @@ exec --no-startup-id i3-msg 'workspace $ws1'
 exec --no-startup-id ~/.config/i3/scripts/battery &
 exec --no-startup-id ~/.config/i3/scripts/network &
 exec --no-startup-id ~/.config/i3/scripts/theme daemon &
-exec --no-startup-id sleep 5 && ~/.config/i3/scripts/cloud_sync &
+exec --no-startup-id sleep 5 && ~/.config/i3/scripts/onedrive_sync
 exec --no-startup-id ibus-daemon -drxR
 exec --no-startup-id eww daemon && eww open bar
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
@@ -326,6 +327,7 @@ exec --no-startup-id autokey-gtk
 exec_always --no-startup-id ~/.config/i3/scripts/fullscreen
 exec --no-startup-id ~/.config/i3/scripts/floating.py &
 exec --no-startup-id ~/.config/i3/scripts/volume &
+exec --no-startup-id nextcloud &
 
 ###############
 # system tray #
@@ -368,6 +370,7 @@ for_window [class="amberol"] floating enable, resize set 440 620, move position 
 for_window [class="Autokey-gtk"] floating enable
 for_window [class="jetbrains-studio" title="win0"] floating enable
 for_window [class="File-roller"] floating enable
+for_window [class="Shotwell"] floating enable
 
 # set floating (nontiling) for special apps
 for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
