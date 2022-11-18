@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ $1 = run ]];
+if [[ $1 = "run" ]]; then
 	[[ ! -n $2 ]] && onedrive --synchronize
 	[[ $2 = "imperial" ]] && onedrive --synchronize --confdir="~/.config/onedriveimperial"
 	exit 0
@@ -8,17 +8,17 @@ fi
 
 eww update sync-bool="true"
 eww update sync-icon="$(~/.config/eww/scripts/geticon sync)"
-onedrive --monitor &
-onedrive --monitor --confdir="~/.config/onedriveimperial" &
 
-# while true; do
-# 	pid=$(pgrep onedrive)
-# 	if [[ ! -n "$pid" ]]; then
-# 		eww update sync-bool="false"
-# 	elif [[ $(echo "$pid" | wc -l) -lt 2 ]] 
-# 		eww update sync-icon="$(~/.config/eww/scripts/geticon sync off)"
-# 	fi
-# 	sleep 300
-# done
+while true; do
+	if [[ ! -n $pid1 ]]; then
+		onedrive --monitor &
+		pid1=$!
+	fi
+	if [[ ! -n $pid2 ]]; then
+		onedrive --monitor --confdir="~/.config/onedriveimperial" &
+		pid2=$!
+	fi
+	sleep 30
+done
 
 # vim: set ft=sh:

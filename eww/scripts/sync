@@ -2,24 +2,25 @@
 
 c1="Sync OneDrive (Personal)"
 c2="Sync OneDrive (Imperial)"
-c3="Sync Nextcloud"
+# c3="Sync Nextcloud"
 c4="Sync all"
-CHOICES="$c1\n$c2\n$c3\n$c4"
+CHOICES="$c1\n$c2\n$c4"
 
 # $1=tooltip, $2=cmd options
 sync() {
 	eww update sync-icon="$(~/.config/eww/scripts/geticon sync syncing)"
-	eval "~/.config/i3/scripts/cloud_sync run $2" 
+	[[ $1 = "imperial" ]] && opt="--confdir=~/.config/onedriveimperial"
+	eval "onedrive --synchronize $opt"
+	# eval "~/.config/i3/scripts/cloud_sync run $2" 
 	eww update sync-icon="$(~/.config/eww/scripts/geticon sync)"
 }
 
 run() {
 	choice=$(echo -e "$CHOICES" | rofi -dmenu -theme ~/.config/rofi/dunst.rasi)
-	echo "$choice"
+	# echo "$choice"
 	case "$choice" in
-		"$c1") sync "OneDrive (Personal)" "onedrive me";;
-		"$c2") sync "OneDrive (Imperial)" "onedrive imperial";;
-		"$c3") sync "Nextcloud" "nextcloud";;
+		"$c1") sync "OneDrive (Personal)" "";;
+		"$c2") sync "OneDrive (Imperial)" "imperial";;
 		"$c4") sync;;
 	esac
 }
