@@ -18,5 +18,4 @@ for l in ${arr[@]}; do
 done
 
 pkill -USR1 picom
-# [[ $status = "enabled" ]] && newstatus="disabled" || newstatus="enabled"
-# notify-send "Compositor $newstatus"
+picom -b &
