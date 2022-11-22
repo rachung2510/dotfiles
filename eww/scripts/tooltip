@@ -32,20 +32,14 @@ elif [[ $1 = "wifi" ]]; then
 	fi
 
 elif [[ $1 = "sync" ]]; then
-	get_sync_icon() {
-		echo $(~/.config/eww/scripts/geticon sync $1)
-	}
-	case "$(eww get sync-icon)" in
-		"$(get_sync_icon syncing)")	echo "Syncing...";;
-		"$(get_sync_icon off)")		echo "Cloud unavailable";;
-		"$(get_sync_icon)")
-			tic=$(eww get sync-start)
-			[[ $tic = 0 ]] && exit 0
-			toc=$(eww get sync-next)
-			[[ $toc = 0 ]] &&
-				echo -e "Last synced on $(date -d@$tic '+%H:%M')" ||
-				echo -e "Last synced on $(date -d@$tic '+%H:%M')\nNext sync at $(date -d@$toc '+%H:%M')"
-		;;
-	esac
+	status_personal="$(systemctl --user status onedrive | grep "Active" | awk '{print $2}')"
+	status_imperial="$(systemctl --user status onedrive_imperial | grep "Active" | awk '{print $2}')"
+	if [[ $status_personal = "active" ]] && [[ $status_imperial != "active" ]]; then
+		echo "OneDrive (Imperial) sync not active"
+	elif [[ $status_personal != "active" ]] && [[ $status_imperial = "active" ]]; then
+		echo "OneDrive (Personal) sync not active"
+	else
+		echo ""
+	fi
 
 fi

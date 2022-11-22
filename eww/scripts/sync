@@ -2,29 +2,20 @@
 
 c1="Sync OneDrive (Personal)"
 c2="Sync OneDrive (Imperial)"
-# c3="Sync Nextcloud"
-c4="Sync all"
-CHOICES="$c1\n$c2\n$c4"
-
-# $1=tooltip, $2=cmd options
-sync() {
-	eww update sync-icon="$(~/.config/eww/scripts/geticon sync syncing)"
-	[[ $1 = "imperial" ]] && opt="--confdir=~/.config/onedriveimperial"
-	eval "onedrive --synchronize $opt"
-	# eval "~/.config/i3/scripts/cloud_sync run $2" 
-	eww update sync-icon="$(~/.config/eww/scripts/geticon sync)"
-}
+c3="Sync all"
+CHOICES="$c1\n$c2\n$c3"
 
 run() {
 	choice=$(echo -e "$CHOICES" | rofi -dmenu -theme ~/.config/rofi/dunst.rasi)
-	# echo "$choice"
 	case "$choice" in
-		"$c1") sync "OneDrive (Personal)" "";;
-		"$c2") sync "OneDrive (Imperial)" "imperial";;
-		"$c4") sync;;
+		"$c1") systemctl --user restart onedrive;;
+		"$c2") systemctl --user restart onedrive_imperial;;
+		"$c3") systemctl --user restart onedrive && systemctl --user restart onedrive_imperial;;
 	esac
+	eww update sync-icon="$(~/.config/eww/scripts/geticon sync)"
+	eww update sync-tooltip="$(~/.config/eww/script/tooltip sync)"
 }
 
 [[ $1 = "run" ]] && run && exit
 
-alacritty --class Alacritty,floating -e ~/.config/eww/scripts/sync run
+alacritty --class Alacritty,minimized -e ~/.config/eww/scripts/sync run

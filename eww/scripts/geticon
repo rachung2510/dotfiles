@@ -45,9 +45,14 @@ elif [[ $1 = "wifi" ]]; then
 	echo "直"
 
 elif [[ $1 = "sync" ]]; then
-	[[ $2 = "syncing" ]] && echo "" && exit 0
-	[[ $2 = "off" ]] && echo "" && exit 0
-	# echo ""
-	echo ""
+	status_personal="$(systemctl --user status onedrive | grep "Active" | awk '{print $2}')"
+	status_imperial="$(systemctl --user status onedrive_imperial | grep "Active" | awk '{print $2}')"
+	if [[ $status_personal = "active" ]] && [[ $status_imperial = "active" ]]; then
+		echo 
+	elif [[ $status_personal != "active" ]] && [[ $status_imperial != "active" ]]; then
+		echo 
+	else
+		echo 
+	fi
 
 fi
