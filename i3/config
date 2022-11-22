@@ -318,7 +318,6 @@ exec --no-startup-id i3-msg 'workspace $ws1'
 exec --no-startup-id ~/.config/i3/scripts/battery &
 exec --no-startup-id ~/.config/i3/scripts/network &
 exec --no-startup-id ~/.config/i3/scripts/theme daemon &
-exec --no-startup-id sleep 5 && ~/.config/i3/scripts/onedrive_sync &
 exec --no-startup-id ibus-daemon -drxR
 exec --no-startup-id eww daemon && eww open bar
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
@@ -389,6 +388,9 @@ for_window [window_role="(?i)GtkFileChooserDialog"] resize set 640 480 #to set s
 # set position of floating window
 # for_window [class=".*"] move position center
 bindsym $mod+Shift+m move position center
+
+# open windows in scratchpad
+for_window [class="Alacritty" instance="minimized"] move scratchpad
 
 ######################################
 # color settings for bar and windows #
