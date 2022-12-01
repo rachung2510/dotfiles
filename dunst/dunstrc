@@ -186,9 +186,10 @@
 
 [Spotify]
     appname=Spotify
-    background = "#199949"
+    ; background = "#199949"
+    background = "#d4516fff"
     foreground = "#ffffff"
-    # format = "<b> %s</b>\n%b"
+    ; format = "<b> %s</b>\n%b"
 
 [Screenshot]
 	appname=maim
