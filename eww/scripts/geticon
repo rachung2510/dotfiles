@@ -30,7 +30,7 @@ elif [[ $1 = "batt" ]]; then
 		echo ""
 		exit 0
 	fi
-	if [[ level -le 16 ]]; then ramp=0;
+	if [[ level -le 15 ]]; then ramp=0;
 	elif [[ level -le 30 ]]; then ramp=1;
 	elif [[ level -le 50 ]]; then ramp=2;
 	elif [[ level -le 70 ]]; then ramp=3;
