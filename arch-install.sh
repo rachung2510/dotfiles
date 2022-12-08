@@ -15,7 +15,7 @@ cp -r picom ~/.config/
 cp -r rofi ~/.config/
 sudo mkdir /etc/media
 sudo cp ~/i3/wallpapers/login-wallpaper.jpg /etc/media/
-sudo ln -t /usr/local/bin/  ~/.config/i3/scripts/picom-toggle
+sudo ln -t /usr/local/bin/  ~/.config/i3/scripts/picom_toggle
 sudo mkdir /etc/xsettingsd
 sudo cp xsettingsd.conf /etc/xsettingsd/
 sudo cp suspend@.service /etc/systemd/system/
@@ -36,7 +36,7 @@ echo -e "\n[INFO] Installing eww..."
 cd ~
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source ~/.cargo/env
-sudo apt install libgtk-3-dev -y
+# sudo apt install libgtk-3-dev -y
 git clone https://github.com/elkowar/eww
 cd eww
 cargo build --release
