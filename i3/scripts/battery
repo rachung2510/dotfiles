@@ -33,7 +33,7 @@ poll() {
 		eww update batt-val=$POWER
 		eww update batt-icon="$(~/.config/eww/scripts/geticon batt)"
 
-		if [[ $(batt_status) = "Charging" ]]; then
+		if [[ $(batt_status) = "Charging" ]] || [[ $(batt_status) = "Full" ]]; then
 			[[ $POWER -ge $HIGH_THRESH ]] && high
 		else
 			[[ $POWER -le $LOW_THRESH ]] && low $POWER
