@@ -10,6 +10,8 @@ run() {
 	eww update vol-icon=$(~/.config/eww/scripts/geticon vol)
 }
 
+[[ $1 == run ]] && run && exit
+
 pactl subscribe | while read line; do
 	[[ ! -n "$(echo $line | grep 'change')" ]] && continue
 	run
