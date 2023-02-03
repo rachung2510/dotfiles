@@ -259,6 +259,7 @@ set $ws10 "10 "
 for_window [class="Spotify"] move to workspace number $ws10
 for_window [class="zoom"] move to workspace number $ws8
 for_window [class="[mM]inecraft.*"] move to workspace number $ws9
+for_window [class="Microsoft-edge-beta" title=".*Outlook.*"] move to workspace number $ws8
 # assign [class="Google-chrome"] number 1
 # assign [class="Microsoft-edge"] number 1
 assign [class="obsidian"] number $ws7
@@ -370,6 +371,8 @@ for_window [class="Autokey-gtk"] floating enable
 for_window [class="jetbrains-studio" title="win0"] floating enable
 for_window [class="File-roller"] floating enable
 for_window [class="Shotwell"] floating enable
+for_window [class="Putty"] floating enable
+for_window [class="MATLAB R2022b.*" title="Figure.*"] floating enable, resize set 920 640, move position center
 
 # set floating (nontiling) for special apps
 for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
@@ -408,14 +411,14 @@ set $shade8             #ce93d8
 # bar-bg-dark			#333333
 # bar-text-light		#8e24aa
 # bar-text-dark			#dca8f0
-set $bar-bg				#e7d0f0
-set $bar-text			#8e24aa
+set $bar-bg				#333333
+set $bar-text			#dca8f0
 # inactive-bg-light     #f2f2f2
 # inactive-text-light   #908c97
 # inactive-bg-dark      #2a2a2a
 # inactive-text-dark    #b4b4b4
-set $inactive-bg		#f2f2f2
-set $inactive-text		#908c97
+set $inactive-bg		#2a2a2a
+set $inactive-text		#b4b4b4
 
 # define colors for windows:
 #class		        	border	bground			text			indicator		child_border
