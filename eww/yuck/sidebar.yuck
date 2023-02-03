@@ -108,7 +108,7 @@ ${batt-tooltip}"
 		:value	"${hdd-val}"
 		:text " HDD"
 		:label "${hdd-val}%"
-		:tooltip "${hdd-used}M used, ${hdd-avail}M available"))
+		:tooltip "${hdd-used}G used, ${hdd-avail}G available"))
 
 (defwidget quickbuttons []
 	(box :class "roundpanel quickbuttons"
