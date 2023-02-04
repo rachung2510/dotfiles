@@ -20,6 +20,7 @@ WSICONMAP = {
 	"window_class=Code": "code",
 	"window_class=discord": "video",
 	"window_class=Evince": "pdf",
+	"window_class=firefox": "browser",
 	"window_class=[fF]ont-.*": "fonts",
 	"window_class=Inkscape": "draw",
 	"window_class=jetbrains-studio": "code",
