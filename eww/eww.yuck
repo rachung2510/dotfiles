@@ -3,7 +3,7 @@
 (defpoll hour :interval "30s" "date '+%H'")
 (defpoll min  :interval "30s" "date '+%M'")
 (defpoll cal-d :interval "12h" "date '+%d'")
-(defpoll cal-m :interval "12h" "m=$(date '+%m' | sed 's/^0//') && echo $((m-1))")
+(defpoll cal-m :interval "12h" "m=$(date '+%m' | sed 's/^0//')")
 (defpoll cal-y :interval "12h" "date '+%Y'")
 
 ;; Player
