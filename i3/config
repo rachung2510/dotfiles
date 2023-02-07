@@ -373,6 +373,7 @@ for_window [class="File-roller"] floating enable
 for_window [class="Shotwell"] floating enable
 for_window [class="Putty"] floating enable
 for_window [class="MATLAB R2022b.*" title="Figure.*"] floating enable, resize set 920 640, move position center
+for_window [class="feh"] floating enable
 
 # set floating (nontiling) for special apps
 for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
