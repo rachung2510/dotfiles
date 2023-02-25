@@ -2,7 +2,7 @@
 
 play=""
 pause=""
-kanji_wrap_limit=24
+kanji_wrap_limit=22
 
 status() {
 	STATUS="$(playerctl -p playerctld status)";
