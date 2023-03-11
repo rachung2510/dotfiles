@@ -4,6 +4,7 @@
 
 font pango: MesloLGM Nerd Font 11
 set $mod Mod4
+set $alt Mod1
 
 #####################
 # workspace layout: #
@@ -114,6 +115,7 @@ bindsym $mod+r mode "resize"
 # start a terminal
 bindsym $mod+Return exec --no-startup-id alacritty
 bindsym $mod+Shift+Return exec --no-startup-id "alacritty --class Alacritty,floating"
+bindsym Ctrl+$alt+t exec --no-startup-id "alacritty --class Alacritty,floating"
 
 # kill focused window
 bindsym Ctrl+Shift+q kill
