@@ -17,5 +17,5 @@ for l in ${arr[@]}; do
 	sed -i "${ln}s/.*/$newline/" $CONF
 done
 
-pkill -USR1 picom
+# pkill -USR1 picom
 picom -b &
