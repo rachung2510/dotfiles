@@ -7,10 +7,10 @@ if [[ $1 = "vol" ]]; then
 	mute=$(pactl get-sink-mute @DEFAULT_SINK@)
 	if [[ $mute = "Mute: no" ]]; then
 		[[ "$(eww get vol-tooltip | awk '{print $2}')" != "Speaker" ]] && 
-			echo "" || echo ""
+			echo "" || echo ""
 	else
 		[[ "$(eww get vol-tooltip | awk '{print $2}')" != "Speaker" ]] && 
-			echo "" || echo ""
+			echo "ﳌ" || echo ""
 	fi
 
 elif [[ $1 = "light" ]]; then
