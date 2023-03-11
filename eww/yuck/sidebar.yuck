@@ -96,7 +96,7 @@ ${batt-tooltip}"
 		:value ram-perc
 		:text " RAM"
 		:label "${ram-val}G"
-		:tooltip ""))
+		:tooltip "${ram-val}G used"))
 (defwidget cpu []
 	(radialmeter	
 		:value "${cpu-val}"
