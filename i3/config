@@ -11,9 +11,9 @@ set $alt Mod1
 #####################
 
 # default i3 tiling mode:
-workspace_layout default
+# workspace_layout default
 #workspace_layout stacking
-#workspace_layout tabbed
+workspace_layout tabbed
 
 ##############################
 # extra options for windows: #
