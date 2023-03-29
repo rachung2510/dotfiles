@@ -3,14 +3,16 @@
 LOW_THRESH=15
 HIGH_THRESH=95
 IMGDIR="~/.config/dunst/img"
-RAND_ID=$(shuf -i 100-999 -n 1) # random id for dunst notification
+HIGH_ID=228 # BAT
+LOW_ID=229
+# RAND_ID=$(shuf -i 100-999 -n 1) # random id for dunst notification
 
 high() {
-	notify-send -u low -i $IMGDIR/battery-full.png -h "string:x-dunst-stack-tag:batt-full" "Battery is fully charged" "Please disconnect your charger"
+	dunstify -u low -r $HIGH_ID -i $IMGDIR/battery-full.png "Battery is fully charged" "Please disconnect your charger"
 }
 low() {
 	duration=$(acpi -b | grep -oP '(?<=%, ).*(?= remaining)')
-	dunstify -u critical -r $RAND_ID -i $IMGDIR/battery-critical.png "Your battery is running low" "${duration%:*} ($1%) remaining"
+	dunstify -u critical -r $LOW_ID -i $IMGDIR/battery-critical.png "Your battery is running low" "${duration%:*} ($1%) remaining"
 }
 
 [[ $1 = "high" ]] && high && exit 0
@@ -28,7 +30,6 @@ batt_status() {
 # Normal polling every min
 poll() {
 	while true; do
-		# STATUS=$(cat /sys/class/power_supply/BAT1/status)
 		POWER=$(acpi -b | grep "Battery 0" | grep -o '[0-9]\+%' | tr -d '%')
 		eww update batt-val=$POWER
 		eww update batt-icon="$(~/.config/eww/scripts/geticon batt)"
@@ -47,7 +48,8 @@ monitor() {
 	upower -m | while read line; do
 		[[ ! -n "$(echo $line | grep 'daemon changed')" ]] && continue
 		eww update batt-icon="$(~/.config/eww/scripts/geticon batt)"
-		[[ $(batt_status) = "Charging" ]] && dunstify -C $RAND_ID
+		[[ $(batt_status) = "Charging" ]] && dunstify -C $LOW_ID
+		[[ $(batt_status) = "Discharging" ]] && dunstify -C $HIGH_ID
 	done
 }
 
