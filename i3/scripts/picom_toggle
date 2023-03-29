@@ -16,6 +16,3 @@ for l in ${arr[@]}; do
 	[[ $status = "enabled" ]] && newline="$l" || newline="# $l"
 	sed -i "${ln}s/.*/$newline/" $CONF
 done
-
-# pkill -USR1 picom
-picom -b &
