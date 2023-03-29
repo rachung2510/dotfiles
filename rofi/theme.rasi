@@ -41,5 +41,5 @@ element selected {
     text-color:                     @pfg-se;
     border:							0% 0.2% 0% 0%;
     border-radius:                  100%;
-    border-color:					@bd;
+    border-color:					@pbd;
 }
