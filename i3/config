@@ -418,19 +418,19 @@ set $bar-bg				#e7d0f0
 set $bar-text			#8e24aa
 # inactive-bg-light     #f2f2f2
 # inactive-text-light   #908c97
-# inactive-bg-dark      #2a2a2a
+# inactive-bg-dark      #424242
 # inactive-text-dark    #b4b4b4
 set $inactive-bg		#f2f2f2
 set $inactive-text		#908c97
 
 # define colors for windows:
-#class		        	border	bground			text			indicator		child_border
-client.focused          $alpha  $shade8         $dark-grey      $shade8			$shade8
-# client.unfocused        $alpha  $inactive-bg    $inactive-text  $inactive-bg	$inactive-bg
-# client.focused_inactive $alpha  $inactive-bg    $inactive-text  $inactive-bg	$inactive-bg
-client.unfocused        $alpha  $inactive-bg	$inactive-text  $alpha			$alpha
-client.focused_inactive $alpha  $inactive-bg	$inactive-text  $alpha			$alpha
-client.urgent           $alpha  $urgent         $dark-grey      $urgent			$urgent
+# class						border	bground			text			indicator		child_border
+client.focused				$alpha	$shade8			$dark-grey		$shade8			$shade8
+client.unfocused			$alpha	$inactive-bg	$inactive-text	$inactive-bg	$inactive-bg
+client.focused_inactive		$alpha	$inactive-bg	$inactive-text	$inactive-bg	$inactive-bg
+# client.unfocused			$alpha	$inactive-bg	$inactive-text	$alpha			$alpha
+# client.focused_inactive	$alpha	$inactive-bg	$inactive-text	$alpha			$alpha
+client.urgent				$alpha	$urgent			$dark-grey		$urgent			$urgent
 
 ############################################
 # bar settings (input comes from i3blocks) #
