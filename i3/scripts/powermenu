@@ -27,11 +27,11 @@ chosen="$(echo -e "$options" | rofi -p powermenu -theme $ROFIDIR/powermenu.rasi 
 case $chosen in
     $shutdown)
 		ans=$(confirm_exit &)
-		[[ $ans =~ ^([yY]es|[yY])$ ]] && systemctl poweroff
+		[[ $ans =~ ^([yY]es|[yY])$ ]] && picom_toggle disable && systemctl poweroff
 	;;
     $reboot)
 		ans=$(confirm_exit &)
-		[[ $ans =~ ^([yY]es|[yY])$ ]] && systemctl reboot
+		[[ $ans =~ ^([yY]es|[yY])$ ]] && picom_toggle disable && systemctl reboot
 	;;
     $lock)
 		~/.config/i3/scripts/poweractions lock

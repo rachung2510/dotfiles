@@ -9,6 +9,10 @@ pt=$(cat $CONF | grep "$l1" | awk '{print $1}')
 [[ $pt = "#" ]] && status="enabled" || status="disabled"
 
 [[ $1 = "-p" ]] && echo $status && exit 0
+if [[ $1 = "disable" ]]; then
+	[[ $status = "enabled" ]] && exit
+	status="disabled"
+fi
 
 IFS=$'\n'
 for l in ${arr[@]}; do
