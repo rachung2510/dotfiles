@@ -8,9 +8,21 @@ CHOICES="$c1\n$c2\n$c3"
 run() {
 	choice=$(echo -e "$CHOICES" | rofi -dmenu -theme ~/.config/rofi/dunst.rasi)
 	case "$choice" in
-		"$c1") systemctl --user restart onedrive;;
-		"$c2") systemctl --user restart onedrive_imperial;;
-		"$c3") systemctl --user restart onedrive && systemctl --user restart onedrive_imperial;;
+		"$c1")
+			systemctl --user stop onedrive
+			onedrive --synchronize
+			systemctl --user start onedrive
+		;;
+		"$c2")
+			systemctl --user stop onedrive_imperial
+			onedrive --confdir=~/.config/onedrive_imperial --synchronize
+			systemctl --user start onedrive_imperial
+		;;
+		"$c3")
+			systemctl --user stop onedrive onedrive_imperial
+			onedrive --synchronize
+			onedrive --confdir=~/.config/onedrive_imperial --synchronize
+			systemctl --user start onedrive onedrive_imperial
 	esac
 	eww update sync-icon="$(~/.config/eww/scripts/geticon sync)"
 	eww update sync-tooltip="$(~/.config/eww/script/tooltip sync)"
@@ -18,4 +30,4 @@ run() {
 
 [[ $1 = "run" ]] && run && exit
 
-alacritty --class Alacritty,minimized -e ~/.config/eww/scripts/sync run
+alacritty --class minimized,Alacritty -e ~/.config/eww/scripts/sync run
