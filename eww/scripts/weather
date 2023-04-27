@@ -1,4 +1,5 @@
 #!/bin/bash
+ICONPATH="$HOME/.config/eww/assets/$(~/.config/i3/scripts/theme -p)"
 lim=15
 
 # $1=str, $2=lim
@@ -26,20 +27,32 @@ IFS="-" read -r temp icon cond <<< "$cm1" 2> /dev/null # suppress "Unknown..."
 # echo $cm1
 
 if [[ $icon = "" ]] || [[ $icon =~ [0-9] ]] ; then
-	icon=""
+	icon="$ICONPATH/unknown.svg"
 	temp=""
 	cond="Weather data not available"
 fi
 
-ICONS=("" "" "" "" "" "" "🌦")
+# ICONS=("" "" "" "" "" "" "🌦")
 if [[ $1 = "icon" ]]; then
+	# See symbols at https://github.com/chubin/wttr.in/blob/master/lib/constants.py
 	case $icon in
-		⛅️*) echo "" ;;
-		☀️*) echo "" ;;
-		*) echo $icon ;;
-	esac
+		☁️*) symbol="cloudy" ;;
+		🌫*) symbol="fog" ;;
+		🌧*) symbol="heavy-rain" ;;
+		❄️*) symbol="heavy-snow" ;;
+		🌦*) symbol="light-rain" ;;
+		🌨*) symbol="light-snow" ;;
+		⛅️*) symbol="partly-cloudy" ;;
+		☀️*) symbol="sunny" ;;
+		🌩*) symbol="thundery-rain" ;;
+		⛈*) symbol="thundery-showers" ;;
+		*) symbol="unknown" ;;
+		esac
+	echo "$ICONPATH/$symbol.svg"
+
 elif [[ $1 = "temp" ]]; then
     echo $temp
+
 elif [[ $1 = "cond" ]]; then
 	[[ $2 != "short" ]] && echo $cond && exit 0
 	wrapline "$cond" "$lim"

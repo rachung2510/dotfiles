@@ -82,8 +82,10 @@ ${batt-tooltip}"
 			(label :text weather-loc  :valign "start" :halign "start")
 			(label :text weather-cond-short :valign "start" :halign "start" :class "weather-cond")
 			(label :class "weather-temp" :text weather-temp :valign "start" :halign "start"))
-		(box :class "weather-icon" :space-evenly "false" :orientation "h" :halign "end" :valign "end" :vexpand "true"
-			(button :tooltip "Current Weather: ${weather-cond}, ${weather-temp}" :onclick "" weather-icon))
+		(box :space-evenly "false" :orientation "h" :halign "end" :valign "end" :vexpand "true"
+			(button :class "weather-icon" :tooltip "Current Weather: ${weather-cond}, ${weather-temp}" :onclick "" 
+				(image :path weather-icon)
+			))
 ))))
 
 (defwidget stats []

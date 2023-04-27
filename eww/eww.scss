@@ -104,13 +104,7 @@
 .sidepanel .controls > .critical scale trough { background-color: $trough-urgent; }
 .sidepanel .controls > .critical scale trough highlight { background-color: $urgent; }
 
-.weather-icon { 
-	font-size: 56px;
-	color: $text-label;
-	font-family: MesloLGM Nerd Font;
-	// margin-bottom: -.2em;
-}
-.weather-icon button:hover { color: $weather-icon-hover; }
+.weather-icon { margin: 0 .4rem .3rem 0; }
 .weather-temp {
 	color: $text-label;
 	font-family: Iosevka Nerd Font;
