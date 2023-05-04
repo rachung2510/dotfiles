@@ -33,17 +33,19 @@ if [[ $icon = "" ]] || [[ $icon =~ [0-9] ]] ; then
 fi
 
 # ICONS=("" "" "" "" "" "" "🌦")
-if [[ $1 = "icon" ]]; then
+if [[ $1 = "icon" ]]; then	
+	hour=$(date +%H)
+	[[ $hour -gt 5 ]] && [[ $hour -lt 19 ]] && time=morning;
 	# See symbols at https://github.com/chubin/wttr.in/blob/master/lib/constants.py
 	case $icon in
 		☁️*) symbol="cloudy" ;;
-		🌫*) symbol="fog" ;;
+		🌫*) [[ $time = morning ]] && symbol="haze" || symbol="fog" ;;
 		🌧*) symbol="heavy-rain" ;;
 		❄️*) symbol="heavy-snow" ;;
 		🌦*) symbol="light-rain" ;;
 		🌨*) symbol="light-snow" ;;
-		⛅️*) symbol="partly-cloudy" ;;
-		☀️*) symbol="sunny" ;;
+		⛅️*) [[ $time = morning ]] && symbol="partly-cloudy" || symbol="partly-cloudy-night" ;;
+		☀️*) [[ $time = morning ]] && symbol="sunny" || symbol="clear" ;;
 		🌩*) symbol="thundery-rain" ;;
 		⛈*) symbol="thundery-showers" ;;
 		*) symbol="unknown" ;;
