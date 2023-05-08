@@ -281,7 +281,7 @@ assign [class="TelegramDesktop"] number $ws10
 
 # using default config 
 # exec_always --no-startup-id picom -b --experimental-backends --config ~/.config/picom/picom.conf
-exec --no-startup-id picom -b
+# exec --no-startup-id picom -b
 
 #############################################
 # autostart applications/services on login: #
