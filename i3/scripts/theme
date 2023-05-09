@@ -1,7 +1,5 @@
 #!/bin/bash
 
-[[ $1 = "daemon" ]] && echo root | sudo -S xsettingsd && exit 0
-
 XCONF="/etc/xsettingsd/xsettingsd.conf"
 EWWCONF="$HOME/.config/eww/eww.scss"
 ALACONF="$HOME/.config/alacritty/alacritty.yml"
@@ -9,59 +7,75 @@ I3CONF="$HOME/.config/i3/config"
 ROFICONF="$HOME/.config/rofi/styles/colors.rasi"
 PICOMCONF="$HOME/.config/picom/picom.conf"
 
-if [[ -f $XCONF ]]; then
-	theme=$(grep "Net/ThemeName" $XCONF | awk -F '"' '{print $2}')
-	[[ "${theme,,}" = *"dark"* ]] && mode="dark" || mode="light"
-else
-	mode = "light" # default
-fi
-[[ $1 = "-p" ]] && echo "$mode" && exit 0
-
 DARK=""
 LIGHT=""
-[[ $mode = "light" ]] && SELECTED=0 || SELECTED=1
-chosen=$(echo -e "$LIGHT\n$DARK" | rofi -dmenu -selected-row $SELECTED -theme ~/.config/rofi/theme.rasi)
 
-case $chosen in
-	$DARK)
-		mode_upper=Dark
-		unfocused_term_opacity=90
-	;;
-	$LIGHT)
-		mode_upper=Light
-		unfocused_term_opacity=85
-	;;
-esac
+set_theme() {
+	case $chosen in
+		$DARK)
+			mode=dark
+			unfocused_term_opacity=90
+		;;
+		$LIGHT)
+			mode=light
+			unfocused_term_opacity=85
+		;;
+	esac
 
-[[ ! -n $chosen ]] && exit
-mode=${mode_upper,,}
+	[[ ! -n $chosen ]] && exit
 
-eww close bar
+	# Modify styles for eww, alacritty and rofi
+	sed -i -e "s:@import .*:@import \"styles/$mode.scss\";:" $EWWCONF
+	sed -i -e "s:config/alacritty/.*:config/alacritty/$mode.yml:" $ALACONF
+	sed -i -e "s/@import .*/@import \"$mode\"/" $ROFICONF
 
-# Modify styles for eww, alacritty and rofi
-sed -i -e "s:@import .*:@import \"styles/$mode.scss\";:" $EWWCONF
-sed -i -e "s:config/alacritty/.*:config/alacritty/$mode.yml:" $ALACONF
-sed -i -e "s/@import .*/@import \"$mode\"/" $ROFICONF
+	# Change picom opacity
+	line="'Alacritty'"' && !focused'
+	num=$(cat $PICOMCONF | grep -n "$line" | awk -F ':' '{print $1}')
+	newline='"'$unfocused_term_opacity':class_g = '"'Alacritty'"' \&\& !focused",'
+	sed -i "${num}s/.*/\t$newline/" $PICOMCONF
 
-# Change picom opacity
-line="'Alacritty'"' && !focused'
-num=$(cat $PICOMCONF | grep -n "$line" | awk -F ':' '{print $1}')
-newline='"'$unfocused_term_opacity':class_g = '"'Alacritty'"' \&\& !focused",'
-sed -i "${num}s/.*/\t$newline/" $PICOMCONF
+	# Change i3 border colours
+	inactive_bg=$(grep "inactive-bg-$mode" $I3CONF | awk '{print $3}')
+	inactive_text=$(grep "inactive-text-$mode" $I3CONF | awk '{print $3}')
+	sed -i -e "s/set \$inactive-bg.*/set \$inactive-bg\t\t$inactive_bg/" $I3CONF
+	sed -i -e "s/set \$inactive-text.*/set \$inactive-text\t\t$inactive_text/" $I3CONF
+	bar_bg=$(grep "bar-bg-$mode" $I3CONF | awk '{print $3}')
+	bar_text=$(grep "bar-text-$mode" $I3CONF | awk '{print $3}')
+	sed -i -e "s/set \$bar-bg.*/set \$bar-bg\t\t\t\t$bar_bg/" $I3CONF
+	sed -i -e "s/set \$bar-text.*/set \$bar-text\t\t\t$bar_text/" $I3CONF
 
-# Change i3 border colours
-inactive_bg=$(grep "inactive-bg-$mode" $I3CONF | awk '{print $3}')
-inactive_text=$(grep "inactive-text-$mode" $I3CONF | awk '{print $3}')
-sed -i -e "s/set \$inactive-bg.*/set \$inactive-bg\t\t$inactive_bg/" $I3CONF
-sed -i -e "s/set \$inactive-text.*/set \$inactive-text\t\t$inactive_text/" $I3CONF
-bar_bg=$(grep "bar-bg-$mode" $I3CONF | awk '{print $3}')
-bar_text=$(grep "bar-text-$mode" $I3CONF | awk '{print $3}')
-sed -i -e "s/set \$bar-bg.*/set \$bar-bg\t\t\t\t$bar_bg/" $I3CONF
-sed -i -e "s/set \$bar-text.*/set \$bar-text\t\t\t$bar_text/" $I3CONF
+	# Reloads
+	i3-msg reload
+	feh --bg-fill $HOME/.config/i3/wallpapers/$mode-wallpaper.jpg
+	echo root | sudo -S sed -i -e "s:Net/ThemeName.*:Net/ThemeName \"Orchis-Purple-${mode^}\":" $XCONF
+	echo root | sudo -S killall -HUP xsettingsd
+}
 
-# Reloads
-i3-msg reload
-feh --bg-fill ~/.config/i3/wallpapers/$mode-wallpaper.jpg
-[[ $(~/.config/i3/scripts/fullscreen -p) = "false" ]] && eww open bar
-echo root | sudo -S sed -i -e "s:Net/ThemeName.*:Net/ThemeName \"Orchis-Purple-$mode_upper\":" $XCONF
-sudo killall -HUP xsettingsd
+auto_theme() {
+	hour=$(date +%H)
+	hour=$((10#$hour))
+	chosen=$DARK
+	[[ $hour -ge 5 ]] && [[ $hour -le 19 ]] && chosen=$LIGHT
+	set_theme $chosen
+}
+
+[[ $1 = "daemon" ]] && echo root | sudo -S xsettingsd && exit 0
+[[ $1 = "auto" ]] && auto_theme && exit 0
+
+if [[ ! $1 = "-s" ]]; then
+	if [[ -f $XCONF ]]; then
+		theme=$(grep "Net/ThemeName" $XCONF | awk -F '"' '{print $2}')
+		[[ "${theme,,}" = *"dark"* ]] && mode="dark" || mode="light"
+	else
+		mode = "light" # default
+	fi
+	[[ $1 = "-p" ]] && echo "$mode" && exit 0
+
+	[[ $mode = "light" ]] && SELECTED=0 || SELECTED=1
+	chosen=$(echo -e "$LIGHT\n$DARK" | rofi -dmenu -selected-row $SELECTED -theme ~/.config/rofi/theme.rasi)
+else
+	[[ $2 = "dark" ]] && chosen=$DARK || chosen=$LIGHT
+fi
+
+set_theme $chosen

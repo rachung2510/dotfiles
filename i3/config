@@ -281,7 +281,7 @@ assign [class="TelegramDesktop"] number $ws10
 
 # using default config 
 # exec_always --no-startup-id picom -b --experimental-backends --config ~/.config/picom/picom.conf
-# exec --no-startup-id picom -b
+exec --no-startup-id picom -b
 
 #############################################
 # autostart applications/services on login: #
@@ -321,6 +321,7 @@ exec --no-startup-id i3-msg 'workspace $ws1'
 exec --no-startup-id ~/.config/i3/scripts/battery &
 exec --no-startup-id ~/.config/i3/scripts/network &
 exec --no-startup-id ~/.config/i3/scripts/theme daemon &
+exec --no-startup-id ~/.config/i3/scripts/theme auto
 exec --no-startup-id ibus-daemon -drxR
 exec --no-startup-id eww daemon && eww open bar
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
