@@ -35,6 +35,7 @@ fi
 # ICONS=("" "" "" "" "" "" "🌦")
 if [[ $1 = "icon" ]]; then	
 	hour=$(date +%H)
+	hour=$((10#$hour))
 	[[ $hour -ge 5 ]] && [[ $hour -le 19 ]] && time=morning;
 	# See symbols at https://github.com/chubin/wttr.in/blob/master/lib/constants.py
 	case $icon in
