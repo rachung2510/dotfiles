@@ -2,6 +2,7 @@
 DIRS=(
 	"Desktop shortcuts" "$HOME/.local/share/applications/user"
 	"Systemd services" "$HOME/.config/systemd/user"
+	"Systemd services" "/etc/systemd/system"
 	)
 choice=$(printf "%s: %s\n" "${DIRS[@]}" | rofi -dmenu -theme ~/.config/rofi/dunst.rasi)
 
