@@ -10,6 +10,16 @@ PICOMCONF="$HOME/.config/picom/picom.conf"
 DARK=""
 LIGHT=""
 
+get_theme() {
+	if [[ -f $XCONF ]]; then
+		theme=$(grep "Net/ThemeName" $XCONF | awk -F '"' '{print $2}')
+		[[ "${theme,,}" = *"dark"* ]] && mode="dark" || mode="light"
+	else
+		mode = "light" # default
+	fi
+	echo $mode
+}
+
 set_theme() {
 	case $chosen in
 		$DARK)
@@ -56,21 +66,17 @@ auto_theme() {
 	currtime=$(date +%H:%M)
 	chosen=$DARK
 	[[ "$currtime" > "05:30" ]] && [[ "$currtime" < "20:30" ]] && chosen=$LIGHT
+	[[ $chosen = $DARK ]] && mode="dark" || mode="light"
+	[[ $mode = "$(get_theme)" ]] && return
 	set_theme $chosen
 }
 
-[[ $1 = "daemon" ]] && echo root | sudo -S xsettingsd && exit 0
-[[ $1 = "auto" ]] && auto_theme && exit 0
+[[ $1 = "daemon" ]] && echo root | sudo -S xsettingsd && exit
+[[ $1 = "auto" ]] && auto_theme && exit
 
+[[ $1 = "-p" ]] && echo "$(get_theme)" && exit
 if [[ ! $1 = "-s" ]]; then
-	if [[ -f $XCONF ]]; then
-		theme=$(grep "Net/ThemeName" $XCONF | awk -F '"' '{print $2}')
-		[[ "${theme,,}" = *"dark"* ]] && mode="dark" || mode="light"
-	else
-		mode = "light" # default
-	fi
-	[[ $1 = "-p" ]] && echo "$mode" && exit 0
-
+	mode=$(get_theme)
 	[[ $mode = "light" ]] && SELECTED=0 || SELECTED=1
 	chosen=$(echo -e "$LIGHT\n$DARK" | rofi -dmenu -selected-row $SELECTED -theme ~/.config/rofi/theme.rasi)
 else

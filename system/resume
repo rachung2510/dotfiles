@@ -9,6 +9,11 @@ eww update cpu-val="$($SCRIPTDIR/getval cpu)"
 eww update batt-val="$($SCRIPTDIR/getval batt)"
 eww update batt-icon="$($SCRIPTDIR/geticon batt)"
 
-sleep(2) && eww update wifi-icon="$($SCRIPTDIR/geticon wifi)"
+sleep 2 && eww update wifi-icon="$($SCRIPTDIR/geticon wifi)"
+
+while [[ -n "$(pgrep i3lock)" ]]; do
+	sleep .1
+done
+$HOME/.config/i3/scripts/theme auto
 
 # vim: set ft=sh:
