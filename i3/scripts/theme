@@ -53,10 +53,9 @@ set_theme() {
 }
 
 auto_theme() {
-	hour=$(date +%H)
-	hour=$((10#$hour))
+	currtime=$(date +%H:%M)
 	chosen=$DARK
-	[[ $hour -ge 5 ]] && [[ $hour -le 19 ]] && chosen=$LIGHT
+	[[ "$currtime" > "05:30" ]] && [[ "$currtime" < "20:30" ]] && chosen=$LIGHT
 	set_theme $chosen
 }
 
