@@ -7,7 +7,7 @@ User=user
 Type=simple
 Environment=DISPLAY=:0
 Environment=XDG_RUNTIME_DIR=/run/user/1000
-ExecStart=/home/user/.config/i3/scripts/resume
+ExecStart=/home/user/dotfiles/system/resume
 
 [Install]
 WantedBy=suspend.target sleep.target

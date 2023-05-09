@@ -1,0 +1,14 @@
+#!/bin/bash
+
+SCRIPTDIR="$HOME/.config/eww/scripts"
+
+eww update hour="$(date +%H)"
+eww update min="$(date +%M)"
+eww update vol-icon="$($SCRIPTDIR/geticon vol)"
+eww update cpu-val="$($SCRIPTDIR/getval cpu)"
+eww update batt-val="$($SCRIPTDIR/getval batt)"
+eww update batt-icon="$($SCRIPTDIR/geticon batt)"
+
+sleep(2) && eww update wifi-icon="$($SCRIPTDIR/geticon wifi)"
+
+# vim: set ft=sh:
