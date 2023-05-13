@@ -65,7 +65,7 @@ ${vol-tooltip}"
 			:action-slide "brightnessctl s {}%"
 			:modi "")
 		(slider
-			:value batt-val
+			:value {batt-val}
 			:icon batt-icon
 			:tooltip "Battery: ${batt-val}%
 ${batt-tooltip}"

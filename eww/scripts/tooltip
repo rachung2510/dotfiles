@@ -4,7 +4,7 @@ if [[ $1 = "vol" ]]; then
 	sink=$(pactl get-default-sink)
 	if [[ $sink = "bluez"* ]]; then
 		id=$(echo $sink | awk -F '[.]' '{print $2}' | tr '_' ':')
-		name=$(bluetoothctl info $id | grep "Name:" | awk '{print $2}')
+		name=$(bluetoothctl info $id | grep -Po 'Name:\s\K.*')
 	elif [[ $sink = "alsa_output"* ]]; then
 		name=$(pactl list sinks | grep -oP '(?<=Active Port: \[Out\] ).*')
 	fi
