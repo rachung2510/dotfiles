@@ -1,28 +1,29 @@
 # dependencies
 echo "[INFO] Installing dependencies..."
-echo root | sudo -S pacman -S xsettingsd xdotool
-yay -S alacritty brightnessctl playerctl pavucontrol feh acpi maim xclip cava autotiling --noconfirm
+echo root | sudo -S pacman --noconfirm -S xsettingsd xdotool
+yay -S alacritty picom brightnessctl playerctl pavucontrol feh acpi maim xclip cava autotiling --noconfirm
 sudo usermod -aG video ${USER} # run brightnessctl without sudo
 
 # configs
 echo -e "\n[INFO] Copying config files..."
 cd ~/dotfiles
-cp -r alacritty ~/.config/
-cp -r dunst ~/.config/
-cp -r eww ~/.config/
-cp -r i3 ~/.config/
-cp -r picom ~/.config/
-cp -r rofi ~/.config/
+\cp -alf alacritty ~/.config/
+\cp -alf dunst ~/.config/
+\cp -alf eww ~/.config/
+\cp -alf i3 ~/.config/
+\cp -alf picom ~/.config/
+\cp -alf rofi ~/.config/
 sudo mkdir /etc/media
-sudo cp ~/i3/wallpapers/login-wallpaper.jpg /etc/media/
-sudo ln -t /usr/local/bin/  ~/.config/i3/scripts/picom_toggle
+sudo cp i3/wallpapers/login-wallpaper.jpg /etc/media/
 sudo mkdir /etc/xsettingsd
 sudo ln -s "$(pwd)/system/xsettingsd.conf" /etc/xsettingsd/
 sudo ln -s "$(pwd)/system/resume@.service" /etc/systemd/system/
 sudo ln -s "$(pwd)/system/suspend@.service" /etc/systemd/system/
-ln -s "$(pwd)/system/picom.service" $HOME/.config/systemd/user/
+sudo ln -s "$(pwd)/system/picom_toggle" /usr/local/bin
+sudo ln -s "$(pwd)/system/goto" /usr/local/bin
 sudo systemctl enable resume@user
 sudo systemctl enable suspend@user
+systemctl --user start xsettingsd
 
 # i3lock-color
 echo -e "\n[INFO] Installing i3lock-color..."
@@ -31,19 +32,23 @@ yay -S autoconf cairo fontconfig gcc libev libjpeg-turbo libxinerama libxkbcommo
 git clone https://github.com/Raymo111/i3lock-color.git
 cd i3lock-color
 ./install-i3lock-color.sh
+cd ~
+sudo rm -r i3lock-color
 
 # eww
 echo -e "\n[INFO] Installing eww..."
 cd ~
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source ~/.cargo/env
-# sudo apt install libgtk-3-dev -y
+sudo pacman -S --noconfirm gtk-layer-shell wireless_tools bc
 git clone https://github.com/elkowar/eww
 cd eww
 cargo build --release
 cd target/release
 chmod +x ./eww
 sudo mv eww /usr/local/bin/
+cd ~
+sudo rm -r eww
 
 # themes
 echo -e "\n[INFO] Installing themes..."
@@ -55,13 +60,17 @@ git clone https://github.com/vinceliuice/Orchis-theme.git
 cd Orchis-theme
 ./install.sh -t purple -c light
 ./install.sh -t purple -c dark
+cd ~
+sudo rm -r Orchis-theme
 curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.sh | sh
 sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
 
 # fonts
 echo -e "\n[INFO] Installing fonts..."
+cd ~/dotfiles
 mkdir ~/.fonts
+cp .fonts/*.ttf ~/.fonts/
 cd ~/.fonts
 fc-cache -fv ~/.fonts
 sudo mkdir /root/.themes
