@@ -63,11 +63,6 @@ sudo chmod a+wr /opt/spotify/Apps -R
 echo -e "\n[INFO] Installing fonts..."
 mkdir ~/.fonts
 cd ~/.fonts
-wget https://github.com/adi1090x/rofi/raw/master/fonts/Icomoon-Feather.ttf
-wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Meslo/M/Regular/complete/Meslo%20LG%20M%20Regular%20Nerd%20Font%20Complete.ttf
-wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Medium/complete/Fira%20Code%20Medium%20Nerd%20Font%20Complete.ttf
-wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Iosevka/Medium/complete/Iosevka%20Medium%20Nerd%20Font%20Complete.ttf
-cp ~/dotfiles/FiraSans-Regular.ttf ./
 fc-cache -fv ~/.fonts
 sudo mkdir /root/.themes
 sudo mkdir /root/.fonts
