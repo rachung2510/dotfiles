@@ -1,6 +1,6 @@
 ;; TASKBAR
 
-(defvar bar-width "40")
+(defvar bar-width "50")
 
 ;; Individual widgets
 (defwidget workspaces []
