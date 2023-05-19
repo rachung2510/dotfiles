@@ -1,0 +1,5 @@
+HOME=/home/user
+DISPLAY=:0
+XDG_RUNTIME_DIR=/run/user/1000
+30 05 * * * $HOME/.config/i3/scripts/theme -s light
+30 20 * * * $HOME/.config/i3/scripts/theme -s dark
