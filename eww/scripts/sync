@@ -30,4 +30,4 @@ run() {
 
 [[ $1 = "run" ]] && run && exit
 
-alacritty --class minimized,Alacritty -e ~/.config/eww/scripts/sync run
+alacritty --class Alacritty,minimized -e ~/.config/eww/scripts/sync run
