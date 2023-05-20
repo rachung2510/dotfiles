@@ -441,24 +441,24 @@ client.urgent				$alpha	$urgent			$dark-grey		$urgent			$urgent
 ############################################
 
 # Start i3bar to display a workspace bar
-bindsym $mod+b exec --no-startup-id ~/.config/i3/scripts/eww_controller bar &  ~/.config/i3/scripts/bar_toggle
-bar {
-	status_command i3status -c ~/.config/i3/i3status.conf
-	mode invisible
-	modifier none
-	position bottom
-	tray_output primary
-	tray_padding 0
-	separator_symbol "  "
-	colors {
-		background $bar-bg
-		statusline $bar-text
-		#					border			background		text
-		focused_workspace	$shade7			$shade7			$light-grey
-		inactive_workspace	$bar-bg			$bar-bg			$bar-text
-		urgent_workspace	$urgent			$urgent			$light-grey
-	}
-}
+bindsym $mod+b exec --no-startup-id ~/.config/i3/scripts/bar_toggle
+# bar {
+# 	status_command i3status -c ~/.config/i3/i3status.conf
+# 	mode invisible
+# 	modifier none
+# 	position bottom
+# 	tray_output primary
+# 	tray_padding 0
+# 	separator_symbol "  "
+# 	colors {
+# 		background $bar-bg
+# 		statusline $bar-text
+# 		#					border			background		text
+# 		focused_workspace	$shade7			$shade7			$light-grey
+# 		inactive_workspace	$bar-bg			$bar-bg			$bar-text
+# 		urgent_workspace	$urgent			$urgent			$light-grey
+# 	}
+# }
 
 #####################################
 # Application menu handled by rofi: #
