@@ -119,7 +119,7 @@
     dmenu = /usr/bin/rofi -dmenu -p dunst -theme ~/.config/rofi/dunst.rasi
 
     # Browser for opening urls in context menu.
-    browser = /usr/bin/microsoft-edge
+    browser = /usr/bin/firefox
 
     # Always run rule-defined scripts, even if the notification is suppressed
     always_run_script = true
