@@ -1,0 +1,29 @@
+#!/bin/bash
+if [[ $1 = "move" ]]; then
+	win=$(xdotool getactivewindow)
+	# notify-send "scratchpad" "$win"
+	maim -i $win --hidecursor "/tmp/$win.png"
+	i3-msg move scratchpad
+exit
+
+elif [[ $1 = "show_all" ]]; then
+	leaves="$(~/.config/i3/scripts/show_scratchpad.py)"
+	readarray -t arr <<< "$leaves"
+
+	index=1
+	chosen=$(
+		for leaf in "${arr[@]}"; do
+			win=$(echo $leaf | awk '{print $1}')
+			opt="$index ${leaf##*$win}"
+			echo -en "$opt\x00icon\x1f/tmp/$win.png\n"
+			index=$(( index+1 ))
+		done | rofi -dmenu -theme ~/.config/rofi/scratchpad.rasi
+	)
+	[[ ! -n $chosen ]] && exit
+	windows=($(echo "$leaves" | awk '{print $1}'))
+	i=$(echo $chosen | awk '{print $1}')
+	chosen_win="${windows[(($i-1))]}"
+	i3-msg [id="$chosen_win"] focus
+fi
+
+
