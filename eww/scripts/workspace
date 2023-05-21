@@ -3,10 +3,10 @@
 run() {
 	ws_info=$(i3-msg -t get_workspaces)
 	LITERAL="(box :class 'bar-widget workspaces' :orientation 'v' :space-evenly 'false' :spacing '3' :width bar-width"
-	NUMS=($(echo $ws_info | grep -oP '"num":\s*\K[^\s,]*(?=\s*,)'))
-	NAMES=($(echo $ws_info | grep -oP '"name":"[0-9]*\s*\K[^,]*(?=",)'))
-	URGENTS=($(echo $ws_info | grep -oP '"urgent":\s*\K[^\s,]*(?=\s*})'))
-	FOCUSES=($(echo $ws_info | grep -oP '"focused":\s*\K[^\s,]*(?=\s*,)'))
+	NUMS=($(echo $ws_info | grep -oP '"num":\s*\K.*?(?=\s*,)'))
+	NAMES=($(echo $ws_info | grep -oP '"name":"[0-9]+\s*\K.*?(?=",)'))
+	URGENTS=($(echo $ws_info | grep -oP '"urgent":\s*\K.*?(?=\s*})'))
+	FOCUSES=($(echo $ws_info | grep -oP '"focused":\s*\K.*?(?=\s*,)'))
 	len=${#NUMS[@]}
 	for i in $(seq 0 $((len-1))); do
 		NUM=${NUMS[$i]}
