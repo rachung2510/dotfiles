@@ -227,7 +227,7 @@ bindsym $mod+e exec nemo
 
 # Custom keybinds for scripts
 bindsym $mod+period exec --no-startup-id ~/.config/i3/scripts/theme
-bindsym $mod+m exec --no-startup-id ~/.config/i3/scripts/eww_controller sidebar
+bindsym $mod+m exec --no-startup-id ~/.config/i3/scripts/sidebar_toggle
 bindsym $mod+comma exec --no-startup-id ~/.config/i3/scripts/wsnaming/setwsname
 bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/scripts/screenshot
 bindsym Print exec --no-startup-id ~/.config/i3/scripts/screenshot desktop
