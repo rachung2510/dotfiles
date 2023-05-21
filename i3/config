@@ -12,7 +12,6 @@ set $alt Mod1
 
 # default i3 tiling mode:
 # workspace_layout default
-# workspace_layout stacking
 workspace_layout tabbed
 
 ##############################
@@ -264,8 +263,6 @@ for_window [class="Spotify"] move to workspace number $ws10
 for_window [class="zoom"] move to workspace number $ws8
 for_window [class="[mM]inecraft.*"] move to workspace number $ws9
 for_window [class="firefox" title=".*Outlook.*"] move to workspace number $ws8
-# assign [class="Google-chrome"] number 1
-# assign [class="Microsoft-edge"] number 1
 assign [class="obsidian"] number $ws7
 assign [class="discord"] number $ws8
 assign [class="Microsoft Teams - Preview"] number $ws8
@@ -316,7 +313,7 @@ exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 # autotiling script
 # https://github.com/nwg-piotr/autotiling
 # `yay -S autotiling ;) (it is in AUR)
-exec --no-startup-id autotiling -e BINDING
+exec_always --no-startup-id autotiling -e BINDING
 
 # Others
 exec --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Tapping Enabled" 1
@@ -346,7 +343,7 @@ exec --no-startup-id nextcloud &
 #exec --no-startup-id blueberry-tray
 
 # networkmanager-applet
-# exec --no-startup-id nm-applet
+exec --no-startup-id nm-applet
 
 # clipman-applet
 #exec --no-startup-id xfce4-clipman
@@ -446,23 +443,6 @@ client.urgent				$alpha	$urgent			$dark-grey		$urgent			$urgent
 
 # Start i3bar to display a workspace bar
 bindsym $mod+b exec --no-startup-id ~/.config/i3/scripts/bar_toggle
-# bar {
-# 	status_command i3status -c ~/.config/i3/i3status.conf
-# 	mode invisible
-# 	modifier none
-# 	position bottom
-# 	tray_output primary
-# 	tray_padding 0
-# 	separator_symbol "  "
-# 	colors {
-# 		background $bar-bg
-# 		statusline $bar-text
-# 		#					border			background		text
-# 		focused_workspace	$shade7			$shade7			$light-grey
-# 		inactive_workspace	$bar-bg			$bar-bg			$bar-text
-# 		urgent_workspace	$urgent			$urgent			$light-grey
-# 	}
-# }
 
 #####################################
 # Application menu handled by rofi: #
