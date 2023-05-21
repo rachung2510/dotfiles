@@ -8,8 +8,9 @@ exit
 
 elif [[ $1 = "show_all" ]]; then
 	leaves="$(~/.config/i3/scripts/show_scratchpad.py)"
-	readarray -t arr <<< "$leaves"
+	[[ ! -n "$leaves" ]] && exit
 
+	readarray -t arr <<< "$leaves"
 	index=1
 	chosen=$(
 		for leaf in "${arr[@]}"; do
@@ -20,6 +21,7 @@ elif [[ $1 = "show_all" ]]; then
 		done | rofi -dmenu -theme ~/.config/rofi/scratchpad.rasi
 	)
 	[[ ! -n $chosen ]] && exit
+
 	windows=($(echo "$leaves" | awk '{print $1}'))
 	i=$(echo $chosen | awk '{print $1}')
 	chosen_win="${windows[(($i-1))]}"
