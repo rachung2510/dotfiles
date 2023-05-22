@@ -1,7 +1,7 @@
 # dependencies
 echo "[INFO] Installing dependencies..."
 echo root | sudo -S pacman --noconfirm -S xsettingsd xdotool
-yay -S alacritty picom brightnessctl playerctl pavucontrol feh acpi maim xclip cava autotiling --noconfirm
+yay -S alacritty picom-jonaburg-git brightnessctl playerctl pavucontrol feh acpi maim xclip cava autotiling --noconfirm
 sudo usermod -aG video ${USER} # run brightnessctl without sudo
 
 # configs

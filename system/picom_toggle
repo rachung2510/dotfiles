@@ -1,22 +1,16 @@
 #!/bin/bash
-l1="inactive-opacity = 1.0;"
-l2="opacity-rule = \[\];"
-l3="inactive-dim = 0;"
-arr=("$l1" "$l2" "$l3")
-
 CONF="$HOME/.config/picom/picom.conf"
-pt=$(cat $CONF | grep "$l1" | awk '{print $1}')
-[[ $pt = "#" ]] && status="enabled" || status="disabled"
+line=$(cat $CONF | grep -n '!focused')
+num=$(echo "$line" | awk -F':' '{print $1}')
+opacity=$(echo "$line" | awk -F':' '{print $2}' | tr -d '\t"')
+[[ $opacity = 85 ]] && new_opacity=100 || new_opacity=85
+# echo "${num}s/$opacity/$new_opacity/g"
+sed -i "${num}s/$opacity/$new_opacity/g" $CONF
 
-[[ $1 = "-p" ]] && echo $status && exit 0
-if [[ $1 = "disable" ]]; then
-	[[ $status = "enabled" ]] && exit
-	status="disabled"
-fi
+line=$(cat $CONF | grep -n 'inactive-dim')
+num=$(echo "$line" | awk -F':' '{print $1}')
+dim=$(echo "$line" | awk -F'=' '{print $2}' | tr -d ' ' | tr -d ';')
+[[ $opacity = 85 ]] && new_dim=0 || new_dim=0.05
+# echo "${num}s/$dim/$new_dim/g"
+sed -i "${num}s/$dim/$new_dim/g" $CONF
 
-IFS=$'\n'
-for l in ${arr[@]}; do
-	ln=$(cat $CONF | grep -n "$l" | awk -F':' '{print $1}')
-	[[ $status = "enabled" ]] && newline="$l" || newline="# $l"
-	sed -i "${ln}s/.*/$newline/" $CONF
-done
