@@ -31,8 +31,6 @@ smart_borders on
 # default_border pixel 2
 for_window [all] border pixel 3
 # default_floating_border pixel 0
-for_window [class="stalonetray"] border pixel 0
-for_window [class="Nextcloud"] border pixel 0, floating enable
 
 # window title alignment
 #title_align center
@@ -327,12 +325,12 @@ exec --no-startup-id ~/.config/i3/scripts/theme auto
 # exec --no-startup-id ibus-daemon -drxR
 # exec --no-startup-id eww daemon && eww open bar
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-exec_always --no-startup-id ~/.config/i3/scripts/wsnaming/i3_workspace_names_daemon.py &
 exec --no-startup-id autokey-gtk
-exec_always --no-startup-id ~/.config/i3/scripts/fullscreen
-exec --no-startup-id ~/.config/i3/scripts/no_borders.py &
 exec --no-startup-id ~/.config/i3/scripts/volume &
 exec --no-startup-id nextcloud &
+exec_always --no-startup-id ~/.config/i3/scripts/wsnaming/i3_workspace_names_daemon.py &
+exec_always --no-startup-id ~/.config/i3/scripts/fullscreen
+exec_always --no-startup-id ~/.config/i3/scripts/no_borders.py &
 
 ###############
 # system tray #
