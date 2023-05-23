@@ -51,8 +51,11 @@ def run():
 				# sample = [i / bytenorm for i in struct.unpack(fmt, data)]
 				heights = sample / bytenorm * 100 + 3
 				line = " ".join([str(int(x)) for x in heights])
-				print(line)
-				sys.stdout.flush()
+				with open('/home/user/.config/eww/scripts/cava/level','w') as f:
+					f.write(line)
+					f.close()
+				# print(line)
+				# sys.stdout.flush()
 			except KeyboardInterrupt:
 				return
 
