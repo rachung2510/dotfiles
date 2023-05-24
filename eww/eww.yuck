@@ -12,7 +12,7 @@
 (deflisten play-icon :interval "5h" "scripts/player icon")
 
 ;; Cava
-(deflisten cava "scripts/cava")
+(deflisten cava :initial "[3,3,3,3,3,3,3,3,3,3,3,3]" "scripts/cava")
 
 ;; Sidebar scales
 (defpoll vol-val	:interval "5h"	"scripts/getval vol")
