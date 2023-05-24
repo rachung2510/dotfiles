@@ -1,0 +1,109 @@
+configuration {
+	font:							"Fira Sans 12";
+    show-icons:                     true;
+	icon-theme:						"Papirus";
+    display-drun:					"";
+    drun-display-format:            "{name}";
+	drun-match-fields:				"name,categories,keywords";
+    disable-history:                true;
+	sidebar-mode:					false;
+}
+
+@import "styles/colors.rasi"
+
+window {
+    transparency:                   "real";
+    background-color:               @lbg;
+    text-color:                     @lfg;
+	border:							0;
+    border-radius:                  0;
+	width:							100%;
+	height:							100%;
+}
+
+prompt {
+    enabled:						false;
+	padding:						0.30% 1% 0% -0.5%;
+	background-color:				@alpha;
+	text-color:						#f9f9f9;
+	font:							"NotaSans Nerd Font 12";
+}
+
+entry {
+    background-color:               @alpha;
+    text-color:                     #f9f9f9;
+    placeholder-color:              @lbg;
+    expand:                         true;
+    horizontal-align:               0;
+    placeholder:                    "Search";
+    padding:                        0.10% 0% 0% 0%;
+    blink:                          true;
+}
+
+inputbar {
+	children:						[ prompt, entry ];
+    background-color:               @lac;
+    text-color:                     @lbg;
+    expand:                         false;
+	border:							0%;
+    border-radius:                  100%;
+    margin:                         0% 54.5% 0% 0%;
+    padding:                        1.5%;
+}
+
+listview {
+    background-color:               @alpha;
+    padding:                        0%;
+    columns:                        3;
+	lines:							2;
+    spacing:                        2%;
+    cycle:                          true;
+    dynamic:                        false;
+    layout:                         vertical;
+    fixed-columns:		    		true;
+}
+
+mainbox {
+    background-color:               @alpha;
+	border:							0% 0% 0% 0%;
+    border-radius:                  0% 0% 0% 0%;
+	border-color:					@lac;
+    children:                       [ listview ];
+    spacing:                       	2.5%;
+    padding:                        2%;
+}
+
+element {
+    background-color:               @alpha;
+    text-color:                     @lfg;
+    orientation:                    vertical;
+    border-radius:                  0%;
+    padding:                        0% 1% 2% 1%;
+}
+
+element-icon {
+    background-color: 				inherit;
+    text-color:       				inherit;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    size:                           420px;
+    border:                         0px;
+	margin:							20px 0 20px 0;
+}
+
+element-text {
+    background-color: 				@alpha;
+    text-color:       				inherit;
+    expand:                         true;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    // margin:                         -1% 0.5% -0.5% 0.5%;
+}
+
+element selected {
+    background-color:               @lse;
+    text-color:                     @lfg;
+	border:							0% 0% 0.5% 0%;
+    border-radius:                  25px;
+    border-color:                  	@lac;
+}
