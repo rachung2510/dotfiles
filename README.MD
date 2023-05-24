@@ -11,7 +11,7 @@
 - Workspace icon changes based on window + manual setting of workspace icon via dmenu
 
 # Installation
-Run ```arch_install.sh```.
+Run ```install.sh```.
 
 # Keybinds
 Default i3 keybinds unless otherwise stated.
@@ -24,13 +24,14 @@ Mod+Shift+Enter | Open floating terminal
 Mod+Space | Switch language (ibus) (replaces "focus floating/tiling")
 Mod+(Shift+)Tab | Cycle between workspaces
 Alt+(Shift+)Tab| Cycle between containers in a workspace
+Ctrl+Shift+equal| Display all scratchpad windows (rofi menu)
 Ctrl+Space | Clear newest notification
 Ctrl+Shift+Space | Clear all notifications
 Mod+/ | Open app launcher (dmenu -drun)
 Mod+. | Switch light/dark theme
 Mod+, | Set workspace icon
 Mod+m | Toggle sidebar menu
-Mod+b | Toggle between eww taskbar and i3bar (usually to show system tray)
+Mod+b | Toggle system tray (stalonetray)
 
 # Configuration
 - WM: [i3-gaps](https://www.github.com/Airblader/i3)
