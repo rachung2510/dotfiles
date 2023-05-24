@@ -10,9 +10,9 @@ RETURN=36
 close() {
 	for pid in $(pgrep -f .*cava); do kill $pid; done
 	rm /tmp/cava.fifo
+	rm /tmp/bar_cava_config
 	eww update reveal-sidebar=false && sleep .2 && eww close sidebar
 	eww update cava="[3,3,3,3,3,3,3,3,3,3,3,3]"
-	# for i in $(seq 1 12); do eww update l$i=3; done
 	killall sidebar_toggle
 }
 

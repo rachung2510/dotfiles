@@ -1,14 +1,6 @@
 #!/bin/bash
-bar="▁▂▃▄▅▆▇█"
-dict="s/;//g;"
-
-# creating "dictionary" to replace char with bar
-i=0
-while [ $i -lt ${#bar} ]
-do
-    dict="${dict}s/$i/${bar:$i:1}/g;"
-    i=$((i=i+1))
-done
+# Reference:
+# https://github.com/ankkax/hyprland/blob/main/eww/bar/scripts/cava-internal.sh
 
 # make sure to clean pipe
 pipe="/tmp/cava.fifo"
