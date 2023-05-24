@@ -12,18 +12,7 @@
 (deflisten play-icon :interval "5h" "scripts/player icon")
 
 ;; Cava
-(deflisten l1  "scripts/cava/getlevel 0" )
-(deflisten l2  "scripts/cava/getlevel 1")
-(deflisten l3  "scripts/cava/getlevel 2")
-(deflisten l4  "scripts/cava/getlevel 3")
-(deflisten l5  "scripts/cava/getlevel 4")
-(deflisten l6  "scripts/cava/getlevel 5")
-(deflisten l7  "scripts/cava/getlevel 6")
-(deflisten l8  "scripts/cava/getlevel 7")
-(deflisten l9  "scripts/cava/getlevel 8")
-(deflisten l10 "scripts/cava/getlevel 9")
-(deflisten l11 "scripts/cava/getlevel 10")
-(deflisten l12 "scripts/cava/getlevel 11")
+(deflisten cava "scripts/cava")
 
 ;; Sidebar scales
 (defpoll vol-val	:interval "5h"	"scripts/getval vol")
