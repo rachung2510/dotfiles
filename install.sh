@@ -20,7 +20,7 @@ sudo cp -s "$(pwd)/system/systemd/"*@.service /etc/systemd/system/
 sudo systemctl enable resume@user
 sudo systemctl enable suspend@user
 sudo cp -s "$(pwd)/system/xsettingsd.conf" /etc/xsettingsd/
-sudo cp -s "$(pwd)/system/systemd/"*[!@].service /home/user/.config/systemd/user/
+sudo cp -s "$(pwd)/system/systemd/"*[!@] /home/user/.config/systemd/user/
 sudo cp -s "$(pwd)/system/scripts/"* /usr/local/sbin/
 systemctl --user start xsettingsd
 systemctl --user enable battery
@@ -32,6 +32,7 @@ systemctl --user start battery
 systemctl --user start fullscreen
 systemctl --user start network
 systemctl --user start theme.timer
+systemctl --user stop theme.service
 systemctl --user start volume
 
 # i3lock-color
