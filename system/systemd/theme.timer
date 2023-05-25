@@ -1,0 +1,10 @@
+[Unit]
+Description=Change theme daily and on boot
+
+[Timer]
+OnBootSec=5
+OnCalendar=*-*-* 5:30:5
+OnCalendar=*-*-* 20:30:5
+
+[Install]
+WantedBy=timers.target

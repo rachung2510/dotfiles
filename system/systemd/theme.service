@@ -1,0 +1,8 @@
+[Unit]
+Description=Change theme automatically
+After=xsettingsd.service
+
+[Service]
+ExecStart=/home/user/.config/i3/scripts/theme auto
+Restart=on-failure
+RestartSec=3

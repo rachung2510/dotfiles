@@ -7,7 +7,7 @@ User=user
 Type=simple
 Environment=DISPLAY=:0
 Environment=XDG_RUNTIME_DIR=/run/user/1000
-ExecStart=/home/user/dotfiles/system/resume
+ExecStart=/usr/local/sbin/resume
 
 [Install]
 WantedBy=suspend.target sleep.target

@@ -29,7 +29,7 @@ smart_borders on
 
 # show window title bars (not officially supported with i3gaps)
 # default_border pixel 2
-for_window [all] border pixel 3
+# for_window [all] border pixel 3
 # default_floating_border pixel 0
 
 # window title alignment
@@ -221,7 +221,6 @@ bindsym $mod+F3 exec --no-startup-id brightnessctl set $bright-step%- && ~/.conf
 # App shortcuts
 bindsym $mod+c exec firefox
 bindsym $mod+e exec nemo
-# bindsym Print exec scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
 
 # Custom keybinds for scripts
 bindsym $mod+period exec --no-startup-id ~/.config/i3/scripts/theme
@@ -229,7 +228,6 @@ bindsym $mod+m exec --no-startup-id ~/.config/i3/scripts/sidebar_toggle
 bindsym $mod+comma exec --no-startup-id ~/.config/i3/scripts/wsnaming/setwsname
 bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/scripts/screenshot
 bindsym Print exec --no-startup-id ~/.config/i3/scripts/screenshot desktop
-# bindsym --release XF86PowerOff exec --no-startup-id ~/.config/i3/scripts/poweractions sleep
 
 ##########################################
 # configuration for workspace behaviour: #
@@ -298,7 +296,6 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id dex /etc/xdg/autostart/eos-update-notifier.desktop
 exec --no-startup-id dex /etc/xdg/autostart/gnome-keyring-*.desktop
 # to execute some "for_window" properties
-exec --no-startup-id i3-msg restart && eww daemon && eww open bar && ibus-daemon -drxR
 
 # set wallpaper
 exec --no-startup-id feh --bg-fill ~/.config/i3/wallpapers/$(~/.config/i3/scripts/theme -p)-wallpaper.jpg
@@ -307,30 +304,22 @@ exec --no-startup-id feh --bg-fill ~/.config/i3/wallpapers/$(~/.config/i3/script
 exec --no-startup-id xset s 480 dpms 1200 1200 1200
 
 # Desktop notifications
-exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
+# exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 
 # autotiling script
-# https://github.com/nwg-piotr/autotiling
-# `yay -S autotiling ;) (it is in AUR)
 exec_always --no-startup-id autotiling -e BINDING
 
 # Others
-exec --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Tapping Enabled" 1
-exec --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Natural Scrolling Enabled" 1
+exec_always --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Tapping Enabled" 1
+exec_always --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Natural Scrolling Enabled" 1
 exec --no-startup-id i3-msg 'workspace $ws1'
-exec --no-startup-id ~/.config/i3/scripts/battery &
-exec --no-startup-id ~/.config/i3/scripts/network &
-exec --no-startup-id ~/.config/i3/scripts/theme daemon &
-exec --no-startup-id ~/.config/i3/scripts/theme auto
-# exec --no-startup-id ibus-daemon -drxR
-# exec --no-startup-id eww daemon && eww open bar
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+exec --no-startup-id systemctl --user start xsettingsd.service
+# exec --no-startup-id ~/.config/i3/scripts/theme auto
 exec --no-startup-id autokey-gtk
-exec --no-startup-id ~/.config/i3/scripts/volume &
 exec --no-startup-id nextcloud &
+exec --no-startup-id eww daemon && eww open bar
+exec --no-startup-id ibus-daemon -drxR
 exec_always --no-startup-id ~/.config/i3/scripts/wsnaming/i3_workspace_names_daemon.py &
-exec_always --no-startup-id ~/.config/i3/scripts/fullscreen
-exec_always --no-startup-id ~/.config/i3/scripts/no_borders.py &
 
 ###############
 # system tray #
@@ -352,51 +341,44 @@ exec --no-startup-id nm-applet
 ##################
 
 # set floating (nontiling) for apps needing it
-for_window [class="Nemo"] floating enable
-for_window [class="org.gnome.clocks"] floating enable
-for_window [class="org.gnome.Music"] floating enable
-for_window [class="gnome-calculator"] floating enable
-for_window [title="nmtui"] floating enable sticky enable
-for_window [class="GParted"] floating enable
-for_window [class="Lightdm-settings"] floating enable
-for_window [class="Lxappearance"] floating enable, resize set 840 520, move position center
-for_window [class="eos-quickstart"] floating enable
-for_window [class="Nm-connection-editor"] floating enable
-for_window [class="Gthumb"] floating enable
-for_window [class="mpv"] floating enable
-for_window [class="System-config-printer.py"] floating enable
-for_window [class="Yad" instance="yad"] floating enable
-for_window [class="Pavucontrol"] floating enable, resize set 780 400, move position center
-for_window [class="Device Manager"] floating enable
-for_window [window_role="pop-up"] floating enable
+for_window [window_role="About"] floating enable
+for_window [class="Alacritty" instance="floating"] floating enable
 for_window [class="amberol"] floating enable, resize set 440 620, move position center
 for_window [class="Autokey-gtk"] floating enable
-for_window [class="jetbrains-studio" title="^(win0|splash)$"] floating enable
-for_window [class="jetbrains-studio" title="win0"] floating enable
-for_window [class="File-roller"] floating enable
-for_window [class="Shotwell"] floating enable
-for_window [class="Putty"] floating enable
-for_window [class="feh"] floating enable
-for_window [class="MATLAB.*" title="^(?!MATLAB).*"] floating enable
-for_window [class="Welcome to Android Studio"] floating enable
-for_window [class="Fabric Installer"] floating enable
-
-# set floating (nontiling) for special apps
 for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
 for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
-for_window [class="Pamac-manager"] floating enable
-for_window [window_role="About"] floating enable
-for_window [class="zoom" title="Settings"] floating enable
-for_window [class="Alacritty" instance="floating"] floating enable
-for_window [title="Microsoft Teams Notification"] floating enable
-for_window [title="Steam - News.*"] floating enable
-
-# set size of floating window
+for_window [class="Device Manager"] floating enable
+for_window [class="Fabric Installer"] floating enable
+for_window [class="feh"] floating enable
+for_window [class="File-roller"] floating enable
+for_window [class="eos-quickstart"] floating enable
+for_window [class="gnome-calculator"] floating enable
+for_window [class="GParted"] floating enable
 for_window [window_role="(?i)GtkFileChooserDialog"] resize set 640 480 #to set size of file choose dialog
-#for_window [class=".*"] resize set 640 480 #to change size of all floating windows 
+for_window [class="jetbrains-studio" title="^(win0|splash)$"] floating enable
+for_window [title="nmtui"] floating enable sticky enable
+for_window [class="L3afpad"] floating enable
+for_window [class="Lightdm-settings"] floating enable
+for_window [class="Lxappearance"] floating enable, resize set 840 520, move position center
+for_window [class="MATLAB.*" title="^(?!MATLAB).*"] floating enable
+for_window [title="Microsoft Teams Notification"] floating enable
+for_window [class="mpv"] floating enable
+for_window [class="Nemo"] floating enable
+for_window [class="Nm-connection-editor"] floating enable
+for_window [class="org.gnome.clocks"] floating enable
+for_window [class="Pamac-manager"] floating enable
+for_window [class="Pavucontrol"] floating enable, resize set 780 400, move position center
+for_window [window_role="pop-up"] floating enable
+for_window [class="Putty"] floating enable
+for_window [title="Steam - News.*"] floating enable
+for_window [class="Steam" title="Friends List"] floating enable
+for_window [class="System-config-printer.py"] floating enable
+for_window [class="Shotwell"] floating enable
+for_window [class="Welcome to Android Studio"] floating enable
+for_window [class="Yad-icon-browser"] floating enable
+for_window [class="zoom" title="Settings"] floating enable
 
 # set position of floating window
-# for_window [class=".*"] move position center
 bindsym $mod+Shift+m move position center
 
 # open windows in scratchpad
@@ -441,14 +423,13 @@ client.urgent				$alpha	$urgent			$dark-grey		$urgent			$urgent
 ############################################
 
 # Start i3bar to display a workspace bar
-bindsym $mod+b exec --no-startup-id ~/.config/i3/scripts/bar_toggle
+bindsym $mod+b exec --no-startup-id ~/.config/i3/scripts/systray_toggle
 
 #####################################
 # Application menu handled by rofi: #
 #####################################
 
 # start dmenu (a program launcher)
-# bindsym $mod+d exec --no-startup-id dmenu_run
 bindsym $mod+d exec --no-startup-id "rofi -show run -modi run,window,drun -theme ~/.config/rofi/dmenu.rasi"
 bindsym $mod+slash exec --no-startup-id "rofi -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launcher.rasi"
 

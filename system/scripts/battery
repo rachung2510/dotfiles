@@ -18,10 +18,6 @@ low() {
 [[ $1 = "high" ]] && high && exit 0
 [[ $1 = "low" ]] && low $LOW_THRESH && exit 0
 
-# Only allow 1 instance of script to run
-pid=$(pgrep battery)
-[[ $(echo "$pid" | wc -l) -gt 1 ]] && exit 0
-
 # Get current battery status
 batt_status() {
 	echo "$(cat /sys/class/power_supply/BAT1/status)"
@@ -34,12 +30,12 @@ poll() {
 		eww update batt-val=$POWER
 		eww update batt-icon="$(~/.config/eww/scripts/geticon batt)"
 
-		if [[ $(batt_status) = "Charging" ]] || [[ $(batt_status) = "Full" ]]; then
+		if [[ "$(batt_status)" =~ ^(Charging|Full)$ ]]; then
 			[[ $POWER -ge $HIGH_THRESH ]] && high
 		else
 			[[ $POWER -le $LOW_THRESH ]] && low $POWER
 		fi
-		sleep 100
+		sleep 60
 	done
 }
 

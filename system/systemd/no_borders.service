@@ -1,0 +1,10 @@
+[Unit]
+Description=Remove borders of non-focused windows
+
+[Service]
+ExecStart=/usr/local/sbin/no_borders
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

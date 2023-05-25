@@ -71,7 +71,6 @@ auto_theme() {
 	set_theme $chosen
 }
 
-[[ $1 = "daemon" ]] && echo root | sudo -S xsettingsd && exit
 [[ $1 = "auto" ]] && auto_theme && exit
 
 [[ $1 = "-p" ]] && echo "$(get_theme)" && exit

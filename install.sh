@@ -16,14 +16,23 @@ cd ~/dotfiles
 sudo mkdir /etc/media
 sudo cp i3/wallpapers/login-wallpaper.jpg /etc/media/
 sudo mkdir /etc/xsettingsd
-sudo ln -s "$(pwd)/system/xsettingsd.conf" /etc/xsettingsd/
-sudo ln -s "$(pwd)/system/resume@.service" /etc/systemd/system/
-sudo ln -s "$(pwd)/system/suspend@.service" /etc/systemd/system/
-sudo ln -s "$(pwd)/system/picom_toggle" /usr/local/bin
-sudo ln -s "$(pwd)/system/goto" /usr/local/bin
+sudo cp -s "$(pwd)/system/systemd/"*@.service /etc/systemd/system/
 sudo systemctl enable resume@user
 sudo systemctl enable suspend@user
+sudo cp -s "$(pwd)/system/xsettingsd.conf" /etc/xsettingsd/
+sudo cp -s "$(pwd)/system/systemd/"*[!@].service /home/user/.config/systemd/user/
+sudo cp -s "$(pwd)/system/scripts/"* /usr/local/sbin/
 systemctl --user start xsettingsd
+systemctl --user enable battery
+systemctl --user enable fullscreen
+systemctl --user enable network
+systemctl --user enable theme.timer
+systemctl --user enable volume
+systemctl --user start battery
+systemctl --user start fullscreen
+systemctl --user start network
+systemctl --user start theme.timer
+systemctl --user start volume
 
 # i3lock-color
 echo -e "\n[INFO] Installing i3lock-color..."

@@ -1,0 +1,10 @@
+[Unit]
+Description=Fullscreen monitor
+
+[Service]
+ExecStart=/usr/local/sbin/fullscreen
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

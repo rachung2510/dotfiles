@@ -7,7 +7,6 @@ User=user
 Type=forking
 Environment=DISPLAY=:0
 Environment=XDG_RUNTIME_DIR=/run/user/1000
-#ExecStartPre=/usr/local/bin/eww update sync-next=0
 ExecStart=/home/user/.config/i3/scripts/poweractions lock
 
 [Install]
