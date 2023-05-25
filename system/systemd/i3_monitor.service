@@ -1,0 +1,11 @@
+[Unit]
+Description=i3 monitor scripts (no borders, floating terminal)
+After=xsettingsd.service
+
+[Service]
+ExecStart=/usr/local/sbin/i3_monitor
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target
