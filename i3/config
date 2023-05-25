@@ -28,8 +28,7 @@ gaps left 50
 smart_borders on
 
 # show window title bars (not officially supported with i3gaps)
-# default_border pixel 2
-# for_window [all] border pixel 3
+for_window [all] border pixel 3
 # default_floating_border pixel 0
 
 # window title alignment
@@ -314,7 +313,6 @@ exec_always --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "li
 exec_always --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Natural Scrolling Enabled" 1
 exec --no-startup-id i3-msg 'workspace $ws1'
 exec --no-startup-id systemctl --user start xsettingsd.service
-# exec --no-startup-id ~/.config/i3/scripts/theme auto
 exec --no-startup-id autokey-gtk
 exec --no-startup-id nextcloud &
 exec --no-startup-id eww daemon && eww open bar
