@@ -3,12 +3,12 @@
 (defpoll hour :interval "30s" "date '+%H'")
 (defpoll min  :interval "30s" "date '+%M'")
 (defpoll cal-d :interval "12h" "date '+%d'")
-(defpoll cal-m :interval "12h" "m=$(date '+%m' | sed 's/^0//')")
+(defpoll cal-m :interval "12h" "date '+%-m'")
 (defpoll cal-y :interval "12h" "date '+%Y'")
 
 ;; Player
-(deflisten title   :interval "5h" "scripts/player title")
-(deflisten artist  :interval "5h" "scripts/player artist")
+(deflisten title	 :interval "5h" "scripts/player title")
+(deflisten artist	 :interval "5h" "scripts/player artist")
 (deflisten play-icon :interval "5h" "scripts/player icon")
 
 ;; Cava
