@@ -5,6 +5,16 @@
 	font-family: Iosevka Nerd Font;
 }
 
+tooltip.background {
+    background-color: #333333;
+    border-radius: 10px;
+    color: #ffffff;
+}
+tooltip label {
+	margin: 0 5px 0 5px;
+}
+
+
 // ----- SIDE PANEL -----
 .sidebar { margin-left: 100px; }
 .sidepanel { 
