@@ -15,8 +15,9 @@ echo "
 [general]
 bars = 12
 framerate=30
+autosens = 1
 [output]
-channels=mono
+channels = mono
 method = raw
 raw_target = $pipe
 data_format = ascii
@@ -28,6 +29,7 @@ cava -p $config_file &
 
 # reading data from fifo
 while read -r cmd; do
-	sed 's/\;/,/g; s/,0/,3/g; s/\[0/\[3/g' <<< "[${cmd}0]"
+	s=$(sed 's/\;/,/g; s/,0/,3/g' <<< ",${cmd}")
+	echo "[${s:1:-1}]"
     # echo -ne "$cmd\r" | sed $dict
 done < $pipe
