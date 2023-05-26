@@ -76,7 +76,13 @@ auto_theme() {
 	set_theme $chosen
 }
 
-[[ $1 = "auto" ]] && auto_theme && exit
+if [[ $1 = "auto" ]]; then
+	while [[ -n "$(pgrep i3lock)" ]]; do
+		sleep .1
+	done
+	auto_theme
+	exit
+fi
 
 [[ $1 = "-p" ]] && echo $(get_theme) && exit
 # if [[ ! $1 = "-s" ]]; then
