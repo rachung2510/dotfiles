@@ -1,22 +1,13 @@
 #######################
 # config starts here: #
 #######################
-
 font pango: MesloLGM Nerd Font 11
 set $mod Mod4
 set $alt Mod1
 
-#####################
-# workspace layout: #
-#####################
-
-# default i3 tiling mode:
-# workspace_layout default
-workspace_layout tabbed
-
-##############################
-# extra options for windows: #
-##############################
+######################################
+# window layout (borders, gaps etc): #
+######################################
 
 # thin borders
 hide_edge_borders both
@@ -34,8 +25,12 @@ for_window [all] border pixel 3
 # window title alignment
 #title_align center
 
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+##############
+# workspace: #
+##############
+
+# workspace_layout default
+workspace_layout tabbed
 
 # switch/iterate between workspaces
 bindsym $mod+Tab workspace next
@@ -43,6 +38,28 @@ bindsym $mod+Shift+Tab workspace prev
 # switch/iterate between windows
 bindsym $alt+Tab exec --no-startup-id ~/.config/i3/scripts/focus_next_visible.py
 bindsym $alt+Shift+Tab exec --no-startup-id ~/.config/i3/scripts/focus_next_visible.py reverse
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1 "
+set $ws2 "2 "
+set $ws3 "3 "
+set $ws4 "4 "
+set $ws5 "5 "
+set $ws6 "6 "
+set $ws7 "7 "
+set $ws8 "8 "
+set $ws9 "9 "
+set $ws10 "10 "
+
+# use workspaces on different displays:
+# where you have to replace VGA-0/HDMI-0 with the names for your displays
+# you can get from xrandr command
+#workspace $ws1 output VGA-0
+#workspace $ws2 output VGA-0
+#workspace $ws3 output HDMI-0
+#workspace $ws4 output HDMI-0
+#workspace $ws5 output HDMI-0
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -80,6 +97,9 @@ bindsym $mod+Ctrl+8 move container to workspace number $ws8 ; workspace number 8
 bindsym $mod+Ctrl+9 move container to workspace number $ws9 ; workspace number 9
 bindsym $mod+Ctrl+0 move container to workspace number $ws10; workspace number 10
 
+################
+# resize mode: #
+################
 # resize window (you can also use the mouse for that):
 # pt for docker windows, px for floating windows
 set $resize-pt-small 1
@@ -105,9 +125,9 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-######################################
-# keybindings for different actions: #
-######################################
+################
+# keybindings: #
+################
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id alacritty
@@ -120,6 +140,10 @@ bindsym $alt+F4 kill
 
 # exit-menu
 bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu
+
+# start dmenu
+bindsym $mod+d exec --no-startup-id "rofi -show run -modi run,window,drun -theme ~/.config/rofi/dmenu.rasi"
+bindsym $mod+slash exec --no-startup-id "rofi -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launcher.rasi"
 
 # reload the configuration file
 bindsym $mod+Shift+c reload, exec --no-startup-id "notify-send 'i3wm reloaded'"
@@ -169,6 +193,9 @@ bindsym $mod+Shift+space floating toggle
 # rebound to "change language", use alt-tab to switch
 # bindsym $mod+space focus mode_toggle 
 
+# set position of floating window
+bindsym $mod+Shift+m move position center
+
 # toggle sticky
 bindsym $mod+Ctrl+s sticky toggle
 
@@ -202,10 +229,6 @@ bindsym F9 exec --no-startup-id ~/.config/i3/scripts/fnactions mute notify
 bindsym $mod+F7 exec --no-startup-id playerctl play-pause
 bindsym $mod+F8 exec --no-startup-id playerctl next
 bindsym $mod+F6 exec --no-startup-id playerctl previous
-# bindsym XF86AudioPlay exec playerctl play
-# bindsym XF86AudioPause exec playerctl pause
-# bindsym XF86AudioNext exec playerctl next
-# bindsym XF86AudioPrev exec playerctl previous
 
 # backlight control
 set $bright-step 3
@@ -213,9 +236,6 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +$bright-step
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set $bright-step%- && ~/.config/i3/scripts/fnactions light down
 bindsym $mod+F4 exec --no-startup-id brightnessctl set +$bright-step% && ~/.config/i3/scripts/fnactions light up
 bindsym $mod+F3 exec --no-startup-id brightnessctl set $bright-step%- && ~/.config/i3/scripts/fnactions light down
-
-# Redirect sound to headphones
-# bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 # App shortcuts
 bindsym $mod+c exec firefox
@@ -227,32 +247,11 @@ bindsym $mod+m exec --no-startup-id ~/.config/i3/scripts/sidebar_toggle
 bindsym $mod+comma exec --no-startup-id ~/.config/i3/scripts/wsnaming/setwsname
 bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/scripts/screenshot
 bindsym Print exec --no-startup-id ~/.config/i3/scripts/screenshot desktop
+bindsym $mod+b exec --no-startup-id ~/.config/i3/scripts/systray_toggle
 
-##########################################
-# configuration for workspace behaviour: #
-##########################################
-
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-set $ws1 "1 "
-set $ws2 "2 "
-set $ws3 "3 "
-set $ws4 "4 "
-set $ws5 "5 "
-set $ws6 "6 "
-set $ws7 "7 "
-set $ws8 "8 "
-set $ws9 "9 "
-set $ws10 "10 "
-
-# use workspaces on different displays:
-# where you have to replace VGA-0/HDMI-0 with the names for your displays
-# you can get from xrandr command
-#workspace $ws1 output VGA-0
-#workspace $ws2 output VGA-0
-#workspace $ws3 output HDMI-0
-#workspace $ws4 output HDMI-0
-#workspace $ws5 output HDMI-0
+########################
+# assign to workspace: #
+########################
 
 # bind program to workspace and focus to them on startup:
 for_window [class="Spotify"] move to workspace number $ws10
@@ -270,19 +269,15 @@ assign [class="Stardew Valley"] number $ws9
 assign [class="whatsapp-nativefier-d40211"] number $ws10
 assign [class="TelegramDesktop"] number $ws10
 
-##############
-# compositor #
-##############
-
-# using default config 
-# exec_always --no-startup-id picom -b --experimental-backends --config ~/.config/picom/picom.conf
-exec --no-startup-id picom -b
-
 #############################################
 # autostart applications/services on login: #
 #############################################
 
-#get auth work with polkit-gnome
+# compositor 
+# exec_always --no-startup-id picom -b --experimental-backends --config ~/.config/picom/picom.conf
+exec --no-startup-id picom -b
+
+# get auth work with polkit-gnome
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # dex execute .desktop files + apps using /etc/xdg/autostart.
@@ -305,12 +300,10 @@ exec --no-startup-id xset s 480 dpms 1200 1200 1200
 # Desktop notifications
 # exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 
-# autotiling script
-exec_always --no-startup-id autotiling -e BINDING
-
 # Others
 exec_always --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Tapping Enabled" 1
 exec_always --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Natural Scrolling Enabled" 1
+exec_always --no-startup-id autotiling -e BINDING
 exec --no-startup-id i3-msg 'workspace $ws1'
 exec --no-startup-id systemctl --user start xsettingsd.service
 exec --no-startup-id autokey-gtk
@@ -319,28 +312,20 @@ exec --no-startup-id eww daemon && eww open bar
 exec --no-startup-id ibus-daemon -drxR
 exec_always --no-startup-id ~/.config/i3/scripts/wsnaming/i3_workspace_names_daemon.py &
 
-###############
-# system tray #
-###############
+# system tray
 # if you do not use dex: exec --no-startup-id dex --autostart --environment i3
 # you need to have tray apps started manually one by one:
-
-# start blueberry app for managing bluetooth devices from tray:
-#exec --no-startup-id blueberry-tray
-
-# networkmanager-applet
 exec --no-startup-id nm-applet
-
-# clipman-applet
-#exec --no-startup-id xfce4-clipman
 
 ##################
 # floating rules #
 ##################
 
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
 # set floating (nontiling) for apps needing it
 for_window [window_role="About"] floating enable
-# for_window [class="Alacritty" instance="floating"] floating enable
 for_window [class="amberol"] floating enable, resize set 440 620, move position center
 for_window [class="Autokey-gtk"] floating enable
 for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
@@ -361,6 +346,7 @@ for_window [class="Lxappearance"] floating enable, resize set 840 520, move posi
 for_window [class="MATLAB.*" title="^(?!MATLAB).*"] floating enable
 for_window [title="Microsoft Teams Notification"] floating enable
 for_window [class="mpv"] floating enable
+for_window [class="Nextcloud"] floating enable
 for_window [class="Nemo"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
 for_window [class="org.gnome.clocks"] floating enable
@@ -376,15 +362,12 @@ for_window [class="Welcome to Android Studio"] floating enable
 for_window [class="Yad-icon-browser"] floating enable
 for_window [class="zoom" title="Settings"] floating enable
 
-# set position of floating window
-bindsym $mod+Shift+m move position center
-
 # open windows in scratchpad
 for_window [class="Alacritty" instance="minimized"] move scratchpad
 
-######################################
-# color settings for bar and windows #
-######################################
+##################
+# theme settings #
+##################
 
 # Define colors variables:
 set $alpha              #ffffff00
@@ -415,20 +398,5 @@ client.focused_inactive		$alpha	$inactive-bg	$inactive-text	$inactive-bg	$inacti
 # client.unfocused			$alpha	$inactive-bg	$inactive-text	$alpha			$alpha
 # client.focused_inactive		$alpha	$inactive-bg	$inactive-text	$alpha			$alpha
 client.urgent				$alpha	$urgent			$dark-grey		$urgent			$urgent
-
-############################################
-# bar settings (input comes from i3blocks) #
-############################################
-
-# Start i3bar to display a workspace bar
-bindsym $mod+b exec --no-startup-id ~/.config/i3/scripts/systray_toggle
-
-#####################################
-# Application menu handled by rofi: #
-#####################################
-
-# start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id "rofi -show run -modi run,window,drun -theme ~/.config/rofi/dmenu.rasi"
-bindsym $mod+slash exec --no-startup-id "rofi -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launcher.rasi"
 
 # vim: set ft=i3config :
