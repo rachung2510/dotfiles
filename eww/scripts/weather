@@ -1,5 +1,6 @@
 #!/bin/bash
 ICONPATH="$HOME/.config/eww/assets/$(~/.config/i3/scripts/theme -p)"
+APIKEY=69b57cf8a44f5be52323699f6c9f611a
 lim=15
 
 # $1=str, $2=lim
@@ -11,52 +12,40 @@ wrapline() {
 	echo -e "$l1\n$l2"
 }
 
-ip=$(curl https://ipinfo.io/ip)
-data=$(curl "https://ipinfo.io/$ip")
+ip=$(curl -s https://ipinfo.io/ip)
+locdata=$(curl -s "https://ipinfo.io/$ip")
 if [[ $1 = "location" ]]; then
-	city=$(echo "$data" | jq '.city' | tr -d '"')
+	city=$(echo "$locdata" | jq '.city' | tr -d '"')
 	[[ ! -n "$city" ]] && echo "~" || wrapline "$city" $lim
 	exit 0
 fi
 
-loc=$(echo "$data" | jq '.loc' | tr -d '"')
+loc=$(echo "$locdata" | jq '.loc' | tr -d '"')
 lat=$(echo "$loc" | awk -F ',' '{printf "%.2f", $1}')
-long=$(echo "$loc" | awk -F ',' '{printf "%.2f", $2}')
-cm1=$(curl wttr.in/$lat,$long?format=%t-%c-%C 2> /dev/null) # suppress curl output
-IFS="-" read -r temp icon cond <<< "$cm1" 2> /dev/null # suppress "Unknown..."
-# echo $cm1
+lon=$(echo "$loc" | awk -F ',' '{printf "%.2f", $2}')
 
-if [[ $icon = "" ]] || [[ $icon =~ [0-9] ]] ; then
+data=$(curl -s "https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${APIKEY}")
+
+if [[ $(echo "$data" | jq '.cod') != 200 ]]; then
 	icon="$ICONPATH/unknown.svg"
 	temp=""
-	cond="Weather data not available"
+	desc="Weather data not available"
 fi
 
-# ICONS=("" "" "" "" "" "" "🌦")
-if [[ $1 = "icon" ]]; then	
-	currtime=$(date +%H:%M)
-	[[ "$currtime" > "05:30" ]] && [[ "$currtime" < "20:30" ]] && time=morning;
-	# See symbols at https://github.com/chubin/wttr.in/blob/master/lib/constants.py
-	case $icon in
-		☁️*) symbol="cloudy" ;;
-		🌫*) [[ $time = morning ]] && symbol="haze" || symbol="fog" ;;
-		🌧*) symbol="heavy-rain" ;;
-		❄️*) symbol="heavy-snow" ;;
-		🌦*) symbol="light-rain" ;;
-		🌨*) symbol="light-snow" ;;
-		⛅️*) [[ $time = morning ]] && symbol="partly-cloudy" || symbol="partly-cloudy-night" ;;
-		☀️*) [[ $time = morning ]] && symbol="sunny" || symbol="clear" ;;
-		🌩*) symbol="thundery-rain" ;;
-		⛈*) symbol="thundery-showers" ;;
-		*) symbol="unknown" ;;
-		esac
-	echo "$ICONPATH/$symbol.svg"
+attrs=$(echo "$data" | jq '"\(.main.temp)|\(.weather[0].icon)|\(.weather[0].main), \(.weather[0].description)"' | tr -d '"')
+temp=$(echo "$attrs" | awk -F'|' '{printf "%d", $1}')
+icon=$(echo "$attrs" | awk -F'|' '{print $2}')
+desc=$(echo "$attrs" | awk -F'|' '{print $3}')
+
+if [[ $1 = "icon" ]]; then
+	echo "$ICONPATH/${icon}.svg"
 
 elif [[ $1 = "temp" ]]; then
-    echo $temp
+    echo "${temp}°C"
 
 elif [[ $1 = "cond" ]]; then
-	[[ $2 != "short" ]] && echo $cond && exit 0
+	[[ $2 != "short" ]] && echo "$desc" && exit 0
+	cond=$(echo "$desc" | awk -F',' '{print $1}')
 	wrapline "$cond" "$lim"
 
 fi
