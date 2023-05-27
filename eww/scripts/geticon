@@ -5,12 +5,11 @@ light_icons=("" "" "")
 
 if [[ $1 = "vol" ]]; then
 	mute=$(pactl get-sink-mute @DEFAULT_SINK@)
+	src=$(eww get vol-tooltip | cut -d: -f2 | cut -c2-)
 	if [[ $mute = "Mute: no" ]]; then
-		[[ "$(eww get vol-tooltip | awk '{print $2}')" != "Speaker" ]] && 
-			echo "" || echo ""
+		[[ "$src" != Speaker ]] && echo "" || echo ""
 	else
-		[[ "$(eww get vol-tooltip | awk '{print $2}')" != "Speaker" ]] && 
-			echo "ﳌ" || echo ""
+		[[ "$src" != Speaker ]] && echo "ﳌ" || echo ""
 	fi
 
 elif [[ $1 = "light" ]]; then
@@ -22,15 +21,9 @@ elif [[ $1 = "light" ]]; then
 
 elif [[ $1 = "batt" ]]; then
 	status=$(cat /sys/class/power_supply/BAT1/status)
-	if [[ $status = "Charging" ]]; then
-		echo ""
-		exit 0
-	fi
+	[[ $status = "Charging" ]] && echo "" && exit
 	level=$(eww get batt-val)
-	if [[ level -ge 99 ]]; then
-		echo ""
-		exit 0
-	fi
+	[[ level -ge 99 ]] && echo "" && exit
 	if [[ level -le 15 ]]; then ramp=0;
 	elif [[ level -le 30 ]]; then ramp=1;
 	elif [[ level -le 50 ]]; then ramp=2;
@@ -41,8 +34,8 @@ elif [[ $1 = "batt" ]]; then
 
 elif [[ $1 = "wifi" ]]; then
 	eth=$(nmcli | grep "enp4s0f3u2" | awk '{print $2}')
-	[[ $eth != "disconnected" ]] && [[ $eth != "" ]] && echo "" && exit 0
-	[[ "$(iwgetid -r)" = "" ]] && echo "睊" && exit 0
+	[[ $eth != "disconnected" ]] && [[ $eth != "" ]] && echo "" && exit
+	[[ ! -n "$(iwgetid -r)" ]] && echo "睊" && exit
 	echo "直"
 
 elif [[ $1 = "sync" ]]; then

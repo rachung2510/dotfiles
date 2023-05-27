@@ -1,5 +1,6 @@
 #!/bin/bash
-DUNST="~/.config/dunst"
+DUNST="$HOME/.config/dunst"
+EWW="$HOME/.config/eww/scripts/getval"
 TAG="fn"
 
 # $1=icon, $2=value, $3=summary
@@ -8,13 +9,13 @@ alert() {
 }
 
 if [[ $1 = "vol" ]]; then
-	val="$(~/.config/eww/scripts/getval vol)"
+	val="$($EWW vol)"
 	alert "volume-$2" $val "volume"
 
 elif [[ $1 = "mute" ]]; then
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 	if [[ $2 != "notify" ]]; then exit 0; fi
-	val="$(~/.config/eww/scripts/getval vol)"
+	val="$($EWW vol)"
 	if [[ $(pactl get-sink-mute @DEFAULT_SINK@) = "Mute: yes" ]]; then
 		notify-send -u "low" -i "$DUNST/img/volume-mute.png" -h int:value:$val -h string:x-dunst-stack-tag:$TAG -h "string:wired-tag:$TAG" "Speakers muted"
 	else
@@ -22,7 +23,7 @@ elif [[ $1 = "mute" ]]; then
 	fi
 
 elif [[ $1 = "light" ]]; then
-	val="$(~/.config/eww/scripts/getval light)"
+	val="$($EWW light)"
 	eww update light-val=$val
 	eww update light-icon="$(~/.config/eww/scripts/geticon light)"
 	alert "brightness-$2" $val "brightness"

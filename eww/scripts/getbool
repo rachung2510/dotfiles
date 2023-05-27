@@ -20,7 +20,4 @@ elif [[ $1 = "timeout" ]]; then
 	status=$(xset q | grep "DPMS is" | awk '{print $3}')
 	[[ $status = "Disabled" ]] && echo "selected" || echo ""
 
-elif [[ $1 = "sync" ]]; then
-	[[ -n $(pgrep onedrive_sync) ]] && echo "true" || echo "false"
-
 fi

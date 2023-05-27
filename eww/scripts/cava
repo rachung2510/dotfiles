@@ -29,7 +29,12 @@ cava -p $config_file &
 
 # reading data from fifo
 while read -r cmd; do
-	s=$(sed 's/\;/,/g; s/,0/,3/g' <<< ",${cmd}")
-	echo "[${s:1:-1}]"
+	IFS=';' read -ra arr <<< "$cmd"
+	for i in "${!arr[@]}"; do
+		[[ ${arr[$i]} =~ ^(0|1|2)$ ]] && arr[$i]=3
+	done
+	IFS=','; echo "[${arr[*]}]"	
+	# s=$(sed 's/\;/,/g; s/,0/,3/g' <<< ",${cmd}")
+	# echo "[${s:1:-1}]"
     # echo -ne "$cmd\r" | sed $dict
 done < $pipe

@@ -21,8 +21,10 @@ if [[ $1 = "location" ]]; then
 fi
 
 loc=$(echo "$locdata" | jq '.loc' | tr -d '"')
-lat=$(echo "$loc" | awk -F ',' '{printf "%.2f", $1}')
-lon=$(echo "$loc" | awk -F ',' '{printf "%.2f", $2}')
+lat=$(echo "$loc" | cut -d, -f1)
+lon=$(echo "$loc" | cut -d, -f2)
+# lat=$(echo "$loc" | awk -F ',' '{printf "%.2f", $1}')
+# lon=$(echo "$loc" | awk -F ',' '{printf "%.2f", $2}')
 
 data=$(curl -s "https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${APIKEY}")
 
@@ -32,20 +34,20 @@ if [[ $(echo "$data" | jq '.cod') != 200 ]]; then
 	desc="Weather data not available"
 fi
 
-attrs=$(echo "$data" | jq '"\(.main.temp)|\(.weather[0].icon)|\(.weather[0].main), \(.weather[0].description)"' | tr -d '"')
-temp=$(echo "$attrs" | awk -F'|' '{printf "%d", $1}')
-icon=$(echo "$attrs" | awk -F'|' '{print $2}')
-desc=$(echo "$attrs" | awk -F'|' '{print $3}')
+attrs=$(echo "$data" | jq '"\(.main.temp)|\(.weather[0].icon)|\(.weather[0].main)|\(.weather[0].description)"' | tr -d '"')
+temp=$(echo "$attrs" | cut -d'|' -f1)
+icon=$(echo "$attrs" | cut -d'|' -f2)
+cond=$(echo "$attrs" | cut -d'|' -f3)
+desc=$(echo "$attrs" | cut -d'|' -f4)
 
 if [[ $1 = "icon" ]]; then
 	echo "$ICONPATH/${icon}.svg"
 
 elif [[ $1 = "temp" ]]; then
-    echo "${temp}°C"
+	printf "%.0f°C" $temp
 
 elif [[ $1 = "cond" ]]; then
-	[[ $2 != "short" ]] && echo "$desc" && exit 0
-	cond=$(echo "$desc" | awk -F',' '{print $1}')
+	[[ $2 != "short" ]] && echo "${desc^}" && exit
 	wrapline "$cond" "$lim"
 
 fi
