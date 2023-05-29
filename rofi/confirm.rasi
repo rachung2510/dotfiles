@@ -1,23 +1,40 @@
 @import "styles/colors.rasi"
 
 * { 
-	background-color:		@obg;
-	text-color:				@ofg;
+	background-color:		@alpha;
 	font:					"MesloLGM Nerd Font Medium 14";
 }
 
 window {
-	background-color:		@obg;
-    width:					270px;
-    padding:				25px 20px 25px 25px;
-    border:					2px;
-    border-radius:          20px;
-    border-color:           @border;
-    location:               center;
+    transparency:                   "real";
+    background-color:               #00000033;
+    height:                         101%;
+    width:                          100%;
+}
+
+mainbox { 
+	children: [inputbar, listview];
+	background-color: @alpha;
+	padding: 48% 42% 0;
+}
+
+inputbar {
+	children: [prompt, entry];
+	background-color: @obg;
+	text-color: @dfg;
+	border-radius: 20px;
+	border-color: @border;
+	border: 2px;
+	padding: 25px 20px 25px 25px;
+}
+
+prompt {
+	background-color: @alpha;
+	text-color: @ofg;
 }
 
 entry {
-	background-color:		@alpha;
-	text-color:				@ose;
-    expand:					true;
+	background-color: @alpha;
+	text-color: @ose;
 }
+
