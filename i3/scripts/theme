@@ -65,7 +65,7 @@ set_theme() {
 get_time_theme() {
 	currtime=$(date +%H:%M)
 	mode="dark"
-	[[ "$currtime" > "05:30" ]] && [[ "$currtime" < "20:30" ]] && mode="light"
+	[[ "$currtime" > "04:30" ]] && [[ "$currtime" < "21:30" ]] && mode="light"
 	echo $mode
 }
 

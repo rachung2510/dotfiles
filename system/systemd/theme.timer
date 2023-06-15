@@ -2,8 +2,8 @@
 Description=Change theme daily and on boot
 
 [Timer]
-OnCalendar=*-*-* 5:30:5
-OnCalendar=*-*-* 20:30:5
+OnCalendar=*-*-* 4:30:5
+OnCalendar=*-*-* 21:30:5
 Persistent=true
 
 [Install]
