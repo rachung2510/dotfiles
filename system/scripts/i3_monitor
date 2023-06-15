@@ -2,11 +2,19 @@
 from i3ipc import Event, Connection
 
 def no_borders(i3, e):
-	EXCLUDE = ["stalonetray", "Nextcloud"]
+	def ignore(leaf):
+		EXCLUDE = [
+			("window_class", "stalonetray"),
+			("window_class", "Nextcloud")
+		]
+		for k,v in EXCLUDE:
+			if getattr(leaf, k) == v:
+				return True
+		return False
 	workspace = i3.get_tree().find_focused().workspace()
 	for leaf in workspace.leaves():
 		# print(f"{leaf.window_class}, {leaf.window_title}: {leaf.focused}")
-		if leaf.focused and not leaf.window_class in EXCLUDE:
+		if leaf.focused and not ignore(leaf):
 			leaf.command("border pixel 3")
 		else:
 			leaf.command("border none")
