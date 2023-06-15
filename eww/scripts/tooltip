@@ -39,7 +39,7 @@ elif [[ $1 = "sync" ]]; then
 	elif [[ $status_personal != "active" ]] && [[ $status_imperial = "active" ]]; then
 		echo "OneDrive (Personal) sync not active"
 	else
-		echo ""
+		echo "Both OneDrives are active"
 	fi
 
 fi
