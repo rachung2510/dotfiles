@@ -1,16 +1,30 @@
 #!/bin/bash
 CONF="$HOME/.config/picom/picom.conf"
-line=$(cat $CONF | grep -n '!focused')
+
+line=$(cat $CONF | grep -n 'inactive-opacity')
 num=$(echo "$line" | awk -F':' '{print $1}')
-opacity=$(echo "$line" | awk -F':' '{print $2}' | tr -d '\t"')
-[[ $opacity = 85 ]] && new_opacity=100 || new_opacity=85
+opacity=$(echo "$line" | awk -F'=' '{print $2}' | tr -d ' ' | tr -d ';')
+[[ $opacity = 90 ]] && new_opacity=100 || new_opacity=90
 # echo "${num}s/$opacity/$new_opacity/g"
 sed -i "${num}s/$opacity/$new_opacity/g" $CONF
 
-line=$(cat $CONF | grep -n 'inactive-dim')
+# terminal opacity
+line=$(cat $CONF | grep -n '!focused')
 num=$(echo "$line" | awk -F':' '{print $1}')
-dim=$(echo "$line" | awk -F'=' '{print $2}' | tr -d ' ' | tr -d ';')
-[[ $opacity = 85 ]] && new_dim=0 || new_dim=0.05
-# echo "${num}s/$dim/$new_dim/g"
-sed -i "${num}s/$dim/$new_dim/g" $CONF
+term_opacity=$(echo "$line" | awk -F':' '{print $2}' | tr -d '\t"')
+if [[ $opacity = 90 ]]; then
+	new_term_opacity=100
+elif [[ $(.config/i3/scripts/theme -p) = "dark" ]]; then
+	new_term_opacity=90
+else
+	new_term_opacity=85
+fi
 
+sed -i "${num}s/$term_opacity/$new_term_opacity/g" $CONF
+
+# line=$(cat $CONF | grep -n 'inactive-dim')
+# num=$(echo "$line" | awk -F':' '{print $1}')
+# dim=$(echo "$line" | awk -F'=' '{print $2}' | tr -d ' ' | tr -d ';')
+# [[ $opacity = 85 ]] && new_dim=0 || new_dim=0.05
+# # echo "${num}s/$dim/$new_dim/g"
+# sed -i "${num}s/$dim/$new_dim/g" $CONF
