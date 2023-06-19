@@ -30,6 +30,7 @@ WSICONMAP = {
 	"window_class=Microsoft-edge": "browser",
 	"window_class=Microsoft Teams - Preview": "teams",
 	"window_class=[mM]inecraft.*": "minecraft",
+	"window_class=mpv": "video",
 	"window_class=Mysql-workbench-bin": "sql",
 	"window_class=obsidian": "note", 
 	"window_class=Nemo": "files",
