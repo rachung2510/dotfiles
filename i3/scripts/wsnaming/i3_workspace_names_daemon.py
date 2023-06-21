@@ -13,6 +13,7 @@ DIR = "/home/user/.config/i3/scripts/wsnaming/"
 CONF = DIR + "wsconfig.ini"
 WSICONMAP = {
 	"window_title=Email.*Outlook.*": "email",
+	"window_title=Tasks - Nextcloud.*": "tasks",
 	"window_title=.*WhatsApp - Personal.*": "whatsapp",
 	"window_title=.*YouTube.*": "youtube",
 	"window_class=Alacritty": "terminal",
