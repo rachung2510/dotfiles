@@ -1,0 +1,10 @@
+#!/bin/bash
+display_width=$(xdotool getdisplaygeometry | awk '{print $1}')
+# display_height=$(xdotool getdisplaygeometry | awk '{print $2}')
+window_geometry=$(xdotool getactivewindow getwindowgeometry | grep 'Geometry: ' | awk '{print $2}')
+window_width=${window_geometry%x*}
+# window_height=${window_geometry#*x}
+posx=$((display_width-window_width))
+# posy=$((display_height-window_height))
+border=6
+i3-msg move position $((display_width - window_width - border)) px 0 px
