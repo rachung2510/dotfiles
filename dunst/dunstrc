@@ -153,20 +153,20 @@
 	background = "#c37cd0d9"
     foreground = "#fff"
     timeout = 5
-    default_icon = ~/.config/dunst/img/noti.png
+    default_icon = ~/.config/dunst/icons/noti.png
 
 [urgency_normal]
 	background = "#c37cd0d9"
     foreground = "#fff"
     timeout = 10
-    default_icon = ~/.config/dunst/img/noti.png
-	; script = ~/.config/dunst/scripts/getinfo.sh
+    default_icon = ~/.config/dunst/icons/noti.png
+	; script = ~/.config/dunst/getinfo.sh
 
 [urgency_critical]
     background = "#eb4d4b"
     foreground = "#ffffff"
 	timeout = 0
-    default_icon = ~/.config/dunst/img/critical.png
+    default_icon = ~/.config/dunst/icons/critical.png
 
 [Error]
     summary = "error"
@@ -174,15 +174,15 @@
 
 [Nextcloud]
 	appname = Nextcloud
-    ; icon = ~/.config/dunst/img/noti.png
+    ; icon = ~/.config/dunst/icons/noti.png
 	format = "<b>Nextcloud</b>\n%s"
 
-[OneDrive1]
-	body = "Initializing monitor ..."
-	format = ""
-[OneDrive2]
-	body = "Initializing the Synchronization Engine ..."
-	format = ""
+; [OneDrive1]
+; 	body = "Initializing monitor ..."
+; 	format = ""
+; [OneDrive2]
+; 	body = "Initializing the Synchronization Engine ..."
+; 	format = ""
 
 [Spotify]
     appname=Spotify
@@ -209,5 +209,10 @@
 	appname = "Telegram Desktop"
 	background = "#41a1d9"
 	timeout = 20
+
+[Mailspring]
+	appname = "Mailspring"
+	background = "#18b49b"
+	; script = ~/.config/dunst/getinfo.sh
 
 # vim: set ft=dosini :
