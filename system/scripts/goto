@@ -5,11 +5,13 @@ DIRS=(
 	"Systemd services" "$HOME/.config/systemd/user"
 	"Systemd services" "/usr/lib/systemd/user"
 	"Systemd services" "/etc/systemd/system"
+	"Icons" "/usr/share/icons/Papirus"
 	)
 choice=$(printf "%s: %s\n" "${DIRS[@]}" | rofi -dmenu -theme ~/.config/rofi/dunst.rasi)
 
 [[ ! -n $choice ]] && exit
-echo ${choice##*: } | xclip -selection clipboard
-xclip -selection clipboard -o
+printf "${choice##*: }" | xsel -b
+# echo ${choice##*: } | xclip -selection clipboard
+# xclip -selection clipboard -o
 # alacritty --working-directory "${choice##*: }" --class floating,Alacritty
 
