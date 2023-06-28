@@ -13,6 +13,7 @@ DIR = "/home/user/.config/i3/scripts/wsnaming/"
 CONF = DIR + "wsconfig.ini"
 WSICONMAP = {
 	"window_title=Email.*Outlook.*": "email",
+	"window_title=Google Calendar.*": "calendar",
 	"window_title=Tasks - Nextcloud.*": "tasks",
 	"window_title=.*WhatsApp - Personal.*": "whatsapp",
 	"window_title=.*YouTube.*": "youtube",
@@ -21,6 +22,7 @@ WSICONMAP = {
 	"window_class=Code": "vscode",
 	"window_class=discord": "video",
 	"window_class=Evince": "pdf",
+	"window_class=Evolution": "email",
 	"window_class=firefox": "browser",
 	"window_class=[fF]ont-.*": "fonts",
 	"window_class=Inkscape": "draw",
@@ -40,6 +42,7 @@ WSICONMAP = {
 	"window_class=[tT]hunderbird": "email",
 	"window_class=VirtualBox Manager": "virtualbox",
 	"window_class=whatsapp-nativefier-d40211": "whatsapp",
+	"window_class=Whatsapp-for-linux": "whatsapp",
 	"window_class=zoom": "video"
 }
 
