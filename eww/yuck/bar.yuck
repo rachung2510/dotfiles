@@ -28,21 +28,25 @@
 		 (barbtn :icon vol-icon
 		 	:action "~/.config/i3/scripts/fnactions mute"
 			:tooltip "Volume: ${vol-val}% 
-${vol-tooltip}")
+${vol-tooltip}"
+			:hover "vol")
 		 (barbtn :icon wifi-icon
 		 	:action "alacritty -t nmtui -e nmtui-connect &"
-			:tooltip wifi-tooltip)
+			:tooltip wifi-tooltip
+			:hover "wifi")
 		 (barbtn-label :icon batt-icon
 		 	:tooltip batt-tooltip
+			:hover "batt"
 			:label batt-val
 			:low-crit 16 :high-crit 999
 			:action "")
 		 (barbtn-label :icon ""
 		 	:label bar-cpu-val
 			:low-crit 0 :high-crit 89
-		 	:action "" :tooltip "")
+			:action "" :tooltip "" :hover "")
 		 (barbtn :icon sync-icon
 			:tooltip sync-tooltip
+			:hover "sync"
 		 	:action "scripts/sync")
 
 ))

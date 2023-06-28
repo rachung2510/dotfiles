@@ -45,16 +45,18 @@
 
 ;; Buttons on bar
 ;; barbtn-label allows for additional info
-(defwidget barbtn [icon action tooltip]
+(defwidget barbtn [icon action tooltip hover]
 	(box :orientation "v" :space-evenly "false"
+		(eventbox :onhover "eww update ${hover}-icon=$(~/.config/eww/scripts/geticon ${hover})"
 		(button :class "${action == "" ? "no-hover" : ""}"
 			:onclick {action}
-			:tooltip {tooltip} {icon})
+			:tooltip {tooltip} {icon}))
 ))
-(defwidget barbtn-label [icon action tooltip label low-crit high-crit]
+(defwidget barbtn-label [icon action tooltip hover label low-crit high-crit]
 	(box :orientation "v" :space-evenly "false" :class "${(icon != "") && ((label > high-crit) || (label < low-crit)) ? 'crit' : ''}" 
+		(eventbox :onhover "eww update ${hover}-icon=$(~/.config/eww/scripts/geticon ${hover})"
 		(button :class "barbtn-icon-larger ${tooltip == "" ? "no-hover" : ""}"
 			:onclick {action}
-			:tooltip {tooltip} {icon})
+			:tooltip {tooltip} {icon}))
 		(label :class "barbtn-label" :text "${label}%")
 ))
