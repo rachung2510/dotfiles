@@ -22,16 +22,18 @@ options="$shutdown\n$reboot\n$suspend\n$lock\n$logout"
 
 eww close sidebar 2> /dev/null
 chosen="$(echo -e "$options" | rofi -p powermenu -theme $ROFIDIR/powermenu.rasi -dmenu -selected-row 2)"
-[[ $(~/.config/i3/scripts/fullscreen -p) = "false" ]] && eww open bar
-
 case $chosen in
     $shutdown)
 		ans=$(confirm_exit &)
-		[[ $ans =~ ^([yY]es|[yY])$ ]] && picom_toggle disable && systemctl poweroff
+		! [[ $ans =~ ^([yY]es|[yY])$ ]] && exit
+		picom_toggle disable
+		systemctl poweroff
 	;;
     $reboot)
 		ans=$(confirm_exit &)
-		[[ $ans =~ ^([yY]es|[yY])$ ]] && picom_toggle disable && systemctl reboot
+		! [[ $ans =~ ^([yY]es|[yY])$ ]] && exit
+		picom_toggle disable
+		systemctl reboot
 	;;
     $lock)
 		~/.config/i3/scripts/poweractions lock
