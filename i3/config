@@ -411,6 +411,6 @@ client.urgent				$alpha	$urgent			$dark-grey		$urgent			$urgent
 bindsym $alt+Shift+r exec ~/.config/i3/scripts/insert_phrase rachung2510
 bindsym $alt+Shift+p exec ~/.config/i3/scripts/insert_phrase P244w0rd
 bindsym $alt+Shift+1 exec ~/.config/i3/scripts/insert_phrase 139.162.49.140
-bindsym $alt+Shift+g exec ~/.config/i3/scripts/insert_phrase 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
+bindsym $alt+Shift+g exec ~/.config/i3/scripts/insert_phrase github
 
 # vim: set ft=i3config :
