@@ -197,7 +197,7 @@
 	max_icon_size = 240
 
 [Whatsapp]
-	appname = "whatsapp-nativefier-d40211"
+	appname = "whatsapp-for-linux"
 	background = "#51b868"
 
 [Volume Mute]
