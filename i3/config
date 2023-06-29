@@ -258,16 +258,19 @@ bindsym $mod+b exec --no-startup-id ~/.config/i3/scripts/systray_toggle
 for_window [class="Spotify"] move to workspace number $ws10
 for_window [class="zoom"] move to workspace number $ws8
 for_window [class="[mM]inecraft.*"] move to workspace number $ws9
-for_window [class="firefox" title=".*Outlook.*"] move to workspace number $ws8
-assign [class="obsidian"] number $ws7
+assign [class="ICE-SSB-tasks"] number $ws7
+assign [class="ICE-SSB-googlecalendar"] number $ws7
 assign [class="discord"] number $ws8
-assign [class="Microsoft Teams - Preview"] number $ws8
+assign [class="ICE-SSB-outlook"] number $ws8
+assign [class="Mailspring"] number $ws8
+assign [class="teams-for-linux"] number $ws8
 assign [class="[tT]hunderbird"] number $ws8
 assign [class="[mM]inecraft.*"] number $ws9
 assign [title="Steam"] number $ws9
 assign [class="Steam"] number $ws9
 assign [class="Stardew Valley"] number $ws9
-assign [class="whatsapp-nativefier-d40211"] number $ws10
+assign [class="whatsapp-nativefier.*"] number $ws10
+assign [class="Whatsapp-for-linux"] number $ws10
 assign [class="TelegramDesktop"] number $ws10
 
 #############################################
@@ -309,6 +312,7 @@ exec --no-startup-id i3-msg 'workspace $ws1'
 exec --no-startup-id systemctl --user start xsettingsd.service
 exec --no-startup-id autokey-gtk
 exec --no-startup-id nextcloud &
+exec --no-startup-id whatsapp-for-linux &
 exec --no-startup-id eww daemon && eww open bar
 exec --no-startup-id ibus-daemon -drxR
 exec_always --no-startup-id ~/.config/i3/scripts/wsnaming/i3_workspace_names_daemon.py &
@@ -339,6 +343,7 @@ for_window [class="eos-quickstart"] floating enable
 for_window [class="gnome-calculator"] floating enable
 for_window [class="GParted"] floating enable
 for_window [window_role="(?i)GtkFileChooserDialog"] resize set 640 480 #to set size of file choose dialog
+for_window [class="Ice"] floating enable
 for_window [class="jetbrains-studio" title="^(win0|splash)$"] floating enable
 for_window [title="nmtui"] floating enable sticky enable
 for_window [class="L3afpad"] floating enable
