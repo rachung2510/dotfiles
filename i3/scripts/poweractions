@@ -21,6 +21,7 @@ if [[ $1 = "lock" ]]; then
 		--line-color=$alpha \
 		--time-font=$font --date-font=$font --time-size=45 --date-size=20 --verif-size=30 \
 		--layout-font=$font --verif-font=$font --wrong-font=$font
+	sleep 1
 
 elif [[ $1 = "sleep" ]]; then
 	# amixer set Master mute
