@@ -26,6 +26,7 @@ WSICONMAP = {
 	"window_class=[fF]ont-.*": "fonts",
 	"window_class=Inkscape": "draw",
 	"window_class=jetbrains-studio": "androidstudio",
+	"window_class=kid3": "music",
 	"window_class=libreoffice-calc": "excel",
 	"window_class=libreoffice-writer": "word",
 	"window_class=Mailspring": "email",
