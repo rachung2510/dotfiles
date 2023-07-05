@@ -59,7 +59,7 @@
 (deflisten workspace "scripts/workspace")
 (deflisten ws-mode "scripts/workspace mode")
 (deflisten ws-scratch "scripts/workspace scratch")
-(defpoll lang-val :interval "1s" "scripts/getval lang")
+(defpoll lang-val :interval "0.5s" "scripts/getval lang")
 
 (include "./yuck/method.yuck")
 (include "./yuck/sidebar.yuck")
