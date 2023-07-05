@@ -35,14 +35,15 @@ case $chosen in
 		picom_toggle disable
 		systemctl reboot
 	;;
+    $suspend)
+		~/.config/i3/scripts/poweractions "sleep"
+	;;
     $lock)
 		~/.config/i3/scripts/poweractions lock
 	;;
-    $suspend)
-		~/.config/i3/scripts/poweractions sleep
-	;;
     $logout)
 		ans=$(confirm_exit &)
-		[[ $ans =~ ^([yY]es|[yY])$ ]] && ~/.config/i3/scripts/poweractions exit
+		! [[ $ans =~ ^([yY]es|[yY])$ ]] && exit
+		~/.config/i3/scripts/poweractions "exit"
 	;;
 esac
