@@ -260,6 +260,7 @@ for_window [class="zoom"] move to workspace number $ws8
 for_window [class="[mM]inecraft.*"] move to workspace number $ws9
 assign [class="ICE-SSB-tasks"] number $ws7
 assign [class="ICE-SSB-googlecalendar"] number $ws7
+assign [class="marktext"] number $ws7
 assign [class="discord"] number $ws8
 assign [class="ICE-SSB-outlook"] number $ws8
 assign [class="Mailspring"] number $ws8
@@ -314,7 +315,7 @@ exec --no-startup-id autokey-gtk
 exec --no-startup-id nextcloud &
 exec --no-startup-id whatsapp-for-linux &
 exec --no-startup-id eww daemon && eww open bar
-exec --no-startup-id ibus-daemon -drxR
+exec_always --no-startup-id ibus-daemon -drxR
 exec_always --no-startup-id ~/.config/i3/scripts/wsnaming/i3_workspace_names_daemon.py &
 
 # system tray
@@ -342,6 +343,7 @@ for_window [class="File-roller"] floating enable
 for_window [class="eos-quickstart"] floating enable
 for_window [class="gnome-calculator"] floating enable
 for_window [class="GParted"] floating enable
+for_window [class="Gthumb"] floating enable
 for_window [window_role="(?i)GtkFileChooserDialog"] resize set 640 480 #to set size of file choose dialog
 for_window [class="Ice"] floating enable
 for_window [class="jetbrains-studio" title="^(win0|splash)$"] floating enable
@@ -386,14 +388,14 @@ set $shade8             #ce93d8
 # bar-bg-dark			#333333
 # bar-text-light		#8e24aa
 # bar-text-dark			#dca8f0
-set $bar-bg				#e7d0f0
-set $bar-text			#8e24aa
+set $bar-bg				#333333
+set $bar-text			#dca8f0
 # inactive-bg-light     #f2f2f2
 # inactive-text-light   #908c97
 # inactive-bg-dark      #424242
 # inactive-text-dark    #b4b4b4
-set $inactive-bg		#f2f2f2
-set $inactive-text		#908c97
+set $inactive-bg		#424242
+set $inactive-text		#b4b4b4
 
 # define colors for windows:
 # class						border	bground			text			indicator		child_border
@@ -403,14 +405,5 @@ client.focused_inactive		$alpha	$inactive-bg	$inactive-text	$inactive-bg	$inacti
 # client.unfocused			$alpha	$inactive-bg	$inactive-text	$alpha			$alpha
 # client.focused_inactive		$alpha	$inactive-bg	$inactive-text	$alpha			$alpha
 client.urgent				$alpha	$urgent			$dark-grey		$urgent			$urgent
-
-##################
-# AHK shortcuts #
-##################
-# insert phrase with keyboard shortcut
-bindsym $alt+Shift+r exec ~/.config/i3/scripts/insert_phrase rachung2510
-bindsym $alt+Shift+p exec ~/.config/i3/scripts/insert_phrase P244w0rd
-bindsym $alt+Shift+1 exec ~/.config/i3/scripts/insert_phrase 139.162.49.140
-bindsym $alt+Shift+g exec ~/.config/i3/scripts/insert_phrase github
 
 # vim: set ft=i3config :
