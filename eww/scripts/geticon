@@ -5,7 +5,7 @@ light_icons=("" "" "")
 
 if [[ $1 = "vol" ]]; then
 	mute=$(pactl get-sink-mute @DEFAULT_SINK@)
-	src=$(eww get vol-tooltip | cut -d: -f2 | cut -c2-)
+	src=$(~/.config/eww/scripts/tooltip vol | cut -d: -f2 | cut -c2-)
 	if [[ $mute = "Mute: no" ]]; then
 		[[ "$src" != Speaker ]] && echo "" || echo ""
 	else
