@@ -10,8 +10,8 @@ DIRS=(
 choice=$(printf "%s: %s\n" "${DIRS[@]}" | rofi -dmenu -theme ~/.config/rofi/dunst.rasi)
 
 [[ ! -n $choice ]] && exit
-printf "${choice##*: }" | xsel -b
-# echo ${choice##*: } | xclip -selection clipboard
+# printf "${choice##*: }" | xsel -b
+printf ${choice##*: } | xclip -selection clipboard
 # xclip -selection clipboard -o
 # alacritty --working-directory "${choice##*: }" --class floating,Alacritty
 
