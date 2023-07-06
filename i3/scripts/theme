@@ -15,7 +15,7 @@ get_theme() {
 		theme=$(grep "Net/ThemeName" $XCONF | awk -F '"' '{print $2}')
 		[[ "${theme,,}" = *"dark"* ]] && mode="dark" || mode="light"
 	else
-		mode = "light" # default
+		mode="light" # default
 	fi
 	echo $mode
 }
