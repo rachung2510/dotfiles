@@ -9,7 +9,7 @@ import i3ipc
 import configparser
 import traceback
 
-DIR = "/home/user/.config/i3/scripts/wsnaming/"
+DIR = "/home/rach/.config/i3/scripts/wsnaming/"
 CONF = DIR + "wsconfig.ini"
 WSICONMAP = {
 	"window_title=Email.*Outlook.*": "email",
