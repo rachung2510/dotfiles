@@ -12,7 +12,7 @@ configuration {
     background-color: @obg;
 }
 
-@import "/home/user/.config/rofi/styles/colors.rasi"
+@import "styles/colors.rasi"
 window {
     border:				2px;
     border-color:		@border;

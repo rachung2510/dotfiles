@@ -11,7 +11,7 @@ configuration {
 	background-color: @obg;
 }
 
-@import "/home/user/.config/rofi/styles/colors.rasi"
+@import "styles/colors.rasi"
 window {
 	transparency: "real";
 	background-color: @obg;
