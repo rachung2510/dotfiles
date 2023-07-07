@@ -1,7 +1,0 @@
-[Unit]
-Description=Change theme automatically
-After=xsettingsd.service
-
-[Service]
-Type=oneshot
-ExecStart=/home/user/.config/i3/scripts/theme auto
