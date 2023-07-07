@@ -3,7 +3,7 @@ pactl subscribe | while read line; do
 	[[ ! -n "$(echo $line | grep 'change')" ]] && continue
 	val="$(~/.config/eww/scripts/getval vol)"
 	bool="$(~/.config/eww/scripts/getbool mute)"
-	[[ $(eww get vol-val) = $val ]] && [[ $(eww get mute-bool) = $bool ]] && return
+	[[ $(eww get vol-val) = $val ]] && [[ $(eww get mute-bool) = $bool ]] && continue
 	eww update vol-val=$val
 	eww update mute-bool=$bool &&
 	eww update vol-tooltip="$(~/.config/eww/scripts/tooltip vol)" &&
