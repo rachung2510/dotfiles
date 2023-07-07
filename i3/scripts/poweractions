@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HOME=/home/user
+HOME=/home/rach
 shade4=8e24aa
 shade8=ce93d8
 urgent=eb4d4b
