@@ -55,6 +55,11 @@ set_theme() {
 	sed -i -e "s/set \$bar-bg.*/set \$bar-bg\t\t\t\t$bar_bg/" $I3CONF
 	sed -i -e "s/set \$bar-text.*/set \$bar-text\t\t\t$bar_text/" $I3CONF
 
+	# Change GTK dark theme
+	[[ $mode = "dark" ]] && color_scheme="prefer-dark" || color_scheme="default"
+	gsettings set org.gnome.desktop.interface gtk-theme Orchis-Purple-${mode^}
+	gsettings set org.gnome.desktop.interface color-scheme $color_scheme
+
 	# Reloads
 	i3-msg reload
 	feh --bg-fill $HOME/.config/i3/wallpapers/$mode-wallpaper.jpg
