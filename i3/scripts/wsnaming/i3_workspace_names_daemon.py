@@ -21,7 +21,6 @@ WSICONMAP = {
 	"window_class=Arduino IDE": "code",
 	"window_class=Code": "vscode",
 	"window_class=discord": "video",
-	"window_class=Evince": "pdf",
 	"window_class=firefox": "browser",
 	"window_class=[fF]ont-.*": "fonts",
 	"window_class=Inkscape": "draw",
@@ -42,6 +41,7 @@ WSICONMAP = {
 	"window_class=[tT]hunderbird": "email",
 	"window_class=VirtualBox Manager": "virtualbox",
 	"window_class=Whatsapp-for-linux": "whatsapp",
+	"window_class=Xreader": "pdf",
 	"window_class=zoom": "video"
 }
 
