@@ -278,9 +278,12 @@ assign [class="TelegramDesktop"] number $ws10
 # autostart applications/services on login: #
 #############################################
 
+# systemd services
+exec --no-startup-id systemctl --user start xsettingsd picom battery dunst fullscreen i3_monitor network volume
+
 # compositor 
 # exec_always --no-startup-id picom -b --experimental-backends --config ~/.config/picom/picom.conf
-exec --no-startup-id picom -b
+# exec --no-startup-id picom -b
 
 # get auth work with polkit-gnome
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -292,8 +295,8 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # https://github.com/jceb/dex
 #exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
 # exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id dex /etc/xdg/autostart/eos-update-notifier.desktop
-exec --no-startup-id dex /etc/xdg/autostart/gnome-keyring-*.desktop
+# exec --no-startup-id dex /etc/xdg/autostart/eos-update-notifier.desktop
+# exec --no-startup-id dex /etc/xdg/autostart/gnome-keyring-*.desktop
 # to execute some "for_window" properties
 
 # set wallpaper
@@ -310,7 +313,6 @@ exec_always --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "li
 exec_always --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Natural Scrolling Enabled" 1
 exec_always --no-startup-id autotiling -e BINDING
 exec --no-startup-id i3-msg 'workspace $ws1'
-exec --no-startup-id systemctl --user start xsettingsd.service
 exec --no-startup-id autokey-gtk
 exec --no-startup-id nextcloud &
 exec --no-startup-id whatsapp-for-linux &
@@ -388,14 +390,14 @@ set $shade8             #ce93d8
 # bar-bg-dark			#333333
 # bar-text-light		#8e24aa
 # bar-text-dark			#dca8f0
-set $bar-bg				#333333
-set $bar-text			#dca8f0
+set $bar-bg				#e7d0f0
+set $bar-text			#8e24aa
 # inactive-bg-light     #f2f2f2
 # inactive-text-light   #908c97
 # inactive-bg-dark      #424242
 # inactive-text-dark    #b4b4b4
-set $inactive-bg		#424242
-set $inactive-text		#b4b4b4
+set $inactive-bg		#f2f2f2
+set $inactive-text		#908c97
 
 # define colors for windows:
 # class						border	bground			text			indicator		child_border
