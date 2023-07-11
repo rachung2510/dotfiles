@@ -23,7 +23,8 @@ elif [[ $1 = "lang" ]]; then
 	esac
 
 elif [[ $1 = "cpu" ]]; then
-	val=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1}')
+	val=$(echo $[100-$(vmstat 1 2|tail -1|awk '{print $15}')])
+	# val=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1}')
 	[[ $2 = "int" ]] && [[ $(echo "$val >= 1" | bc) = 1 ]] && echo "scale=0; $val/1" | bc && exit 0
 	echo "scale=1; $val/1" | bc
 
