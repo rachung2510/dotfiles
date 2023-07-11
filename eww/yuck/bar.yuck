@@ -41,8 +41,8 @@ ${vol-tooltip}"
 			:low-crit 16 :high-crit 999
 			:action "")
 		 (barbtn-label :icon ""
-		 	:label bar-cpu-val
-			:low-crit 0 :high-crit 89
+		 	:label "${round(EWW_CPU.avg,0)}"
+			:low-crit 0 :high-crit 85
 			:action "" :tooltip "" :hover "")
 		 (barbtn :icon sync-icon
 			:tooltip sync-tooltip
@@ -52,7 +52,7 @@ ${vol-tooltip}"
 ))
 
 (defwidget time []
-	(button :onclick "scripts/cal-toggle"
+	(button :onclick "scripts/cal"
 	(box :orientation "v" 
 		 :class "time"
 		 :valign "end"

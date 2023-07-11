@@ -22,27 +22,4 @@ elif [[ $1 = "lang" ]]; then
 		"anthy") echo "ち" ;;
 	esac
 
-elif [[ $1 = "cpu" ]]; then
-	val=$(echo $[100-$(vmstat 1 2|tail -1|awk '{print $15}')])
-	# val=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1}')
-	[[ $2 = "int" ]] && [[ $(echo "$val >= 1" | bc) = 1 ]] && echo "scale=0; $val/1" | bc && exit 0
-	echo "scale=1; $val/1" | bc
-
-elif [[ $1 = "ram" ]]; then
-	if [[ $2 = "perc" ]]; then
-		val=$(free | grep Mem | awk '{print $3/$2 * 100.0}')
-	else 
-		val=$(echo "scale=2; $(free -m |grep Mem | awk '{print $3}')/1000" | bc)
-	fi
-	echo $val
-
-elif [[ $1 = "hdd" ]]; then
-	val=$(df / | awk 'END{ print $(NF-1) }' | tr -d '%')
-	if [[ $2 = "used" ]]; then
-		echo "scale=1; $(df / -Bm --output=used | tail -n 1 | tr -d 'M')/1000" | bc
-	elif [[ $2 = "avail" ]]; then
-		echo "scale=1; $(df / -Bm --output=avail | tail -n 1 | tr -d 'M')/1000" | bc
-	else
-		echo "scale=1; $val/1" | bc
-	fi
 fi

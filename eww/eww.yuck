@@ -35,15 +35,6 @@
 (defpoll weather-cond-short :interval "1h"  "scripts/weather cond short")
 (defpoll weather-cond :interval "1h"  "scripts/weather cond")
 
-;; Stats
-(defpoll cpu-val :interval "1s" "scripts/getval cpu")
-(defpoll ram-val :interval "1s" "scripts/getval ram")
-(defpoll ram-perc :interval "1s" "scripts/getval ram perc")
-(defpoll hdd-val :interval "300s" "scripts/getval hdd")
-(defpoll hdd-used :interval "300s" "scripts/getval hdd used")
-(defpoll hdd-avail :interval "300s" "scripts/getval hdd avail")
-(defpoll bar-cpu-val :interval "3s" "scripts/getval cpu int")
-
 ;; Sync
 (defpoll sync-icon :interval "60s" "scripts/geticon sync")
 (defpoll sync-tooltip	:interval "30s"	"scripts/tooltip sync")

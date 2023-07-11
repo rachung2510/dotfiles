@@ -95,22 +95,22 @@ ${batt-tooltip}"
 		(hdd)))
 (defwidget ram []
 	(radialmeter	
-		:value ram-perc
+		:value {EWW_RAM.used_mem_perc}
 		:text " RAM"
-		:label "${ram-val}G"
-		:tooltip "${ram-val}G used"))
+		:label "${round(EWW_RAM.used_mem/1000000000,2)}G"
+		:tooltip "${round(EWW_RAM.used_mem/1000000000,2)}G used"))
 (defwidget cpu []
 	(radialmeter	
-		:value "${cpu-val}"
+		:value "${EWW_CPU.avg}"
 		:text " CPU"
-		:label "${cpu-val}%"
+		:label "${round(EWW_CPU.avg,1)}%"
 		:tooltip ""))
 (defwidget hdd []
 	(radialmeter	
-		:value	"${hdd-val}"
+		:value {EWW_DISK["/"].used_perc}
 		:text " HDD"
-		:label "${hdd-val}%"
-		:tooltip "${hdd-used}G used, ${hdd-avail}G available"))
+		:label "${round(EWW_DISK['/'].used_perc,1)}%"
+		:tooltip "${round(EWW_DISK['/'].used/1000000000,1)}G used, ${round(EWW_DISK['/'].free/1000000000,1)}G available"))
 
 (defwidget quickbuttons []
 	(box :class "roundpanel quickbuttons"
