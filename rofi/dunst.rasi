@@ -50,5 +50,5 @@ element normal {
 }
 element selected {
     background-color:	@ose;
-    text-color:			@obg;
+    text-color:			@ofg-se;
 }

@@ -12,4 +12,5 @@
 	light-purple:	#e7d0f0;
 	dark-purple:	#6e2b88;
 	urgent:			#eb4d4b;
+	lighter-shade8: #dca8f0;
 }

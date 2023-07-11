@@ -33,6 +33,7 @@
 	// Options
 	obg:			@window-bg;
 	ose:			@shade7;
-	ofg:			@lfg;
+	ofg:			#dca8f0;
+	ofg-se:			@lfg;
 
 }

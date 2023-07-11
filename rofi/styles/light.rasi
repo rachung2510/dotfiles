@@ -34,5 +34,6 @@
 	obg:			@window-bg;
 	ose:			@shade7;
 	ofg:			@lfg;
+	ofg-se:			@obg;
 
 }
