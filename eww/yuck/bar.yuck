@@ -37,11 +37,15 @@ ${vol-tooltip}"
 		 (barbtn-label :icon batt-icon
 		 	:tooltip batt-tooltip
 			:hover "batt"
-			:label batt-val
+			:label {batt-val} :suffix "%"
 			:low-crit 16 :high-crit 999
 			:action "")
 		 (barbtn-label :icon ""
-		 	:label "${round(EWW_CPU.avg,0)}"
+		 	:label {round(EWW_CPU.avg,0)} :suffix "%"
+			:low-crit 0 :high-crit 85
+			:action "" :tooltip "" :hover "")
+		 (barbtn-label :icon "﨎"
+		 	:label {round(EWW_TEMPS.ACPITZ_TEMP1,0)} :suffix "℃"
 			:low-crit 0 :high-crit 85
 			:action "" :tooltip "" :hover "")
 		 (barbtn :icon sync-icon
