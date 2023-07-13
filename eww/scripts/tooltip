@@ -13,7 +13,7 @@ if [[ $1 = "vol" ]]; then
 elif [[ $1 = "batt" ]]; then
 	duration=$(acpi -b | awk -F '[,]' '{print $3}' | awk -F ' ' '{print $1}')
 	status=$(cat /sys/class/power_supply/BAT1/status)
-	[[ $status = "Charging" ]] && status_tooltip="till max" || status_tooltip="left"
+	[[ $status = "Charging" ]] && status_tooltip="till full" || status_tooltip="left"
 	volt=$(cat /sys/class/power_supply/BAT1/voltage_now)
     curr=$(cat /sys/class/power_supply/BAT1/current_now)
     watt=$(echo "scale=2; ${volt}*${curr}/1000000/1000000" | bc)
