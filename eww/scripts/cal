@@ -3,7 +3,7 @@ RETURN=36
 
 close() {
 	eww close cal
-	pkill -f cal-toggle
+	pkill -f cal
 }
 
 if [[ "$(eww windows)" = *"*cal"* ]]; then
