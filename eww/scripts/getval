@@ -5,15 +5,15 @@ if [[ $1 = "vol" ]]; then
 	# channel=$(amixer -D pulse sget Master | grep "Playback channels" | awk -F: '{printf $2}')
 	# [[ $channel = *"Mono"* ]] && key="Mono" || key="Left"
 	# val="$(amixer -D pulse sget Master | grep "$key:" | awk -F'[][]' '{ print $2 }' | tr -d '%')"
-	[[ $val -gt 0 ]] && [[ $val -lt 8 ]] && echo 8 || echo $val;
+	echo $val;
 
 elif [[ $1 = "light" ]]; then
 	val=$(echo "100*$(brightnessctl g)/$(brightnessctl m)" | bc)
-	[[ $val -gt 0 ]] && [[ $val -lt 8 ]] && echo 8 || echo $val;
+	echo $val;
 	
 elif [[ $1 = "batt" ]]; then
 	val="$(acpi -b | grep "Battery 0" | grep -o '[0-9]\+%' | tr -d '%')"
-	[[ $val -gt 0 ]] && [[ $val -lt 8 ]] && echo 8 || echo $val;
+	echo $val;
 
 elif [[ $1 = "lang" ]]; then
 	case  "$(ibus engine)" in
