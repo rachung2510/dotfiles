@@ -53,25 +53,25 @@
 			:value vol-val
 			:icon vol-icon
 			:tooltip "Volume: ${vol-val}%
-${vol-tooltip}"
+${vol-tooltip}" :hover "vol"
 			:action-click "~/.config/i3/scripts/fnactions mute"
 			:action-slide "amixer -D pulse sset Master {}%"
 			:modi mute-bool)
 		(slider
 			:value light-val
 			:icon light-icon
-			:tooltip "Brightness: ${light-val}%"
-			:action-click "brightnessctl s 0 && eww update light-val=$(~/.config/eww/scripts/getval light)"
-			:action-slide "brightnessctl s {}% && eww update light-icon=$(~/.config/eww/scripts/geticon light)"
+			:tooltip "Brightness: ${light-val}%" :hover "light"
+			:action-click "brightnessctl s 0 && ${EWW_CMD} update light-val=$(${EWW_CONFIG_DIR}/scripts/getval light)"
+			:action-slide "brightnessctl s {}% && ${EWW_CMD} update light-icon=$(${EWW_CONFIG_DIR}/scripts/geticon light)"
 			:modi "")
 		(slider
 			:value {batt-val}
 			:icon batt-icon
 			:tooltip "Battery: ${batt-val}%
-${batt-tooltip}"
+${batt-tooltip}" :hover "batt"
 			:action-click ""
 			:action-slide ""
-			:modi "${(batt-val <= 15) ? "critical" : ""}")
+			:modi {batt-val <= 15 ? "critical" : ""})
 ))
 
 (defwidget weather []

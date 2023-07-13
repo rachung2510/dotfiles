@@ -1,20 +1,20 @@
 ;; REPEATED WIDGETS
 
 ;; Slider for sidebar (vol, brightness, batt)
-(defwidget slider [value icon tooltip action-click action-slide modi]
+(defwidget slider [value icon tooltip hover action-click action-slide modi]
 	(box :class {modi}  :space-evenly "false" :orientation "h" :vexpand "true" :valign "center"
 		(box :width "30"
 			(button :class "btn-controls ${action-click == "" ? "no-hover" : ""}" :onclick {action-click} {icon}))
-		(eventbox :onhover "eww update vol-tooltip=\"$(scripts/tooltip vol)\""
+		(eventbox :onhover "${EWW_CMD} update ${hover}-tooltip=\"$(${EWW_CONFIG_DIR}/scripts/tooltip ${hover})\""
 		(scale :value {value > 0 && value < 8 ? 8 : value}
 			:min 0
             :max 101
             :orientation "h"
             :tooltip {tooltip}
-            :active "${action-slide != "" ? "true" : "false"}"
+            :active {action-slide != "" ? "true" : "false"}
             :onchange {action-slide}
-			:width "200")
-)))
+			:width "200"))
+))
 
 ;; Circular progress bar for stats (cpu, ram, hdd)
 (defwidget radialmeter [value text label tooltip]
@@ -47,14 +47,14 @@
 ;; barbtn-label allows for additional info
 (defwidget barbtn [icon action tooltip hover]
 	(box :orientation "v" :space-evenly "false"
-		(eventbox :onhover "eww update ${hover}-icon=$(~/.config/eww/scripts/geticon ${hover})"
+		(eventbox :onhover "eww update ${hover}-icon=$(${EWW_CONFIG_DIR}/scripts/geticon ${hover})"
 		(button :class "${action == "" ? "no-hover" : ""}"
 			:onclick {action}
 			:tooltip {tooltip} {icon}))
 ))
 (defwidget barbtn-label [icon action tooltip hover label suffix low-crit high-crit]
 	(box :orientation "v" :space-evenly "false" :class "${(icon != "") && ((label > high-crit) || (label < low-crit)) ? 'crit' : ''}" 
-		(eventbox :onhover "eww update ${hover}-icon=$(~/.config/eww/scripts/geticon ${hover})"
+		(eventbox :onhover "eww update ${hover}-icon=$(${EWW_CONFIG_DIR}/scripts/geticon ${hover})"
 		(button :class "barbtn-icon-larger ${tooltip == "" ? "no-hover" : ""}"
 			:onclick {action}
 			:tooltip {tooltip} {icon}))
