@@ -1,11 +1,3 @@
-;; Time
-(defpoll date :interval "5h" "date '+%a, %d %b %Y'")
-(defpoll hour :interval "30s" "date '+%H'")
-(defpoll min  :interval "2s" "date '+%M'")
-(defpoll cal-d :interval "12h" "date '+%d'")
-(defpoll cal-m :interval "12h" "date '+%-m'")
-(defpoll cal-y :interval "12h" "date '+%Y'")
-
 ;; Player
 (deflisten title	 :interval "5h" "scripts/player title")
 (deflisten artist	 :interval "5h" "scripts/player artist")

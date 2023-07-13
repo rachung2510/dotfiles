@@ -8,8 +8,8 @@
 (defwidget datetime []
 	(box :class "roundpanel datetime" :valign "end"
 	(box :orientation "v" :space-evenly "false" :vexpand "true" :valign "center"
-		(label :text "${hour}:${min}" :class "time")
-		(label :text date :class "date")
+		(label :text {formattime(EWW_TIME, '%H:%M')} :class "time")
+		(label :text {formattime(EWW_TIME, '%a, %d %b %Y')} :class "date")
 )))
 
 (defwidget cava []
