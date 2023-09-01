@@ -52,10 +52,10 @@
 			:onclick {action}
 			:tooltip {tooltip} {icon}))
 ))
-(defwidget barbtn-label [icon action tooltip hover label suffix low-crit high-crit]
+(defwidget barbtn-label [icon action tooltip hover label suffix low-crit high-crit modi]
 	(box :orientation "v" :space-evenly "false" :class "${(icon != "") && ((label > high-crit) || (label < low-crit)) ? 'crit' : ''}" 
 		(eventbox :onhover "eww update ${hover}-icon=$(${EWW_CONFIG_DIR}/scripts/geticon ${hover})"
-		(button :class "barbtn-icon-larger ${tooltip == "" ? "no-hover" : ""}"
+		(button :class "${modi == "large" ? "barbtn-icon-larger" : ""} ${tooltip == "" ? "no-hover" : ""}"
 			:onclick {action}
 			:tooltip {tooltip} {icon}))
 		(label :class "barbtn-label" :text "${label}${suffix}")

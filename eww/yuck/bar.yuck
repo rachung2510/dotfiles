@@ -39,14 +39,23 @@ ${vol-tooltip}"
 			:hover "batt"
 			:label {batt-val} :suffix "%"
 			:low-crit 16 :high-crit 999
+			:modi "large"
 			:action "")
 		 (barbtn-label :icon ""
 		 	:label {round(EWW_CPU.avg,0)} :suffix "%"
 			:low-crit 0 :high-crit 85
-			:action "" :tooltip "" :hover "")
+			:tooltip "CPU"
+			:modi "large"
+			:action "" :hover "")
+		 (barbtn-label :icon ""
+		 	:label {round(EWW_RAM.used_mem_perc,0)} :suffix "%"
+			:low-crit 0 :high-crit 90
+			:tooltip "RAM used: ${round(EWW_RAM.used_mem/1000000000,2)}G" 
+			:action "" :modi "" :hover "")
 		 (barbtn-label :icon "﨎"
 		 	:label {round(EWW_TEMPS.ACPITZ_TEMP1,0)} :suffix "℃"
-			:low-crit 0 :high-crit 85
+			:low-crit 0 :high-crit 90
+			:modi "large"
 			:action "" :tooltip "" :hover "")
 		 (barbtn :icon sync-icon
 			:tooltip sync-tooltip
