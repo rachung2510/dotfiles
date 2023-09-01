@@ -1,12 +1,9 @@
 (defwidget cal []
 	(box :orientation "v" :width 240 :valign "end"
 		(box :class "calbox"
-		(calendar 
+		(calendar
 			:show-day-names "true"
 			:show-heading "true"
-			:day {formattime(EWW_TIME, '%d')}
-			:month {formattime(EWW_TIME, '%-m')}
-			:year {formattime(EWW_TIME, '%Y')}
 		))
 ))
 
