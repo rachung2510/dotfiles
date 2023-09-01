@@ -59,6 +59,17 @@ elif [[ $1 = "timeout" ]]; then
 		notify-send -h string:x-dunst-stack-tag:timeout "Screen timeout enabled" "Timeout: ${timeout}s"
 	fi
 
+elif [[ $1 = "picom" ]]; then
+	status=$(get_bool $1)
+	win_open_status=$(eww windows | grep *sidebar)
+	if [[ $status = "" ]]; then
+		eww update picom-bool="selected"
+	else
+		eww update picom-bool=""
+	fi
+	picom_toggle
+	# eww update picom-action=1
+
 elif [[ $1 = "lock" ]]; then
 	~/.config/i3/scripts/poweractions lock
 

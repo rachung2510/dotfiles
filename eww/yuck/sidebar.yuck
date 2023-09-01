@@ -125,11 +125,17 @@ ${batt-tooltip}" :hover "batt"
 			:toggle bluetooth-bool)
 		(quickbtn :icon "ﮖ"
 			:action "scripts/quickbutton notif"
-			:tooltip "Do Not Disturb" :toggle notif-bool)
+			:tooltip "Do Not Disturb"
+			:toggle notif-bool)
 		(quickbtn :icon "零"
 			:action "scripts/quickbutton timeout"
-			:tooltip "Disable Screen Timeout" :toggle timeout-bool)
-		(quickbtn :icon "" :tooltip "Lock"  :action "scripts/quickbutton lock" :toggle "")
+			:tooltip "Disable Screen Timeout"
+			:toggle timeout-bool)
+		(quickbtn :icon ""
+			:action "scripts/quickbutton picom"
+			:tooltip "Disable Transparency" 
+			:toggle picom-bool)
+		;; (quickbtn :icon "" :tooltip "Lock"  :action "scripts/quickbutton lock" :toggle "")
 		;; (quickbtn :icon "" :tooltip "Sleep" :action "scripts/quickbutton sleep" :toggle "")
 )))
 
