@@ -1,0 +1,36 @@
+import = ["/home/rach/.config/alacritty/dark.toml"]
+live_config_reload = true
+
+[cursor]
+blink_interval = 750
+thickness = 0.3
+unfocused_hollow = true
+
+[cursor.style]
+blinking = "Always"
+
+[font]
+size = 8.0
+
+[font.normal]
+family = "MesloLGM Nerd Font"
+
+[[keyboard.bindings]]
+action = "ReceiveChar"
+key = "B"
+mode = "~Search"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Plus"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Control"
+
+[window]
+dynamic_title = true
+opacity = 1.0
