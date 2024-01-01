@@ -41,12 +41,14 @@ elif [[ $1 = "wifi" ]]; then
 elif [[ $1 = "sync" ]]; then
 	status_personal="$(systemctl --user status onedrive | grep "Active" | awk '{print $2}')"
 	status_imperial="$(systemctl --user status onedrive_imperial | grep "Active" | awk '{print $2}')"
-	if [[ $status_personal = "active" ]] && [[ $status_imperial = "active" ]]; then
+	# if [[ $status_personal = "active" ]] && [[ $status_imperial = "active" ]]; then
+	if [[ $status_personal = "active" ]]; then
 		echo 
-	elif [[ $status_personal != "active" ]] && [[ $status_imperial != "active" ]]; then
-		echo 
+	# elif [[ $status_personal != "active" ]] && [[ $status_imperial != "active" ]]; then
+	# 	echo 
 	else
-		echo 
+		# echo 
+		echo 
 	fi
 
 fi

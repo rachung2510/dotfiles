@@ -36,14 +36,14 @@ elif [[ $1 = "wifi" ]]; then
 elif [[ $1 = "sync" ]]; then
 	status_personal="$(systemctl --user status onedrive | grep "Active" | awk '{print $2}')"
 	status_imperial="$(systemctl --user status onedrive_imperial | grep "Active" | awk '{print $2}')"
-	if [[ $status_personal != "active" ]] && [[ $status_imperial != "active" ]]; then
-		echo "OneDrive inactive"
-	elif [[ $status_imperial != "active" ]]; then
-		echo "OneDrive (Imperial) sync not active"
-	elif [[ $status_personal != "active" ]]; then
+	# if [[ $status_personal != "active" ]] && [[ $status_imperial != "active" ]]; then
+	# 	echo "OneDrive inactive"
+	# elif [[ $status_imperial != "active" ]]; then
+	# 	echo "OneDrive (Imperial) sync not active"
+	if [[ $status_personal != "active" ]]; then
 		echo "OneDrive (Personal) sync not active"
 	else
-		echo "Both OneDrives are active"
+		echo "OneDrive is active"
 	fi
 
 fi

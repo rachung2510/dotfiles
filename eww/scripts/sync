@@ -4,6 +4,7 @@ c1="Sync OneDrive (Personal)"
 c2="Sync OneDrive (Imperial)"
 c3="Sync all"
 CHOICES="$c1\n$c2\n$c3"
+CHOICES="$c1"
 
 run() {
 	choice=$(echo -e "$CHOICES" | rofi -dmenu -theme ~/.config/rofi/dunst.rasi)

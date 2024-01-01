@@ -103,6 +103,8 @@
     max_icon_size = 50
 
     # Paths to default icons.
+	icon_theme = "Papirus"
+
     ### History ###
 
     # Should a notification popped up from history be sticky or timeout
@@ -183,6 +185,9 @@
 ; [OneDrive2]
 ; 	body = "Initializing the Synchronization Engine ..."
 ; 	format = ""
+[Ignore]
+	body = "Cannot upload file changes/creation.*"
+	format = ""
 
 [Spotify]
     appname=Spotify
