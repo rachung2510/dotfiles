@@ -36,7 +36,7 @@ set_theme() {
 	
 	# Modify styles for eww, alacritty and rofi
 	sed -i -e "s:@import .*:@import \"styles/$mode.scss\";:" $EWWCONF
-	sed -i -e "s:config/alacritty/.*:config/alacritty/$mode.toml:" $ALACONF
+	sed -i -e "s:config/alacritty/.*.toml:config/alacritty/$mode.toml:" $ALACONF
 	sed -i -e "s/@import .*/@import \"$mode\"/" $ROFICONF
 
 	# Change picom opacity
