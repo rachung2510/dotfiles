@@ -55,7 +55,7 @@
 			:tooltip "Volume: ${vol-val}%
 ${vol-tooltip}" :hover "vol"
 			:action-click "~/.config/i3/scripts/fnactions mute"
-			:action-slide "amixer -D pulse sset Master {}%"
+			:action-slide "pactl set-sink-volume @DEFAULT_SINK@ {}%"
 			:modi mute-bool)
 		(slider
 			:value light-val
