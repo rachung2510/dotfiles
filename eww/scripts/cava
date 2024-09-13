@@ -2,6 +2,21 @@
 # Reference:
 # https://github.com/ankkax/hyprland/blob/main/eww/bar/scripts/cava-internal.sh
 
+get_source_sink() {
+	if [[ -n $(pactl list short sinks | grep bluez) ]]; then
+		if [[ -n $(pactl list short sinks | grep virtual_sink) ]]; then
+			echo "virtual_sink.monitor"
+			return
+		fi
+		pactl load-module module-null-sink sink_name=virtual_sink
+		bluez_sink=$(pactl list short sinks | grep bluez | awk '{print $2}')
+		pactl load-module module-loopback latency_msec=1 source=$bluez_sink.monitor sink=virtual_sink
+		echo "virtual_sink.monitor"
+	else
+		echo "auto"
+	fi
+}
+
 # make sure to clean pipe
 pipe="/tmp/cava.fifo"
 if [ -p $pipe ]; then
@@ -11,11 +26,15 @@ mkfifo $pipe
 
 # write cava config
 config_file="/tmp/bar_cava_config"
+source_sink=$(get_source_sink)
 echo "
 [general]
 bars = 12
 framerate=30
 autosens = 1
+[input]
+method = pulse
+source = $source_sink
 [output]
 channels = mono
 method = raw

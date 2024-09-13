@@ -25,8 +25,13 @@ if [[ $1 = "wifi" ]]; then
 elif [[ $1 = "bluetooth" ]]; then
 	status=$(get_bool $1)
 	if [[ $status = "selected" ]]; then
+		playerctl -p playerctld pause -s
 		eww update bluetooth-bool=""
 		sleep 0.5 && notify_bluetooth off &
+		loopback_id=$(pactl list short modules | grep sink=virtual_sink | awk '{print $1}')
+		if [[ -n $loopback_id ]]; then pactl unload-module $loopback_id; fi
+		virtual_sink_id=$(pactl list short modules | grep sink_name=virtual_sink | awk '{print $1}')
+		if [[ -n $virtual_sink_id ]]; then pactl unload-module $virtual_sink_id; fi
 		echo $pw | sudo -S systemctl stop bluetooth
 	else
 		eww update bluetooth-bool="selected"
