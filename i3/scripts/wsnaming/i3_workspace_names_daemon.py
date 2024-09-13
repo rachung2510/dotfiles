@@ -22,6 +22,7 @@ WSICONMAP = {
 	"window_class=Arduino IDE": "code",
 	"window_class=Blender": "blender",
 	"window_class=Code": "vscode",
+	"window_class=DB Browser for SQLite": "sql",
 	"window_class=discord": "video",
 	"window_class=firefox": "browser",
 	"window_class=[fF]ont-.*": "fonts",
