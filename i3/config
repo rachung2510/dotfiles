@@ -181,7 +181,6 @@ bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
@@ -309,13 +308,14 @@ exec --no-startup-id xset s 480 dpms 1200 1200 1200
 # exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 
 # Others
-exec_always --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Tapping Enabled" 1
-exec_always --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Natural Scrolling Enabled" 1
+# exec_always --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Tapping Enabled" 1
+# exec_always --no-startup-id xinput set-prop "SYNA7DAB:00 06CB:CD40 Touchpad" "libinput Natural Scrolling Enabled" 1
 exec_always --no-startup-id autotiling -e BINDING
+exec --no-startup-id xset s off
 exec --no-startup-id i3-msg 'workspace $ws1'
 exec --no-startup-id autokey-gtk
 exec --no-startup-id nextcloud &
-exec --no-startup-id whatsapp-for-linux &
+# exec --no-startup-id whatsapp-for-linux &
 exec --no-startup-id eww daemon && eww open bar
 exec_always --no-startup-id ibus-daemon -drxR
 exec_always --no-startup-id ~/.config/i3/scripts/wsnaming/i3_workspace_names_daemon.py &
@@ -336,6 +336,7 @@ floating_modifier $mod
 for_window [window_role="About"] floating enable
 for_window [class="amberol"] floating enable, resize set 440 620, move position center
 for_window [class="Autokey-gtk"] floating enable
+for_window [title="Blender Preferences"] floating enable
 for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
 for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
 for_window [class="Device Manager"] floating enable
@@ -360,7 +361,7 @@ for_window [class="Nemo"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
 for_window [class="org.gnome.clocks"] floating enable
 for_window [class="Pamac-manager"] floating enable
-for_window [class="Pavucontrol"] floating enable, resize set 780 400, move position center
+for_window [class="pavucontrol"] floating enable, resize set 780 400, move position center
 for_window [window_role="pop-up"] floating enable
 for_window [class="Putty"] floating enable
 for_window [title="Steam - News.*"] floating enable
@@ -390,14 +391,14 @@ set $shade8             #ce93d8
 # bar-bg-dark			#333333
 # bar-text-light		#8e24aa
 # bar-text-dark			#dca8f0
-set $bar-bg				#e7d0f0
-set $bar-text			#8e24aa
+set $bar-bg				#333333
+set $bar-text			#dca8f0
 # inactive-bg-light     #f2f2f2
 # inactive-text-light   #908c97
 # inactive-bg-dark      #424242
 # inactive-text-dark    #b4b4b4
-set $inactive-bg		#f2f2f2
-set $inactive-text		#908c97
+set $inactive-bg		#424242
+set $inactive-text		#b4b4b4
 
 # define colors for windows:
 # class						border	bground			text			indicator		child_border
