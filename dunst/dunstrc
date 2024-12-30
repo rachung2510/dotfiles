@@ -2,9 +2,9 @@
     monitor = 1
     follow = none
     width = 360
-    height = 320
+    height = 60
     origin = bottom-right
-    offset = 16x16
+    offset = (16,16)
     idle_threshold = 120
 
     # Scale factor. It is auto-detected if value is 0.
